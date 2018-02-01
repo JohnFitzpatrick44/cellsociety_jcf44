@@ -1,5 +1,5 @@
-#Inheritance Review Questions
-## By hy115, jbl34, dpb20
+##Inheritance Review Questions
+### By hy115, jbl34, dpb20
 
 ### Part 1
 1. An implementation decision that this design is encapsulating is that the Cell classes get their individual neighbor states and the Grid class accesses these neighbor states. In this way, the individual cell neighbor states are hidden from the Grid class. 
