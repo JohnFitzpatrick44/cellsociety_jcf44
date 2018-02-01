@@ -38,6 +38,5 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	public ArrayList<Integer> getNeighborStates() {
 		return neighborStates;
 	}
-	
-	
+		
 }
