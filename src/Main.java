@@ -20,31 +20,31 @@ public class Main extends Application {
 	private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
-	
+	Grid grid = new Grid();
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 //		introScene = setupMenu(stage, SIZE, SIZE, WHITE);
 		primaryStage.setMinWidth(SIZE);
 		primaryStage.setMinHeight(SIZE);
 //		primaryStage.setScene(introScene);
+		
+		Cell[][] myCellGrid = grid.createGrid();
 
-		primaryStage.setScene(setupGrid(primaryStage));
+		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
 		primaryStage.setTitle(TITLE);
 		primaryStage.show();
 		
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
-				e -> step(SECOND_DELAY));
+				e -> step(SECOND_DELAY,myCellGrid));
 		Timeline animation = new Timeline();
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.getKeyFrames().add(frame);
 		animation.play();    
 	}
 	
-	private Scene setupGrid(Stage stage) {
+	private Scene setupScene(Stage stage, Cell[][] cellGrid) {
 		Group group = new Group();
-		Grid grid = new Grid();
-		Cell[][] cellGrid = grid.createGrid();
-	
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().add(cellGrid[i][j]);
@@ -55,8 +55,8 @@ public class Main extends Application {
 		return startScene;
 	}
 	
-	public void step(double elapsedTime) {
-		
+	public void step(double elapsedTime, Cell[][] cellGrid) {
+		grid.updateStates(cellGrid);
 	}
 	
 	public static void main(String[] args) {
