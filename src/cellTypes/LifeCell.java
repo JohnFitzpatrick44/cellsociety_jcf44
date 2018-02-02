@@ -15,6 +15,7 @@ public class LifeCell extends Cell {
 		super(x, y, width, height);
 		this.state = 0;
 		this.setFill(DEAD_COLOR);
+		this.setStroke(ALIVE_COLOR);
 	}
 	
 	public LifeCell() {

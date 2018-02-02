@@ -8,6 +8,7 @@ import javafx.scene.shape.Rectangle;
 public abstract class Cell extends Rectangle implements IGrid, ICell{
 	
 	public static final Color DEFAULT_COLOR = Color.WHITE;
+	public static final Color BORDER_COLOR = Color.BLACK;
 	
 	private ArrayList<ICell> neighbors;
 	private ArrayList<Integer> neighborStates;
@@ -15,6 +16,7 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	public Cell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		this.setFill(DEFAULT_COLOR);
+		this.setStroke(BORDER_COLOR);
 		this.neighbors = new ArrayList<ICell>();
 		this.neighborStates = new ArrayList<Integer>();
 	}
