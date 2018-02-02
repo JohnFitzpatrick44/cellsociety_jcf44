@@ -8,15 +8,15 @@ public class mainView {
 	private Group myRoot;
 	
 	//create a button
-	private void createButtons(Button btn) {
-
-		Button playBtn = makeButton("Play", new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				playButtonHandler();
-			}
-		});
-	}
+//	private void createButtons(Button btn) {
+//
+//		Button playBtn = makeButton("Play", new EventHandler<ActionEvent>() {
+//			@Override
+//			public void handle(ActionEvent event) {
+//				playButtonHandler();
+//			}
+//		});
+//	}
 	//arrange all the buttons into the GUI format
 	private void arrangeButtons() { 
 		

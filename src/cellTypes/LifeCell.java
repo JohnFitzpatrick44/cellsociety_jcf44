@@ -19,6 +19,7 @@ public class LifeCell extends Cell {
 	public LifeCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		this.setFill(DEAD_COLOR);
+		this.setStroke(ALIVE_COLOR);
 	}
 	
 	public LifeCell() {
