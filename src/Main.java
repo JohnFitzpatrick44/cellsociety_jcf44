@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import buttons.JumpButton;
+import buttons.PauseButton;
+import buttons.PlayButton;
+import buttons.ResetButton;
 import cellTypes.Cell;
 import cellTypes.LifeCell;
 import gridTypes.Grid;
@@ -24,9 +28,15 @@ public class Main extends Application {
 	private static final int FRAMES_PER_SECOND = 60;
 	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
-
+	private static final Color BUTTON_COLOR = Color.BLACK;
 	Grid grid = new LifeGrid();
 
+	//creating instance variables of the buttons
+	private PlayButton playBtn;
+	private ResetButton resetBtn;
+	private JumpButton jumpBtn;
+	private PauseButton pauseBtn;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setMinWidth(SIZE);
@@ -70,6 +80,17 @@ public class Main extends Application {
 				System.out.println(cellGrid[i][j].getNeighborStates());
 			}
 		}
+	}
+	//create all the buttons
+	public void createButtons() {
+		playBtn = new PlayButton(BUTTON_COLOR);
+		resetBtn = new ResetButton(BUTTON_COLOR);
+		pauseBtn = new PauseButton(BUTTON_COLOR);
+		jumpBtn = new JumpButton(BUTTON_COLOR);
+	}
+	//arrange all the buttons on the screen
+	public void arrangeButtons() {
+		
 	}
 	
 	public static void main(String[] args) {
