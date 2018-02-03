@@ -1,4 +1,6 @@
 package buttons;
+import View.Main;
+import gridTypes.Grid;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
@@ -24,9 +26,12 @@ public class StepButton extends ActionButton{
 	private void setStepEvent() {
 		this.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
-		        //step(); activate the play method
+		        step(); //activate the play method
 		    }
 		});
+	}
+	private void step() {
+		Grid.updateStates(Main.myCellGrid);
 	}
 }
 
