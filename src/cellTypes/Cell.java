@@ -28,7 +28,6 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	public void updateNeighborStates() {
 		neighborStates.clear();
 		for(Cell c: neighbors) {
-//			neighborStates.set(k, neighbors.get(k).getState());
 			neighborStates.add(c.getState());
 		}
 		swapped = false;
@@ -45,9 +44,6 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	}
 	
 	public ArrayList<Integer> getNeighborStates() {
-//		for(Cell neighbor:neighbors) {
-//			neighborStates.add(neighbor.getState());
-//		}
 		updateNeighborStates();
 		return neighborStates;
 	}
