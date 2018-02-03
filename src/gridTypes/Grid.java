@@ -1,39 +1,13 @@
 package gridTypes;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
 
 import cellTypes.Cell;
-import cellTypes.ICell;
-import cellTypes.IGrid;
-import cellTypes.LifeCell;
 
-public class Grid {
+public abstract class Grid {
 		
-	private static final int SPACING = 20;
-	private static final int CELL_SIZE = 20;
-	private static final int OFFSET = 200;
 	private static final int GRID_SIZE = 20; 
-	private static final int ALIVE = 1;
-	private static final int DEAD = 0;
 	
-	public Cell[][] createGrid() {
-		Cell[][] grid = new Cell[GRID_SIZE][GRID_SIZE];
-		int heightSpacing = 0;
-		for(int i=0;i<grid.length;i++) {
-			int blockSpacing = 0;
-			for(int j=0;j<grid[i].length;j++) {
-				grid[i][j] = new LifeCell(OFFSET+blockSpacing,OFFSET+heightSpacing,CELL_SIZE,CELL_SIZE);
-				int randomState = ThreadLocalRandom.current().nextInt(1, 10 + 1);
-				if(randomState == 10) {
-					grid[i][j].setState(ALIVE);
-				}
-				blockSpacing += SPACING;
-			}
-			heightSpacing += SPACING;
-		}
-		return grid;
-	}
+	public abstract Cell[][] createGrid();
 	
 	public void setNeighbors(Cell[][] grid) {
 		for(int i=0;i<grid.length;i++) {
@@ -92,20 +66,24 @@ public class Grid {
 		}
 	}
 
-	public void storeStates(Cell[][] grid, int state) {
+	public ArrayList<Integer> storeStates(Cell[][] grid, int state) {
+		ArrayList<Integer> cellStates = new ArrayList<Integer>();
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
-				state = grid[i][j].getState();
+				cellStates.add(grid[i][j].getState());
 			}
 		}
+		return cellStates;
 	}
 	
-	public void storeNeighborStates(Cell[][] grid, ArrayList<Integer> neighborStates) {
+	public ArrayList<Integer> storeNeighborStates(Cell[][] grid) {
+		ArrayList<Integer> neighborStates = new ArrayList<Integer>();
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
-				neighborStates = grid[i][j].getNeighborStates();
+				neighborStates.addAll(grid[i][j].getNeighborStates());
 			}
 		}
+		return neighborStates;
 	}
 	
 	public void updateStates(Cell[][] grid) {

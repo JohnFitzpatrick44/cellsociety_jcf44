@@ -28,9 +28,7 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 			neighborStates.set(k, neighbors.get(k).getState());
 		}
 	}
-	
-	//public void updateState() {}
-	
+		
 	public void setState(int state) {
 		this.state = state;
 	}

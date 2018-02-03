@@ -31,12 +31,12 @@ public class LifeCell extends Cell {
 		int numAlive = sumArray(this.getNeighborStates());
 		if(getState() != 0) {
 			if(numAlive < 0 || numAlive > 3) {
-				setState(0);
+				this.setState(0);
 				this.setFill(DEAD_COLOR);
 			}
 		} else {
 			if(numAlive == 3) {
-				setState(1);
+				this.setState(1);
 				this.setFill(ALIVE_COLOR);
 			}
 		}
