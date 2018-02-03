@@ -32,7 +32,6 @@ public class Main extends Application {
 	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
-
 	Group group = new Group();
 	
 	//creating instance variables of the buttons
@@ -59,19 +58,14 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setMinWidth(WIDTH_SIZE);
 		primaryStage.setMinHeight(HEIGHT_SIZE);
-
 		setupGrid("Life");
-
 		myCellGrid = grid.createGrid(GRID_OFFSET);
-
 		grid.setNeighbors(myCellGrid);
 		createButtons();
 		arrangeButtons();
-
 		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
 		primaryStage.setTitle(TITLE);
-		primaryStage.show();
-		
+		primaryStage.show();	
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
 				e -> step(SECOND_DELAY,myCellGrid));
 		Timeline animation = new Timeline();
