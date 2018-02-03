@@ -1,5 +1,4 @@
 package gridTypes;
-import java.util.ArrayList;
 
 import cellTypes.Cell;
 

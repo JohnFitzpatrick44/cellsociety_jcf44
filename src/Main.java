@@ -26,7 +26,6 @@ public class Main extends Application {
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
 	Grid grid = new LifeGrid();
-	//dkfja;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -36,17 +35,6 @@ public class Main extends Application {
 		Cell[][] myCellGrid = grid.createGrid();
 
 		grid.setNeighbors(myCellGrid);
-		
-//		for(int i=0;i<myCellGrid.length;i++) {
-//			for(int j=0;j<myCellGrid[i].length;j++) {
-//				System.out.println(myCellGrid[i][j]);
-//				System.out.println(myCellGrid[i][j].getState());
-//				System.out.println(i);
-//				System.out.println(j);
-//				System.out.println(myCellGrid[i][j].getNeighborStates());
-//			}
-//		}
-		
 
 		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
 		primaryStage.setTitle(TITLE);
@@ -74,7 +62,15 @@ public class Main extends Application {
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
 		grid.updateStates(cellGrid);
-//		grid.storeNeighborStates(cellGrid);
+		for(int i=0;i<cellGrid.length;i++) {
+			for(int j=0;j<cellGrid[i].length;j++) {
+//				System.out.println(cellGrid[i][j]);
+//				System.out.println(cellGrid[i][j].getState());
+				System.out.println(i);
+				System.out.println(j);
+				System.out.println(cellGrid[i][j].getNeighborStates());
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
