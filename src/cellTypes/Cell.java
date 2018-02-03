@@ -12,6 +12,7 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	
 	private ArrayList<Cell> neighbors;
 	private ArrayList<Integer> neighborStates;
+	private int state;
 	
 	public Cell(int x, int y, int width, int height) {
 		super(x, y, width, height);

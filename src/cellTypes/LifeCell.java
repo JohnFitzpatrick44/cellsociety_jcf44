@@ -8,6 +8,7 @@ public class LifeCell extends Cell {
 	
 	public static final Color DEAD_COLOR = Color.WHITE;
 	public static final Color ALIVE_COLOR = Color.BLACK;
+	private int state;
 		
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
