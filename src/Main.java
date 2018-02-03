@@ -25,6 +25,7 @@ public class Main extends Application {
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
 	Grid grid = new Grid();
+	//dkfja;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
