@@ -1,8 +1,8 @@
 package buttons;
+import View.Main;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
-
 /*
  * PlayButton class that inherits the ActionButton
  * Creates a PlayButton action that specifically plays the grid simulation
@@ -27,8 +27,11 @@ public class PlayButton extends ActionButton{
 	private void setPlayEvent() {
 		this.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
-		        //play(); activate the play method
+		        play(); //activate the play method
 		    }
 		});
+	}
+	private void play() {
+		Main.setPlayBoolean(true);
 	}
 }

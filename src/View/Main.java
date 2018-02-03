@@ -1,3 +1,4 @@
+package View;
 
 
 import java.util.ArrayList;
@@ -39,6 +40,9 @@ public class Main extends Application {
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
 	
+	//attributes
+	public static Boolean playBoolean = false;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setMinWidth(SIZE);
@@ -75,6 +79,7 @@ public class Main extends Application {
 	}
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
+		if (playBoolean) {
 		grid.updateStates(cellGrid);
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
@@ -84,7 +89,19 @@ public class Main extends Application {
 				System.out.println(cellGrid[i][j].getNeighborStates());
 			}
 		}
+		}
 	}
+	
+	//return the state of the playBoolean
+	public Boolean getPlayBoolean () {
+		return playBoolean;
+	}
+	
+	//setter for boolean 
+	public static Boolean setPlayBoolean(Boolean state) {
+	        return playBoolean = state;
+	  }
+	
 	//create all the buttons
 	public void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
