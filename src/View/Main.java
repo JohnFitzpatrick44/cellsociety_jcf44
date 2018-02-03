@@ -55,40 +55,16 @@ public class Main {
 	//attributes
 	public static Boolean playBoolean = false;
 	
-//	@Override
-//	public void start(Stage primaryStage) throws Exception {
-//		primaryStage.setMinWidth(WIDTH_SIZE);
-//		primaryStage.setMinHeight(HEIGHT_SIZE);
-//		setupGrid("Life");
-//		myCellGrid = grid.createGrid(GRID_OFFSET);
-//		grid.setNeighbors(myCellGrid);
-//		createButtons();
-//		arrangeButtons();
-//		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
-//		primaryStage.setTitle(TITLE);
-//		primaryStage.show();	
-//		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
-//				e -> step(SECOND_DELAY,myCellGrid));
-//		Timeline animation = new Timeline();
-//		animation.setCycleCount(Timeline.INDEFINITE);
-//		animation.getKeyFrames().add(frame);
-//		animation.play();    
-//	}
-	
 	public Scene initializeStartScene() {
 		group = new Group();
-		//myScene = new Scene(group, WIDTH_SIZE, HEIGHT_SIZE);
 		setupGrid("Life");
 		myCellGrid = grid.createGrid(GRID_OFFSET);
 		grid.setNeighbors(myCellGrid);
 		createButtons();
 		arrangeButtons();
 		myScene = setupScene(myCellGrid);
-		//primaryStage.setScene(setupScene(primaryStage,myCellGrid));
 		beginAnimationLoop();  //start the animation process
 		return myScene;
-//		primaryStage.setTitle(TITLE);
-//		primaryStage.show();	
 		
 	}
 	
@@ -143,8 +119,4 @@ public class Main {
 		jumpBtn.setPosition(225, 450);
 		stepBtn.setPosition(300, 450);
 	}
-	
-//	public static void main(String[] args) {
-//		launch(args);
-//	}
 }
