@@ -42,7 +42,7 @@ public class Main extends Application {
 		primaryStage.setMinWidth(SIZE);
 		primaryStage.setMinHeight(SIZE);
 		
-		Cell[][] myCellGrid = grid.createGrid();
+		Cell[][] myCellGrid = grid.createGrid(200);
 
 		grid.setNeighbors(myCellGrid);
 
