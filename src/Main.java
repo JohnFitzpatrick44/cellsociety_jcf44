@@ -92,7 +92,7 @@ public class Main extends Application {
 		pauseBtn = new PauseButton(BUTTON_COLOR);
 		jumpBtn = new JumpButton(BUTTON_COLOR);
 		stepBtn = new StepButton(BUTTON_COLOR);
-		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn);
+		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn);
 	}
 	
 	//arrange all the buttons on the screen
@@ -101,6 +101,7 @@ public class Main extends Application {
 		resetBtn.setPosition(200, 600);
 		pauseBtn.setPosition(300,  600);
 		jumpBtn.setPosition(400, 600);
+		stepBtn.setPosition(500, 600);
 	}
 	
 	public static void main(String[] args) {

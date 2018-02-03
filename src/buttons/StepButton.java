@@ -10,13 +10,13 @@ import javafx.scene.paint.Color;
  */
 public class StepButton extends ActionButton{
 				
-	private final String buttonName = "RESET";
+	private final String buttonName = "STEP";
 
 	public StepButton(Color buttonColor) {
 		super(buttonColor);
 		// TODO Auto-generated constructor stub
 		this.setButtonText(buttonName);
-		this.setResetEvent();
+		this.setStepEvent();
 	}
 	/*
 	 * private method to set the action event to play
