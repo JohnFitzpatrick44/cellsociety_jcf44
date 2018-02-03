@@ -96,7 +96,7 @@ public class Main extends Application {
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
-			grid.updateStates(cellGrid);
+			Grid.updateStates(cellGrid);
 //			for(int i=0;i<cellGrid.length;i++) {
 //				for(int j=0;j<cellGrid[i].length;j++) {
 //					System.out.println(cellGrid[i][j]);
