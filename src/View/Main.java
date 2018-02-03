@@ -15,6 +15,7 @@ import cellTypes.LifeCell;
 import gridTypes.FireGrid;
 import gridTypes.Grid;
 import gridTypes.LifeGrid;
+import gridTypes.SegregationGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -34,6 +35,7 @@ public class Main extends Application {
 	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
+
 //	Grid grid = new LifeGrid();
 	Group group = new Group();
 	//creating instance variables of the buttons
