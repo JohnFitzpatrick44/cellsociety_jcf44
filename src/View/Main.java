@@ -1,6 +1,4 @@
 package View;
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class Main extends Application {
+public class Main {
 	
 	private static final String TITLE = "Cell Society";
 	public static final int GRID_OFFSET = 10;
@@ -34,9 +32,9 @@ public class Main extends Application {
 	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
-
-	Group group = new Group();
-	
+	//Group group = new Group();
+	private Group group;
+	private Scene myScene;
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
 	private ResetButton resetBtn;
@@ -57,39 +55,61 @@ public class Main extends Application {
 	//attributes
 	public static Boolean playBoolean = false;
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setMinWidth(WIDTH_SIZE);
-		primaryStage.setMinHeight(HEIGHT_SIZE);
-
+//	@Override
+//	public void start(Stage primaryStage) throws Exception {
+//		primaryStage.setMinWidth(WIDTH_SIZE);
+//		primaryStage.setMinHeight(HEIGHT_SIZE);
+//		setupGrid("Life");
+//		myCellGrid = grid.createGrid(GRID_OFFSET);
+//		grid.setNeighbors(myCellGrid);
+//		createButtons();
+//		arrangeButtons();
+//		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
+//		primaryStage.setTitle(TITLE);
+//		primaryStage.show();	
+//		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
+//				e -> step(SECOND_DELAY,myCellGrid));
+//		Timeline animation = new Timeline();
+//		animation.setCycleCount(Timeline.INDEFINITE);
+//		animation.getKeyFrames().add(frame);
+//		animation.play();    
+//	}
+	
+	public Scene initializeStartScene() {
+		group = new Group();
+		//myScene = new Scene(group, WIDTH_SIZE, HEIGHT_SIZE);
 		setupGrid("Life");
 
-		myCellGrid = grid.createGrid(GRID_OFFSET,20,20);
+		myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
 
 		grid.setNeighbors(myCellGrid);
 		createButtons();
 		arrangeButtons();
-
-		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
-		primaryStage.setTitle(TITLE);
-		primaryStage.show();
+		myScene = setupScene(myCellGrid);
+		//primaryStage.setScene(setupScene(primaryStage,myCellGrid));
+		beginAnimationLoop();  //start the animation process
+		return myScene;
+//		primaryStage.setTitle(TITLE);
+//		primaryStage.show();	
 		
+	}
+	
+	public void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
 				e -> step(SECOND_DELAY,myCellGrid));
 		Timeline animation = new Timeline();
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.getKeyFrames().add(frame);
-		animation.play();    
+		animation.play();  
 	}
 	
-	private Scene setupScene(Stage stage, Cell[][] cellGrid) {
-
+	//removed Scene stage from parameters
+	private Scene setupScene(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().add(cellGrid[i][j]);
 			}
-		}
-		
+		}	
 		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 		return startScene;
 	}
@@ -107,7 +127,6 @@ public class Main extends Application {
 //			}
 		}
 	}
-	
 	//create all the buttons
 	public void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
@@ -127,7 +146,7 @@ public class Main extends Application {
 		stepBtn.setPosition(300, 450);
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
+//	public static void main(String[] args) {
+//		launch(args);
+//	}
 }
