@@ -1,5 +1,9 @@
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import cellTypes.Cell;
 import cellTypes.LifeCell;
 import gridTypes.Grid;
@@ -30,6 +34,20 @@ public class Main extends Application {
 //		primaryStage.setScene(introScene);
 		
 		Cell[][] myCellGrid = grid.createGrid();
+//		for(Cell[] cell: Arrays.asList(myCellGrid)) {
+//			
+//		}
+		grid.setNeighbors(myCellGrid);
+		
+		for(int i=0;i<myCellGrid.length;i++) {
+			for(int j=0;j<myCellGrid[i].length;j++) {
+//				System.out.println(myCellGrid[i][j]);
+//				System.out.println(myCellGrid[i][j].getState());
+				System.out.println(i);
+				System.out.println(j);
+				System.out.println(myCellGrid[i][j].getNeighborStates());
+			}
+		}
 
 		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
 		primaryStage.setTitle(TITLE);

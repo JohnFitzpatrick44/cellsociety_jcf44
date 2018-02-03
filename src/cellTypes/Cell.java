@@ -10,15 +10,14 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	public static final Color DEFAULT_COLOR = Color.WHITE;
 	public static final Color BORDER_COLOR = Color.BLACK;
 	
-	private int state;
-	private ArrayList<ICell> neighbors;
+	private ArrayList<Cell> neighbors;
 	private ArrayList<Integer> neighborStates;
 	
 	public Cell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		this.setFill(DEFAULT_COLOR);
 		this.setStroke(BORDER_COLOR);
-		this.neighbors = new ArrayList<ICell>();
+		this.neighbors = new ArrayList<Cell>();
 		this.neighborStates = new ArrayList<Integer>();
 		this.state = 0;
 	}
@@ -42,6 +41,9 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	}
 	
 	public ArrayList<Integer> getNeighborStates() {
+		for(Cell neighbor:neighbors) {
+			neighborStates.add(neighbor.getState());
+		}
 		return neighborStates;
 	}
 		
