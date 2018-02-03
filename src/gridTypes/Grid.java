@@ -102,7 +102,7 @@ public abstract class Grid {
 //		return neighborStates;
 //	}
 	
-	public void updateStates(Cell[][] grid) {
+	public static void updateStates(Cell[][] grid) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				grid[i][j].updateState();
