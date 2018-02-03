@@ -20,10 +20,11 @@ public class LifeGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				grid[i][j] = new LifeCell(OFFSET+blockSpacing,OFFSET+heightSpacing,CELL_SIZE,CELL_SIZE);
 				int randomState = ThreadLocalRandom.current().nextInt(1, 10 + 1);
 				if(randomState == 10) {
-					grid[i][j].setState(ALIVE);
+					grid[i][j] = new LifeCell(OFFSET+blockSpacing,OFFSET+heightSpacing,CELL_SIZE,CELL_SIZE,1);
+				} else {
+					grid[i][j] = new LifeCell(OFFSET+blockSpacing,OFFSET+heightSpacing,CELL_SIZE,CELL_SIZE,0);
 				}
 				blockSpacing += SPACING;
 			}

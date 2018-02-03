@@ -22,7 +22,7 @@ public class Main extends Application {
 	private static final String TITLE = "Cell Society";
 	private static final int SIZE = 800;
 	private static final int FRAMES_PER_SECOND = 60;
-	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
+	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
 	Grid grid = new LifeGrid();
@@ -37,15 +37,15 @@ public class Main extends Application {
 
 		grid.setNeighbors(myCellGrid);
 		
-		for(int i=0;i<myCellGrid.length;i++) {
-			for(int j=0;j<myCellGrid[i].length;j++) {
+//		for(int i=0;i<myCellGrid.length;i++) {
+//			for(int j=0;j<myCellGrid[i].length;j++) {
 //				System.out.println(myCellGrid[i][j]);
 //				System.out.println(myCellGrid[i][j].getState());
 //				System.out.println(i);
 //				System.out.println(j);
 //				System.out.println(myCellGrid[i][j].getNeighborStates());
-			}
-		}
+//			}
+//		}
 		
 
 		primaryStage.setScene(setupScene(primaryStage,myCellGrid));

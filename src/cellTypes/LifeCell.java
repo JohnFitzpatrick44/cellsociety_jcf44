@@ -29,15 +29,13 @@ public class LifeCell extends Cell {
 
 	public void updateState() {
 		int numAlive = sumArray(this.getNeighborStates());
-		if(getState() != 0) {
-			if(numAlive < 0 || numAlive > 3) {
+		if(this.getState() == 1) {
+			if(numAlive <= 1 || numAlive > 3) {
 				this.setState(0);
-				this.setFill(DEAD_COLOR);
 			}
-		} else {
+		} else if(this.getState() == 0) {
 			if(numAlive == 3) {
 				this.setState(1);
-				this.setFill(ALIVE_COLOR);
 			}
 		}
 	}
@@ -57,9 +55,7 @@ public class LifeCell extends Cell {
 	
 	private int sumArray(ArrayList<Integer> arr) {
 		int sum = 0;
-		for(int x : arr) {
-			sum += x;
-		}
+		for(int x : arr) sum += x;
 		return sum;
 	}
 	
