@@ -64,7 +64,7 @@ public class Main extends Application {
 
 		setupGrid("Life");
 
-		myCellGrid = grid.createGrid(GRID_OFFSET);
+		myCellGrid = grid.createGrid(GRID_OFFSET,20,20);
 
 		grid.setNeighbors(myCellGrid);
 		createButtons();
