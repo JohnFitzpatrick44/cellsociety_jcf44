@@ -27,6 +27,7 @@ import javafx.util.Duration;
 public class Main extends Application {
 	
 	private static final String TITLE = "Cell Society";
+	public static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 500;
 	private static final int FRAMES_PER_SECOND = 60;
@@ -43,6 +44,7 @@ public class Main extends Application {
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
 	private Grid grid;
+	public static Cell[][] myCellGrid;
 	
 	private void setupGrid(String name) {
 		if(name.equals("Life")) {
@@ -59,10 +61,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setMinWidth(WIDTH_SIZE);
 		primaryStage.setMinHeight(HEIGHT_SIZE);
-		
+
 		setupGrid("Life");
 
-		Cell[][] myCellGrid = grid.createGrid(10);
+		myCellGrid = grid.createGrid(GRID_OFFSET);
 
 		grid.setNeighbors(myCellGrid);
 		createButtons();
