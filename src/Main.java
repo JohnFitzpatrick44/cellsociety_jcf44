@@ -42,7 +42,7 @@ public class Main extends Application {
 		primaryStage.setMinWidth(SIZE);
 		primaryStage.setMinHeight(SIZE);
 		
-		Cell[][] myCellGrid = grid.createGrid();
+		Cell[][] myCellGrid = grid.createGrid(200);
 
 		grid.setNeighbors(myCellGrid);
 
@@ -76,8 +76,7 @@ public class Main extends Application {
 			for(int j=0;j<cellGrid[i].length;j++) {
 //				System.out.println(cellGrid[i][j]);
 //				System.out.println(cellGrid[i][j].getState());
-				System.out.println(i);
-				System.out.println(j);
+				System.out.print(i+" "+j);
 				System.out.println(cellGrid[i][j].getNeighborStates());
 			}
 		}
