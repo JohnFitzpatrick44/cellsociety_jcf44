@@ -58,7 +58,9 @@ public class Main {
 	public Scene initializeStartScene() {
 		group = new Group();
 		setupGrid("Life");
-		myCellGrid = grid.createGrid(GRID_OFFSET);
+
+		myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+
 		grid.setNeighbors(myCellGrid);
 		createButtons();
 		arrangeButtons();
@@ -90,7 +92,7 @@ public class Main {
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
-			grid.updateStates(cellGrid);
+			Grid.updateStates(cellGrid);
 //			for(int i=0;i<cellGrid.length;i++) {
 //				for(int j=0;j<cellGrid[i].length;j++) {
 //					System.out.println(cellGrid[i][j]);
