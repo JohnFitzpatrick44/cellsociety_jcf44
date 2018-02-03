@@ -1,4 +1,5 @@
 package buttons;
+import View.Main;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
@@ -53,6 +54,14 @@ public abstract class ActionButton extends Button{
 	public String getButtonText() {
 		return buttonName;
 	}
+	//return the state of the playBoolean
+	public Boolean getPlayBoolean () {
+		return Main.playBoolean;
+	}
 	
+	//setter for boolean 
+	public static Boolean setPlayBoolean(Boolean state) {
+	        return Main.playBoolean = state;
+	  }
 
 }

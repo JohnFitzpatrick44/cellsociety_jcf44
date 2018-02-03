@@ -31,6 +31,6 @@ public class PauseButton extends ActionButton{
 	}
 	
 	private void pause() {
-		Main.setPlayBoolean(false);
+		setPlayBoolean(false);
 	}
 }
