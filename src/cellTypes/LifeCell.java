@@ -8,12 +8,16 @@ public class LifeCell extends Cell {
 	
 	public static final Color DEAD_COLOR = Color.WHITE;
 	public static final Color ALIVE_COLOR = Color.BLACK;
-	
-	private int state;
+		
+	public LifeCell(int x, int y, int width, int height, int state) {
+		this(x, y, width, height);
+		setState(state);
+		if(state == 0) this.setFill(DEAD_COLOR);
+		else this.setFill(ALIVE_COLOR);
+	}
 	
 	public LifeCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		this.state = 0;
 		this.setFill(DEAD_COLOR);
 		this.setStroke(ALIVE_COLOR);
 	}
@@ -24,14 +28,14 @@ public class LifeCell extends Cell {
 
 	public void updateState() {
 		int numAlive = sumArray(this.getNeighborStates());
-		if(state != 0) {
+		if(getState() != 0) {
 			if(numAlive < 0 || numAlive > 3) {
-				state = 0;
+				setState(0);
 				this.setFill(DEAD_COLOR);
 			}
 		} else {
 			if(numAlive == 3) {
-				state = 1;
+				setState(1);
 				this.setFill(ALIVE_COLOR);
 			}
 		}

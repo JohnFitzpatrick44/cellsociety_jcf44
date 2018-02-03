@@ -19,6 +19,7 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 		this.setStroke(BORDER_COLOR);
 		this.neighbors = new ArrayList<Cell>();
 		this.neighborStates = new ArrayList<Integer>();
+		this.state = 0;
 	}
 	
 	public void updateNeighborStates() {
@@ -27,11 +28,13 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 		}
 	}
 	
-	public void updateState() {}
+	//public void updateState() {}
 	
-	public void setState(int state) {}
+	public void setState(int state) {
+		this.state = state;
+	}
 	
-	public int getState() {return 0;}
+	public int getState() {return state;}
 	
 	public void setNeighbor(Cell c) {
 		this.neighbors.add(c);
