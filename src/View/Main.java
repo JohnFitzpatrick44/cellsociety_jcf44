@@ -1,3 +1,4 @@
+package View;
 
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ import javafx.util.Duration;
 public class Main extends Application {
 	
 	private static final String TITLE = "Cell Society";
-	private static final int SIZE = 800;
+	private static final int SIZE = 600;
 	private static final int FRAMES_PER_SECOND = 60;
 	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
@@ -40,12 +41,15 @@ public class Main extends Application {
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
 	
+	//attributes
+	public static Boolean playBoolean = false;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setMinWidth(SIZE);
 		primaryStage.setMinHeight(SIZE);
 		
-		Cell[][] myCellGrid = grid.createGrid(200);
+		Cell[][] myCellGrid = grid.createGrid(10);
 
 		grid.setNeighbors(myCellGrid);
 		createButtons();
@@ -76,6 +80,7 @@ public class Main extends Application {
 	}
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
+		if (playBoolean) {
 		grid.updateStates(cellGrid);
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
@@ -85,7 +90,19 @@ public class Main extends Application {
 				System.out.println(cellGrid[i][j].getNeighborStates());
 			}
 		}
+		}
 	}
+	
+	//return the state of the playBoolean
+	public Boolean getPlayBoolean () {
+		return playBoolean;
+	}
+	
+	//setter for boolean 
+	public static Boolean setPlayBoolean(Boolean state) {
+	        return playBoolean = state;
+	  }
+	
 	//create all the buttons
 	public void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
@@ -98,11 +115,11 @@ public class Main extends Application {
 	
 	//arrange all the buttons on the screen
 	public void arrangeButtons() {
-		playBtn.setPosition(100, 600);
-		resetBtn.setPosition(200, 600);
-		pauseBtn.setPosition(300,  600);
-		jumpBtn.setPosition(400, 600);
-		stepBtn.setPosition(500, 600);
+		playBtn.setPosition(100, 400);
+		resetBtn.setPosition(200, 400);
+		pauseBtn.setPosition(300,  400);
+		jumpBtn.setPosition(400, 400);
+		stepBtn.setPosition(500, 400);
 	}
 	
 	public static void main(String[] args) {
