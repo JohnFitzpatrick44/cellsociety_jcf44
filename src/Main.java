@@ -30,7 +30,7 @@ public class Main extends Application {
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
 	Grid grid = new LifeGrid();
-
+	Group group = new Group();
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
 	private ResetButton resetBtn;
@@ -59,7 +59,7 @@ public class Main extends Application {
 	}
 	
 	private Scene setupScene(Stage stage, Cell[][] cellGrid) {
-		Group group = new Group();
+
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().add(cellGrid[i][j]);
@@ -88,10 +88,15 @@ public class Main extends Application {
 		resetBtn = new ResetButton(BUTTON_COLOR);
 		pauseBtn = new PauseButton(BUTTON_COLOR);
 		jumpBtn = new JumpButton(BUTTON_COLOR);
+		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn);
 	}
+	
 	//arrange all the buttons on the screen
 	public void arrangeButtons() {
-		
+		playBtn.setPosition(100, 600);
+		resetBtn.setPosition(200, 600);
+		pauseBtn.setPosition(300,  600);
+		jumpBtn.setPosition(400, 600);
 	}
 	
 	public static void main(String[] args) {

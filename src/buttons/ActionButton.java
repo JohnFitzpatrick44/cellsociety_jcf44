@@ -42,7 +42,7 @@ public abstract class ActionButton extends Button{
 	 * @parameter takes in an integer for the x position
 	 */
 	
-	public void setXPosition(int x, int y ) {
+	public void setPosition(int x, int y ) {
 		this.setLayoutX(x);
 		this.setLayoutY(y);
 	}
