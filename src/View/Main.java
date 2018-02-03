@@ -28,7 +28,8 @@ import javafx.util.Duration;
 public class Main extends Application {
 	
 	private static final String TITLE = "Cell Society";
-	private static final int SIZE = 600;
+	private static final int WIDTH_SIZE = 420;
+	private static final int HEIGHT_SIZE = 500;
 	private static final int FRAMES_PER_SECOND = 60;
 	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
@@ -57,8 +58,8 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setMinWidth(SIZE);
-		primaryStage.setMinHeight(SIZE);
+		primaryStage.setMinWidth(WIDTH_SIZE);
+		primaryStage.setMinHeight(HEIGHT_SIZE);
 		
 
 		setupGrid("Life");
@@ -89,7 +90,7 @@ public class Main extends Application {
 			}
 		}
 		
-		Scene startScene = new Scene(group,SIZE,SIZE,Color.WHEAT);
+		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 		return startScene;
 	}
 	
@@ -107,16 +108,6 @@ public class Main extends Application {
 		}
 	}
 	
-	//return the state of the playBoolean
-	public Boolean getPlayBoolean () {
-		return playBoolean;
-	}
-	
-	//setter for boolean 
-	public static Boolean setPlayBoolean(Boolean state) {
-	        return playBoolean = state;
-	  }
-	
 	//create all the buttons
 	public void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
@@ -129,11 +120,11 @@ public class Main extends Application {
 	
 	//arrange all the buttons on the screen
 	public void arrangeButtons() {
-		playBtn.setPosition(100, 400);
-		resetBtn.setPosition(200, 400);
-		pauseBtn.setPosition(300,  400);
-		jumpBtn.setPosition(400, 400);
-		stepBtn.setPosition(500, 400);
+		playBtn.setPosition(50, 450);
+		resetBtn.setPosition(120, 450);
+		pauseBtn.setPosition(200,  450);
+		jumpBtn.setPosition(225, 450);
+		stepBtn.setPosition(300, 450);
 	}
 	
 	public static void main(String[] args) {

@@ -32,6 +32,6 @@ public class PlayButton extends ActionButton{
 		});
 	}
 	private void play() {
-		Main.setPlayBoolean(true);
+		setPlayBoolean(true);
 	}
 }
