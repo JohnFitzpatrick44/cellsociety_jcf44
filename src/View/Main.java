@@ -30,11 +30,12 @@ public class Main extends Application {
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 500;
 	private static final int FRAMES_PER_SECOND = 60;
-	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
+	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
-//	Grid grid = new LifeGrid();
+
 	Group group = new Group();
+	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
 	private ResetButton resetBtn;
@@ -59,7 +60,6 @@ public class Main extends Application {
 		primaryStage.setMinWidth(WIDTH_SIZE);
 		primaryStage.setMinHeight(HEIGHT_SIZE);
 		
-
 		setupGrid("Life");
 
 		Cell[][] myCellGrid = grid.createGrid(10);
@@ -94,15 +94,15 @@ public class Main extends Application {
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
-		grid.updateStates(cellGrid);
-		for(int i=0;i<cellGrid.length;i++) {
-			for(int j=0;j<cellGrid[i].length;j++) {
-//				System.out.println(cellGrid[i][j]);
-//				System.out.println(cellGrid[i][j].getState());
-				System.out.print(i+" "+j);
-				System.out.println(cellGrid[i][j].getNeighborStates());
-			}
-		}
+			grid.updateStates(cellGrid);
+//			for(int i=0;i<cellGrid.length;i++) {
+//				for(int j=0;j<cellGrid[i].length;j++) {
+//					System.out.println(cellGrid[i][j]);
+//					System.out.println(cellGrid[i][j].getState());
+//					System.out.print(i+" "+j);
+//					System.out.println(cellGrid[i][j].getNeighborStates());
+//				}
+//			}
 		}
 	}
 	
