@@ -5,7 +5,7 @@ import cellTypes.Cell;
 public class FireGrid extends Grid {
 
 	@Override
-	public Cell[][] createGrid() {
+	public Cell[][] createGrid(int offset) {
 		// TODO Auto-generated method stub
 		return null;
 	}

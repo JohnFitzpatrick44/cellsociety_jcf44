@@ -11,6 +11,7 @@ import buttons.ResetButton;
 import buttons.StepButton;
 import cellTypes.Cell;
 import cellTypes.LifeCell;
+import gridTypes.FireGrid;
 import gridTypes.Grid;
 import gridTypes.LifeGrid;
 import javafx.animation.KeyFrame;
@@ -30,7 +31,7 @@ public class Main extends Application {
 	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
-	Grid grid = new LifeGrid();
+//	Grid grid = new LifeGrid();
 	Group group = new Group();
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
@@ -38,11 +39,22 @@ public class Main extends Application {
 	private JumpButton jumpBtn;
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
+	private Grid grid;
+	
+	private void setupGrid(String name) {
+		if(name.equals("Life")) {
+			grid = new LifeGrid();
+		} else if(name.equals("Fire")) {
+			grid = new FireGrid();
+		}
+	}
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setMinWidth(SIZE);
 		primaryStage.setMinHeight(SIZE);
+		
+		setupGrid("Life");
 		
 		Cell[][] myCellGrid = grid.createGrid(200);
 
@@ -99,7 +111,7 @@ public class Main extends Application {
 	public void arrangeButtons() {
 		playBtn.setPosition(100, 600);
 		resetBtn.setPosition(200, 600);
-		pauseBtn.setPosition(300,  600);
+		pauseBtn.setPosition(300, 600);
 		jumpBtn.setPosition(400, 600);
 		stepBtn.setPosition(500, 600);
 	}
