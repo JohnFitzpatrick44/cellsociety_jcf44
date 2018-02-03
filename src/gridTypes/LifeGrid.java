@@ -14,7 +14,7 @@ public class LifeGrid extends Grid {
 	private static final int ALIVE = 1;
 	private static final int DEAD = 0;
 	
-	public Cell[][] createGrid(){
+	public Cell[][] createGrid(int offset){
 		Cell[][] grid = new Cell[GRID_SIZE][GRID_SIZE];
 		int heightSpacing = 0;
 		for(int i=0;i<grid.length;i++) {
@@ -22,9 +22,9 @@ public class LifeGrid extends Grid {
 			for(int j=0;j<grid[i].length;j++) {
 				int randomState = ThreadLocalRandom.current().nextInt(1, 10 + 1);
 				if(randomState == 10) {
-					grid[i][j] = new LifeCell(OFFSET+blockSpacing,OFFSET+heightSpacing,CELL_SIZE,CELL_SIZE,1);
+					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,CELL_SIZE,CELL_SIZE,1);
 				} else {
-					grid[i][j] = new LifeCell(OFFSET+blockSpacing,OFFSET+heightSpacing,CELL_SIZE,CELL_SIZE,0);
+					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,CELL_SIZE,CELL_SIZE,0);
 				}
 				blockSpacing += SPACING;
 			}

@@ -6,7 +6,7 @@ public abstract class Grid {
 		
 	private static final int GRID_SIZE = 20; 
 	
-	public abstract Cell[][] createGrid();
+	public abstract Cell[][] createGrid(int offset);
 	
 	public void setNeighbors(Cell[][] grid) {
 		for(int i=0;i<grid.length;i++) {
