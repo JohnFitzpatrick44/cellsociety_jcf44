@@ -1,4 +1,5 @@
 package buttons;
+import View.Main;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
@@ -16,16 +17,20 @@ public class PauseButton extends ActionButton{
 		super(buttonColor);
 		// TODO Auto-generated constructor stub
 		this.setButtonText(buttonName);
-		this.setResetEvent();
+		this.setPauseEvent();
 	}
 	/*
 	 * private method to set the action event to play
 	 */
-	private void setResetEvent() {
+	private void setPauseEvent() {
 		this.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
-		        //reset(); activate the play method
+		        pause();// activate the play method
 		    }
 		});
+	}
+	
+	private void pause() {
+		Main.setPlayBoolean(false);
 	}
 }
