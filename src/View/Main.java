@@ -1,6 +1,4 @@
 package View;
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -107,7 +105,6 @@ public class Main extends Application {
 		}
 		}
 	}
-	
 	//create all the buttons
 	public void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
