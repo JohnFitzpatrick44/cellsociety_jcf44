@@ -12,6 +12,7 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	
 	private ArrayList<Cell> neighbors;
 	private ArrayList<Integer> neighborStates;
+	private int state;
 	
 	public Cell(int x, int y, int width, int height) {
 		super(x, y, width, height);
@@ -23,13 +24,13 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	}
 	
 	public void updateNeighborStates() {
-		for(int k = 0; k < neighbors.size(); k++) {
-			neighborStates.set(k, neighbors.get(k).getState());
+		neighborStates.clear();
+		for(Cell c: neighbors) {
+//			neighborStates.set(k, neighbors.get(k).getState());
+			neighborStates.add(c.getState());
 		}
 	}
-	
-	//public void updateState() {}
-	
+		
 	public void setState(int state) {
 		this.state = state;
 	}
@@ -41,9 +42,10 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	}
 	
 	public ArrayList<Integer> getNeighborStates() {
-		for(Cell neighbor:neighbors) {
-			neighborStates.add(neighbor.getState());
-		}
+//		for(Cell neighbor:neighbors) {
+//			neighborStates.add(neighbor.getState());
+//		}
+		updateNeighborStates();
 		return neighborStates;
 	}
 		

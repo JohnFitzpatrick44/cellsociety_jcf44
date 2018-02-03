@@ -7,6 +7,7 @@ import java.util.List;
 import cellTypes.Cell;
 import cellTypes.LifeCell;
 import gridTypes.Grid;
+import gridTypes.LifeGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
@@ -21,34 +22,19 @@ public class Main extends Application {
 	private static final String TITLE = "Cell Society";
 	private static final int SIZE = 800;
 	private static final int FRAMES_PER_SECOND = 60;
-	private static final int MILLISECOND_DELAY = 1000 / FRAMES_PER_SECOND;
+	private static final int MILLISECOND_DELAY = 80000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 
-	Grid grid = new Grid();
-	//dkfja;
+	Grid grid = new LifeGrid();
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-//		introScene = setupMenu(stage, SIZE, SIZE, WHITE);
 		primaryStage.setMinWidth(SIZE);
 		primaryStage.setMinHeight(SIZE);
-//		primaryStage.setScene(introScene);
 		
 		Cell[][] myCellGrid = grid.createGrid();
-//		for(Cell[] cell: Arrays.asList(myCellGrid)) {
-//			
-//		}
+
 		grid.setNeighbors(myCellGrid);
-		
-		for(int i=0;i<myCellGrid.length;i++) {
-			for(int j=0;j<myCellGrid[i].length;j++) {
-//				System.out.println(myCellGrid[i][j]);
-//				System.out.println(myCellGrid[i][j].getState());
-				System.out.println(i);
-				System.out.println(j);
-				System.out.println(myCellGrid[i][j].getNeighborStates());
-			}
-		}
 
 		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
 		primaryStage.setTitle(TITLE);
@@ -76,6 +62,15 @@ public class Main extends Application {
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
 		grid.updateStates(cellGrid);
+		for(int i=0;i<cellGrid.length;i++) {
+			for(int j=0;j<cellGrid[i].length;j++) {
+//				System.out.println(cellGrid[i][j]);
+//				System.out.println(cellGrid[i][j].getState());
+				System.out.println(i);
+				System.out.println(j);
+				System.out.println(cellGrid[i][j].getNeighborStates());
+			}
+		}
 	}
 	
 	public static void main(String[] args) {
