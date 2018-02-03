@@ -8,6 +8,7 @@ import buttons.JumpButton;
 import buttons.PauseButton;
 import buttons.PlayButton;
 import buttons.ResetButton;
+import buttons.StepButton;
 import cellTypes.Cell;
 import cellTypes.LifeCell;
 import gridTypes.Grid;
@@ -36,6 +37,7 @@ public class Main extends Application {
 	private ResetButton resetBtn;
 	private JumpButton jumpBtn;
 	private PauseButton pauseBtn;
+	private StepButton stepBtn;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -45,6 +47,8 @@ public class Main extends Application {
 		Cell[][] myCellGrid = grid.createGrid();
 
 		grid.setNeighbors(myCellGrid);
+		createButtons();
+		arrangeButtons();
 
 		primaryStage.setScene(setupScene(primaryStage,myCellGrid));
 		primaryStage.setTitle(TITLE);
@@ -88,6 +92,7 @@ public class Main extends Application {
 		resetBtn = new ResetButton(BUTTON_COLOR);
 		pauseBtn = new PauseButton(BUTTON_COLOR);
 		jumpBtn = new JumpButton(BUTTON_COLOR);
+		stepBtn = new StepButton(BUTTON_COLOR);
 		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn);
 	}
 	
