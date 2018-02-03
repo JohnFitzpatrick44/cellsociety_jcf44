@@ -39,6 +39,11 @@ public class LifeCell extends Cell {
 	
 	public void setState(int state) {
 		this.state = state;
+		if(state==1) {
+			this.setFill(ALIVE_COLOR);
+		} else if(state==0){
+			this.setFill(DEAD_COLOR);
+		}
 	}
 	
 	public int getState() {
