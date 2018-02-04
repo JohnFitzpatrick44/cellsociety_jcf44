@@ -1,5 +1,5 @@
 package buttons;
-import View.Main;
+import View.MainView;
 import gridTypes.Grid;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,7 +31,7 @@ public class StepButton extends ActionButton{
 		});
 	}
 	private void step() {
-		Grid.updateStates(Main.myCellGrid);
+		Grid.updateStates(MainView.myCellGrid);
 	}
 }
 
