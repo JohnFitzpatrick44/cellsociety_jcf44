@@ -43,6 +43,12 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 		this.neighbors.add(c);
 	}
 	
+	public void setNeighbors(Cell...neighborCells) {
+		for(Cell neighbor:neighborCells) {
+			this.neighbors.add(neighbor);
+		}
+	}
+	
 	public ArrayList<Integer> getNeighborStates() {
 		updateNeighborStates();
 		return neighborStates;

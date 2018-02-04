@@ -1,7 +1,4 @@
 package View;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import buttons.JumpButton;
 import buttons.PauseButton;
@@ -9,17 +6,16 @@ import buttons.PlayButton;
 import buttons.ResetButton;
 import buttons.StepButton;
 import cellTypes.Cell;
-import cellTypes.LifeCell;
 import gridTypes.FireGrid;
 import gridTypes.Grid;
 import gridTypes.LifeGrid;
+import gridTypes.PredPreyGrid;
+import gridTypes.SegregationGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Main {
@@ -32,15 +28,16 @@ public class Main {
 	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
-	//Group group = new Group();
 	private Group group;
 	private Scene myScene;
+	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
 	private ResetButton resetBtn;
 	private JumpButton jumpBtn;
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
+	
 	private Grid grid;
 	public static Cell[][] myCellGrid;
 	
@@ -49,6 +46,10 @@ public class Main {
 			grid = new LifeGrid();
 		} else if(name.equals("Fire")) {
 			grid = new FireGrid();
+		} else if(name.equals("Segregation")) {
+			grid = new SegregationGrid();
+		} else if(name.equals("Predator")) {
+			grid = new PredPreyGrid();
 		}
 	}
 	
@@ -57,11 +58,13 @@ public class Main {
 	
 	public Scene initializeStartScene() {
 		group = new Group();
-		setupGrid("Life");
+		setupGrid("Segregation");
 
 		myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
 
-		grid.setNeighbors(myCellGrid);
+//		grid.setImmediateNeighbors(myCellGrid);
+		grid.setAllNeighbors(myCellGrid);
+		
 		createButtons();
 		arrangeButtons();
 		myScene = setupScene(myCellGrid);

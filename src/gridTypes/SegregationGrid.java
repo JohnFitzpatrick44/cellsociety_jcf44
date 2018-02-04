@@ -29,9 +29,4 @@ public class SegregationGrid extends Grid {
 		}
 		return grid;
 	}
-
-	@Override
-	public void setNeighbors(Cell[][] grid) {
-		
-	}
 }
