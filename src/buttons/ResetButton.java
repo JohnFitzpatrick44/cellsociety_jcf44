@@ -1,6 +1,6 @@
 package buttons;
 import gridTypes.Grid;
-import View.Main;
+import View.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
@@ -32,6 +32,9 @@ public class ResetButton extends ActionButton{
 	}
 	
 	private void reset() {
-		
+		MainView.resetCells(MainView.myCellGrid);
+		MainView.myCellGrid = MainView.grid.createGrid(MainView.GRID_OFFSET,20,20,0.5);
+		MainView.grid.setAllNeighbors(MainView.myCellGrid);
+		MainView.addCells(MainView.myCellGrid);
 	}
 }

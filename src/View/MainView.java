@@ -26,9 +26,9 @@ public class MainView {
 	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
-	private Group group;
-	private Scene myScene;
-	private Grid grid;
+	public static Group group;
+	public static Scene myScene;
+	public static Grid grid;
 	public static Cell[][] myCellGrid;
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
@@ -81,14 +81,25 @@ public class MainView {
 	}
 	
 	//removed Scene stage from parameters
-	private Scene setupScene(Cell[][] cellGrid) {
+	public static Scene setupScene(Cell[][] cellGrid) {
+		addCells(cellGrid);
+		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
+		return startScene;
+	}
+	public static void resetCells(Cell[][] cellGrid) {
+		for(int i=0;i<cellGrid.length;i++) {
+			for(int j=0;j<cellGrid[i].length;j++) {
+				group.getChildren().remove(cellGrid[i][j]);
+			}
+		}	
+	}
+	
+	public static void addCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().add(cellGrid[i][j]);
 			}
 		}	
-		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
-		return startScene;
 	}
 	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
