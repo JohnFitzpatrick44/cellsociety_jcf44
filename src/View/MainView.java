@@ -30,19 +30,23 @@ public class MainView {
 	private Scene myScene;
 	private Grid grid;
 	public static Cell[][] myCellGrid;
+	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
 	private ResetButton resetBtn;
 	private JumpButton jumpBtn;
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
+	
 	//attributes of the buttons
+	public static Boolean playBoolean = false;
 	private static final int BUTTON_Y_POSITION = 420;
 	private static final int PLAYBTN_X_POSITION = 20;
 	private static final int PAUSEBTN_X_POSITION = 90;
 	private static final int STEPBTN_X_POSITION = 160;
 	private static final int RESETBTN_X_POSITION = 240;
 	private static final int JUMPBTN_X_POSITION = 310;
+	
 	private void setupGrid(String name) {
 		if(name.equals("Life")) {
 			grid = new LifeGrid();
@@ -54,15 +58,12 @@ public class MainView {
 			grid = new PredPreyGrid();
 		}
 	}
-	
-	//attributes
-	public static Boolean playBoolean = false;
-	
+		
 	public Scene initializeStartScene() {
 		group = new Group();
-		setupGrid("Life");
+		setupGrid("Fire");
 		myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
-		grid.setAllNeighbors(myCellGrid);
+		grid.setImmediateNeighbors(myCellGrid);
 		createButtons();
 		arrangeButtons();
 		myScene = setupScene(myCellGrid);
@@ -80,7 +81,6 @@ public class MainView {
 		animation.play();  
 	}
 	
-	//removed Scene stage from parameters
 	private Scene setupScene(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
@@ -94,16 +94,9 @@ public class MainView {
 	public void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
 			Grid.updateStates(cellGrid);
-//			for(int i=0;i<cellGrid.length;i++) {
-//				for(int j=0;j<cellGrid[i].length;j++) {
-//					System.out.println(cellGrid[i][j]);
-//					System.out.println(cellGrid[i][j].getState());
-//					System.out.print(i+" "+j);
-//					System.out.println(cellGrid[i][j].getNeighborStates());
-//				}
-//			}
 		}
 	}
+	
 	//create all the buttons
 	public void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
@@ -121,6 +114,5 @@ public class MainView {
 		stepBtn.setPosition(STEPBTN_X_POSITION, BUTTON_Y_POSITION);
 		resetBtn.setPosition(RESETBTN_X_POSITION, BUTTON_Y_POSITION);
 		jumpBtn.setPosition(JUMPBTN_X_POSITION, BUTTON_Y_POSITION);
-		
 	}
 }

@@ -14,7 +14,6 @@ public class JumpButton extends ActionButton{
 
 	public JumpButton(Color buttonColor) {
 		super(buttonColor);
-		// TODO Auto-generated constructor stub
 		this.setButtonText(BUTTON_NAME);
 		this.setResetEvent();
 	}

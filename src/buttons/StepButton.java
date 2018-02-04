@@ -16,7 +16,6 @@ public class StepButton extends ActionButton{
 
 	public StepButton(Color buttonColor) {
 		super(buttonColor);
-		// TODO Auto-generated constructor stub
 		this.setButtonText(BUTTON_NAME);
 		this.setStepEvent();
 	}

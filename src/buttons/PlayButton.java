@@ -14,7 +14,6 @@ public class PlayButton extends ActionButton{
 
 	public PlayButton(Color buttonColor) {
 		super(buttonColor);
-		// TODO Auto-generated constructor stub
 		this.setButtonText(BUTTON_NAME);
 		this.setPlayEvent();
 	}

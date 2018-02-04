@@ -15,7 +15,6 @@ public class PauseButton extends ActionButton{
 
 	public PauseButton(Color buttonColor) {
 		super(buttonColor);
-		// TODO Auto-generated constructor stub
 		this.setButtonText(BUTTON_NAME);
 		this.setPauseEvent();
 	}

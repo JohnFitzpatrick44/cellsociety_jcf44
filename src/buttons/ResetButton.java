@@ -16,7 +16,6 @@ public class ResetButton extends ActionButton{
 	
 	public ResetButton(Color buttonColor) {
 		super(buttonColor);
-		// TODO Auto-generated constructor stub
 		this.setButtonText(BUTTON_NAME);
 		this.setResetEvent();
 	}
