@@ -5,10 +5,11 @@ import buttons.PlayButton;
 import buttons.ResetButton;
 import buttons.StepButton;
 import cellTypes.Cell;
-import cellTypes.LifeCell;
 import gridTypes.FireGrid;
 import gridTypes.Grid;
 import gridTypes.LifeGrid;
+import gridTypes.PredPreyGrid;
+import gridTypes.SegregationGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -48,6 +49,10 @@ public class Main {
 			grid = new LifeGrid();
 		} else if(name.equals("Fire")) {
 			grid = new FireGrid();
+		} else if(name.equals("Segregation")) {
+			grid = new SegregationGrid();
+		} else if(name.equals("Predator")) {
+			grid = new PredPreyGrid();
 		}
 	}
 	
