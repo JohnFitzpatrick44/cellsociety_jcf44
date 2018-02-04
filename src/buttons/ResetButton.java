@@ -32,6 +32,6 @@ public class ResetButton extends ActionButton{
 	}
 	
 	private void reset() {
-		//
+		
 	}
 }
