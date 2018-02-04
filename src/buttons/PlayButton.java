@@ -10,12 +10,12 @@ import javafx.scene.paint.Color;
  */
 public class PlayButton extends ActionButton{
 	
-	private final String buttonName = "PLAY";
+	private final String BUTTON_NAME = "PLAY";
 
 	public PlayButton(Color buttonColor) {
 		super(buttonColor);
 		// TODO Auto-generated constructor stub
-		this.setButtonText(buttonName);
+		this.setButtonText(BUTTON_NAME);
 		this.setPlayEvent();
 	}
 	

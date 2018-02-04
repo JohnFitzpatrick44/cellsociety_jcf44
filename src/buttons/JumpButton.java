@@ -10,12 +10,12 @@ import javafx.scene.paint.Color;
  */
 public class JumpButton extends ActionButton{
 				
-	private final String buttonName = "JUMP";
+	private final String BUTTON_NAME = "JUMP";
 
 	public JumpButton(Color buttonColor) {
 		super(buttonColor);
 		// TODO Auto-generated constructor stub
-		this.setButtonText(buttonName);
+		this.setButtonText(BUTTON_NAME);
 		this.setResetEvent();
 	}
 	/*

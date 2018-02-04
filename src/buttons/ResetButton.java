@@ -12,12 +12,12 @@ import javafx.scene.paint.Color;
  */
 public class ResetButton extends ActionButton{
 				
-	private final String buttonName = "RESET";
+	private final String BUTTON_NAME = "RESET";
 	
 	public ResetButton(Color buttonColor) {
 		super(buttonColor);
 		// TODO Auto-generated constructor stub
-		this.setButtonText(buttonName);
+		this.setButtonText(BUTTON_NAME);
 		this.setResetEvent();
 	}
 	/*

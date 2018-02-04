@@ -11,12 +11,12 @@ import javafx.scene.paint.Color;
  */
 public class PauseButton extends ActionButton{
 				
-	private final String buttonName = "PAUSE";
+	private final String BUTTON_NAME = "PAUSE";
 
 	public PauseButton(Color buttonColor) {
 		super(buttonColor);
 		// TODO Auto-generated constructor stub
-		this.setButtonText(buttonName);
+		this.setButtonText(BUTTON_NAME);
 		this.setPauseEvent();
 	}
 	/*
