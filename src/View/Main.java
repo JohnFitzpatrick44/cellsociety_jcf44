@@ -1,5 +1,4 @@
 package View;
-import XML.DataHolder;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

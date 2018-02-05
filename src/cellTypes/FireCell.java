@@ -2,13 +2,15 @@ package cellTypes;
 
 import java.util.Random;
 
-import javafx.scene.paint.Color;
+import XML.DataHolder;
+
+import java.awt.Color;
 
 public class FireCell extends Cell {
 
-	public static final Color GROUND_COLOR = Color.YELLOW;
-	public static final Color TREE_COLOR = Color.GREEN;
-	public static final Color FIRE_COLOR = Color.RED;
+	public static final Color GROUND_COLOR = DataHolder.BURNT_COLOR;
+	public static final Color TREE_COLOR = DataHolder.TREE_COLOR;
+	public static final Color FIRE_COLOR = DataHolder.BURNING_COLOR;
 	
 	private static final int EMPTY = 0;
 	private static final int TREE = 1;
@@ -19,9 +21,9 @@ public class FireCell extends Cell {
 	public FireCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		this.setState(state);
-		if(state == EMPTY) this.setFill(GROUND_COLOR);
-		else if(state == TREE) this.setFill(TREE_COLOR);
-		else this.setFill(FIRE_COLOR);
+		if(state == EMPTY) this.setFill(getPaint(GROUND_COLOR));
+		else if(state == TREE) this.setFill(getPaint(TREE_COLOR));
+		else this.setFill(getPaint(FIRE_COLOR));
 	}
 	
 	public FireCell(int x, int y, int width, int height) {
@@ -32,11 +34,11 @@ public class FireCell extends Cell {
 		if(getState() == EMPTY) return;
 		else if(getState() == BURNING) {
 			this.setState(EMPTY);
-			this.setFill(GROUND_COLOR);
+			this.setFill(getPaint(GROUND_COLOR));
 		} else {
 			if(catchesFire()) {
 				this.setState(BURNING);
-				this.setFill(FIRE_COLOR);
+				this.setFill(getPaint(FIRE_COLOR));
 			}
 		}
 		

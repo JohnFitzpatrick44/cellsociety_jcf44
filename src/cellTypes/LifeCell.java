@@ -3,7 +3,6 @@ package cellTypes;
 import java.util.ArrayList;
 
 import XML.DataHolder;
-import javafx.scene.paint.Paint;
 
 import java.awt.Color;
 
@@ -13,16 +12,6 @@ public class LifeCell extends Cell {
 	public static final Color ALIVE_COLOR = DataHolder.getAliveColor();
 	
 	private int state;
-	
-	private Paint getPaint(Color color) {
-		int r = color.getRed();
-		int g = color.getGreen();
-		int b = color.getBlue();
-		int a = color.getAlpha();
-		double opacity = a/255.0;
-		javafx.scene.paint.Color newColor = javafx.scene.paint.Color.rgb(r, g, b, opacity);
-		return newColor;
-	}
 	
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);

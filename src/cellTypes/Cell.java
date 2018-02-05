@@ -2,13 +2,16 @@ package cellTypes;
 
 import java.util.ArrayList;
 
-import javafx.scene.paint.Color;
+//import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+
+import java.awt.Color;
 
 public abstract class Cell extends Rectangle implements IGrid, ICell{
 	
-	public static final Color DEFAULT_COLOR = Color.WHITE;
-	public static final Color BORDER_COLOR = Color.BLACK;
+//	public static final Color DEFAULT_COLOR = Color.WHITE;
+//	public static final Color BORDER_COLOR = Color.BLACK;
 	
 	private ArrayList<Cell> neighbors;
 	private ArrayList<Integer> neighborStates;
@@ -18,8 +21,8 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	
 	public Cell(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		this.setFill(DEFAULT_COLOR);
-		this.setStroke(BORDER_COLOR);
+//		this.setFill(DEFAULT_COLOR);
+//		this.setStroke(BORDER_COLOR);
 		this.neighbors = new ArrayList<Cell>();
 		this.neighborStates = new ArrayList<Integer>();
 		this.state = 0;
@@ -31,6 +34,16 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 			neighborStates.add(c.getState());
 		}
 		swapped = false;
+	}
+	
+	public Paint getPaint(Color color) {
+		int r = color.getRed();
+		int g = color.getGreen();
+		int b = color.getBlue();
+		int a = color.getAlpha();
+		double opacity = a/255.0;
+		javafx.scene.paint.Color newColor = javafx.scene.paint.Color.rgb(r, g, b, opacity);
+		return newColor;
 	}
 		
 	public void setState(int state) {

@@ -31,7 +31,7 @@ public class MainView {
 	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
 	public static final String SIMULATION = DataHolder.getType();
-//	public static final String SIMULATION = "Fire";
+//	public static final String SIMULATION = "Predator";
 	
 	public static Group group;
 	public static Scene myScene;
@@ -63,7 +63,7 @@ public class MainView {
 			grid = new LifeGrid();
 			setupCellGrid();
 			grid.setAllNeighbors(myCellGrid);
-		} else if(name.equals("Fire")) {
+		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
 			setupCellGrid();
 			grid.setImmediateNeighbors(myCellGrid);
@@ -103,6 +103,7 @@ public class MainView {
 		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 		return startScene;
 	}
+	
 	public static void resetCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {

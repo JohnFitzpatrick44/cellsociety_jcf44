@@ -35,9 +35,9 @@ public class XMLReader {
 					DataHolder.ANIMATIONSPEED = Integer.parseInt(eElement.getElementsByTagName("animation").item(0).getTextContent());
 					DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
 					DataHolder.DEAD_COLOR = hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());
-					DataHolder.BURNT_COLOR = hex2Rgb(eElement.getElementsByTagName("burnt").item(0).getTextContent());
-					DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
-					DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
+//					DataHolder.BURNT_COLOR = hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent());
+//					DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
+//					DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
 				}
 			}
 		} catch (Exception e) {

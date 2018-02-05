@@ -20,17 +20,6 @@ public class DataHolder {
 	 */
 	public static XMLReader fileInput = new XMLReader(INPUTFILE); 
 	
-	public DataHolder() {
-		/*
-		 * constructor for DataHolder();
-		 */
-	}
-	
-//	public static void main(String[] argv) {
-//		//fileInput = new XMLReader(INPUTFILE);
-//		System.out.print(getType());
-//	}
-	
 	public static String getType() {
 		return TYPE;
 	}
