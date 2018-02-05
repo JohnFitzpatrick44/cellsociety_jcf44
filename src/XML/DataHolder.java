@@ -1,5 +1,7 @@
 package XML;
 
+import java.io.File;
+
 import javafx.scene.paint.Color;
 
 public class DataHolder {
