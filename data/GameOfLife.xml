@@ -2,10 +2,8 @@
 <simulation>
 	 <type name="Game Of Life">
 			<dimensions>"15"</dimensions>
-			<states>
-				<state color="#F91515">alive</state> 
-				<state color="#000000">dead</state>
-			</states>
+			<alive>"#F91515"</alive>
+			<dead> "#000000"</dead>
 			<animation> 10000 </animation>
 			<percentDead>0.5</percentDead>
 		</type>
