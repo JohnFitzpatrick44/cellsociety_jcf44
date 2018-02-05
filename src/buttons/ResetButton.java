@@ -31,7 +31,7 @@ public class ResetButton extends ActionButton{
 		});
 	}
 	
-	private void reset() {
+	public static void reset() {
 		setPlayBoolean(false);
 		MainView.resetCells(MainView.myCellGrid);
 		MainView.setupGrid(MainView.SIMULATION);

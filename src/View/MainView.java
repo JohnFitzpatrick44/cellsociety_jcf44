@@ -2,6 +2,8 @@ package View;
 import java.awt.event.ActionListener;
 import java.io.File;
 
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import XML.DataHolder;
 import buttons.JumpButton;
@@ -36,7 +38,7 @@ public class MainView {
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
-	public static final String SIMULATION = DataHolder.getType();
+	public static String SIMULATION = DataHolder.getType();
 	
 	public static Group group;
 	public static Scene myScene;
@@ -44,7 +46,7 @@ public class MainView {
 	public static Cell[][] myCellGrid;
 	//list of files
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
-	File FireFile = new File("data/GameOfLife.xml");
+	File FireFile = new File("data/Fire.xml");
 	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
@@ -52,7 +54,7 @@ public class MainView {
 	private JumpButton jumpBtn;
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
-	private ComboBox fileSelector;
+	private ComboBox<File> fileSelector;
 	
 	//attributes of the buttons
 	public static Boolean playBoolean = false;
@@ -135,21 +137,23 @@ public class MainView {
 			Grid.updateStates(cellGrid);
 		}
 	}
-//	public void createFileSelector() {
-//		File[] files = {GameOfLifeFile, FireFile};
-//		fileSelector = new JComboBox<File>(files); //input is an array of files
-//		fileSelector.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent event) {
-//				
-//			}
-//		});
-//		
+	
 	//create the file selector drop down menu
 	public void createDropDownMenu() {
 		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile);
-		fileSelector = new ComboBox(fileList);
+		fileSelector = new ComboBox<File>(fileList);
+		fileSelector.setOnAction(e->{
+			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
+			SIMULATION = DataHolder.getType();
+			System.out.println(SIMULATION);
+			resetCells(myCellGrid);
+			setupGrid(SIMULATION);	
+			addCells(myCellGrid);
+			
+			//ResetButton.reset();
+		});
 	}
+	
 	
 	//create all the buttons
 	public void createButtons() {
