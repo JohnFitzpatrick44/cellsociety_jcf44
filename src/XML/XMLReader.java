@@ -1,5 +1,4 @@
 package XML;
-import java.awt.Color;
 import java.io.File;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -9,6 +8,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import javafx.scene.paint.Color;
 
 public class XMLReader {
 
@@ -52,7 +53,7 @@ public class XMLReader {
 	}
 
 	public static Color hex2Rgb(String colorStr) {
-	    return new Color(
+	    return Color.rgb(
 	            Integer.valueOf( colorStr.substring( 1, 3 ), 16 ),
 	            Integer.valueOf( colorStr.substring( 3, 5 ), 16 ),
 	            Integer.valueOf( colorStr.substring( 5, 7 ), 16 ) );

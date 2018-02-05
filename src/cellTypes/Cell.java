@@ -2,16 +2,16 @@ package cellTypes;
 
 import java.util.ArrayList;
 
-//import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
-import java.awt.Color;
 
 public abstract class Cell extends Rectangle implements IGrid, ICell{
 	
 //	public static final Color DEFAULT_COLOR = Color.WHITE;
-//	public static final Color BORDER_COLOR = Color.BLACK;
+	public static final Color BORDER_COLOR = Color.BLACK;
 	
 	private ArrayList<Cell> neighbors;
 	private ArrayList<Integer> neighborStates;
@@ -22,11 +22,24 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	public Cell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 //		this.setFill(DEFAULT_COLOR);
-//		this.setStroke(BORDER_COLOR);
+		this.setStroke(BORDER_COLOR);
 		this.neighbors = new ArrayList<Cell>();
 		this.neighborStates = new ArrayList<Integer>();
 		this.state = 0;
+		this.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent me) {
+				if(me.getButton() == MouseButton.PRIMARY) {
+					if(state < getMaxState()) state++;
+				} else if(me.getButton() == MouseButton.SECONDARY) {
+					if(state > 0) state--;
+				}
+				updateFill();
+			}
+		});
 	}
+	
+	public abstract void updateFill();
 	
 	public void updateNeighborStates() {
 		neighborStates.clear();
@@ -36,16 +49,8 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 		swapped = false;
 	}
 	
-	public Paint getPaint(Color color) {
-		int r = color.getRed();
-		int g = color.getGreen();
-		int b = color.getBlue();
-		int a = color.getAlpha();
-		double opacity = a/255.0;
-		javafx.scene.paint.Color newColor = javafx.scene.paint.Color.rgb(r, g, b, opacity);
-		return newColor;
-	}
-		
+	public abstract int getMaxState();
+			
 	public void setState(int state) {
 		this.state = state;
 	}
