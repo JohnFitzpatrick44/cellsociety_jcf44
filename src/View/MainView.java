@@ -6,6 +6,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import XML.DataHolder;
+import XML.XMLReader;
 import buttons.JumpButton;
 import buttons.PauseButton;
 import buttons.PlayButton;
@@ -46,7 +47,7 @@ public class MainView {
 	public static Cell[][] myCellGrid;
 	//list of files
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
-	File FireFile = new File("data/Fire.xml");
+	File FireFile = new File("data/SpreadingFire.xml");
 	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
@@ -144,7 +145,7 @@ public class MainView {
 		fileSelector = new ComboBox<File>(fileList);
 		fileSelector.setOnAction(e->{
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
-			Main.DATA = new DataHolder();
+			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
 			System.out.println(SIMULATION);
 			resetCells(myCellGrid);
