@@ -26,9 +26,7 @@ public class XMLReader {
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				Node nNode = nList.item(temp);
 
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-					
+				if (nNode.getNodeType() == Node.ELEMENT_NODE) {	
 					Element eElement = (Element) nNode;
 //					System.out.println("Type : " + eElement.getAttribute("name"));
 //					System.out.println("Dimensions : " + eElement.getElementsByTagName("dimensions").item(0).getTextContent());
@@ -40,14 +38,15 @@ public class XMLReader {
 					DataHolder.DIMENSIONS = Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent());
 					DataHolder.PERCENTDEAD = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
 					DataHolder.ANIMATIONSPEED = Integer.parseInt(eElement.getElementsByTagName("animation").item(0).getTextContent());
-					DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
-					DataHolder.DEAD_COLOR = hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());
-					DataHolder.BURNT_COLOR = hex2Rgb(eElement.getElementsByTagName("burnt").item(0).getTextContent());
-					DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
-					DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
-					
-				
-
+					if (DataHolder.TYPE.equals("Game Of Life")) {
+						DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
+						DataHolder.DEAD_COLOR = hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());
+					}
+					if (DataHolder.TYPE.equals("Fire")) {
+						DataHolder.BURNT_COLOR = hex2Rgb(eElement.getElementsByTagName("burnt").item(0).getTextContent());
+						DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
+						DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
+					}
 				}
 			}
 		} catch (Exception e) {
