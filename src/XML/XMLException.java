@@ -1,3 +1,4 @@
+package XML;
 /*
  * Class outlines all possible errors when using XML
  * Handles all exceptions
