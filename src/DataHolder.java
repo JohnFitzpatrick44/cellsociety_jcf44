@@ -1,10 +1,39 @@
-
+import java.io.File;
+import javafx.scene.paint.Color;
 public class DataHolder {
 	public static String TYPE;
+	public static Color DEAD_COLOR;
+	public static Color ALIVE_COLOR;
 	public static int DIMENSIONS;
 	public static int ANIMATIONSPEED;
 	public static double PERCENTDEAD;
+	public File INPUTFILE = new File("/Users/Ryan/cs308/cellsociety_team03/data/GameOfLife.xml");
 
+	XMLReader fileInput = new XMLReader(INPUTFILE);
+	
+	public static String getType() {
+		return TYPE;
+	}
+	
+	public static Color getDeadColor() {
+		return DEAD_COLOR;
+	}
+	
+	public static Color getAliveColor() {
+		return ALIVE_COLOR;
+	}
+	
+	public static int getDimensions() {
+		return DIMENSIONS;
+	}
+	
+	public static int getAnimationSpeed() {
+		return ANIMATIONSPEED;
+	}
+	
+	public static double getPercentDead() {
+		return PERCENTDEAD;
+	}
 	
 	
 }
