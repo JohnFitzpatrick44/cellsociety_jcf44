@@ -13,6 +13,7 @@ public class PredPreyCell extends Cell {
 	public static final int PRED_ENERGY_VALUE = 5;
 	public static final int ENERGY_GAIN_VALUE = 2;
 	public static final int PRED_REPRODUCTION_VALUE = 5;
+	public static final int MAX_STATE = 2;
 	
 	private int reproduce;
 	private int energy;
@@ -20,19 +21,14 @@ public class PredPreyCell extends Cell {
 	public PredPreyCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		setState(state);
-		if(state == 0) this.setFill(WATER_COLOR);
-		else if(state == 1) {
-			this.setFill(PREY_COLOR);
-		}
-		else {
-			this.setFill(PRED_COLOR);
-			energy = PRED_ENERGY_VALUE;
-		}
+		if(state == 2) energy = PRED_ENERGY_VALUE;
+		updateFill();
 	}
 	
 	public PredPreyCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		reproduce = 0;
+		updateFill();
 	}
 
 	public void updateState() {
@@ -40,6 +36,7 @@ public class PredPreyCell extends Cell {
 		reproduce++;
 		if(getState() == 2) energy--;
 		move();
+		updateFill();
 	}
 	
 	public int getReproduce() {
@@ -70,7 +67,6 @@ public class PredPreyCell extends Cell {
 		} else {
 			if(energy == 0) {
 				setState(0);
-				setFill(WATER_COLOR);
 				energy = 0;
 				reproduce = 0;
 			} else {
@@ -95,12 +91,11 @@ public class PredPreyCell extends Cell {
 	
 	private void swapState(Cell swapping) {
 		swapping.setState(this.getState());
-		if(swapping.getState() == 1) swapping.setFill(PREY_COLOR);
-		else swapping.setFill(PRED_COLOR);
 		((PredPreyCell) swapping).setReproduce(reproduce);
 		if(getState() == 2) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE * swapping.getState());
 		swapping.setSwapped(true);
 		this.setSwapped(true);
+		swapping.updateFill();
 	}
 	
 	private void reproducing(Cell swapped) {
@@ -114,10 +109,20 @@ public class PredPreyCell extends Cell {
 			((PredPreyCell) swapped).setReproduce(0);
 		} else {
 			setState(0);
-			setFill(WATER_COLOR);
 			energy = 0;
 		}
 		reproduce = 0;
+		updateFill();
+	}
+	
+	public int getMaxState() {
+		return MAX_STATE;
+	}
+	
+	public void updateFill() {
+		if(getState() == 0) setFill(WATER_COLOR);
+		else if(getState() == 1) setFill(PREY_COLOR);
+		else setFill(PRED_COLOR);
 	}
 	
 }

@@ -2,6 +2,9 @@ package cellTypes;
 
 import java.util.ArrayList;
 
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -23,7 +26,20 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 		this.neighbors = new ArrayList<Cell>();
 		this.neighborStates = new ArrayList<Integer>();
 		this.state = 0;
+		this.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent me) {
+				if(me.getButton() == MouseButton.PRIMARY) {
+					if(state < getMaxState()) state++;
+				} else if(me.getButton() == MouseButton.SECONDARY) {
+					if(state > 0) state--;
+				}
+				updateFill();
+			}
+		});
 	}
+	
+	public abstract void updateFill();
 	
 	public void updateNeighborStates() {
 		neighborStates.clear();
@@ -32,6 +48,10 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 		}
 		swapped = false;
 	}
+	
+	public abstract int getMaxState();
+	
+	
 		
 	public void setState(int state) {
 		this.state = state;
@@ -50,7 +70,6 @@ public abstract class Cell extends Rectangle implements IGrid, ICell{
 	}
 	
 	public ArrayList<Integer> getNeighborStates() {
-		updateNeighborStates();
 		return neighborStates;
 	}
 	
