@@ -1,9 +1,6 @@
 package View;
-import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import java.io.File;
 
 import XML.DataHolder;
 import XML.XMLReader;
@@ -45,6 +42,7 @@ public class MainView {
 	public static Scene myScene;
 	public static Grid grid;
 	public static Cell[][] myCellGrid;
+	
 	//list of files
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
 	File FireFile = new File("data/SpreadingFire.xml");
@@ -118,7 +116,7 @@ public class MainView {
 		return startScene;
 	}
 	
-	public static void resetCells(Cell[][] cellGrid) {
+	public static void removeCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().remove(cellGrid[i][j]);
@@ -148,12 +146,9 @@ public class MainView {
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
-			System.out.println(SIMULATION);
-			resetCells(myCellGrid);
+			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
 			addCells(myCellGrid);
-			
-			//ResetButton.reset();
 		});
 	}
 	
