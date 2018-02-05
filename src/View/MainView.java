@@ -50,20 +50,26 @@ public class MainView {
 	private void setupGrid(String name) {
 		if(name.equals("Life")) {
 			grid = new LifeGrid();
+			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			grid.setAllNeighbors(myCellGrid);
 		} else if(name.equals("Fire")) {
 			grid = new FireGrid();
+			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			grid.setImmediateNeighbors(myCellGrid);
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
+			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			grid.setAllNeighbors(myCellGrid);
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
+			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			grid.setImmediateNeighbors(myCellGrid);
 		}
 	}
 		
 	public Scene initializeStartScene() {
 		group = new Group();
 		setupGrid("Fire");
-		myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
-		grid.setImmediateNeighbors(myCellGrid);
 		createButtons();
 		arrangeButtons();
 		myScene = setupScene(myCellGrid);
