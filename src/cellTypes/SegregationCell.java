@@ -34,7 +34,7 @@ public class SegregationCell extends Cell {
 			Cell swapping = getCellMover().findOpenCell();
 			swapState(swapping);
 		}
-		
+		updateFill();
 	}
 	
 	

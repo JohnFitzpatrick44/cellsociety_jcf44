@@ -37,6 +37,7 @@ public class FireCell extends Cell {
 				this.setState(BURNING);
 			}
 		}
+		updateFill();
 		
 	}
 

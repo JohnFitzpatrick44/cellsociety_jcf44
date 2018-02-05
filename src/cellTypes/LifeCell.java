@@ -51,6 +51,7 @@ public class LifeCell extends Cell {
 				this.setState(1);
 			}
 		}
+		updateFill();
 	}
 
 	private int sumArray(ArrayList<Integer> arr) {
