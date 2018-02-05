@@ -1,6 +1,7 @@
 package buttons;
 import gridTypes.Grid;
 import View.MainView;
+import XML.DataHolder;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
@@ -34,7 +35,11 @@ public class ResetButton extends ActionButton{
 		setPlayBoolean(false);
 		MainView.resetCells(MainView.myCellGrid);
 		MainView.myCellGrid = MainView.grid.createGrid(MainView.GRID_OFFSET,20,20,0.5);
-		MainView.grid.setImmediateNeighbors(MainView.myCellGrid);
+		if(MainView.SIMULATION.equals("Game Of Life")||MainView.SIMULATION.equals("Segregation")){
+			MainView.grid.setAllNeighbors(MainView.myCellGrid);
+		} else {
+			MainView.grid.setImmediateNeighbors(MainView.myCellGrid);
+		}
 		MainView.addCells(MainView.myCellGrid);
 	}
 }

@@ -2,25 +2,39 @@ package cellTypes;
 
 import java.util.ArrayList;
 
-import javafx.scene.paint.Color;
+import XML.DataHolder;
+import javafx.scene.paint.Paint;
+
+import java.awt.Color;
 
 public class LifeCell extends Cell {
 	
-	public static final Color DEAD_COLOR = Color.WHITE;
-	public static final Color ALIVE_COLOR = Color.BLACK;
+	public static final Color DEAD_COLOR = DataHolder.getDeadColor();
+	public static final Color ALIVE_COLOR = DataHolder.getAliveColor();
+	
 	private int state;
-		
+	
+	private Paint getPaint(Color color) {
+		int r = color.getRed();
+		int g = color.getGreen();
+		int b = color.getBlue();
+		int a = color.getAlpha();
+		double opacity = a/255.0;
+		javafx.scene.paint.Color newColor = javafx.scene.paint.Color.rgb(r, g, b, opacity);
+		return newColor;
+	}
+	
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		setState(state);
-		if(state == 0) this.setFill(DEAD_COLOR);
-		else this.setFill(ALIVE_COLOR);
+		if(state == 0) this.setFill(getPaint(DEAD_COLOR));
+		else this.setFill(getPaint(ALIVE_COLOR));
 	}
 	
 	public LifeCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		this.setFill(DEAD_COLOR);
-		this.setStroke(ALIVE_COLOR);
+		this.setFill(getPaint(DEAD_COLOR));
+		this.setFill(getPaint(ALIVE_COLOR));
 	}
 	
 	public LifeCell() {
@@ -43,9 +57,9 @@ public class LifeCell extends Cell {
 	public void setState(int state) {
 		this.state = state;
 		if(state==1) {
-			this.setFill(ALIVE_COLOR);
+			this.setFill(getPaint(ALIVE_COLOR));
 		} else if(state==0){
-			this.setFill(DEAD_COLOR);
+			this.setFill(getPaint(DEAD_COLOR));
 		}
 	}
 	

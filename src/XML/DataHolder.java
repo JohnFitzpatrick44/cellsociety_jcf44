@@ -9,7 +9,7 @@ public class DataHolder {
 	public static int DIMENSIONS;
 	public static int ANIMATIONSPEED;
 	public static double PERCENTDEAD;
-	public static File INPUTFILE = new File("/Users/Ryan/cs308/cellsociety_team03/data/GameOfLife.xml");
+	public static File INPUTFILE = new File("data/GameOfLife.xml");
 
 	
 	/*
