@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<simulation>
+	<type name="Spreading Fire">
+		<dimensions>20</dimensions>
+		<burning>#ff0000</burning>
+		<tree>#008000</tree>
+		<empty>#ffff00</empty>
+		<animation>10000</animation>
+		<percentBurning>2</percentBurning></type></simulation>
