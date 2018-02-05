@@ -140,6 +140,7 @@ public class MainView {
 		fileSelector = new ComboBox<File>(fileList);
 		fileSelector.setOnAction(e->{
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
+			Main.DATA = new DataHolder();
 			SIMULATION = DataHolder.getType();
 			System.out.println(SIMULATION);
 			resetCells(myCellGrid);

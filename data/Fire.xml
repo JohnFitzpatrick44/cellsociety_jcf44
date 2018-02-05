@@ -2,7 +2,7 @@
 <simulation>
 	 <type name="Fire">
 			<dimensions>20</dimensions>
-			<burning>#000000</burning>
+			<burning>#ffff00</burning>
 			<tree>#ff0000</tree>
 			<burnt>#ffffff</burnt>
 			<animation>10000</animation>
