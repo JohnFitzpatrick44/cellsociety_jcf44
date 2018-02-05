@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <simulation>
 	 <type name="Game Of Life">
-			<dimensions>"15"</dimensions>
-			<alive>"#F91515"</alive>
-			<dead> "#000000"</dead>
-			<animation> 10000 </animation>
+			<dimensions>15</dimensions>
+			<alive>#F91515</alive>
+			<dead>#000000</dead>
+			<animation>10000</animation>
 			<percentDead>0.5</percentDead>
 		</type>
 </simulation>

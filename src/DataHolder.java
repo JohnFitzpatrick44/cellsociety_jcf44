@@ -8,9 +8,14 @@ public class DataHolder {
 	public static int DIMENSIONS;
 	public static int ANIMATIONSPEED;
 	public static double PERCENTDEAD;
-	public File INPUTFILE = new File("/Users/Ryan/cs308/cellsociety_team03/data/GameOfLife.xml");
+	public static File INPUTFILE = new File("/Users/Ryan/cs308/cellsociety_team03/data/GameOfLife.xml");
 
-	XMLReader fileInput = new XMLReader(INPUTFILE);
+	public static XMLReader fileInput = new XMLReader(INPUTFILE); 
+	
+//	public static void main(String[] argv) {
+//		//fileInput = new XMLReader(INPUTFILE);
+//		System.out.print(getDeadColor());
+//	}
 	
 	public static String getType() {
 		return TYPE;
