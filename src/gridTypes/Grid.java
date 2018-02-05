@@ -1,14 +1,16 @@
 package gridTypes;
 
+import XML.DataHolder;
 import cellTypes.Cell;
 
 public abstract class Grid {
 	
-	private static final int GRID_SIZE = 20; 
-			
+	private static final int GRID_SIZE = DataHolder.getDimensions(); 
+	
 	public abstract Cell[][] createGrid(int offset, int gridSize, int cellSize, double cutOff);
 	
 	public void setAllNeighbors(Cell[][] grid) {
+
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {		
 				if(i==0 && j==0) { //top left corner

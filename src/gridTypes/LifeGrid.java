@@ -8,7 +8,6 @@ import cellTypes.LifeCell;
 public class LifeGrid extends Grid {
 	
 	private static final int SPACING = 20;
-	private static final int GRID_SIZE = 20; 
 	private static final int ALIVE = 1;
 	private static final int DEAD = 0;
 	
