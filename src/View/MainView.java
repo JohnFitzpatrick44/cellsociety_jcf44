@@ -24,11 +24,14 @@ public class MainView {
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 460;
 	private static final int FRAMES_PER_SECOND = 60;
-	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
+	private static final int ANIMATION_SPEED = DataHolder.getAnimationSpeed();
+	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
 	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
+	public static final String SIMULATION = DataHolder.getType();
+//	public static final String SIMULATION = "Fire";
 	
 	public static Group group;
 	public static Scene myScene;
@@ -74,13 +77,12 @@ public class MainView {
 	public Scene initializeStartScene() {
 		group = new Group();
 		String name = DataHolder.getType();
-		setupGrid(name);
+		setupGrid(SIMULATION);
 		createButtons();
 		arrangeButtons();
 		myScene = setupScene(myCellGrid);
 		beginAnimationLoop();  //start the animation process
 		return myScene;
-		
 	}
 	
 	public void beginAnimationLoop() {
