@@ -116,7 +116,7 @@ public class MainView {
 		return startScene;
 	}
 	
-	public static void resetCells(Cell[][] cellGrid) {
+	public static void removeCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().remove(cellGrid[i][j]);
@@ -146,7 +146,7 @@ public class MainView {
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
 			SIMULATION = DataHolder.getType();
 			System.out.println(SIMULATION);
-			resetCells(myCellGrid);
+			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
 			addCells(myCellGrid);
 			
