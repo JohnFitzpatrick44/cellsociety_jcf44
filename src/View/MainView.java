@@ -80,7 +80,6 @@ public class MainView {
 		
 	public Scene initializeStartScene() {
 		group = new Group();
-		String name = DataHolder.getType();
 		setupGrid(SIMULATION);
 		createButtons();
 		arrangeButtons();

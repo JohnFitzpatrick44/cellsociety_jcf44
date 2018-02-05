@@ -5,7 +5,7 @@
 			<alive>#000000</alive>
 			<dead>#ffffff</dead>
 			<animation>10000</animation>
-			<percentDead>0.5</percentDead>
+			<percentDead>20</percentDead>
 	 </type>
 </simulation>
 

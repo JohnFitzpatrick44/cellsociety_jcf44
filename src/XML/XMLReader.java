@@ -24,27 +24,17 @@ public class XMLReader {
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("type");
 			for (int temp = 0; temp < nList.getLength(); temp++) {
+				
 				Node nNode = nList.item(temp);
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-					
 					Element eElement = (Element) nNode;
-//					System.out.println("Type : " + eElement.getAttribute("name"));
-//					System.out.println("Dimensions : " + eElement.getElementsByTagName("dimensions").item(0).getTextContent());
-//					System.out.println("States : " + eElement.getElementsByTagName("alive").item(0).getTextContent());
-//					System.out.println("States : " + eElement.getElementsByTagName("dead").item(0).getTextContent());
-//					System.out.println("Animation Time : " + eElement.getElementsByTagName("animation").item(0).getTextContent());
-//					System.out.println("Percent Dead : " + eElement.getElementsByTagName("percentDead").item(0).getTextContent());
 					DataHolder.TYPE = eElement.getAttribute("name");
 					DataHolder.DIMENSIONS = Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent());
 					DataHolder.PERCENTDEAD = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
 					DataHolder.ANIMATIONSPEED = Integer.parseInt(eElement.getElementsByTagName("animation").item(0).getTextContent());
 					DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
 					DataHolder.DEAD_COLOR = hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());
-					
-				
-
 				}
 			}
 		} catch (Exception e) {
