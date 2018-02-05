@@ -64,11 +64,11 @@ public class MainView {
 	private static final int RESETBTN_X_POSITION = 240;
 	private static final int JUMPBTN_X_POSITION = 310;
 	
-	private void setupCellGrid() {
+	private static void setupCellGrid() {
 		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
 	}
 	
-	private void setupGrid(String name) {
+	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
 			setupCellGrid();
