@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  */
 public abstract class ActionButton extends Button{
 	public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
-	private static final String RESOURCE_FILE = "SpanishGUI";
+	private static final String RESOURCE_FILE = "OriginalGUI";
 	private String buttonName;
 	public static ResourceBundle myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+RESOURCE_FILE);
 	/*
