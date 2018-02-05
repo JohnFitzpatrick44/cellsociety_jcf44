@@ -25,6 +25,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -57,6 +58,7 @@ public class MainView {
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
 	private ComboBox<File> fileSelector;
+	public static TextField jumpField;
 	
 	//attributes of the buttons
 	public static Boolean playBoolean = false;
@@ -67,6 +69,8 @@ public class MainView {
 	private static final int STEPBTN_X_POSITION = 160;
 	private static final int RESETBTN_X_POSITION = 240;
 	private static final int JUMPBTN_X_POSITION = 310;
+	private static final int JUMPTXTFIELD_X_POSITION = 370;
+	private static final int JUMPTXT_DIMENSIONS = 40;
 	
 	private static void setupCellGrid() {
 		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
@@ -141,7 +145,7 @@ public class MainView {
 	}
 	
 	//create the file selector drop down menu
-	public void createDropDownMenu() {
+	private void createDropDownMenu() {
 		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile);
 		fileSelector = new ComboBox<File>(fileList);
 		fileSelector.setOnAction(e->{
@@ -152,25 +156,23 @@ public class MainView {
 			resetCells(myCellGrid);
 			setupGrid(SIMULATION);	
 			addCells(myCellGrid);
-			
-			//ResetButton.reset();
 		});
 	}
 	
-	
 	//create all the buttons
-	public void createButtons() {
+	private void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
 		resetBtn = new ResetButton(BUTTON_COLOR);
 		pauseBtn = new PauseButton(BUTTON_COLOR);
 		jumpBtn = new JumpButton(BUTTON_COLOR);
 		stepBtn = new StepButton(BUTTON_COLOR);
+		jumpField = new TextField();
 		createDropDownMenu();
-		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector);
+		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField);
 	}
 	
 	//arrange all the buttons on the screen
-	public void arrangeButtons() {
+	private void arrangeButtons() {
 		playBtn.setPosition(PLAYBTN_X_POSITION, BUTTON_Y_POSITION);
 		pauseBtn.setPosition(PAUSEBTN_X_POSITION,  BUTTON_Y_POSITION);
 		stepBtn.setPosition(STEPBTN_X_POSITION, BUTTON_Y_POSITION);
@@ -178,5 +180,8 @@ public class MainView {
 		jumpBtn.setPosition(JUMPBTN_X_POSITION, BUTTON_Y_POSITION);
 		fileSelector.setLayoutY(BUTTONROW2_Y_POSITION);
 		fileSelector.setLayoutX(PLAYBTN_X_POSITION);
+		jumpField.setLayoutX(JUMPTXTFIELD_X_POSITION);
+		jumpField.setLayoutY(BUTTON_Y_POSITION);
+		jumpField.setMaxWidth(JUMPTXT_DIMENSIONS);
 	}
 }
