@@ -1,6 +1,6 @@
 package XML;
-import java.awt.Color;
-import java.io.File;
+
+import javafx.scene.paint.Color;
 
 public class DataHolder {
 	public static String TYPE;

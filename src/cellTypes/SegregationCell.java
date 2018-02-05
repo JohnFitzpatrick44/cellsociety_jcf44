@@ -7,21 +7,20 @@ public class SegregationCell extends Cell {
 	public static final Color A_COLOR = Color.RED;
 	public static final Color B_COLOR = Color.BLUE;
 	public static final Color NEUTRAL_COLOR = Color.WHITE;
+	public static final int MAX_STATE = 2;
 	
 	private double cutoff;
 		
 	public SegregationCell(int x, int y, int width, int height, double co, int state) {
 		this(x, y, width, height);
 		setState(state);
-		if(state == 0) this.setFill(NEUTRAL_COLOR);
-		else if(state == 1) this.setFill(A_COLOR);
-		else this.setFill(B_COLOR);
+		updateFill();
 		this.cutoff = co;
 	}
 
 	public SegregationCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		this.setFill(NEUTRAL_COLOR);
+		updateFill();
 	}
 
 	public SegregationCell() {
@@ -52,12 +51,21 @@ public class SegregationCell extends Cell {
 	
 	private void swapState(Cell swapping) {
 		swapping.setState(this.getState());
-		if(swapping.getState() == 1) swapping.setFill(A_COLOR);
-		else swapping.setFill(B_COLOR);
 		this.setState(0);
-		this.setFill(NEUTRAL_COLOR);
 		this.setSwapped(true);
 		swapping.setSwapped(true);
+		updateFill();
+		swapping.updateFill();
+	}
+	
+	public int getMaxState() {
+		return MAX_STATE;
+	}
+	
+	public void updateFill() {
+		if(getState() == 0) setFill(NEUTRAL_COLOR);
+		else if(getState() == 1) setFill(A_COLOR);
+		else setFill(B_COLOR);
 	}
 
 }
