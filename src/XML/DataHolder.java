@@ -16,7 +16,6 @@ public class DataHolder {
 	public static Color BURNING_COLOR;
 	public static File INPUTFILE = new File("data/SpreadingFire.xml");
 
-	
 	/*
 	 * creating instance of the XMLreader which calls the parse method to parse through inputfile.
 	 */
