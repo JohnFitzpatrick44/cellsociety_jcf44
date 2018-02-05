@@ -65,10 +65,10 @@ public class MainView {
 	private static final int PLAYBTN_X_POSITION = 20;
 	private static final int PAUSEBTN_X_POSITION = 90;
 	private static final int STEPBTN_X_POSITION = 160;
-	private static final int RESETBTN_X_POSITION = 240;
+	private static final int RESETBTN_X_POSITION = 225;
 	private static final int JUMPBTN_X_POSITION = 310;
-	private static final int JUMPTXTFIELD_X_POSITION = 370;
-	private static final int JUMPTXT_DIMENSIONS = 40;
+	private static final int JUMPTXTFIELD_X_POSITION = 310;
+	private static final int JUMPTXT_DIMENSIONS = 80;
 	
 	private static void setupCellGrid() {
 		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
@@ -178,7 +178,7 @@ public class MainView {
 		fileSelector.setLayoutY(BUTTONROW2_Y_POSITION);
 		fileSelector.setLayoutX(PLAYBTN_X_POSITION);
 		jumpField.setLayoutX(JUMPTXTFIELD_X_POSITION);
-		jumpField.setLayoutY(BUTTON_Y_POSITION);
+		jumpField.setLayoutY(BUTTONROW2_Y_POSITION);
 		jumpField.setMaxWidth(JUMPTXT_DIMENSIONS);
 	}
 }

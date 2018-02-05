@@ -13,7 +13,7 @@ import gridTypes.Grid;
  */
 public class JumpButton extends ActionButton{
 				
-	private final String BUTTON_NAME = "JUMP";
+	private final String BUTTON_NAME = myResources.getString("Jump");
 
 	public JumpButton(Color buttonColor) {
 		super(buttonColor);

@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
  */
 public class PlayButton extends ActionButton{
 	
-	private final String BUTTON_NAME = "PLAY";
+	private final String BUTTON_NAME = myResources.getString("Play");
 
 	public PlayButton(Color buttonColor) {
 		super(buttonColor);

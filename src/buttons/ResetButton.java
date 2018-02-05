@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  */
 public class ResetButton extends ActionButton{
 				
-	private final String BUTTON_NAME = "RESET";
+	private final String BUTTON_NAME = myResources.getString("Reset");
 	
 	public ResetButton(Color buttonColor) {
 		super(buttonColor);
