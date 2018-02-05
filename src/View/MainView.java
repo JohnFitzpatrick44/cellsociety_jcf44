@@ -54,22 +54,26 @@ public class MainView {
 	private static final int RESETBTN_X_POSITION = 240;
 	private static final int JUMPBTN_X_POSITION = 310;
 	
+	private void setupCellGrid() {
+		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+	}
+	
 	private void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setAllNeighbors(myCellGrid);
 		} else if(name.equals("Fire")) {
 			grid = new FireGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setImmediateNeighbors(myCellGrid);
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setAllNeighbors(myCellGrid);
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setImmediateNeighbors(myCellGrid);
 		}
 	}
