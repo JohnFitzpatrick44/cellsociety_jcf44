@@ -48,6 +48,7 @@ public class MainView {
 	//list of files
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
 	File FireFile = new File("data/SpreadingFire.xml");
+	File SegregationFile = new File("data/Segregation.xml");
 	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
@@ -141,7 +142,7 @@ public class MainView {
 	
 	//create the file selector drop down menu
 	public void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile);
+		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile);
 		fileSelector = new ComboBox<File>(fileList);
 		fileSelector.setOnAction(e->{
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
