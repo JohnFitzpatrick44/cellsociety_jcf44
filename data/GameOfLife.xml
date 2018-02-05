@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
-<simulation name="Game Of Life">
-		<grid dimensions="15"/>
-		<states>
-			<state color="#F91515">alive</state> 
-			<state color="#000000">dead</state>
+<simulation>
+	 <type name="Game Of Life">
+			<dimensions>"15"</dimensions>
+			<states>
+				<state color="#F91515">alive</state> 
+				<state color="#000000">dead</state>
 			</states>
-		<animation delayBetweenFrames="10000"> </animation>
-		<init name="Percent Dead" value="0.5"> </init>
+			<animation> 10000 </animation>
+			<percentDead>0.5</percentDead>
+		</type>
 </simulation>
 
