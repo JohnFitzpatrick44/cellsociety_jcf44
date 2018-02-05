@@ -9,6 +9,9 @@ public class DataHolder {
 	public static int DIMENSIONS;
 	public static int ANIMATIONSPEED;
 	public static double PERCENTDEAD;
+	public static Color BURNT_COLOR;
+	public static Color TREE_COLOR;
+	public static Color BURNING_COLOR;
 	public static File INPUTFILE = new File("data/GameOfLife.xml");
 
 	
