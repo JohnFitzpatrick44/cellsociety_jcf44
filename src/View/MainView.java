@@ -1,4 +1,5 @@
 package View;
+import XML.DataHolder;
 import buttons.JumpButton;
 import buttons.PauseButton;
 import buttons.PlayButton;
@@ -23,9 +24,15 @@ public class MainView {
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 460;
 	private static final int FRAMES_PER_SECOND = 60;
-	private static final int MILLISECOND_DELAY = 10000 / FRAMES_PER_SECOND;
+	private static final int ANIMATION_SPEED = DataHolder.getAnimationSpeed();
+	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;
+	
+	private static final int GRID_SIZE = DataHolder.getDimensions();
+	public static final String SIMULATION = DataHolder.getType();
+//	public static final String SIMULATION = "Fire";
+	
 	public static Group group;
 	public static Scene myScene;
 	public static Grid grid;
@@ -48,34 +55,34 @@ public class MainView {
 	private static final int JUMPBTN_X_POSITION = 310;
 	
 	private void setupGrid(String name) {
-		if(name.equals("Life")) {
+		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
 			grid.setAllNeighbors(myCellGrid);
 		} else if(name.equals("Fire")) {
 			grid = new FireGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
 			grid.setImmediateNeighbors(myCellGrid);
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
 			grid.setAllNeighbors(myCellGrid);
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,20,20,0.5);
+			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
 			grid.setImmediateNeighbors(myCellGrid);
 		}
 	}
 		
 	public Scene initializeStartScene() {
 		group = new Group();
-		setupGrid("Fire");
+		String name = DataHolder.getType();
+		setupGrid(SIMULATION);
 		createButtons();
 		arrangeButtons();
 		myScene = setupScene(myCellGrid);
 		beginAnimationLoop();  //start the animation process
 		return myScene;
-		
 	}
 	
 	public void beginAnimationLoop() {
