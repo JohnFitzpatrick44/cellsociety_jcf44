@@ -45,6 +45,12 @@ public class XMLReader {
 						DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
 						DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
 					}
+					
+					if(DataHolder.TYPE.equals("Segregation")) {
+						DataHolder.A_COLOR = hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent());
+						DataHolder.B_COLOR = hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent());
+						DataHolder.NEUTRAL_COLOR = hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent());
+					}
 				}
 			}
 		} catch (Exception e) {

@@ -1,9 +1,6 @@
 package View;
-import java.awt.event.ActionListener;
-import java.io.File;
 
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+import java.io.File;
 
 import XML.DataHolder;
 import XML.XMLReader;
@@ -45,9 +42,11 @@ public class MainView {
 	public static Scene myScene;
 	public static Grid grid;
 	public static Cell[][] myCellGrid;
+	
 	//list of files
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
 	File FireFile = new File("data/SpreadingFire.xml");
+	File SegregationFile = new File("data/Segregation.xml");
 	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
@@ -141,18 +140,15 @@ public class MainView {
 	
 	//create the file selector drop down menu
 	public void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile);
+		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile);
 		fileSelector = new ComboBox<File>(fileList);
 		fileSelector.setOnAction(e->{
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
-			System.out.println(SIMULATION);
 			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
 			addCells(myCellGrid);
-			
-			//ResetButton.reset();
 		});
 	}
 	
