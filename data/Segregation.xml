@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<simulation>
+	<type name="Segregation">
+		<dimensions>20</dimensions></type></simulation>

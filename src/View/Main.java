@@ -1,5 +1,4 @@
 package View;
-import XML.DataHolder;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -7,7 +6,6 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	
 	private static final String TITLE = "Cell Society";
-	public static DataHolder DATA = new DataHolder();
 	
 	public static void main(String[] args) {
 		launch(args);

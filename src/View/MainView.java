@@ -66,29 +66,32 @@ public class MainView {
 	private static final int RESETBTN_X_POSITION = 240;
 	private static final int JUMPBTN_X_POSITION = 310;
 	
-	private void setupGrid(String name) {
+	private static void setupCellGrid() {
+		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+	}
+	
+	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setAllNeighbors(myCellGrid);
-		} else if(name.equals("Fire")) {
+		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setImmediateNeighbors(myCellGrid);
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setAllNeighbors(myCellGrid);
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
-			myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+			setupCellGrid();
 			grid.setImmediateNeighbors(myCellGrid);
 		}
 	}
 		
 	public Scene initializeStartScene() {
 		group = new Group();
-		String name = DataHolder.getType();
 		setupGrid(SIMULATION);
 		createButtons();
 		arrangeButtons();
@@ -112,6 +115,7 @@ public class MainView {
 		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 		return startScene;
 	}
+	
 	public static void resetCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {

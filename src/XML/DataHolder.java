@@ -14,24 +14,12 @@ public class DataHolder {
 	public static Color BURNT_COLOR;
 	public static Color TREE_COLOR;
 	public static Color BURNING_COLOR;
-	public static File INPUTFILE = new File("data/GameOfLife.xml");
+	public static File INPUTFILE = new File("data/SpreadingFire.xml");
 
-	
 	/*
 	 * creating instance of the XMLreader which calls the parse method to parse through inputfile.
 	 */
 	public static XMLReader fileInput = new XMLReader(INPUTFILE); 
-	
-	public DataHolder() {
-		/*
-		 * constructor for DataHolder();
-		 */
-	}
-	
-//	public static void main(String[] argv) {
-//		//fileInput = new XMLReader(INPUTFILE);
-//		System.out.print(getType());
-//	}
 	
 	public static String getType() {
 		return TYPE;
