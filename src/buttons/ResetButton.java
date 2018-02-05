@@ -34,7 +34,7 @@ public class ResetButton extends ActionButton{
 		setPlayBoolean(false);
 		MainView.resetCells(MainView.myCellGrid);
 		MainView.myCellGrid = MainView.grid.createGrid(MainView.GRID_OFFSET,20,20,0.5);
-		MainView.grid.setAllNeighbors(MainView.myCellGrid);
+		MainView.grid.setImmediateNeighbors(MainView.myCellGrid);
 		MainView.addCells(MainView.myCellGrid);
 	}
 }
