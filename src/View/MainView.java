@@ -8,6 +8,8 @@ import buttons.JumpButton;
 import buttons.PauseButton;
 import buttons.PlayButton;
 import buttons.ResetButton;
+import buttons.SlowButton;
+import buttons.SpeedButton;
 import buttons.StepButton;
 import cellTypes.Cell;
 import gridTypes.FireGrid;
@@ -33,7 +35,7 @@ public class MainView {
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
-	private static int ANIMATION_SPEED = 10000;
+	public static int ANIMATION_SPEED = 10000;
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
@@ -58,6 +60,8 @@ public class MainView {
 	private JumpButton jumpBtn;
 	private PauseButton pauseBtn;
 	private StepButton stepBtn;
+	private SpeedButton speedBtn;
+	private SlowButton slowBtn;
 	private ComboBox<File> fileSelector;
 	public static TextField jumpField;
 	private Text title;
@@ -75,6 +79,8 @@ public class MainView {
 	private static final int JUMPTXT_DIMENSIONS = 80;
 	private static final int TITLE_X_POSITION = 140;
 	private static final int TITLE_Y_POSITION = 430;
+	private static final int SPEEDBTN_X_POSITION = 260;
+	private static final int SLOWBTN_X_POSITION = 220;
 	
 	private static void setupCellGrid() {
 		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
@@ -175,11 +181,13 @@ public class MainView {
 		pauseBtn = new PauseButton(BUTTON_COLOR);
 		jumpBtn = new JumpButton(BUTTON_COLOR);
 		stepBtn = new StepButton(BUTTON_COLOR);
+		speedBtn = new SpeedButton(BUTTON_COLOR);
+		slowBtn = new SlowButton(BUTTON_COLOR);
 		jumpField = new TextField();
 		title = new Text();
 		setTitleAuthor();
 		createDropDownMenu();
-		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title);
+		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn);
 	}
 	
 	//arrange all the buttons on the screen
@@ -189,6 +197,8 @@ public class MainView {
 		stepBtn.setPosition(STEPBTN_X_POSITION, BUTTON_Y_POSITION);
 		resetBtn.setPosition(RESETBTN_X_POSITION, BUTTON_Y_POSITION);
 		jumpBtn.setPosition(JUMPBTN_X_POSITION, BUTTON_Y_POSITION);
+		speedBtn.setPosition(SPEEDBTN_X_POSITION, BUTTONROW2_Y_POSITION);
+		slowBtn.setPosition(SLOWBTN_X_POSITION, BUTTONROW2_Y_POSITION);
 		fileSelector.setLayoutY(BUTTONROW2_Y_POSITION);
 		fileSelector.setLayoutX(PLAYBTN_X_POSITION);
 		jumpField.setLayoutX(JUMPTXTFIELD_X_POSITION);
