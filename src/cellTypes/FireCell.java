@@ -17,7 +17,7 @@ public class FireCell extends Cell {
 	private static final int TREE = 1;
 	private static final int BURNING = 2;
 	
-	public static final double probCatch = 0.5;
+	public static final double probCatch = DataHolder.PROB_CATCH;
 	
 	public FireCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);

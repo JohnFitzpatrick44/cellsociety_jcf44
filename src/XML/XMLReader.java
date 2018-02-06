@@ -33,7 +33,6 @@ public class XMLReader {
 					DataHolder.TYPE = eElement.getAttribute("name");
 					DataHolder.AUTHOR = eElement.getAttribute("author");
 					DataHolder.DIMENSIONS = Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent());
-					DataHolder.ANIMATIONSPEED = Integer.parseInt(eElement.getElementsByTagName("animation").item(0).getTextContent());
 					
 					if (DataHolder.TYPE.equals("Game Of Life")) {
 						DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
@@ -45,6 +44,7 @@ public class XMLReader {
 						DataHolder.BURNT_COLOR = hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent());
 						DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
 						DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
+						DataHolder.PROB_CATCH = Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent());
 					}
 					
 					if(DataHolder.TYPE.equals("Segregation")) {
