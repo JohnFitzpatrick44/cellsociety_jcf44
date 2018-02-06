@@ -41,7 +41,7 @@ public class MainView {
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
 
-	public static String SIMULATION = "Predator"; //DataHolder.getType();
+	public static String SIMULATION = DataHolder.getType();
 	
 	public static Group group;
 	public static Scene myScene;
@@ -82,6 +82,7 @@ public class MainView {
 	private static final int TITLE_Y_POSITION = 430;
 	private static final int SPEEDBTN_X_POSITION = 260;
 	private static final int SLOWBTN_X_POSITION = 220;
+	
 	
 	private static void setupCellGrid() {
 		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);

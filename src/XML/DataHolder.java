@@ -9,7 +9,6 @@ public class DataHolder {
 	public static String AUTHOR;
 	public static int DIMENSIONS;
 	
-	
 	//LifeCell
 	public static Color DEAD_COLOR;
 	public static Color ALIVE_COLOR;
@@ -45,6 +44,7 @@ public class DataHolder {
 	public static String getType() {
 		return TYPE;
 	}
+	
 	public static String getAuthor() {
 		return AUTHOR;
 	}

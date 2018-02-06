@@ -66,6 +66,6 @@ public abstract class ActionButton extends Button{
 	//setter for boolean 
 	public static Boolean setPlayBoolean(Boolean state) {
 	        return MainView.playBoolean = state;
-	  }
+	}
 
 }
