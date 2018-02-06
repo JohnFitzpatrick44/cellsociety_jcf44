@@ -38,6 +38,7 @@ public class XMLReader {
 						DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
 						DataHolder.DEAD_COLOR = hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());
 						DataHolder.PERCENTDEAD = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
+						DataHolder.LIFE_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 					
 					if (DataHolder.TYPE.equals("Spreading Fire")) {
@@ -45,12 +46,14 @@ public class XMLReader {
 						DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
 						DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
 						DataHolder.PROB_CATCH = Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent());
+						DataHolder.FIRE_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 					
 					if(DataHolder.TYPE.equals("Segregation")) {
 						DataHolder.A_COLOR = hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent());
 						DataHolder.B_COLOR = hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent());
 						DataHolder.NEUTRAL_COLOR = hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent());
+						DataHolder.SEG_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 					
 					if(DataHolder.TYPE.equals("Predator")) {
@@ -61,6 +64,7 @@ public class XMLReader {
 						DataHolder.PRED_ENERGY = Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent());
 						DataHolder.ENERGY_GAIN = Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent());
 						DataHolder.PRED_REPRODUCTION = Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent());
+						DataHolder.PRED_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 				}
 			}

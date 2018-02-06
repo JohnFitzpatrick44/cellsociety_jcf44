@@ -9,6 +9,14 @@ public abstract class Grid {
 	
 	public abstract Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff);
 	
+	public int[] getGridConfig(String[] config) {
+		int[] gridConfig = new int[config.length];
+		for(int i=0;i<config.length;i++) {
+			gridConfig[i] = Integer.parseInt(config[i]);
+		}
+		return gridConfig;
+	}
+	
 	public void setAllNeighbors(Cell[][] grid, int gridSize) {
 
 		for(int i=0;i<grid.length;i++) {

@@ -13,17 +13,20 @@ public class DataHolder {
 	public static Color DEAD_COLOR;
 	public static Color ALIVE_COLOR;
 	public static double PERCENTDEAD;
+	public static String LIFE_GRID;
 	
 	//FireCell
 	public static Color BURNT_COLOR;
 	public static Color TREE_COLOR;
 	public static Color BURNING_COLOR;
 	public static double PROB_CATCH;
+	public static String FIRE_GRID;
 	
 	//SegregationCell
 	public static Color A_COLOR;
 	public static Color B_COLOR;
 	public static Color NEUTRAL_COLOR;
+	public static String SEG_GRID;
 	
 	//PredPreyCell
 	public static Color PRED_COLOR;
@@ -33,6 +36,7 @@ public class DataHolder {
 	public static int PRED_ENERGY;
 	public static int ENERGY_GAIN;
 	public static int PRED_REPRODUCTION;
+	public static String PRED_GRID;
 
 	public static File INPUTFILE = new File("data/GameOfLife.xml");
 

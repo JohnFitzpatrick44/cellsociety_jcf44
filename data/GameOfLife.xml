@@ -5,6 +5,7 @@
 			<alive>#000000</alive>
 			<dead>#ffffff</dead>
 			<percentDead>20</percentDead>
+			<grid>0 0 1 0 0 0 1 0 0 0 0 0 1 0 0 1 0 0 0 0 1 0 1 0 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 1 0 0</grid>
 	 </type>
 </simulation>
 
