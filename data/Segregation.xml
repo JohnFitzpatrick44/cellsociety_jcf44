@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <simulation>
 	<type name="Segregation" author="team03">
-		<dimensions>20</dimensions>
+		<dimensions>5</dimensions>
 		<acolor>#ff0000</acolor>
 		<bcolor>#0000ff</bcolor>
 		<neutral>#ffffff </neutral>

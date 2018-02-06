@@ -40,7 +40,9 @@ public class MainView {
 	private static int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	public static double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
-	private static final int GRID_SIZE = DataHolder.getDimensions();
+	public static int GRID_SIZE = DataHolder.getDimensions();
+	public static int CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
+	public static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
 
 	public static String SIMULATION = DataHolder.getType();
 	
@@ -87,27 +89,27 @@ public class MainView {
 	private static final int FILE_X_POSITION = 290;
 	
 	
-	private static void setupCellGrid() {
-		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
+	private static void setupCellGrid(int gridSize) {
+		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,0.5);
 	}
 	
 	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
-			setupCellGrid();
-			grid.setAllNeighbors(myCellGrid);
+			setupCellGrid(GRID_SIZE);
+			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
-			setupCellGrid();
-			grid.setImmediateNeighbors(myCellGrid);
+			setupCellGrid(GRID_SIZE);
+			grid.setImmediateNeighbors(myCellGrid,GRID_SIZE);
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
-			setupCellGrid();
-			grid.setAllNeighbors(myCellGrid);
+			setupCellGrid(GRID_SIZE);
+			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
-			setupCellGrid();
-			grid.setImmediateNeighbors(myCellGrid);
+			setupCellGrid(GRID_SIZE);
+			grid.setImmediateNeighbors(myCellGrid,GRID_SIZE);
 		}
 	}
 		
@@ -167,6 +169,9 @@ public class MainView {
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
+			GRID_SIZE = DataHolder.DIMENSIONS;
+			CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
+			CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
 			setTitleAuthor();
 			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
