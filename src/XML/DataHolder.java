@@ -6,8 +6,10 @@ import javafx.scene.paint.Color;
 
 public class DataHolder {
 	public static String TYPE;
+	public static String AUTHOR;
 	public static int DIMENSIONS;
 	public static int ANIMATIONSPEED;
+	
 	
 	//LifeCell
 	public static Color DEAD_COLOR;
@@ -36,6 +38,9 @@ public class DataHolder {
 	
 	public static String getType() {
 		return TYPE;
+	}
+	public static String getAuthor() {
+		return AUTHOR;
 	}
 	
 	public static Color getDeadColor() {

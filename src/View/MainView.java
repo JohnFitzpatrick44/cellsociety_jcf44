@@ -30,7 +30,7 @@ public class MainView {
 	
 	public static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
-	private static final int HEIGHT_SIZE = 500;
+	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
 	private static final int ANIMATION_SPEED = DataHolder.getAnimationSpeed();
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
@@ -60,8 +60,8 @@ public class MainView {
 	
 	//attributes of the buttons
 	public static Boolean playBoolean = false;
-	private static final int BUTTON_Y_POSITION = 420;
-	private static final int BUTTONROW2_Y_POSITION = 460;
+	private static final int BUTTON_Y_POSITION = 440;
+	private static final int BUTTONROW2_Y_POSITION = 480;
 	private static final int PLAYBTN_X_POSITION = 20;
 	private static final int PAUSEBTN_X_POSITION = 90;
 	private static final int STEPBTN_X_POSITION = 160;
