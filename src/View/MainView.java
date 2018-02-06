@@ -24,13 +24,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class MainView {
 	
 	public static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
-	private static final int HEIGHT_SIZE = 500;
+	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
 	private static int ANIMATION_SPEED = 10000;
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
@@ -38,7 +39,7 @@ public class MainView {
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
 
-	public static String SIMULATION = DataHolder.getType();
+	public static String SIMULATION = "Predator"; //DataHolder.getType();
 	
 	public static Group group;
 	public static Scene myScene;
@@ -59,11 +60,12 @@ public class MainView {
 	private StepButton stepBtn;
 	private ComboBox<File> fileSelector;
 	public static TextField jumpField;
+	private Text title;
 	
 	//attributes of the buttons
 	public static Boolean playBoolean = false;
-	private static final int BUTTON_Y_POSITION = 420;
-	private static final int BUTTONROW2_Y_POSITION = 460;
+	private static final int BUTTON_Y_POSITION = 440;
+	private static final int BUTTONROW2_Y_POSITION = 480;
 	private static final int PLAYBTN_X_POSITION = 20;
 	private static final int PAUSEBTN_X_POSITION = 90;
 	private static final int STEPBTN_X_POSITION = 160;
@@ -71,6 +73,8 @@ public class MainView {
 	private static final int JUMPBTN_X_POSITION = 310;
 	private static final int JUMPTXTFIELD_X_POSITION = 310;
 	private static final int JUMPTXT_DIMENSIONS = 80;
+	private static final int TITLE_X_POSITION = 140;
+	private static final int TITLE_Y_POSITION = 430;
 	
 	private static void setupCellGrid() {
 		myCellGrid = grid.createGrid(GRID_OFFSET,GRID_SIZE,GRID_SIZE,0.5);
@@ -152,10 +156,16 @@ public class MainView {
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
+			setTitleAuthor();
 			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
 			addCells(myCellGrid);
 		});
+	}
+	
+	//update the title with the name of the simulation and the author
+	private void setTitleAuthor() {
+		title.setText(DataHolder.getType()+" by "+DataHolder.getAuthor());
 	}
 	
 	//create all the buttons
@@ -166,8 +176,10 @@ public class MainView {
 		jumpBtn = new JumpButton(BUTTON_COLOR);
 		stepBtn = new StepButton(BUTTON_COLOR);
 		jumpField = new TextField();
+		title = new Text();
+		setTitleAuthor();
 		createDropDownMenu();
-		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField);
+		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title);
 	}
 	
 	//arrange all the buttons on the screen
@@ -182,5 +194,7 @@ public class MainView {
 		jumpField.setLayoutX(JUMPTXTFIELD_X_POSITION);
 		jumpField.setLayoutY(BUTTONROW2_Y_POSITION);
 		jumpField.setMaxWidth(JUMPTXT_DIMENSIONS);
+		title.setLayoutX(TITLE_X_POSITION);
+		title.setLayoutY(TITLE_Y_POSITION);
 	}
 }
