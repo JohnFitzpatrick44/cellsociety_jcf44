@@ -6,6 +6,10 @@ import XML.DataHolder;
 
 import javafx.scene.paint.Color;
 
+/**
+ * @author Jack Fitzpatrick
+ * Cell specific to the Spreading Fire simulation
+ */
 public class FireCell extends Cell {
 
 	public static final Color GROUND_COLOR = DataHolder.BURNT_COLOR;
@@ -19,6 +23,14 @@ public class FireCell extends Cell {
 	
 	public static final double probCatch = 0.5;
 	
+	/**
+	 * Constructor for a fire cell
+	 * @param x X position
+	 * @param y Y position
+	 * @param width Width of Cell
+	 * @param height Height of Cell
+	 * @param state Initial state of Cell
+	 */
 	public FireCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		this.setState(state);
