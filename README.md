@@ -1,5 +1,3 @@
-# cellsociety
-
 CompSci 308 Cell Society Project
 
 Authors: Jack Fitzpatrick, Hemanth Yakkali, Ryan Fu
@@ -13,7 +11,7 @@ General back-end classes. Mainly worked on the cellTypes package, with the vario
 Worked on the gridTypes package, set up framework for project in Main and MainView classes. Worked with Jack on the cellTypes package. Coordinated with Ryan to ensure backend and frontend work together. 
 
 ### Ryan Fu
-
+General front-end design. Worked on creating an XML reader that takes in a file and handles exceptions. In addition, created multiple button classes with different functionalities that extended an abstract ActionButton class. All of these buttons were used to develop the user interface including features such as file upload, animation speed, pause, play, reset, and overall aesthetics of the program.
 
 ## Resources Used During Development
 The reading on inheritance (Mercer's Object-Oriented Software Development: Chapter 16, Inheritance and Polymorphism) was very useful during the development of this code, and helped us to split the code into multiple subclasses to aid the development process, and increase readability.
@@ -31,6 +29,8 @@ The reading on inheritance (Mercer's Object-Oriented Software Development: Chapt
  * The user is able to start, stop, step through, and jump a certain number of frames in a given simulation. 
  * The user can reset the current simulation, or change to a different one with a drop down menu.
  * The user can change the state of specific cells by left or right clicking on them, to increase or decrease their states, respectively.
+  * The user can click the FILE button to upload an XML file to create a personalized simulation.
+ 
 
 ## Assumptions
  * It is assumed that input XML files will be formatted correctly, and contain a valid simulation.
