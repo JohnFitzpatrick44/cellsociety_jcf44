@@ -8,9 +8,12 @@ Date: 2/5/18
 ## Roles
 ### Jack Fitzpatrick
 General back-end classes. Mainly worked on the cellTypes package, with the various Cell, CellMover, and Cell simulation classes and related interfaces. Worked to implement them with Grid. 
+
 ### Hemanth Yakkali
+Worked on the gridTypes package, set up framework for project in Main and MainView classes. Worked with Jack on the cellTypes package. Coordinated with Ryan to ensure backend and frontend work together. 
 
 ### Ryan Fu
+
 
 ## Resources Used During Development
 The reading on inheritance (Mercer's Object-Oriented Software Development: Chapter 16, Inheritance and Polymorphism) was very useful during the development of this code, and helped us to split the code into multiple subclasses to aid the development process, and increase readability.
