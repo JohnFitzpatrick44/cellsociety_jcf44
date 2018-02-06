@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
  */
 public class PauseButton extends ActionButton{
 				
-	private final String BUTTON_NAME = "PAUSE";
+	private final String BUTTON_NAME = myResources.getString("Pause");
 
 	public PauseButton(Color buttonColor) {
 		super(buttonColor);

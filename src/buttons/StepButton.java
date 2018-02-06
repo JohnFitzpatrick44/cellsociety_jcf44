@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
  */
 public class StepButton extends ActionButton{
 				
-	private final String BUTTON_NAME = "STEP";
+	private final String BUTTON_NAME = myResources.getString("Step");
 
 	public StepButton(Color buttonColor) {
 		super(buttonColor);

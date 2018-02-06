@@ -13,7 +13,7 @@ import javafx.scene.paint.Color;
  */
 public class ResetButton extends ActionButton{
 				
-	private final String BUTTON_NAME = "RESET";
+	private final String BUTTON_NAME = myResources.getString("Reset");
 	
 	public ResetButton(Color buttonColor) {
 		super(buttonColor);
@@ -31,15 +31,10 @@ public class ResetButton extends ActionButton{
 		});
 	}
 	
-	private void reset() {
+	public static void reset() {
 		setPlayBoolean(false);
-		MainView.resetCells(MainView.myCellGrid);
-		MainView.myCellGrid = MainView.grid.createGrid(MainView.GRID_OFFSET,20,20,0.5);
-		if(MainView.SIMULATION.equals("Game Of Life")||MainView.SIMULATION.equals("Segregation")){
-			MainView.grid.setAllNeighbors(MainView.myCellGrid);
-		} else {
-			MainView.grid.setImmediateNeighbors(MainView.myCellGrid);
-		}
+		MainView.removeCells(MainView.myCellGrid);
+		MainView.setupGrid(MainView.SIMULATION);
 		MainView.addCells(MainView.myCellGrid);
 	}
 }

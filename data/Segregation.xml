@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<simulation>
+	<type name="Segregation">
+		<dimensions>20</dimensions>
+		<acolor>#ff0000</acolor>
+		<bcolor>#0000ff</bcolor>
+		<neutral>#ffffff </neutral>
+		<animation>10000</animation></type></simulation>

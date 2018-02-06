@@ -1,4 +1,6 @@
 package buttons;
+import java.util.ResourceBundle;
+
 import View.MainView;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
@@ -10,8 +12,10 @@ import javafx.scene.paint.Color;
  *
  */
 public abstract class ActionButton extends Button{
-	
+	public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
+	private static final String RESOURCE_FILE = "OriginalGUI";
 	private String buttonName;
+	public static ResourceBundle myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+RESOURCE_FILE);
 	/*
 	 * Constructor for the ActionButton
 	 * @parameters buttonName takes in a string for the name of the button

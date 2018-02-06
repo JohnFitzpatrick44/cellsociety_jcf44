@@ -2,13 +2,15 @@ package cellTypes;
 
 import java.util.Random;
 
+import XML.DataHolder;
+
 import javafx.scene.paint.Color;
 
 public class FireCell extends Cell {
 
-	public static final Color GROUND_COLOR = Color.YELLOW;
-	public static final Color TREE_COLOR = Color.GREEN;
-	public static final Color FIRE_COLOR = Color.RED;
+	public static final Color GROUND_COLOR = DataHolder.BURNT_COLOR;
+	public static final Color TREE_COLOR = DataHolder.TREE_COLOR;
+	public static final Color FIRE_COLOR = DataHolder.BURNING_COLOR;
 	public static final int MAX_STATE = 2;
 	
 	private static final int EMPTY = 0;

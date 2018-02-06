@@ -37,7 +37,6 @@ public class SegregationCell extends Cell {
 		updateFill();
 	}
 	
-	
 	private double getPercentAlike() {
 		double like = 0;
 		double unlike = 0;
