@@ -31,6 +31,7 @@ public class XMLReader {
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
 					DataHolder.TYPE = eElement.getAttribute("name");
+					DataHolder.AUTHOR = eElement.getAttribute("author");
 					DataHolder.DIMENSIONS = Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent());
 					DataHolder.ANIMATIONSPEED = Integer.parseInt(eElement.getElementsByTagName("animation").item(0).getTextContent());
 					
@@ -50,6 +51,16 @@ public class XMLReader {
 						DataHolder.A_COLOR = hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent());
 						DataHolder.B_COLOR = hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent());
 						DataHolder.NEUTRAL_COLOR = hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent());
+					}
+					
+					if(DataHolder.TYPE.equals("Predator")) {
+						DataHolder.PRED_COLOR = hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent());
+						DataHolder.PREY_COLOR = hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent());
+						DataHolder.WATER_COLOR = hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent());
+						DataHolder.PREY_REPRODUCTION = Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent());
+						DataHolder.PRED_ENERGY = Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent());
+						DataHolder.ENERGY_GAIN = Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent());
+						DataHolder.PRED_REPRODUCTION = Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent());
 					}
 				}
 			}
