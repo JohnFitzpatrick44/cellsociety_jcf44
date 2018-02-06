@@ -46,7 +46,7 @@ public class SegregationCell extends Cell {
 			else if(state != 0) unlike++;
 		}
 		if(unlike == 0) return 1;
-		return like/unlike;
+		return like/(like+unlike);
 	}
 	
 	private void swapState(Cell swapping) {

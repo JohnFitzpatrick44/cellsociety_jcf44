@@ -12,7 +12,7 @@ public class PredPreyCell extends Cell {
 	public static final int PREY_REPRODUCTION_VALUE = 5;
 	public static final int PRED_ENERGY_VALUE = 5;
 	public static final int ENERGY_GAIN_VALUE = 2;
-	public static final int PRED_REPRODUCTION_VALUE = 5;
+	public static final int PRED_REPRODUCTION_VALUE = 10;
 	public static final int MAX_STATE = 2;
 	
 	private int reproduce;
@@ -65,7 +65,7 @@ public class PredPreyCell extends Cell {
 				}
 			}
 		} else {
-			if(energy == 0) {
+			if(energy <= 0) {
 				setState(0);
 				energy = 0;
 				reproduce = 0;
@@ -92,7 +92,10 @@ public class PredPreyCell extends Cell {
 	private void swapState(Cell swapping) {
 		swapping.setState(this.getState());
 		((PredPreyCell) swapping).setReproduce(reproduce);
-		if(getState() == 2) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE * swapping.getState());
+		if(getState() == 2) {
+			if(swapping.getState() == 1) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
+			else ((PredPreyCell) swapping).setEnergy(energy);
+		}
 		swapping.setSwapped(true);
 		this.setSwapped(true);
 		swapping.updateFill();
