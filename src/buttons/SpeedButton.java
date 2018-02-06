@@ -1,5 +1,6 @@
 package buttons;
 import View.MainView;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
@@ -31,6 +32,6 @@ public class SpeedButton extends ActionButton{
 		});
 	}
 	private void speed() {
-		MainView.ANIMATION_SPEED = MainView.ANIMATION_SPEED +500;
+		MainView.animation.setRate(2*MainView.animation.getRate());
 	}
 }

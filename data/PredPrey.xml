@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <simulation>
-	
-	
-	
-	
-	
-	
-	
-	
-	<type name="Predator" author="team03"><predReproduction>10</predReproduction><dimensions>20</dimensions><predColor>#ff0000</predColor><preyColor>#008000	</preyColor><waterColor>#0000ff</waterColor><preyReproduction>5</preyReproduction><predEnergy>5</predEnergy>
-		<energyGain>2</energyGain></type></simulation>
+	<type name="Predator" author="team03">
+	<predReproduction>10</predReproduction>
+	<dimensions>20</dimensions>
+	<predColor>#ff0000</predColor>
+	<preyColor>#008000	</preyColor>
+	<waterColor>#0000ff</waterColor>
+	<preyReproduction>5</preyReproduction>
+	<predEnergy>5</predEnergy>
+	<energyGain>2</energyGain>
+	</type>
+</simulation>

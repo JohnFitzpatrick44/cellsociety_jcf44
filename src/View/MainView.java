@@ -35,9 +35,9 @@ public class MainView {
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
-	public static int ANIMATION_SPEED = 10000;
-	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
-	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+	public static int ANIMATION_SPEED = 100000;
+	private static int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
+	public static double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
 
@@ -47,6 +47,7 @@ public class MainView {
 	public static Scene myScene;
 	public static Grid grid;
 	public static Cell[][] myCellGrid;
+	public static Timeline animation;
 	
 	//list of files
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
@@ -116,10 +117,10 @@ public class MainView {
 		return myScene;
 	}
 	
-	public void beginAnimationLoop() {
+	public static void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
 				e -> step(SECOND_DELAY,myCellGrid));
-		Timeline animation = new Timeline();
+		animation = new Timeline();
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.getKeyFrames().add(frame);
 		animation.play();  
@@ -148,7 +149,7 @@ public class MainView {
 		}	
 	}
 	
-	public void step(double elapsedTime, Cell[][] cellGrid) {
+	public static void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
 			Grid.updateStates(cellGrid);
 		}

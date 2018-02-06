@@ -4,4 +4,6 @@
 		<dimensions>20</dimensions>
 		<acolor>#ff0000</acolor>
 		<bcolor>#0000ff</bcolor>
-		<neutral>#ffffff </neutral></type></simulation>
+		<neutral>#ffffff </neutral>
+		</type>
+	</simulation>
