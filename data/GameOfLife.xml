@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <simulation>
-	 <type name="Game Of Life">
+	 <type name="Game Of Life" author="team03">
 			<dimensions>20</dimensions>
 			<alive>#000000</alive>
 			<dead>#ffffff</dead>

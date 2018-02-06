@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <simulation>
-	<type name="Spreading Fire">
+	<type name="Spreading Fire" author="team03">
 		<dimensions>20</dimensions>
 		<burning>#ff0000</burning>
 		<tree>#008000</tree>
