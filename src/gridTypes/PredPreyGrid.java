@@ -1,6 +1,7 @@
 package gridTypes;
 
 import cellTypes.Cell;
+
 import cellTypes.PredPreyCell;
 
 public class PredPreyGrid extends Grid {
@@ -13,6 +14,7 @@ public class PredPreyGrid extends Grid {
 		int heightSpacing = 0;
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
+
 			for(int j=0;j<grid[i].length;j++) {				
 				if(Math.random() < 0.04) {
 					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellSize,cellSize,2);

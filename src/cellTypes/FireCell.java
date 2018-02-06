@@ -56,9 +56,9 @@ public class FireCell extends Cell {
 	}
 	
 	public void updateFill() {
-		if(getState() == EMPTY) this.setFill(GROUND_COLOR);
-		else if(getState() == TREE) this.setFill(TREE_COLOR);
-		else this.setFill(FIRE_COLOR);
+		if(getState() == EMPTY) setFill(GROUND_COLOR);
+		else if(getState() == TREE) setFill(TREE_COLOR);
+		else setFill(FIRE_COLOR);
 	}
 	
 }

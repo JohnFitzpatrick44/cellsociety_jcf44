@@ -1,12 +1,13 @@
 package cellTypes;
 
+import XML.DataHolder;
 import javafx.scene.paint.Color;
 
 public class SegregationCell extends Cell {
 	
-	public static final Color A_COLOR = Color.RED;
-	public static final Color B_COLOR = Color.BLUE;
-	public static final Color NEUTRAL_COLOR = Color.WHITE;
+	public static final Color A_COLOR = DataHolder.A_COLOR;
+	public static final Color B_COLOR = DataHolder.B_COLOR;
+	public static final Color NEUTRAL_COLOR = DataHolder.NEUTRAL_COLOR;
 	public static final int MAX_STATE = 2;
 	
 	private double cutoff;
@@ -45,7 +46,7 @@ public class SegregationCell extends Cell {
 			else if(state != 0) unlike++;
 		}
 		if(unlike == 0) return 1;
-		return like/unlike;
+		return like/(like+unlike);
 	}
 	
 	private void swapState(Cell swapping) {

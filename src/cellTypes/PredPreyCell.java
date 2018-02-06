@@ -2,17 +2,18 @@ package cellTypes;
 
 import java.util.Collections;
 
+import XML.DataHolder;
 import javafx.scene.paint.Color;
 
 public class PredPreyCell extends Cell {
 
-	public static final Color PRED_COLOR = Color.RED;
-	public static final Color PREY_COLOR = Color.GREEN;
-	public static final Color WATER_COLOR = Color.BLUE;
-	public static final int PREY_REPRODUCTION_VALUE = 5;
-	public static final int PRED_ENERGY_VALUE = 5;
-	public static final int ENERGY_GAIN_VALUE = 2;
-	public static final int PRED_REPRODUCTION_VALUE = 5;
+	public static final Color PRED_COLOR = DataHolder.PRED_COLOR;
+	public static final Color PREY_COLOR = DataHolder.PREY_COLOR;
+	public static final Color WATER_COLOR = DataHolder.WATER_COLOR;
+	public static final int PREY_REPRODUCTION_VALUE = DataHolder.PREY_REPRODUCTION;
+	public static final int PRED_ENERGY_VALUE = DataHolder.PRED_ENERGY;
+	public static final int ENERGY_GAIN_VALUE = DataHolder.ENERGY_GAIN;
+	public static final int PRED_REPRODUCTION_VALUE = DataHolder.PRED_REPRODUCTION;
 	public static final int MAX_STATE = 2;
 	
 	private int reproduce;
@@ -65,7 +66,7 @@ public class PredPreyCell extends Cell {
 				}
 			}
 		} else {
-			if(energy == 0) {
+			if(energy <= 0) {
 				setState(0);
 				energy = 0;
 				reproduce = 0;
@@ -92,7 +93,10 @@ public class PredPreyCell extends Cell {
 	private void swapState(Cell swapping) {
 		swapping.setState(this.getState());
 		((PredPreyCell) swapping).setReproduce(reproduce);
-		if(getState() == 2) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE * swapping.getState());
+		if(getState() == 2) {
+			if(swapping.getState() == 1) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
+			else ((PredPreyCell) swapping).setEnergy(energy);
+		}
 		swapping.setSwapped(true);
 		this.setSwapped(true);
 		swapping.updateFill();

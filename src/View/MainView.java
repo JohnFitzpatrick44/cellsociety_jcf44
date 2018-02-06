@@ -32,11 +32,12 @@ public class MainView {
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
-	private static final int ANIMATION_SPEED = DataHolder.getAnimationSpeed();
+	private static int ANIMATION_SPEED = 10000;
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
+
 	public static String SIMULATION = DataHolder.getType();
 	
 	public static Group group;
@@ -48,6 +49,7 @@ public class MainView {
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
 	File FireFile = new File("data/SpreadingFire.xml");
 	File SegregationFile = new File("data/Segregation.xml");
+	File PredPreyFile = new File("data/PredPrey.xml");
 	
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
@@ -144,7 +146,7 @@ public class MainView {
 	
 	//create the file selector drop down menu
 	private void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile);
+		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile, PredPreyFile);
 		fileSelector = new ComboBox<File>(fileList);
 		fileSelector.setOnAction(e->{
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
