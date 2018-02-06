@@ -1,6 +1,6 @@
 package cellTypes;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import XML.DataHolder;
 import javafx.scene.paint.Color;
@@ -45,7 +45,7 @@ public class LifeCell extends Cell {
 		updateFill();
 	}
 
-	private int sumArray(ArrayList<Integer> arr) {
+	private int sumArray(List<Integer> arr) {
 		int sum = 0;
 		for(int x : arr) sum += x;
 		return sum;

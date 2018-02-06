@@ -1,6 +1,7 @@
 package cellTypes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseButton;
@@ -20,12 +21,12 @@ public abstract class Cell extends Rectangle implements IGrid {
 	/**
 	 * Array of neighboring cells, as determined by grid
 	 */
-	private ArrayList<Cell> neighbors;
+	private List<Cell> neighbors;
 	
 	/**
 	 * Array to store neighboring cell states, so that storing neighbor states and updating state are separate steps
 	 */
-	private ArrayList<Integer> neighborStates;
+	private List<Integer> neighborStates;
 	
 	/**
 	 * Number and type of states vary by simulation, but will be stored as an int
@@ -128,7 +129,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * Gets states of neighbors
 	 * @return Array of neighbor states
 	 */
-	public ArrayList<Integer> getNeighborStates() {
+	public List<Integer> getNeighborStates() {
 		return neighborStates;
 	}
 	
@@ -136,7 +137,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * Gets array of neighbors
 	 * @return Neighbors array
 	 */
-	public ArrayList<Cell> getNeighbors() {
+	public List<Cell> getNeighbors() {
 		return neighbors;
 	}
 	
