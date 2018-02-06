@@ -2,17 +2,18 @@ package cellTypes;
 
 import java.util.Collections;
 
+import XML.DataHolder;
 import javafx.scene.paint.Color;
 
 public class PredPreyCell extends Cell {
 
-	public static final Color PRED_COLOR = Color.RED;
-	public static final Color PREY_COLOR = Color.GREEN;
-	public static final Color WATER_COLOR = Color.BLUE;
-	public static final int PREY_REPRODUCTION_VALUE = 5;
-	public static final int PRED_ENERGY_VALUE = 5;
-	public static final int ENERGY_GAIN_VALUE = 2;
-	public static final int PRED_REPRODUCTION_VALUE = 10;
+	public static final Color PRED_COLOR = DataHolder.PRED_COLOR;
+	public static final Color PREY_COLOR = DataHolder.PREY_COLOR;
+	public static final Color WATER_COLOR = DataHolder.WATER_COLOR;
+	public static final int PREY_REPRODUCTION_VALUE = DataHolder.PREY_REPRODUCTION;
+	public static final int PRED_ENERGY_VALUE = DataHolder.PRED_ENERGY;
+	public static final int ENERGY_GAIN_VALUE = DataHolder.ENERGY_GAIN;
+	public static final int PRED_REPRODUCTION_VALUE = DataHolder.PRED_REPRODUCTION;
 	public static final int MAX_STATE = 2;
 	
 	private int reproduce;

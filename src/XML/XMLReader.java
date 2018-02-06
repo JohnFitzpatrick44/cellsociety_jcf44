@@ -51,6 +51,16 @@ public class XMLReader {
 						DataHolder.B_COLOR = hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent());
 						DataHolder.NEUTRAL_COLOR = hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent());
 					}
+					
+					if(DataHolder.TYPE.equals("Predator")) {
+						DataHolder.PRED_COLOR = hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent());
+						DataHolder.PREY_COLOR = hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent());
+						DataHolder.WATER_COLOR = hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent());
+						DataHolder.PREY_REPRODUCTION = Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent());
+						DataHolder.PRED_ENERGY = Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent());
+						DataHolder.ENERGY_GAIN = Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent());
+						DataHolder.PRED_REPRODUCTION = Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent());
+					}
 				}
 			}
 		} catch (Exception e) {
