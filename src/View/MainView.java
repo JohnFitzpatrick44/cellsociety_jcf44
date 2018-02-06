@@ -38,7 +38,7 @@ public class MainView {
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static final int GRID_SIZE = DataHolder.getDimensions();
 
-	public static String SIMULATION = DataHolder.getType();
+	public static String SIMULATION = "Predator"; //DataHolder.getType();
 	
 	public static Group group;
 	public static Scene myScene;

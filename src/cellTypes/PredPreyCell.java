@@ -90,14 +90,16 @@ public class PredPreyCell extends Cell {
 	}
 	
 	private void swapState(Cell swapping) {
-		swapping.setState(this.getState());
+		
 		((PredPreyCell) swapping).setReproduce(reproduce);
 		if(getState() == 2) {
 			if(swapping.getState() == 1) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
 			else ((PredPreyCell) swapping).setEnergy(energy);
 		}
+		//getCellMover().copyState(this, swapping);
+		swapping.setState(getState());
 		swapping.setSwapped(true);
-		this.setSwapped(true);
+		setSwapped(true);
 		swapping.updateFill();
 	}
 	
