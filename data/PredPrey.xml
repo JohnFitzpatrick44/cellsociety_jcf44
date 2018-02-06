@@ -8,6 +8,6 @@
 	
 	
 	
-	<type name="Predator"><predReproduction>10</predReproduction><dimensions>20</dimensions><predColor>#ff0000</predColor><preyColor>#008000	</preyColor><waterColor>#0000ff</waterColor><preyReproduction>5</preyReproduction><predEnergy>5</predEnergy>
+	<type name="Predator" author="team03"><predReproduction>10</predReproduction><dimensions>20</dimensions><predColor>#ff0000</predColor><preyColor>#008000	</preyColor><waterColor>#0000ff</waterColor><preyReproduction>5</preyReproduction><predEnergy>5</predEnergy>
 		<animation>10000</animation>
 		<energyGain>2</energyGain></type></simulation>
