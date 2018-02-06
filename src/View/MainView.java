@@ -4,6 +4,7 @@ import java.io.File;
 
 import XML.DataHolder;
 import XML.XMLReader;
+import buttons.FileUploadButton;
 import buttons.JumpButton;
 import buttons.PauseButton;
 import buttons.PlayButton;
@@ -63,7 +64,8 @@ public class MainView {
 	private StepButton stepBtn;
 	private SpeedButton speedBtn;
 	private SlowButton slowBtn;
-	private ComboBox<File> fileSelector;
+	private FileUploadButton fileBtn;
+	public static ComboBox<File> fileSelector;
 	public static TextField jumpField;
 	private Text title;
 	
@@ -72,16 +74,17 @@ public class MainView {
 	private static final int BUTTON_Y_POSITION = 440;
 	private static final int BUTTONROW2_Y_POSITION = 480;
 	private static final int PLAYBTN_X_POSITION = 20;
-	private static final int PAUSEBTN_X_POSITION = 90;
-	private static final int STEPBTN_X_POSITION = 160;
-	private static final int RESETBTN_X_POSITION = 225;
-	private static final int JUMPBTN_X_POSITION = 310;
-	private static final int JUMPTXTFIELD_X_POSITION = 310;
-	private static final int JUMPTXT_DIMENSIONS = 80;
+	private static final int PAUSEBTN_X_POSITION = 80;
+	private static final int STEPBTN_X_POSITION = 150;
+	private static final int RESETBTN_X_POSITION = 210;
+	private static final int JUMPBTN_X_POSITION = 280;
+	private static final int JUMPTXTFIELD_X_POSITION = 340;
+	private static final int JUMPTXT_DIMENSIONS = 70;
 	private static final int TITLE_X_POSITION = 140;
 	private static final int TITLE_Y_POSITION = 430;
-	private static final int SPEEDBTN_X_POSITION = 260;
-	private static final int SLOWBTN_X_POSITION = 220;
+	private static final int SPEEDBTN_X_POSITION = 380;
+	private static final int SLOWBTN_X_POSITION = 340;
+	private static final int FILE_X_POSITION = 290;
 	
 	
 	private static void setupCellGrid() {
@@ -185,11 +188,12 @@ public class MainView {
 		stepBtn = new StepButton(BUTTON_COLOR);
 		speedBtn = new SpeedButton(BUTTON_COLOR);
 		slowBtn = new SlowButton(BUTTON_COLOR);
+		fileBtn = new FileUploadButton(BUTTON_COLOR);
 		jumpField = new TextField();
 		title = new Text();
 		setTitleAuthor();
 		createDropDownMenu();
-		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn);
+		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn);
 	}
 	
 	//arrange all the buttons on the screen
@@ -204,9 +208,10 @@ public class MainView {
 		fileSelector.setLayoutY(BUTTONROW2_Y_POSITION);
 		fileSelector.setLayoutX(PLAYBTN_X_POSITION);
 		jumpField.setLayoutX(JUMPTXTFIELD_X_POSITION);
-		jumpField.setLayoutY(BUTTONROW2_Y_POSITION);
+		jumpField.setLayoutY(BUTTON_Y_POSITION);
 		jumpField.setMaxWidth(JUMPTXT_DIMENSIONS);
 		title.setLayoutX(TITLE_X_POSITION);
 		title.setLayoutY(TITLE_Y_POSITION);
+		fileBtn.setPosition(FILE_X_POSITION, BUTTONROW2_Y_POSITION);
 	}
 }

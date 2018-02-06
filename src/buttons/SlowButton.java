@@ -5,7 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 /*
  * SpeedButton class that inherits the ActionButton
- * Creates a Speedbutton action that increases the speed of the animation.
+ * Creates a button action that increases the speed of the animation.
  * @author Ryan Fu
  */
 public class SlowButton extends ActionButton{
