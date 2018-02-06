@@ -1,7 +1,5 @@
 package gridTypes;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import cellTypes.Cell;
 
 import cellTypes.PredPreyCell;
