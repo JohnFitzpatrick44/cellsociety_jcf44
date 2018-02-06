@@ -4,7 +4,6 @@
 			<dimensions>20</dimensions>
 			<alive>#000000</alive>
 			<dead>#ffffff</dead>
-			<animation>10000</animation>
 			<percentDead>20</percentDead>
 	 </type>
 </simulation>

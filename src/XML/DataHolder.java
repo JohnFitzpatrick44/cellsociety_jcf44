@@ -8,7 +8,6 @@ public class DataHolder {
 	public static String TYPE;
 	public static String AUTHOR;
 	public static int DIMENSIONS;
-	public static int ANIMATIONSPEED;
 	
 	
 	//LifeCell
@@ -20,6 +19,7 @@ public class DataHolder {
 	public static Color BURNT_COLOR;
 	public static Color TREE_COLOR;
 	public static Color BURNING_COLOR;
+	public static double PROB_CATCH;
 	
 	//SegregationCell
 	public static Color A_COLOR;
@@ -59,10 +59,6 @@ public class DataHolder {
 	
 	public static int getDimensions() {
 		return DIMENSIONS;
-	}
-	
-	public static int getAnimationSpeed() {
-		return ANIMATIONSPEED;
 	}
 	
 	public static double getPercentDead() {
