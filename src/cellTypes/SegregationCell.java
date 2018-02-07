@@ -33,6 +33,7 @@ public class SegregationCell extends Cell {
 		
 		if(getPercentAlike() < cutoff) {
 			Cell swapping = getCellMover().findOpenCell();
+			if(swapping == null) return;
 			swapState(swapping);
 		}
 		updateFill();

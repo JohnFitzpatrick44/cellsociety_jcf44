@@ -56,17 +56,16 @@ public abstract class Cell extends Rectangle implements IGrid {
 		this.neighbors = new ArrayList<Cell>();
 		this.neighborStates = new ArrayList<Integer>();
 		this.state = 0;
-		this.setOnMouseClicked(new EventHandler<MouseEvent>() { // Allows user to change cell states by right or left clicking
+		EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() { // Allows user to change cell states by right or left clicking
 			@Override
 			public void handle(MouseEvent me) {
-				if(me.getButton() == MouseButton.PRIMARY) {
-					if(state < getMaxState()) state++;
-				} else if(me.getButton() == MouseButton.SECONDARY) {
-					if(state > 0) state--;
-				}
+				if(state < getMaxState()) state++;
+				else state = 0;
 				updateFill();
 			}
-		});
+		};
+		this.setOnMouseClicked(eh);
+		this.setOnMouseDragEntered(eh);
 	}
 	
 	/**

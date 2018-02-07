@@ -31,7 +31,7 @@ public class PredPreyCell extends Cell {
 		reproduce = 0;
 		updateFill();
 	}
-
+	
 	public void updateState() {
 		if(getState() == 0 || getSwapped()) return;
 		reproduce++;
