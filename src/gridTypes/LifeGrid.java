@@ -9,7 +9,7 @@ public class LifeGrid extends Grid {
 	private final int ALIVE = 1;
 	private final int DEAD = 0;
 
-	private String configString = DataHolder.LIFE_GRID;
+	private String configString = DataHolder.getLifeGrid();
 
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);

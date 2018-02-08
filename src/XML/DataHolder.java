@@ -6,38 +6,38 @@ import javafx.scene.paint.Color;
 
 public class DataHolder {
 	//file specifications
-	private String TYPE;
-	private String AUTHOR;
-	private int DIMENSIONS;
+	private static String TYPE;
+	private static String AUTHOR;
+	private static int DIMENSIONS;
 	
 	//LifeCell
-	private Color DEAD_COLOR;
-	private Color ALIVE_COLOR;
-	private double PERCENTDEAD;
-	private String LIFE_GRID;
+	private static Color DEAD_COLOR;
+	private static Color ALIVE_COLOR;
+	private static double PERCENTDEAD;
+	private static String LIFE_GRID;
 	
 	//FireCell
-	private Color BURNT_COLOR;
-	private Color TREE_COLOR;
-	private Color BURNING_COLOR;
-	private double PROB_CATCH;
-	private String FIRE_GRID;
+	private static Color BURNT_COLOR;
+	private static Color TREE_COLOR;
+	private static Color BURNING_COLOR;
+	private static double PROB_CATCH;
+	private static String FIRE_GRID;
 	
 	//SegregationCell
-	private Color A_COLOR;
-	private Color B_COLOR;
-	private Color NEUTRAL_COLOR;
-	private String SEG_GRID;
+	private static Color A_COLOR;
+	private static Color B_COLOR;
+	private static Color NEUTRAL_COLOR;
+	private static String SEG_GRID;
 	
 	//PredPreyCell
-	private Color PRED_COLOR;
-	private Color PREY_COLOR;
-	private Color WATER_COLOR;
-	private int PREY_REPRODUCTION;
-	private int PRED_ENERGY;
-	private int ENERGY_GAIN;
-	private int PRED_REPRODUCTION;
-	private String PRED_GRID;
+	private static Color PRED_COLOR;
+	private static Color PREY_COLOR;
+	private static Color WATER_COLOR;
+	private static int PREY_REPRODUCTION;
+	private static int PRED_ENERGY;
+	private static int ENERGY_GAIN;
+	private static int PRED_REPRODUCTION;
+	private static String PRED_GRID;
 
 	public static File INPUTFILE = new File("data/GameOfLife.xml");
 
@@ -46,29 +46,54 @@ public class DataHolder {
 	 */
 	public static XMLReader fileInput = new XMLReader(INPUTFILE); 
 	//getter methods
-	public String getType() {
+	public static String getType() {
 		return TYPE;
 	}
 	
-	public String getAuthor() {
+	public static String getAuthor() {
 		return AUTHOR;
 	}
 	
-	public Color getDeadColor() {
+	public static Color getDeadColor() {
 		return DEAD_COLOR;
 	}
 	
-	public Color getAliveColor() {
+	public static Color getAliveColor() {
 		return ALIVE_COLOR;
 	}
 	
-	public int getDimensions() {
+	public static int getDimensions() {
 		return DIMENSIONS;
 	}
 	
-	public double getPercentDead() {
+	public static double getPercentDead() {
 		return PERCENTDEAD;
 	}
+	
+	public static String getLifeGrid() {
+		return LIFE_GRID;
+	}
+	
+	public static String getFireGrid() {
+		return FIRE_GRID;
+	}
+	
+	public static Color getBurntColor() {
+		return BURNT_COLOR;
+	}
+	
+	public static Color getTreeColor() {
+		return TREE_COLOR;
+	}
+	
+	public static Color getBurningColor() {
+		return BURNING_COLOR;
+	}
+	
+	public static double getProbCatch() {
+		return PROB_CATCH;
+	}
+	
 	//setter methods
 	public static void setType(String type) {
 		TYPE = type;
@@ -146,8 +171,5 @@ public class DataHolder {
 	public static void setPredGrid(String predGrid) {
 		PRED_GRID = predGrid;
 	}
-	
-	
-	
 	
 }
