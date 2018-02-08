@@ -21,7 +21,7 @@ public class FireCell extends Cell {
 	private static final int TREE = 1;
 	private static final int BURNING = 2;
 
-	private static final double probCatch = DataHolder.getProbCatch();
+	private static final double PROB_CATCH = DataHolder.getProbCatch();
 
 	/**
 	 * Constructor for a fire cell
@@ -60,7 +60,7 @@ public class FireCell extends Cell {
 	private boolean catchesFire() {
 		for(int state : getNeighborStates()) {
 			Random rand = new Random();
-			if (state == BURNING && rand.nextDouble() < probCatch) {
+			if (state == BURNING && rand.nextDouble() < PROB_CATCH) {
 				return true;
 			}
 		}
