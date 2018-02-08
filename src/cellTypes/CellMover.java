@@ -53,4 +53,12 @@ public class CellMover {
 		origin.setSwapped(true);
 		destination.updateFill();
 	}
+	
+	public double getPercentAlike(int state) {
+		double count = 0;
+		for(Cell c : cellList) {
+			if(c.getState() == state) count++;
+		}
+		return count/cellList.size();
+	}
 }

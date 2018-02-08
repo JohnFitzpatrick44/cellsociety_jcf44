@@ -20,7 +20,6 @@ public class SegregationGrid extends Grid {
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
 		gridConfig = getGridConfig(origGridConfig);
-		CellMover cm = new CellMover();
 		Cell[][] grid = new Cell[gridSize][gridSize];
 		int heightSpacing = 0;
 		int index = 0;
@@ -36,8 +35,6 @@ public class SegregationGrid extends Grid {
 					grid[i][j] = new SegregationCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,cutOff, 0);
 
 				}
-				grid[i][j].setCellMover(cm);
-				cm.addCell(grid[i][j]);
 				blockSpacing += WIDTH_SPACING;
 				index++;
 			}

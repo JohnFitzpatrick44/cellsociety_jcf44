@@ -2,10 +2,13 @@ package gridTypes;
 
 import View.MainView;
 import cellTypes.Cell;
+import cellTypes.CellMover;
 
 public abstract class Grid {
 	
 //	private static int GRID_SIZE = MainView.GRID_SIZE; 
+	
+	private CellMover cm = new CellMover();
 	
 	public abstract Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff);
 	
@@ -18,9 +21,10 @@ public abstract class Grid {
 	}
 	
 	public void setAllNeighbors(Cell[][] grid, int gridSize) {
-
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {		
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
 				if(i==0 && j==0) { //top left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j]); //adjacent cells
 					grid[i][j].setNeighbor(grid[i+1][j+1]); //right bottom cell
@@ -123,5 +127,7 @@ public abstract class Grid {
 			}
 		}
 	}
+	
+	public CellMover getCm() {return cm;}
 	
 }
