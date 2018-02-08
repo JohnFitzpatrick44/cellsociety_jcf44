@@ -132,7 +132,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * @return Array of neighbor states
 	 */
 	public List<Integer> getNeighborStates() {
-		return new ArrayList<>(neighborStates);
+		return neighborStates;
 	}
 
 	/**
