@@ -30,9 +30,9 @@ public class XMLReader {
 
 				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) nNode;
-					DataHolder.TYPE = eElement.getAttribute("name");
-					DataHolder.AUTHOR = eElement.getAttribute("author");
-					DataHolder.DIMENSIONS = Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent());
+					DataHolder.setType(eElement.getAttribute("name"));
+					DataHolder.setAuthor(eElement.getAttribute("author"));
+					DataHolder.setDimensions(Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent()));
 					
 					if (DataHolder.TYPE.equals("Game Of Life")) {
 						DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
