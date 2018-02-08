@@ -37,7 +37,9 @@ public class CellMover {
 	public Cell findOpenCell() {
 		Collections.shuffle(cellList);
 		for(int k = 0; k < cellList.size(); k++) {
-			if(cellList.get(k).getState() == 0) return cellList.get(k);
+			if(cellList.get(k).getState() == 0) {
+				return cellList.get(k);
+			}
 		}
 		return null;
 	}
@@ -57,7 +59,9 @@ public class CellMover {
 	public double getPercentAlike(int state) {
 		double count = 0;
 		for(Cell c : cellList) {
-			if(c.getState() == state) count++;
+			if(c.getState() == state) {
+				count++;
+			}
 		}
 		return count/cellList.size();
 	}

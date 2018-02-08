@@ -32,11 +32,15 @@ public class SegregationCell extends Cell {
 	}
 	
 	public void updateState() {
-		if(getSwapped() || getState() == EMPTY) return;
+		if(getSwapped() || getState() == EMPTY) {
+			return;
+		}
 		
 		if(getPercentAlike() < cutoff) {
 			Cell swapping = getCellMover().findOpenCell();
-			if(swapping == null) return;
+			if(swapping == null) {
+				return;
+			}
 			swapState(swapping);
 		}
 		updateFill();
@@ -46,10 +50,16 @@ public class SegregationCell extends Cell {
 		double like = 0;
 		double unlike = 0;
 		for(int state : getNeighborStates()) {
-			if(state == getState()) like++;
-			else if(state != EMPTY) unlike++;
+			if(state == getState()) {
+				like++;
+			}
+			else if(state != EMPTY) {
+				unlike++;
+			}
 		}
-		if(unlike == 0) return 1;
+		if(unlike == 0) {
+			return 1;
+		}
 		return like/(like+unlike);
 	}
 	
@@ -67,9 +77,15 @@ public class SegregationCell extends Cell {
 	}
 	
 	public void updateFill() {
-		if(getState() == EMPTY) setFill(NEUTRAL_COLOR);
-		else if(getState() == A_STATE) setFill(A_COLOR);
-		else setFill(B_COLOR);
+		if(getState() == EMPTY) {
+			setFill(NEUTRAL_COLOR);
+		}
+		else if(getState() == A_STATE) {
+			setFill(A_COLOR);
+		}
+		else {
+			setFill(B_COLOR);
+		}
 	}
 
 }

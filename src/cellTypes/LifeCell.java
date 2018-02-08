@@ -21,8 +21,12 @@ public class LifeCell extends Cell {
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		setState(state);
-		if(state == 0) this.setFill(DEAD_COLOR);
-		else this.setFill(ALIVE_COLOR);
+		if(state == 0) {
+			this.setFill(DEAD_COLOR);
+		}
+		else {
+			this.setFill(ALIVE_COLOR);
+		}
 		updateFill();
 	}
 	
@@ -52,7 +56,9 @@ public class LifeCell extends Cell {
 
 	private int sumArray(List<Integer> arr) {
 		int sum = 0;
-		for(int x : arr) sum += x;
+		for(int x : arr) {
+			sum += x;
+		}
 		return sum;
 	}
 
@@ -61,8 +67,12 @@ public class LifeCell extends Cell {
 	}
 	
 	public void updateFill() {
-		if(getState() == DEAD) setFill(DEAD_COLOR);
-		else setFill(ALIVE_COLOR);
+		if(getState() == DEAD) {
+			setFill(DEAD_COLOR);
+		}
+		else {
+			setFill(ALIVE_COLOR);
+		}
 	}
 	
 }

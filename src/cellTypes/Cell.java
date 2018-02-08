@@ -59,8 +59,12 @@ public abstract class Cell extends Rectangle implements IGrid {
 		EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() { // Allows user to change cell states by right or left clicking
 			@Override
 			public void handle(MouseEvent me) {
-				if(state < getMaxState()) state++;
-				else state = 0;
+				if(state < getMaxState()) {
+					state++;
+				}
+				else {
+					state = 0;
+				}
 				updateFill();
 			}
 		};
