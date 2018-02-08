@@ -38,15 +38,15 @@ public class MainView {
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
-	public static int ANIMATION_SPEED = 100000;
+	private static int ANIMATION_SPEED = 100000;
 	private static int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
-	public static double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+	private static double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static int GRID_SIZE = DataHolder.getDimensions();
 	private static int CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-	private static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
-	private static int totalOffset = GRID_OFFSET*2;
 	private static int interfaceButtonHeight = 100;
+	private static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-interfaceButtonHeight)/GRID_SIZE;
+	private static int totalOffset = GRID_OFFSET*2;
 
 	public static String SIMULATION = DataHolder.getType();
 	
