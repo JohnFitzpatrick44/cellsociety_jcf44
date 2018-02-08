@@ -9,6 +9,8 @@ public class PredPreyGrid extends Grid {
 		
 	private String configString = DataHolder.getPredGrid();
 
+	private static final int WATER = 0;
+	
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
 		int[] gridConfig = getGridConfig(configString);
@@ -18,12 +20,10 @@ public class PredPreyGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {		
-				if(!(index >= gridConfig.length) && gridConfig[index]==2) {
-					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,2);
-				} else if(!(index >= gridConfig.length) && gridConfig[index]==1) {
-					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,1);
+				if(index < gridConfig.length) {
+					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,gridConfig[index]);
 				} else {
-					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,0);
+					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,WATER);
 				}
 				blockSpacing += cellWidth;
 				index++;
