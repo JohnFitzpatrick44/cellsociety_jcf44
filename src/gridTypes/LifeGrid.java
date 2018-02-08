@@ -11,12 +11,11 @@ public class LifeGrid extends Grid {
 	private static final int WIDTH_SPACING = MainView.CELL_WIDTH;
 	private static final int ALIVE = 1;
 	private static final int DEAD = 0;
-	private static String GRID_CONFIG = DataHolder.LIFE_GRID;
-	private String[] origGridConfig = GRID_CONFIG.split("\\s+");
-	private int[] gridConfig;
+	
+	private String configString = DataHolder.LIFE_GRID;
 		
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
-		gridConfig = getGridConfig(origGridConfig);
+		int[] gridConfig = getGridConfig(configString);
 		Cell[][] grid = new Cell[gridSize][gridSize];
 		int heightSpacing = 0;
 		int index = 0;

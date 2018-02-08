@@ -10,13 +10,12 @@ public class PredPreyGrid extends Grid {
 	
 	private static final int HEIGHT_SPACING = MainView.CELL_HEIGHT;
 	private static final int WIDTH_SPACING = MainView.CELL_WIDTH;
-	private static String GRID_CONFIG = DataHolder.PRED_GRID;
-	private String[] origGridConfig = GRID_CONFIG.split("\\s+");
-	private int[] gridConfig;
+	
+	private String configString = DataHolder.PRED_GRID;
 
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
-		gridConfig = getGridConfig(origGridConfig);
+		int[] gridConfig = getGridConfig(configString);
 		Cell[][] grid = new Cell[gridSize][gridSize];
 		int heightSpacing = 0;
 		int index = 0;

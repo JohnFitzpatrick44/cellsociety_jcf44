@@ -1,7 +1,5 @@
 package gridTypes;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import View.MainView;
 import XML.DataHolder;
 import cellTypes.Cell;
@@ -14,13 +12,11 @@ public class FireGrid extends Grid {
 	private static final int EMPTY = 0;
 	private static final int TREE = 1;
 	private static final int BURNING = 2;
-	private static String GRID_CONFIG = DataHolder.FIRE_GRID;
-	private String[] origGridConfig = GRID_CONFIG.split("\\s+");
-	private int[] gridConfig;
+	private String configString = DataHolder.FIRE_GRID;
 	
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
-		gridConfig = getGridConfig(origGridConfig);
+		int[] gridConfig = getGridConfig(configString);
 		Cell[][] grid = new Cell[gridSize][gridSize];
 		int heightSpacing = 0;
 		int index = 0;
