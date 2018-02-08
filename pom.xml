@@ -26,4 +26,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>cellsociety_team03</name>
 </project>
