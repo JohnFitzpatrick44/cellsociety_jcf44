@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.EventHandler;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -133,7 +132,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * @return Array of neighbor states
 	 */
 	public List<Integer> getNeighborStates() {
-		return neighborStates;
+		return new ArrayList<Integer>(neighborStates);
 	}
 	
 	/**
@@ -141,7 +140,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * @return Neighbors array
 	 */
 	public List<Cell> getNeighbors() {
-		return neighbors;
+		return new ArrayList<Cell>(neighbors);
 	}
 	
 	/**
