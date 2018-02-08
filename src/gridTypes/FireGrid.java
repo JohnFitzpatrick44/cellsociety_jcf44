@@ -6,8 +6,7 @@ import cellTypes.FireCell;
 
 public class FireGrid extends Grid {
 	
-	private final int TREE = 1;
-	private final int BURNING = 2;
+	private final int DEFAULT = 0;
 	private String configString = DataHolder.FIRE_GRID;
 	
 	@Override
@@ -19,10 +18,10 @@ public class FireGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				if(!(index >= gridConfig.length) && gridConfig[index]==1) {
-					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,BURNING);
+				if(index < gridConfig.length) {
+					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,gridConfig[index]);
 				} else {
-					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,TREE);
+					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,DEFAULT);
 				}
 				blockSpacing += cellWidth;
 				index++;

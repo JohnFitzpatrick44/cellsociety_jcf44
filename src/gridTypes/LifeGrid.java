@@ -6,7 +6,6 @@ import cellTypes.LifeCell;
 
 public class LifeGrid extends Grid {
 
-	private final int ALIVE = 1;
 	private final int DEAD = 0;
 
 	private String configString = DataHolder.getLifeGrid();
@@ -19,10 +18,10 @@ public class LifeGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				if(index >= gridConfig.length || gridConfig[index]==0) {
-					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,DEAD);
+				if(index < gridConfig.length) {
+					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,gridConfig[index]);
 				} else {
-					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,ALIVE);
+					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,DEAD);
 				}
 				blockSpacing += cellWidth;
 				index++;
