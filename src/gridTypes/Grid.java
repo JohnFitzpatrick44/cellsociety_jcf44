@@ -40,55 +40,46 @@ public abstract class Grid {
 				if(i==0 && j==0) { //top left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j]); //adjacent cells
 					grid[i][j].setNeighbor(grid[i+1][j+1]); //right bottom cell
-					break;
 				}
 				
 				if(i==0 && j==gridSize-1) { //top right corner
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i+1][j]); //adjacent cells
 					grid[i][j].setNeighbor(grid[i+1][j-1]); //left bottom cell
-					break;
 				}
 				
 				if(i==0 && j!=0 && j!=gridSize-1) { //top side
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i][j-1]); //adjacent cells
 					grid[i][j].setNeighbors(grid[i+1][j+1],grid[i+1][j-1]); //diagonal cells
-					break;
 				}
 				
 				if(i==gridSize-1 && j==0) { //bottom left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbor(grid[i-1][j+1]); //right top cell
-					break;
 				}
 				
 				if(i==gridSize-1 && j==gridSize-1) { //bottom right corner
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbor(grid[i-1][j-1]); //left top cell
-					break;
 				}
 				
 				if(i==gridSize-1 && j!=0 && j!=gridSize-1) { //bottom side
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i][j-1],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbors(grid[i-1][j+1],grid[i-1][j-1]); //diagonal cells
-					break;
 				}
 				
 				if(i!=0 && i!=gridSize-1 && j==0) { //left side
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbors(grid[i-1][j+1],grid[i+1][j+1]); //diagonal cells
-					break;
 				}
 				
 				if(i!=0 && i!=gridSize-1 && j==gridSize-1) { //right side
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i+1][j],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbors(grid[i-1][j-1],grid[i+1][j-1]); //diagonal cells
-					break;
 				}
 				
 				if(i!=0 && i!=gridSize-1 && j!=0 && j!=gridSize-1) { //all other cells
 					grid[i][j].setNeighbors(grid[i+1][j],grid[i-1][j],grid[i][j+1],grid[i][j-1]); //adjacent cells
 					grid[i][j].setNeighbors(grid[i+1][j+1],grid[i+1][j-1],grid[i-1][j+1],grid[i-1][j-1]); //diagonal cells
-					break;
 				}
 			}
 		}	
@@ -99,47 +90,38 @@ public abstract class Grid {
 			for(int j=0;j<grid[i].length;j++) {
 				if(i==0 && j==0) { //top left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j]); //adjacent cells
-					break;
 				}
 				
 				if(i==0 && j==gridSize-1) { //top right corner
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i+1][j]); //adjacent cells
-					break;
 				}
 				
 				if(i==0 && j!=0 && j!=gridSize-1) { //top side
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i][j-1]); //adjacent cells
-					break;
 				}
 				
 				if(i==gridSize-1 && j==0) { //bottom left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i-1][j]); //adjacent cells
-					break;
 				}
 				
 				if(i==gridSize-1 && j==gridSize-1) { //bottom right corner
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i-1][j]); //adjacent cells
-					break;
 				}
 				
 				if(i==gridSize-1 && j!=0 && j!=gridSize-1) { //bottom side
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i][j-1],grid[i-1][j]); //adjacent cells
-					break;
 				}
 				
 				if(i!=0 && i!=gridSize-1 && j==0) { //left side
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i-1][j]); //adjacent cells
-					break;
 				}
 				
 				if(i!=0 && i!=gridSize-1 && j==gridSize-1) { //right side
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i+1][j],grid[i-1][j]); //adjacent cells
-					break;
 				}
 				
 				if(i!=0 && i!=gridSize-1 && j!=0 && j!=gridSize-1) { //all other cells
 					grid[i][j].setNeighbors(grid[i+1][j],grid[i-1][j],grid[i][j+1],grid[i][j-1]); //adjacent cells
-					break;
 				}
 			}
 		}	
