@@ -19,7 +19,7 @@ public class CellMover {
 	 * Constructor, no arguments needed
 	 */
 	public CellMover() {
-		cellList = new ArrayList<Cell>();
+		cellList = new ArrayList<>();
 	}
 
 	/**
