@@ -15,34 +15,34 @@ import javafx.scene.shape.Rectangle;
  * Each specific simulation cell should extend this class, implement interface with Grid
  */
 public abstract class Cell extends Rectangle implements IGrid {
-	
-	public static final Color BORDER_COLOR = Color.BLACK;
-	
+
+	public final Color BORDER_COLOR = Color.BLACK;
+
 	/**
 	 * Array of neighboring cells, as determined by grid
 	 */
 	private List<Cell> neighbors;
-	
+
 	/**
 	 * Array to store neighboring cell states, so that storing neighbor states and updating state are separate steps
 	 */
 	private List<Integer> neighborStates;
-	
+
 	/**
 	 * Number and type of states vary by simulation, but will be stored as an int
 	 */
 	private int state;
-	
+
 	/**
 	 * Allows individual cells access to information about the grid as a whole
 	 */
 	private CellMover cm;
-	
+
 	/**
 	 * For simulations that move cells, can track if a cell has been moved already
 	 */
 	private boolean swapped;
-	
+
 	/**
 	 * Constructor for cell
 	 * @param x X position of Cell
@@ -71,12 +71,12 @@ public abstract class Cell extends Rectangle implements IGrid {
 		this.setOnMouseClicked(eh);
 		this.setOnMouseDragEntered(eh);
 	}
-	
+
 	/**
 	 * Abstract class to change Cell color based on state
 	 */
 	public abstract void updateFill();
-	
+
 	/**
 	 * Tells Cells to store states of neighbors into Array
 	 */
@@ -87,13 +87,13 @@ public abstract class Cell extends Rectangle implements IGrid {
 		}
 		swapped = false;
 	}
-	
+
 	/**
 	 * Method to find largest possible state of a simulation specific Cell
 	 * @return Max state of simulation Cell
 	 */
 	public abstract int getMaxState();
-			
+
 	/**
 	 * Sets state of a Cell
 	 * @param state New state of Cell
@@ -101,7 +101,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public void setState(int state) {
 		this.state = state;
 	}
-	
+
 	/**
 	 * Gets state of Cell
 	 * @return Cell state
@@ -109,7 +109,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public int getState() {
 		return state;
 	}
-	
+
 	/**
 	 * Adds a new Cell to neighbor list
 	 * @param New neighboring Cell
@@ -117,7 +117,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public void setNeighbor(Cell c) {
 		this.neighbors.add(c);
 	}
-	
+
 	/**
 	 * Adds multiple Cells to neighbor list
 	 * @param neighborCells Cells to be added to neighbors
@@ -127,7 +127,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 			this.neighbors.add(neighbor);
 		}
 	}
-	
+
 	/**
 	 * Gets states of neighbors
 	 * @return Array of neighbor states
@@ -135,7 +135,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public List<Integer> getNeighborStates() {
 		return neighborStates;
 	}
-	
+
 	/**
 	 * Gets array of neighbors
 	 * @return Neighbors array
@@ -143,7 +143,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public List<Cell> getNeighbors() {
 		return neighbors;
 	}
-	
+
 	/**
 	 * Adds a CellMover, if required by simulation
 	 * @param cmNew New CellMover object
@@ -151,7 +151,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public void setCellMover(CellMover cmNew) {
 		cm = cmNew;
 	}
-		
+
 	/**
 	 * Gets simulation's CellMover
 	 * @return Simulation's CellMover
@@ -159,7 +159,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public CellMover getCellMover() {
 		return cm;
 	}
-	
+
 	/**
 	 * Sets swapped value
 	 * @param b New swapped value
@@ -167,7 +167,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public void setSwapped(boolean b) {
 		swapped = b;
 	}
-	
+
 	/**
 	 * Gets swapped value
 	 * @return Swapped value
@@ -175,5 +175,5 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public boolean getSwapped() {
 		return swapped;
 	}
-	
+
 }

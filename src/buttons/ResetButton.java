@@ -12,9 +12,9 @@ import javafx.scene.paint.Color;
  * @author Ryan Fu
  */
 public class ResetButton extends ActionButton{
-				
+
 	private final String BUTTON_NAME = myResources.getString("Reset");
-	
+
 	public ResetButton(Color buttonColor) {
 		super(buttonColor);
 		this.setButtonText(BUTTON_NAME);
@@ -25,12 +25,12 @@ public class ResetButton extends ActionButton{
 	 */
 	private void setResetEvent() {
 		this.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		        reset(); //activate the play method
-		    }
+			@Override public void handle(ActionEvent e) {
+				reset(); //activate the play method
+			}
 		});
 	}
-	
+
 	public static void reset() {
 		setPlayBoolean(false);
 		MainView.removeCells(MainView.myCellGrid);
