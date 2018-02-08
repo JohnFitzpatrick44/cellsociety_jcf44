@@ -34,33 +34,35 @@ import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class MainView {
-	
-	public static final int GRID_OFFSET = 10;
+
+	private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
-	public static int ANIMATION_SPEED = 100000;
+	private static int ANIMATION_SPEED = 100000;
 	private static int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
-	public static double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
+	private static double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
-	public static int GRID_SIZE = DataHolder.getDimensions();
-	public static int CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-	public static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
+	private static int GRID_SIZE = DataHolder.getDimensions();
+	private static int CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
+	private static int interfaceButtonHeight = 100;
+	private static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-interfaceButtonHeight)/GRID_SIZE;
+	private static int totalOffset = GRID_OFFSET*2;
 
 	public static String SIMULATION = DataHolder.getType();
-	
+
 	public static Group group;
 	public static Scene myScene;
 	public static Grid grid;
 	public static Cell[][] myCellGrid;
 	public static Timeline animation;
-	
+
 	//list of files
 	File GameOfLifeFile = new File("data/GameOfLife.xml");
 	File FireFile = new File("data/SpreadingFire.xml");
 	File SegregationFile = new File("data/Segregation.xml");
 	File PredPreyFile = new File("data/PredPrey.xml");
-	
+
 	//creating instance variables of the buttons
 	private PlayButton playBtn;
 	private ResetButton resetBtn;
@@ -74,7 +76,7 @@ public class MainView {
 	public static ComboBox<File> fileSelector;
 	public static TextField jumpField;
 	private Text title;
-	
+
 	//attributes of the buttons
 	public static Boolean playBoolean = false;
 	private static final int BUTTON_Y_POSITION = 440;
@@ -91,12 +93,12 @@ public class MainView {
 	private static final int SPEEDBTN_X_POSITION = 380;
 	private static final int SLOWBTN_X_POSITION = 340;
 	private static final int FILE_X_POSITION = 290;
-	
-	
+
+
 	private static void setupCellGrid(int gridSize) {
 		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,0.5);
 	}
-	
+
 	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
@@ -116,7 +118,7 @@ public class MainView {
 			grid.setImmediateNeighbors(myCellGrid,GRID_SIZE);
 		}
 	}
-		
+
 	public Scene initializeStartScene() {
 		group = new Group();
 		setupGrid(SIMULATION);
@@ -125,14 +127,14 @@ public class MainView {
 		myScene = setupScene(myCellGrid);
 		beginAnimationLoop();  //start the animation process
 		myScene.addEventFilter(MouseEvent.DRAG_DETECTED , new EventHandler<MouseEvent>() {
-		    @Override
-		    public void handle(MouseEvent mouseEvent) {
-		        myScene.startFullDrag();
-		    }
+			@Override
+			public void handle(MouseEvent mouseEvent) {
+				myScene.startFullDrag();
+			}
 		});
 		return myScene;
 	}
-	
+
 	public static void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
 				e -> step(SECOND_DELAY,myCellGrid));
@@ -141,14 +143,14 @@ public class MainView {
 		animation.getKeyFrames().add(frame);
 		animation.play();  
 	}
-	
+
 	//removed Scene stage from parameters
 	public static Scene setupScene(Cell[][] cellGrid) {
 		addCells(cellGrid);
 		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 		return startScene;
 	}
-	
+
 	public static void removeCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
@@ -156,7 +158,7 @@ public class MainView {
 			}
 		}	
 	}
-	
+
 	public static void addCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
@@ -164,13 +166,13 @@ public class MainView {
 			}
 		}	
 	}
-	
+
 	public static void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
 			Grid.updateStates(cellGrid);
 		}
 	}
-	
+
 	//create the file selector drop down menu
 	private void createDropDownMenu() {
 		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile, PredPreyFile);
@@ -180,20 +182,20 @@ public class MainView {
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.DIMENSIONS;
-			CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-			CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
+			CELL_WIDTH = (WIDTH_SIZE-totalOffset)/GRID_SIZE;
+			CELL_HEIGHT = (HEIGHT_SIZE-totalOffset-interfaceButtonHeight)/GRID_SIZE;
 			setTitleAuthor();
 			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
 			addCells(myCellGrid);
 		});
 	}
-	
+
 	//update the title with the name of the simulation and the author
 	private void setTitleAuthor() {
 		title.setText(DataHolder.getType()+" by "+DataHolder.getAuthor());
 	}
-	
+
 	//create all the buttons
 	private void createButtons() {
 		playBtn = new PlayButton(BUTTON_COLOR);
@@ -211,7 +213,7 @@ public class MainView {
 		createDropDownMenu();
 		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn);
 	}
-	
+
 	//arrange all the buttons on the screen
 	private void arrangeButtons() {
 		playBtn.setPosition(PLAYBTN_X_POSITION, BUTTON_Y_POSITION);

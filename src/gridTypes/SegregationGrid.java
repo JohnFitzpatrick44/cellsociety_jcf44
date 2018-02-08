@@ -1,14 +1,10 @@
 package gridTypes;
 
-import View.MainView;
 import XML.DataHolder;
 import cellTypes.Cell;
 import cellTypes.SegregationCell;
 
 public class SegregationGrid extends Grid {
-
-	private static final int HEIGHT_SPACING = MainView.CELL_HEIGHT;
-	private static final int WIDTH_SPACING = MainView.CELL_WIDTH;
 	
 	private String configString = DataHolder.SEG_GRID;
 		
@@ -30,10 +26,10 @@ public class SegregationGrid extends Grid {
 					grid[i][j] = new SegregationCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,cutOff, 0);
 
 				}
-				blockSpacing += WIDTH_SPACING;
+				blockSpacing += cellWidth;
 				index++;
 			}
-			heightSpacing += HEIGHT_SPACING;
+			heightSpacing += cellHeight;
 		}
 		return grid;
 	}

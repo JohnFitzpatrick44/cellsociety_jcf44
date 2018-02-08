@@ -7,80 +7,90 @@ import javafx.scene.paint.Color;
 
 public class PredPreyCell extends Cell {
 
-	public static final Color PRED_COLOR = DataHolder.PRED_COLOR;
-	public static final Color PREY_COLOR = DataHolder.PREY_COLOR;
-	public static final Color WATER_COLOR = DataHolder.WATER_COLOR;
-	public static final int PREY_REPRODUCTION_VALUE = DataHolder.PREY_REPRODUCTION;
-	public static final int PRED_ENERGY_VALUE = DataHolder.PRED_ENERGY;
-	public static final int ENERGY_GAIN_VALUE = DataHolder.ENERGY_GAIN;
-	public static final int PRED_REPRODUCTION_VALUE = DataHolder.PRED_REPRODUCTION;
-	public static final int MAX_STATE = 2;
-	
+	private final Color PRED_COLOR = DataHolder.PRED_COLOR;
+	private final Color PREY_COLOR = DataHolder.PREY_COLOR;
+	private final Color WATER_COLOR = DataHolder.WATER_COLOR;
+	private final int PREY_REPRODUCTION_VALUE = DataHolder.PREY_REPRODUCTION;
+	private final int PRED_ENERGY_VALUE = DataHolder.PRED_ENERGY;
+	private final int ENERGY_GAIN_VALUE = DataHolder.ENERGY_GAIN;
+	private final int PRED_REPRODUCTION_VALUE = DataHolder.PRED_REPRODUCTION;
+	private final int MAX_STATE = 2;
+
+	private final int WATER = 0;
+	private final int PREY = 1;
+	private final int PRED = 2;
+
 	private int reproduce;
 	private int energy;
-	
+
 	public PredPreyCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		setState(state);
-		if(state == 2) energy = PRED_ENERGY_VALUE;
+		if(state == PRED) {
+			energy = PRED_ENERGY_VALUE;
+		}
 		updateFill();
 	}
-	
+
 	public PredPreyCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		reproduce = 0;
 		updateFill();
 	}
-	
+
 	public void updateState() {
-		if(getState() == 0 || getSwapped()) return;
+		if(getState() == WATER || getSwapped()) {
+			return;
+		}
 		reproduce++;
-		if(getState() == 2) energy--;
+		if(getState() == PRED) {
+			energy--;
+		}
 		move();
 		updateFill();
 	}
-	
+
 	public int getReproduce() {
 		return reproduce;
 	}
-	
+
 	public void setReproduce(int e) {
 		reproduce = e;
 	}
-	
+
 	public int getEnergy() {
 		return energy;
 	}
-	
+
 	public void setEnergy(int e) {
 		energy = e;
 	}
-	
+
 	private void move() {
 		Collections.shuffle(getNeighbors());
-		if(getState() == 1) {
+		if(getState() == PREY) {
 			for(Cell c : getNeighbors()) {
-				if(c.getState() == 0) {
+				if(c.getState() == WATER) {
 					swapState(c);
 					reproducing(c);
 				}
 			}
 		} else {
 			if(energy <= 0) {
-				setState(0);
+				setState(WATER);
 				energy = 0;
 				reproduce = 0;
 			} else {
 				for(Cell c : getNeighbors()) {
-					if(c.getState() == 1) {
+					if(c.getState() == PREY) {
 						swapState(c);
 						reproducing(c);
 						return;
 					}
 				}
-				
+
 				for(Cell c : getNeighbors()) {
-					if(c.getState() == 0) {
+					if(c.getState() == WATER) {
 						swapState(c);
 						reproducing(c);
 						return;
@@ -89,13 +99,17 @@ public class PredPreyCell extends Cell {
 			}
 		}
 	}
-	
+
 	private void swapState(Cell swapping) {
-		
+
 		((PredPreyCell) swapping).setReproduce(reproduce);
-		if(getState() == 2) {
-			if(swapping.getState() == 1) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
-			else ((PredPreyCell) swapping).setEnergy(energy);
+		if(getState() == PRED) {
+			if(swapping.getState() == PREY) {
+				((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
+			}
+			else {
+				((PredPreyCell) swapping).setEnergy(energy);
+			}
 		}
 		//getCellMover().copyState(this, swapping);
 		swapping.setState(getState());
@@ -103,10 +117,12 @@ public class PredPreyCell extends Cell {
 		setSwapped(true);
 		swapping.updateFill();
 	}
-	
+
 	private void reproducing(Cell swapped) {
 		int val;
-		if(getState() == 1) val = PREY_REPRODUCTION_VALUE;
+		if(getState() == PREY) {
+			val = PREY_REPRODUCTION_VALUE;
+		}
 		else {
 			val = PRED_REPRODUCTION_VALUE;
 			energy = PRED_ENERGY_VALUE;
@@ -114,21 +130,27 @@ public class PredPreyCell extends Cell {
 		if(reproduce > val) {
 			((PredPreyCell) swapped).setReproduce(0);
 		} else {
-			setState(0);
+			setState(WATER);
 			energy = 0;
 		}
 		reproduce = 0;
 		updateFill();
 	}
-	
+
 	public int getMaxState() {
 		return MAX_STATE;
 	}
-	
+
 	public void updateFill() {
-		if(getState() == 0) setFill(WATER_COLOR);
-		else if(getState() == 1) setFill(PREY_COLOR);
-		else setFill(PRED_COLOR);
+		if(getState() == WATER) {
+			setFill(WATER_COLOR);
+		}
+		else if(getState() == PREY) {
+			setFill(PREY_COLOR);
+		}
+		else {
+			setFill(PRED_COLOR);
+		}
 	}
-	
+
 }

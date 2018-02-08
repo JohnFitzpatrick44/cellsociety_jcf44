@@ -1,19 +1,16 @@
 package gridTypes;
 
-import View.MainView;
 import XML.DataHolder;
 import cellTypes.Cell;
 import cellTypes.LifeCell;
 
 public class LifeGrid extends Grid {
-	
-	private static final int HEIGHT_SPACING = MainView.CELL_HEIGHT;
-	private static final int WIDTH_SPACING = MainView.CELL_WIDTH;
-	private static final int ALIVE = 1;
-	private static final int DEAD = 0;
-	
+
+	private final int ALIVE = 1;
+	private final int DEAD = 0;
+
 	private String configString = DataHolder.LIFE_GRID;
-		
+
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);
 		Cell[][] grid = new Cell[gridSize][gridSize];
@@ -27,12 +24,12 @@ public class LifeGrid extends Grid {
 				} else {
 					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,ALIVE);
 				}
-				blockSpacing += WIDTH_SPACING;
+				blockSpacing += cellWidth;
 				index++;
 			}
-			heightSpacing += HEIGHT_SPACING;
+			heightSpacing += cellHeight;
 		}
 		return grid;
 	}
-	
+
 }

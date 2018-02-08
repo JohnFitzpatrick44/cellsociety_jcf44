@@ -9,19 +9,19 @@ import java.util.Collections;
  * Tracks all Cells in a simulation, used to find open spaces or switch Cell states
  */
 public class CellMover {
-	
+
 	/**
 	 * List of all Cells in a simulation
 	 */
 	private ArrayList<Cell> cellList;
-	
+
 	/**
 	 * Constructor, no arguments needed
 	 */
 	public CellMover() {
 		cellList = new ArrayList<Cell>();
 	}
-	
+
 	/**
 	 * Adds a Cell to the list
 	 * @param c Cell to be added
@@ -29,7 +29,7 @@ public class CellMover {
 	public void addCell(Cell c) {
 		cellList.add(c);
 	}
-	
+
 	/**
 	 * Finds and returns a random open (state == 0) Cell in the grid
 	 * @return Random Cell with state of 0
@@ -37,11 +37,13 @@ public class CellMover {
 	public Cell findOpenCell() {
 		Collections.shuffle(cellList);
 		for(int k = 0; k < cellList.size(); k++) {
-			if(cellList.get(k).getState() == 0) return cellList.get(k);
+			if(cellList.get(k).getState() == 0) {
+				return cellList.get(k);
+			}
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Copies state of one Cell into another, sets swapped values
 	 * @param origin Cell to be copied
@@ -53,11 +55,13 @@ public class CellMover {
 		origin.setSwapped(true);
 		destination.updateFill();
 	}
-	
+
 	public double getPercentAlike(int state) {
 		double count = 0;
 		for(Cell c : cellList) {
-			if(c.getState() == state) count++;
+			if(c.getState() == state) {
+				count++;
+			}
 		}
 		return count/cellList.size();
 	}
