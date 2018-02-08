@@ -27,7 +27,7 @@ public class FireGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				if(gridConfig[index]==1) {
+				if(!(index >= gridConfig.length) && gridConfig[index]==1) {
 					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,BURNING);
 				} else {
 					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,TREE);

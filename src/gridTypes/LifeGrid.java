@@ -23,10 +23,10 @@ public class LifeGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				if(gridConfig[index]==1) {
-					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,ALIVE);
-				} else {
+				if(index >= gridConfig.length || gridConfig[index]==0) {
 					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,DEAD);
+				} else {
+					grid[i][j] = new LifeCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,ALIVE);
 				}
 				blockSpacing += WIDTH_SPACING;
 				index++;

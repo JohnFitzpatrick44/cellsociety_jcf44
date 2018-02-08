@@ -27,9 +27,9 @@ public class SegregationGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				if(gridConfig[index]==2) {
+				if(!(index >= gridConfig.length) && gridConfig[index]==2) {
 					grid[i][j] = new SegregationCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,cutOff, 2);
-				} else if(gridConfig[index]==1) {
+				} else if(!(index >= gridConfig.length) && gridConfig[index]==1) {
 					grid[i][j] = new SegregationCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,cutOff, 1);
 
 				} else {

@@ -23,9 +23,9 @@ public class PredPreyGrid extends Grid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {		
-				if(gridConfig[index]==2) {
+				if(!(index >= gridConfig.length) && gridConfig[index]==2) {
 					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,2);
-				} else if(gridConfig[index]==1) {
+				} else if(!(index >= gridConfig.length) && gridConfig[index]==1) {
 					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,1);
 				} else {
 					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,0);
