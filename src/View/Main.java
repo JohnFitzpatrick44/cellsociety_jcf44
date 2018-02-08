@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	
 	private static final String TITLE = "Cell Society";
-	public static Stage mainStage;
+	private static Stage mainStage;
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -20,4 +20,7 @@ public class Main extends Application {
 		primaryStage.show();
 	}
 
+	public static Stage getMainStage() {
+		return mainStage;
+	}
 }

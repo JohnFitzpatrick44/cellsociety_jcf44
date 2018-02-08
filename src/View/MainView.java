@@ -181,7 +181,7 @@ public class MainView {
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
-			GRID_SIZE = DataHolder.DIMENSIONS;
+			GRID_SIZE = DataHolder.getDimensions();
 			CELL_WIDTH = (WIDTH_SIZE-totalOffset)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-totalOffset-interfaceButtonHeight)/GRID_SIZE;
 			setTitleAuthor();
