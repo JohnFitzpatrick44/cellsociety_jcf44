@@ -70,80 +70,80 @@ public class DataHolder {
 		return PERCENTDEAD;
 	}
 	//setter methods
-	public void setType(String type) {
+	public static void setType(String type) {
 		TYPE = type;
 	}
-	public void setAuthor(String author) {
+	public static void setAuthor(String author) {
 		AUTHOR = author;
 	}
-	public void setDimensions(int dimensions) {
+	public static void setDimensions(int dimensions) {
 		DIMENSIONS = dimensions;
 	}
 	
 	//game of life setter methods
-	public void setAliveColor(Color aliveColor) {
+	public static void setAliveColor(Color aliveColor) {
 		ALIVE_COLOR = aliveColor;
 	}
-	public void setDeadColor(Color deadColor) {
+	public static void setDeadColor(Color deadColor) {
 		DEAD_COLOR = deadColor;
 	}
-	public void setPercentDead(double percent) {
+	public static void setPercentDead(double percent) {
 		PERCENTDEAD = percent;
 	}
-	public void setLifeGrid(String lifeGrid) {
+	public static void setLifeGrid(String lifeGrid) {
 		LIFE_GRID = lifeGrid;
 	}
 	
 	//spreading fire setter methods
-	public void setBurntColor(Color burntColor) {
+	public static void setBurntColor(Color burntColor) {
 		BURNT_COLOR = burntColor;
 	}
-	public void setBurningColor(Color burningColor) {
+	public static  void setBurningColor(Color burningColor) {
 		BURNING_COLOR = burningColor;
 	}
-	public void setTreeColor(Color treeColor) {
+	public static void setTreeColor(Color treeColor) {
 		TREE_COLOR = treeColor;
 	}
-	public void setProbCatch(double percent) {
+	public static void setProbCatch(double percent) {
 		PROB_CATCH = percent;
 	}
-	public void setFireGrid(String fireGrid) {
+	public static void setFireGrid(String fireGrid) {
 		FIRE_GRID = fireGrid;
 	}
 	
 	//SEGRETATION SETTER METHODS
-	public void setAColor(Color aColor) {
+	public static void setAColor(Color aColor) {
 		A_COLOR = aColor;
 	}
-	public void setBColor(Color bColor) {
+	public static void setBColor(Color bColor) {
 		B_COLOR = bColor;
 	}
-	public void setNeutralColor(Color treeColor) {
+	public static void setNeutralColor(Color treeColor) {
 		NEUTRAL_COLOR = treeColor;
 	}
-	public void setSegGrid(String segGrid) {
+	public static void setSegGrid(String segGrid) {
 		SEG_GRID = segGrid;
 	}
 	//PREDATOR SETTER METHODS
-	public void setPredColor(Color predColor) {
+	public static void setPredColor(Color predColor) {
 		PRED_COLOR = predColor;
 	}
-	public void setPreyColor(Color preyColor) {
+	public static void setPreyColor(Color preyColor) {
 		PREY_COLOR = preyColor;
 	}
-	public void setWaterColor(Color waterColor) {
+	public static void setWaterColor(Color waterColor) {
 		WATER_COLOR = waterColor;
 	}
-	public void setPreyProduction(int preyProduction) {
+	public static void setPreyProduction(int preyProduction) {
 		PREY_REPRODUCTION=preyProduction;
 	}
-	public void setPredEnergy(int predEnergy) {
+	public static void setPredEnergy(int predEnergy) {
 		PRED_ENERGY=predEnergy;
 	}
-	public void setPredReproduction(int predReproduction) {
+	public static void setPredReproduction(int predReproduction) {
 		PRED_REPRODUCTION=predReproduction;
 	}
-	public void setPredGrid(String predGrid) {
+	public static void setPredGrid(String predGrid) {
 		PRED_GRID = predGrid;
 	}
 	
