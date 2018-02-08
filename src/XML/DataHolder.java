@@ -155,72 +155,38 @@ public class DataHolder {
 	}
 	
 	//game of life setter methods
-	public static void setAliveColor(Color aliveColor) {
+	public static void setGameOfLife(Color aliveColor, Color deadColor, double percent, String lifeGrid) {
 		ALIVE_COLOR = aliveColor;
-	}
-	public static void setDeadColor(Color deadColor) {
 		DEAD_COLOR = deadColor;
-	}
-	public static void setPercentDead(double percent) {
 		PERCENTDEAD = percent;
-	}
-	public static void setLifeGrid(String lifeGrid) {
 		LIFE_GRID = lifeGrid;
 	}
 	
 	//spreading fire setter methods
-	public static void setBurntColor(Color burntColor) {
+	public static void setSpreadingFire(Color burntColor, Color burningColor, Color treeColor, double percent, String fireGrid) {
 		BURNT_COLOR = burntColor;
-	}
-	public static  void setBurningColor(Color burningColor) {
 		BURNING_COLOR = burningColor;
-	}
-	public static void setTreeColor(Color treeColor) {
 		TREE_COLOR = treeColor;
-	}
-	public static void setProbCatch(double percent) {
 		PROB_CATCH = percent;
-	}
-	public static void setFireGrid(String fireGrid) {
 		FIRE_GRID = fireGrid;
 	}
 	
 	//SEGRETATION SETTER METHODS
-	public static void setAColor(Color aColor) {
+	public static void setSegregation(Color aColor, Color bColor, Color neutralColor, String segGrid) {
 		A_COLOR = aColor;
-	}
-	public static void setBColor(Color bColor) {
 		B_COLOR = bColor;
-	}
-	public static void setNeutralColor(Color treeColor) {
-		NEUTRAL_COLOR = treeColor;
-	}
-	public static void setSegGrid(String segGrid) {
+		NEUTRAL_COLOR = neutralColor;
 		SEG_GRID = segGrid;
 	}
 	//PREDATOR SETTER METHODS
-	public static void setPredColor(Color predColor) {
+	public static void setPredPrey(Color predColor, Color preyColor, Color waterColor, int preyProduction, int predEnergy, int energyGain, int predReproduction, String predGrid) {
 		PRED_COLOR = predColor;
-	}
-	public static void setPreyColor(Color preyColor) {
 		PREY_COLOR = preyColor;
-	}
-	public static void setWaterColor(Color waterColor) {
 		WATER_COLOR = waterColor;
-	}
-	public static void setPreyProduction(int preyProduction) {
 		PREY_REPRODUCTION=preyProduction;
-	}
-	public static void setPredEnergy(int predEnergy) {
 		PRED_ENERGY=predEnergy;
-	}
-	public static void setEnergyGain(int energyGain) {
 		ENERGY_GAIN = energyGain;
-	}
-	public static void setPredReproduction(int predReproduction) {
 		PRED_REPRODUCTION=predReproduction;
-	}
-	public static void setPredGrid(String predGrid) {
 		PRED_GRID = predGrid;
 	}
 	
