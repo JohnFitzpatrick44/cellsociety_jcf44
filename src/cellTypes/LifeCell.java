@@ -8,15 +8,15 @@ import javafx.scene.paint.Color;
 
 public class LifeCell extends Cell {
 
-	private final Color DEAD_COLOR = DataHolder.getDeadColor();
-	private final Color ALIVE_COLOR = DataHolder.getAliveColor();
+	private static final Color DEAD_COLOR = DataHolder.getDeadColor();
+	private static final Color ALIVE_COLOR = DataHolder.getAliveColor();
 
-	private final int MAX_STATE = 1;
+	private static final int MAX_STATE = 1;
 
-	private final int DEAD = 0;
-	private final int ALIVE = 1;
-	private final int MIN_ALIVE = 2;
-	private final int MAX_ALIVE = 3;
+	private static final int DEAD = 0;
+	private static final int ALIVE = 1;
+	private static final int MIN_ALIVE = 2;
+	private static final int MAX_ALIVE = 3;
 
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);

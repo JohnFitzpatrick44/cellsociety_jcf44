@@ -5,13 +5,13 @@ import javafx.scene.paint.Color;
 
 public class SegregationCell extends Cell {
 
-	private final Color A_COLOR = DataHolder.getAColor();
-	private final Color B_COLOR = DataHolder.getBColor();
-	private final Color NEUTRAL_COLOR = DataHolder.getNeutralColor();
-	private final int MAX_STATE = 2;
+	private static final Color A_COLOR = DataHolder.getAColor();
+	private static final Color B_COLOR = DataHolder.getBColor();
+	private static final Color NEUTRAL_COLOR = DataHolder.getNeutralColor();
+	private static final int MAX_STATE = 2;
 
-	private final int EMPTY = 0;
-	private final int A_STATE = 1;
+	private static final int EMPTY = 0;
+	private static final int A_STATE = 1;
 
 	private double cutoff;
 

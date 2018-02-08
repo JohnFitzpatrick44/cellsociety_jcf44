@@ -12,16 +12,16 @@ import javafx.scene.paint.Color;
  */
 public class FireCell extends Cell {
 
-	private final Color GROUND_COLOR = DataHolder.getBurntColor();
-	private final Color TREE_COLOR = DataHolder.getTreeColor();
-	private final Color FIRE_COLOR = DataHolder.getBurningColor();
-	private final int MAX_STATE = 2;
+	private static final Color GROUND_COLOR = DataHolder.getBurntColor();
+	private static final Color TREE_COLOR = DataHolder.getTreeColor();
+	private static final Color FIRE_COLOR = DataHolder.getBurningColor();
+	private static final int MAX_STATE = 2;
 
-	private final int EMPTY = 0;
-	private final int TREE = 1;
-	private final int BURNING = 2;
+	private static final int EMPTY = 0;
+	private static final int TREE = 1;
+	private static final int BURNING = 2;
 
-	private final double probCatch = DataHolder.getProbCatch();
+	private static final double probCatch = DataHolder.getProbCatch();
 
 	/**
 	 * Constructor for a fire cell
