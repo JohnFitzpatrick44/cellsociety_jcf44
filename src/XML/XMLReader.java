@@ -70,6 +70,7 @@ public class XMLReader {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("variable can not be read");
 		}
 	}
 

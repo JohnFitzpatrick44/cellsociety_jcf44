@@ -5,6 +5,7 @@ import java.io.File;
 import javafx.scene.paint.Color;
 
 public class DataHolder {
+	//file specifications
 	public static String TYPE;
 	public static String AUTHOR;
 	public static int DIMENSIONS;
@@ -44,7 +45,7 @@ public class DataHolder {
 	 * creating instance of the XMLreader which calls the parse method to parse through inputfile.
 	 */
 	public static XMLReader fileInput = new XMLReader(INPUTFILE); 
-	
+	//getter methods
 	public static String getType() {
 		return TYPE;
 	}
@@ -68,5 +69,85 @@ public class DataHolder {
 	public static double getPercentDead() {
 		return PERCENTDEAD;
 	}
+	//setter methods
+	public static void setType(String type) {
+		DataHolder.TYPE = type;
+	}
+	public static void setAuthor(String author) {
+		DataHolder.AUTHOR = author;
+	}
+	public static void setDimensions(int dimensions) {
+		DataHolder.DIMENSIONS = dimensions;
+	}
+	
+	//game of life setter methods
+	public static void setAliveColor(Color aliveColor) {
+		DataHolder.ALIVE_COLOR = aliveColor;
+	}
+	public static void setDeadColor(Color deadColor) {
+		DataHolder.DEAD_COLOR = deadColor;
+	}
+	public static void setPercentDead(double percent) {
+		DataHolder.PERCENTDEAD = percent;
+	}
+	public static void setLifeGrid(String lifeGrid) {
+		DataHolder.LIFE_GRID = lifeGrid;
+	}
+	
+	//spreading fire setter methods
+	public static void setBurntColor(Color burntColor) {
+		DataHolder.BURNT_COLOR = burntColor;
+	}
+	public static void setBurningColor(Color burningColor) {
+		DataHolder.BURNING_COLOR = burningColor;
+	}
+	public static void setTreeColor(Color treeColor) {
+		DataHolder.TREE_COLOR = treeColor;
+	}
+	public static void setProbCatch(double percent) {
+		DataHolder.PROB_CATCH = percent;
+	}
+	public static void setFireGrid(String fireGrid) {
+		DataHolder.FIRE_GRID = fireGrid;
+	}
+	
+	//SEGRETATION SETTER METHODS
+	public static void setAColor(Color aColor) {
+		DataHolder.A_COLOR = aColor;
+	}
+	public static void setBColor(Color bColor) {
+		DataHolder.B_COLOR = bColor;
+	}
+	public static void setNeutralColor(Color treeColor) {
+		DataHolder.NEUTRAL_COLOR = treeColor;
+	}
+	public static void setSegGrid(String segGrid) {
+		DataHolder.SEG_GRID = segGrid;
+	}
+	//PREDATOR SETTER METHODS
+	public static void setPredColor(Color predColor) {
+		DataHolder.PRED_COLOR = predColor;
+	}
+	public static void setPreyColor(Color preyColor) {
+		DataHolder.PREY_COLOR = preyColor;
+	}
+	public static void setWaterColor(Color waterColor) {
+		DataHolder.WATER_COLOR = waterColor;
+	}
+	public static void setPreyProduction(int preyProduction) {
+		DataHolder.PREY_REPRODUCTION=preyProduction;
+	}
+	public static void setPredEnergy(int predEnergy) {
+		DataHolder.PRED_ENERGY=predEnergy;
+	}
+	public static void setPredReproduction(int predReproduction) {
+		DataHolder.PRED_REPRODUCTION=predReproduction;
+	}
+	public static void setPredGrid(String predGrid) {
+		DataHolder.PRED_GRID = predGrid;
+	}
+	
+	
+	
 	
 }
