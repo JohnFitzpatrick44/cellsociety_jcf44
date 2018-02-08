@@ -165,6 +165,9 @@ public class DataHolder {
 	public static void setPredEnergy(int predEnergy) {
 		PRED_ENERGY=predEnergy;
 	}
+	public static void setEnergyGain(int energyGain) {
+		ENERGY_GAIN = energyGain;
+	}
 	public static void setPredReproduction(int predReproduction) {
 		PRED_REPRODUCTION=predReproduction;
 	}
