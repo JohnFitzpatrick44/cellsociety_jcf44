@@ -176,7 +176,7 @@ public class MainView {
 	//create the file selector drop down menu
 	private void createDropDownMenu() {
 		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile, PredPreyFile);
-		fileSelector = new ComboBox<File>(fileList);
+		fileSelector = new ComboBox<>(fileList);
 		fileSelector.setOnAction(e->{
 			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);

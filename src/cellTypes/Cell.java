@@ -52,8 +52,8 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public Cell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		this.setStroke(BORDER_COLOR);
-		this.neighbors = new ArrayList<Cell>();
-		this.neighborStates = new ArrayList<Integer>();
+		this.neighbors = new ArrayList<>();
+		this.neighborStates = new ArrayList<>();
 		this.state = 0;
 		EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() { // Allows user to change cell states by right or left clicking
 			@Override
@@ -132,7 +132,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * @return Array of neighbor states
 	 */
 	public List<Integer> getNeighborStates() {
-		return new ArrayList<Integer>(neighborStates);
+		return new ArrayList<>(neighborStates);
 	}
 
 	/**
@@ -140,7 +140,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * @return Neighbors array
 	 */
 	public List<Cell> getNeighbors() {
-		return new ArrayList<Cell>(neighbors);
+		return new ArrayList<>(neighbors);
 	}
 
 	/**
