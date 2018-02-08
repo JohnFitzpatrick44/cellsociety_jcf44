@@ -6,38 +6,38 @@ import javafx.scene.paint.Color;
 
 public class DataHolder {
 	//file specifications
-	public static String TYPE;
-	public static String AUTHOR;
-	public static int DIMENSIONS;
+	private String TYPE;
+	private String AUTHOR;
+	private int DIMENSIONS;
 	
 	//LifeCell
-	public static Color DEAD_COLOR;
-	public static Color ALIVE_COLOR;
-	public static double PERCENTDEAD;
-	public static String LIFE_GRID;
+	private Color DEAD_COLOR;
+	private Color ALIVE_COLOR;
+	private double PERCENTDEAD;
+	private String LIFE_GRID;
 	
 	//FireCell
-	public static Color BURNT_COLOR;
-	public static Color TREE_COLOR;
-	public static Color BURNING_COLOR;
-	public static double PROB_CATCH;
-	public static String FIRE_GRID;
+	private Color BURNT_COLOR;
+	private Color TREE_COLOR;
+	private Color BURNING_COLOR;
+	private double PROB_CATCH;
+	private String FIRE_GRID;
 	
 	//SegregationCell
-	public static Color A_COLOR;
-	public static Color B_COLOR;
-	public static Color NEUTRAL_COLOR;
-	public static String SEG_GRID;
+	private Color A_COLOR;
+	private Color B_COLOR;
+	private Color NEUTRAL_COLOR;
+	private String SEG_GRID;
 	
 	//PredPreyCell
-	public static Color PRED_COLOR;
-	public static Color PREY_COLOR;
-	public static Color WATER_COLOR;
-	public static int PREY_REPRODUCTION;
-	public static int PRED_ENERGY;
-	public static int ENERGY_GAIN;
-	public static int PRED_REPRODUCTION;
-	public static String PRED_GRID;
+	private Color PRED_COLOR;
+	private Color PREY_COLOR;
+	private Color WATER_COLOR;
+	private int PREY_REPRODUCTION;
+	private int PRED_ENERGY;
+	private int ENERGY_GAIN;
+	private int PRED_REPRODUCTION;
+	private String PRED_GRID;
 
 	public static File INPUTFILE = new File("data/GameOfLife.xml");
 
@@ -46,105 +46,105 @@ public class DataHolder {
 	 */
 	public static XMLReader fileInput = new XMLReader(INPUTFILE); 
 	//getter methods
-	public static String getType() {
+	public String getType() {
 		return TYPE;
 	}
 	
-	public static String getAuthor() {
+	public String getAuthor() {
 		return AUTHOR;
 	}
 	
-	public static Color getDeadColor() {
+	public Color getDeadColor() {
 		return DEAD_COLOR;
 	}
 	
-	public static Color getAliveColor() {
+	public Color getAliveColor() {
 		return ALIVE_COLOR;
 	}
 	
-	public static int getDimensions() {
+	public int getDimensions() {
 		return DIMENSIONS;
 	}
 	
-	public static double getPercentDead() {
+	public double getPercentDead() {
 		return PERCENTDEAD;
 	}
 	//setter methods
-	public static void setType(String type) {
-		DataHolder.TYPE = type;
+	public void setType(String type) {
+		TYPE = type;
 	}
-	public static void setAuthor(String author) {
-		DataHolder.AUTHOR = author;
+	public void setAuthor(String author) {
+		AUTHOR = author;
 	}
-	public static void setDimensions(int dimensions) {
-		DataHolder.DIMENSIONS = dimensions;
+	public void setDimensions(int dimensions) {
+		DIMENSIONS = dimensions;
 	}
 	
 	//game of life setter methods
-	public static void setAliveColor(Color aliveColor) {
-		DataHolder.ALIVE_COLOR = aliveColor;
+	public void setAliveColor(Color aliveColor) {
+		ALIVE_COLOR = aliveColor;
 	}
-	public static void setDeadColor(Color deadColor) {
-		DataHolder.DEAD_COLOR = deadColor;
+	public void setDeadColor(Color deadColor) {
+		DEAD_COLOR = deadColor;
 	}
-	public static void setPercentDead(double percent) {
-		DataHolder.PERCENTDEAD = percent;
+	public void setPercentDead(double percent) {
+		PERCENTDEAD = percent;
 	}
-	public static void setLifeGrid(String lifeGrid) {
-		DataHolder.LIFE_GRID = lifeGrid;
+	public void setLifeGrid(String lifeGrid) {
+		LIFE_GRID = lifeGrid;
 	}
 	
 	//spreading fire setter methods
-	public static void setBurntColor(Color burntColor) {
-		DataHolder.BURNT_COLOR = burntColor;
+	public void setBurntColor(Color burntColor) {
+		BURNT_COLOR = burntColor;
 	}
-	public static void setBurningColor(Color burningColor) {
-		DataHolder.BURNING_COLOR = burningColor;
+	public void setBurningColor(Color burningColor) {
+		BURNING_COLOR = burningColor;
 	}
-	public static void setTreeColor(Color treeColor) {
-		DataHolder.TREE_COLOR = treeColor;
+	public void setTreeColor(Color treeColor) {
+		TREE_COLOR = treeColor;
 	}
-	public static void setProbCatch(double percent) {
-		DataHolder.PROB_CATCH = percent;
+	public void setProbCatch(double percent) {
+		PROB_CATCH = percent;
 	}
-	public static void setFireGrid(String fireGrid) {
-		DataHolder.FIRE_GRID = fireGrid;
+	public void setFireGrid(String fireGrid) {
+		FIRE_GRID = fireGrid;
 	}
 	
 	//SEGRETATION SETTER METHODS
-	public static void setAColor(Color aColor) {
-		DataHolder.A_COLOR = aColor;
+	public void setAColor(Color aColor) {
+		A_COLOR = aColor;
 	}
-	public static void setBColor(Color bColor) {
-		DataHolder.B_COLOR = bColor;
+	public void setBColor(Color bColor) {
+		B_COLOR = bColor;
 	}
-	public static void setNeutralColor(Color treeColor) {
-		DataHolder.NEUTRAL_COLOR = treeColor;
+	public void setNeutralColor(Color treeColor) {
+		NEUTRAL_COLOR = treeColor;
 	}
-	public static void setSegGrid(String segGrid) {
-		DataHolder.SEG_GRID = segGrid;
+	public void setSegGrid(String segGrid) {
+		SEG_GRID = segGrid;
 	}
 	//PREDATOR SETTER METHODS
-	public static void setPredColor(Color predColor) {
-		DataHolder.PRED_COLOR = predColor;
+	public void setPredColor(Color predColor) {
+		PRED_COLOR = predColor;
 	}
-	public static void setPreyColor(Color preyColor) {
-		DataHolder.PREY_COLOR = preyColor;
+	public void setPreyColor(Color preyColor) {
+		PREY_COLOR = preyColor;
 	}
-	public static void setWaterColor(Color waterColor) {
-		DataHolder.WATER_COLOR = waterColor;
+	public void setWaterColor(Color waterColor) {
+		WATER_COLOR = waterColor;
 	}
-	public static void setPreyProduction(int preyProduction) {
-		DataHolder.PREY_REPRODUCTION=preyProduction;
+	public void setPreyProduction(int preyProduction) {
+		PREY_REPRODUCTION=preyProduction;
 	}
-	public static void setPredEnergy(int predEnergy) {
-		DataHolder.PRED_ENERGY=predEnergy;
+	public void setPredEnergy(int predEnergy) {
+		PRED_ENERGY=predEnergy;
 	}
-	public static void setPredReproduction(int predReproduction) {
-		DataHolder.PRED_REPRODUCTION=predReproduction;
+	public void setPredReproduction(int predReproduction) {
+		PRED_REPRODUCTION=predReproduction;
 	}
-	public static void setPredGrid(String predGrid) {
-		DataHolder.PRED_GRID = predGrid;
+	public void setPredGrid(String predGrid) {
+		PRED_GRID = predGrid;
 	}
 	
 	
