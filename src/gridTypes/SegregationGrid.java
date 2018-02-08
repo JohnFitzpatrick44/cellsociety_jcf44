@@ -8,7 +8,8 @@ public class SegregationGrid extends Grid {
 	
 
 	private String configString = DataHolder.getSegGrid();
-		
+	private static final int DEFAULT = 0;
+	
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
 		int[] gridConfig = getGridConfig(configString);
