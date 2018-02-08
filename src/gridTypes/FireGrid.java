@@ -1,14 +1,11 @@
 package gridTypes;
 
-import View.MainView;
 import XML.DataHolder;
 import cellTypes.Cell;
 import cellTypes.FireCell;
 
 public class FireGrid extends Grid {
 	
-	private static final int HEIGHT_SPACING = MainView.CELL_HEIGHT;
-	private static final int WIDTH_SPACING = MainView.CELL_WIDTH;
 	private static final int EMPTY = 0;
 	private static final int TREE = 1;
 	private static final int BURNING = 2;
@@ -28,10 +25,10 @@ public class FireGrid extends Grid {
 				} else {
 					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,TREE);
 				}
-				blockSpacing += WIDTH_SPACING;
+				blockSpacing += cellWidth;
 				index++;
 			}
-			heightSpacing += HEIGHT_SPACING;
+			heightSpacing += cellHeight;
 		}
 		return grid;
 	}

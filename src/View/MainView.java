@@ -34,7 +34,7 @@ import javafx.util.Duration;
 
 public class MainView {
 	
-	public static final int GRID_OFFSET = 10;
+	private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
 	private static final int FRAMES_PER_SECOND = 60;
@@ -42,9 +42,11 @@ public class MainView {
 	private static int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	public static double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
-	public static int GRID_SIZE = DataHolder.getDimensions();
-	public static int CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-	public static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
+	private static int GRID_SIZE = DataHolder.getDimensions();
+	private static int CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
+	private static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
+	private static int totalOffset = GRID_OFFSET*2;
+	private static int interfaceButtonHeight = 100;
 
 	public static String SIMULATION = DataHolder.getType();
 	
@@ -178,8 +180,8 @@ public class MainView {
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.DIMENSIONS;
-			CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-			CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-100)/GRID_SIZE;
+			CELL_WIDTH = (WIDTH_SIZE-totalOffset)/GRID_SIZE;
+			CELL_HEIGHT = (HEIGHT_SIZE-totalOffset-interfaceButtonHeight)/GRID_SIZE;
 			setTitleAuthor();
 			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	

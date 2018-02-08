@@ -1,16 +1,12 @@
 package gridTypes;
 
-import View.MainView;
 import XML.DataHolder;
 import cellTypes.Cell;
 
 import cellTypes.PredPreyCell;
 
 public class PredPreyGrid extends Grid {
-	
-	private static final int HEIGHT_SPACING = MainView.CELL_HEIGHT;
-	private static final int WIDTH_SPACING = MainView.CELL_WIDTH;
-	
+		
 	private String configString = DataHolder.PRED_GRID;
 
 	@Override
@@ -29,10 +25,10 @@ public class PredPreyGrid extends Grid {
 				} else {
 					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,0);
 				}
-				blockSpacing += WIDTH_SPACING;
+				blockSpacing += cellWidth;
 				index++;
 			}
-			heightSpacing += HEIGHT_SPACING;
+			heightSpacing += cellHeight;
 		}
 		return grid;
 	}
