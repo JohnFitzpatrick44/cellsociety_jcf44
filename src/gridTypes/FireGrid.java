@@ -8,7 +8,7 @@ public class FireGrid extends Grid {
 	
 	private final int TREE = 1;
 	private final int BURNING = 2;
-	private String configString = DataHolder.FIRE_GRID;
+	private String configString = DataHolder.getFireGrid();
 	
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
