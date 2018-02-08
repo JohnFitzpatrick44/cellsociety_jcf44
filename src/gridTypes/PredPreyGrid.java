@@ -7,7 +7,7 @@ import cellTypes.PredPreyCell;
 
 public class PredPreyGrid extends Grid {
 		
-	private String configString = DataHolder.PRED_GRID;
+	private String configString = DataHolder.getPredGrid();
 
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
