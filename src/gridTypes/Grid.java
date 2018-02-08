@@ -1,21 +1,33 @@
 package gridTypes;
 
-import View.MainView;
 import cellTypes.Cell;
 import cellTypes.CellMover;
 
+/**
+ * @author Hemanth Yakkali
+ * Abstract Grid class, to be used in tandem with Cells and CellMover
+ * Creates a grid, gets a grid configuration, sets neighbors for each cell, and updates cell states
+ */
+
 public abstract class Grid {
-	
-//	private static int GRID_SIZE = MainView.GRID_SIZE; 
-	
+		
 	private CellMover cm = new CellMover();
 	
+	/**
+	 * @param offset Amount of offset from edge of user interface
+	 * @param gridSize Number of rows and columns of cells
+	 * @param cellWidth Width of each cell
+	 * @param cellHeight Height of each cell
+	 * @param cutOff
+	 * @return 2D array of Cells
+	 */
 	public abstract Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff);
 	
-	public int[] getGridConfig(String[] config) {
-		int[] gridConfig = new int[config.length];
-		for(int i=0;i<config.length;i++) {
-			gridConfig[i] = Integer.parseInt(config[i]);
+	public int[] getGridConfig(String config) {
+		String [] origGridConfig = config.split(" ");
+		int[] gridConfig = new int[origGridConfig.length];
+		for(int i=0;i<origGridConfig.length;i++) {
+			gridConfig[i] = Integer.parseInt(origGridConfig[i]);
 		}
 		return gridConfig;
 	}
