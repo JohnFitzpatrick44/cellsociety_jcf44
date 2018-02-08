@@ -69,28 +69,22 @@ public class PredPreyCell extends Cell {
 	private void move() {
 		Collections.shuffle(getNeighbors());
 		if(getState() == PREY) {
-			moveToWater();
+			moveToState(WATER);
 		} else {
 			if(energy <= 0) {
 				setState(WATER);
 				energy = 0;
 				reproduce = 0;
 			} else {
-				for(Cell c : getNeighbors()) {
-					if(c.getState() == PREY) {
-						swapState(c);
-						reproducing(c);
-						return;
-					}
-				}
-				moveToWater();
+				moveToState(PREY);
+				moveToState(WATER);
 			}
 		}
 	}
 
-	private void moveToWater() {
+	private void moveToState(int state) {
 		for(Cell c : getNeighbors()) {
-			if(c.getState() == WATER) {
+			if(c.getState() == state) {
 				swapState(c);
 				reproducing(c);
 				return;
