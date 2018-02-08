@@ -6,8 +6,9 @@ import cellTypes.FireCell;
 
 public class FireGrid extends Grid {
 	
+
 	private final int DEFAULT = 0;
-	private String configString = DataHolder.FIRE_GRID;
+	private String configString = DataHolder.getFireGrid();
 	
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {

@@ -34,37 +34,37 @@ public class XMLReader {
 					DataHolder.setAuthor(eElement.getAttribute("author"));
 					DataHolder.setDimensions(Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent()));
 					
-					if (DataHolder.TYPE.equals("Game Of Life")) {
-						DataHolder.ALIVE_COLOR = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
-						DataHolder.DEAD_COLOR = hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());
-						DataHolder.PERCENTDEAD = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
-						DataHolder.LIFE_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
+					if (DataHolder.getType().equals("Game Of Life")) {
+						DataHolder.setAliveColor(hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent()));
+						DataHolder.setDeadColor(hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent()));
+						DataHolder.setPercentDead(Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent()));
+						DataHolder.setLifeGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 					
-					if (DataHolder.TYPE.equals("Spreading Fire")) {
-						DataHolder.BURNT_COLOR = hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent());
-						DataHolder.BURNING_COLOR = hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent());
-						DataHolder.TREE_COLOR = hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent());
-						DataHolder.PROB_CATCH = Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent());
-						DataHolder.FIRE_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
+					if (DataHolder.getType().equals("Spreading Fire")) {
+						DataHolder.setBurntColor(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
+						DataHolder.setBurningColor(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
+						DataHolder.setTreeColor(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
+						DataHolder.setProbCatch(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
+						DataHolder.setFireGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 					
-					if(DataHolder.TYPE.equals("Segregation")) {
-						DataHolder.A_COLOR = hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent());
-						DataHolder.B_COLOR = hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent());
-						DataHolder.NEUTRAL_COLOR = hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent());
-						DataHolder.SEG_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
+					if(DataHolder.getType().equals("Segregation")) {
+						DataHolder.setAColor(hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent()));
+						DataHolder.setBColor(hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent()));
+						DataHolder.setNeutralColor(hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent()));
+						DataHolder.setSegGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 					
-					if(DataHolder.TYPE.equals("Predator")) {
-						DataHolder.PRED_COLOR = hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent());
-						DataHolder.PREY_COLOR = hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent());
-						DataHolder.WATER_COLOR = hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent());
-						DataHolder.PREY_REPRODUCTION = Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent());
-						DataHolder.PRED_ENERGY = Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent());
-						DataHolder.ENERGY_GAIN = Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent());
-						DataHolder.PRED_REPRODUCTION = Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent());
-						DataHolder.PRED_GRID = (eElement.getElementsByTagName("grid").item(0).getTextContent());
+					if(DataHolder.getType().equals("Predator")) {
+						DataHolder.setPredColor(hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent()));
+						DataHolder.setPreyColor(hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent()));
+						DataHolder.setWaterColor(hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent()));
+						DataHolder.setPreyProduction(Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent()));
+						DataHolder.setPredEnergy(Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent()));
+						DataHolder.setEnergyGain(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));
+						DataHolder.setPredReproduction(Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent()));
+						DataHolder.setPredGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
 					}
 				}
 			}

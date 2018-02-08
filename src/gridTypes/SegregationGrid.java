@@ -6,8 +6,8 @@ import cellTypes.SegregationCell;
 
 public class SegregationGrid extends Grid {
 	
-	private String configString = DataHolder.SEG_GRID;
-	private static final int DEFAULT = 0;
+
+	private String configString = DataHolder.getSegGrid();
 		
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {

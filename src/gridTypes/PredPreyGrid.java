@@ -7,7 +7,7 @@ import cellTypes.PredPreyCell;
 
 public class PredPreyGrid extends Grid {
 		
-	private String configString = DataHolder.PRED_GRID;
+	private String configString = DataHolder.getPredGrid();
 
 	private static final int WATER = 0;
 	

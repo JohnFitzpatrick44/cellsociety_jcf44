@@ -94,6 +94,55 @@ public class DataHolder {
 		return PROB_CATCH;
 	}
 	
+	public static Color getAColor() {
+		return A_COLOR;
+	}
+	
+	public static Color getBColor() {
+		return B_COLOR;
+	}
+	
+	public static Color getNeutralColor() {
+		return NEUTRAL_COLOR;
+	}
+	
+	public static String getSegGrid() {
+		return SEG_GRID;
+	}
+	
+	public static Color getPredColor() {
+		return PRED_COLOR;
+	}
+	
+	public static Color getPreyColor() {
+		return PREY_COLOR;
+	}
+	
+	public static Color getWaterColor() {
+		return WATER_COLOR;
+	}
+	
+	public static int getPredReproduction() {
+		return PRED_REPRODUCTION;
+	}
+	
+	public static int getPreyReproduction() {
+		return PREY_REPRODUCTION;
+	}
+	
+	public static int getPredEnergy() {
+		return PRED_ENERGY;
+	}
+	
+	public static int getEnergyGain() {
+		return ENERGY_GAIN;
+	}
+	
+	public static String getPredGrid() {
+		return PRED_GRID;
+	}
+	
+	
 	//setter methods
 	public static void setType(String type) {
 		TYPE = type;
@@ -164,6 +213,9 @@ public class DataHolder {
 	}
 	public static void setPredEnergy(int predEnergy) {
 		PRED_ENERGY=predEnergy;
+	}
+	public static void setEnergyGain(int energyGain) {
+		ENERGY_GAIN = energyGain;
 	}
 	public static void setPredReproduction(int predReproduction) {
 		PRED_REPRODUCTION=predReproduction;
