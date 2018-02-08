@@ -43,7 +43,9 @@ public class FireCell extends Cell {
 	}
 
 	public void updateState() {
-		if(getState() == EMPTY) return;
+		if(getState() == EMPTY) {
+			return;
+		}
 		else if(getState() == BURNING) {
 			this.setState(EMPTY);
 		} else {
@@ -58,7 +60,9 @@ public class FireCell extends Cell {
 	private boolean catchesFire() {
 		for(int state : getNeighborStates()) {
 			Random rand = new Random();
-			 if (state == BURNING && rand.nextDouble() < probCatch) return true;
+			 if (state == BURNING && rand.nextDouble() < probCatch) {
+				 return true;
+			 }
 		}
 		return false;
 	}
@@ -68,9 +72,15 @@ public class FireCell extends Cell {
 	}
 	
 	public void updateFill() {
-		if(getState() == EMPTY) setFill(GROUND_COLOR);
-		else if(getState() == TREE) setFill(TREE_COLOR);
-		else setFill(FIRE_COLOR);
+		if(getState() == EMPTY) {setFill(GROUND_COLOR);
+		
+		}
+		else if(getState() == TREE) {
+			setFill(TREE_COLOR);
+		}
+		else {
+			setFill(FIRE_COLOR);
+		}
 	}
 	
 }

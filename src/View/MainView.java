@@ -4,6 +4,7 @@ import java.io.File;
 
 import XML.DataHolder;
 import XML.XMLReader;
+import buttons.CompareButton;
 import buttons.FileUploadButton;
 import buttons.JumpButton;
 import buttons.PauseButton;
@@ -71,6 +72,7 @@ public class MainView {
 	private SpeedButton speedBtn;
 	private SlowButton slowBtn;
 	private FileUploadButton fileBtn;
+	private CompareButton compareBtn;
 	public static ComboBox<File> fileSelector;
 	public static TextField jumpField;
 	private Text title;
@@ -204,11 +206,12 @@ public class MainView {
 		speedBtn = new SpeedButton(BUTTON_COLOR);
 		slowBtn = new SlowButton(BUTTON_COLOR);
 		fileBtn = new FileUploadButton(BUTTON_COLOR);
+		compareBtn = new CompareButton(BUTTON_COLOR);
 		jumpField = new TextField();
 		title = new Text();
 		setTitleAuthor();
 		createDropDownMenu();
-		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn);
+		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn);
 	}
 	
 	//arrange all the buttons on the screen

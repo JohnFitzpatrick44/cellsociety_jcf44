@@ -16,13 +16,19 @@ public class PredPreyCell extends Cell {
 	public static final int PRED_REPRODUCTION_VALUE = DataHolder.PRED_REPRODUCTION;
 	public static final int MAX_STATE = 2;
 	
+	private static final int WATER = 0;
+	private static final int PREY = 1;
+	private static final int PRED = 2;
+	
 	private int reproduce;
 	private int energy;
 	
 	public PredPreyCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		setState(state);
-		if(state == 2) energy = PRED_ENERGY_VALUE;
+		if(state == PRED) {
+			energy = PRED_ENERGY_VALUE;
+		}
 		updateFill();
 	}
 	
@@ -33,9 +39,13 @@ public class PredPreyCell extends Cell {
 	}
 	
 	public void updateState() {
-		if(getState() == 0 || getSwapped()) return;
+		if(getState() == WATER || getSwapped()) {
+			return;
+		}
 		reproduce++;
-		if(getState() == 2) energy--;
+		if(getState() == PRED) {
+			energy--;
+		}
 		move();
 		updateFill();
 	}
@@ -58,21 +68,21 @@ public class PredPreyCell extends Cell {
 	
 	private void move() {
 		Collections.shuffle(getNeighbors());
-		if(getState() == 1) {
+		if(getState() == PREY) {
 			for(Cell c : getNeighbors()) {
-				if(c.getState() == 0) {
+				if(c.getState() == WATER) {
 					swapState(c);
 					reproducing(c);
 				}
 			}
 		} else {
 			if(energy <= 0) {
-				setState(0);
+				setState(WATER);
 				energy = 0;
 				reproduce = 0;
 			} else {
 				for(Cell c : getNeighbors()) {
-					if(c.getState() == 1) {
+					if(c.getState() == PREY) {
 						swapState(c);
 						reproducing(c);
 						return;
@@ -80,7 +90,7 @@ public class PredPreyCell extends Cell {
 				}
 				
 				for(Cell c : getNeighbors()) {
-					if(c.getState() == 0) {
+					if(c.getState() == WATER) {
 						swapState(c);
 						reproducing(c);
 						return;
@@ -93,9 +103,13 @@ public class PredPreyCell extends Cell {
 	private void swapState(Cell swapping) {
 		
 		((PredPreyCell) swapping).setReproduce(reproduce);
-		if(getState() == 2) {
-			if(swapping.getState() == 1) ((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
-			else ((PredPreyCell) swapping).setEnergy(energy);
+		if(getState() == PRED) {
+			if(swapping.getState() == PREY) {
+				((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
+			}
+			else {
+				((PredPreyCell) swapping).setEnergy(energy);
+			}
 		}
 		//getCellMover().copyState(this, swapping);
 		swapping.setState(getState());
@@ -106,7 +120,9 @@ public class PredPreyCell extends Cell {
 	
 	private void reproducing(Cell swapped) {
 		int val;
-		if(getState() == 1) val = PREY_REPRODUCTION_VALUE;
+		if(getState() == PREY) {
+			val = PREY_REPRODUCTION_VALUE;
+		}
 		else {
 			val = PRED_REPRODUCTION_VALUE;
 			energy = PRED_ENERGY_VALUE;
@@ -114,7 +130,7 @@ public class PredPreyCell extends Cell {
 		if(reproduce > val) {
 			((PredPreyCell) swapped).setReproduce(0);
 		} else {
-			setState(0);
+			setState(WATER);
 			energy = 0;
 		}
 		reproduce = 0;
@@ -126,9 +142,15 @@ public class PredPreyCell extends Cell {
 	}
 	
 	public void updateFill() {
-		if(getState() == 0) setFill(WATER_COLOR);
-		else if(getState() == 1) setFill(PREY_COLOR);
-		else setFill(PRED_COLOR);
+		if(getState() == WATER) {
+			setFill(WATER_COLOR);
+		}
+		else if(getState() == PREY) {
+			setFill(PREY_COLOR);
+		}
+		else {
+			setFill(PRED_COLOR);
+		}
 	}
 	
 }
