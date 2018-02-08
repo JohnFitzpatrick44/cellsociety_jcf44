@@ -42,7 +42,7 @@ public class FileUploadButton extends ActionButton{
 	private void fileUpload() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");
-		File file = fileChooser.showOpenDialog(Main.mainStage);
+		File file = fileChooser.showOpenDialog(Main.getMainStage());
         if (file != null) {
         		MainView.fileSelector.getItems().add(file);
         		MainView.fileSelector.setMaxWidth(250);
