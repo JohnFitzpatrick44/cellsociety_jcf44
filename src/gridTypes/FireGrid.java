@@ -6,9 +6,8 @@ import cellTypes.FireCell;
 
 public class FireGrid extends Grid {
 	
-	private static final int EMPTY = 0;
-	private static final int TREE = 1;
-	private static final int BURNING = 2;
+	private final int TREE = 1;
+	private final int BURNING = 2;
 	private String configString = DataHolder.FIRE_GRID;
 	
 	@Override

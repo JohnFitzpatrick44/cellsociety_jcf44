@@ -12,17 +12,17 @@ import javafx.scene.paint.Color;
  */
 public class FireCell extends Cell {
 
-	public static final Color GROUND_COLOR = DataHolder.BURNT_COLOR;
-	public static final Color TREE_COLOR = DataHolder.TREE_COLOR;
-	public static final Color FIRE_COLOR = DataHolder.BURNING_COLOR;
-	public static final int MAX_STATE = 2;
-	
-	private static final int EMPTY = 0;
-	private static final int TREE = 1;
-	private static final int BURNING = 2;
-	
-	public static final double probCatch = DataHolder.PROB_CATCH;
-	
+	private final Color GROUND_COLOR = DataHolder.BURNT_COLOR;
+	private final Color TREE_COLOR = DataHolder.TREE_COLOR;
+	private final Color FIRE_COLOR = DataHolder.BURNING_COLOR;
+	private final int MAX_STATE = 2;
+
+	private final int EMPTY = 0;
+	private final int TREE = 1;
+	private final int BURNING = 2;
+
+	private final double probCatch = DataHolder.PROB_CATCH;
+
 	/**
 	 * Constructor for a fire cell
 	 * @param x X position
@@ -36,7 +36,7 @@ public class FireCell extends Cell {
 		this.setState(state);
 		updateFill();
 	}
-	
+
 	public FireCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		updateFill();
@@ -54,26 +54,26 @@ public class FireCell extends Cell {
 			}
 		}
 		updateFill();
-		
+
 	}
 
 	private boolean catchesFire() {
 		for(int state : getNeighborStates()) {
 			Random rand = new Random();
-			 if (state == BURNING && rand.nextDouble() < probCatch) {
-				 return true;
-			 }
+			if (state == BURNING && rand.nextDouble() < probCatch) {
+				return true;
+			}
 		}
 		return false;
 	}
-	
+
 	public int getMaxState() {
 		return MAX_STATE;
 	}
-	
+
 	public void updateFill() {
 		if(getState() == EMPTY) {setFill(GROUND_COLOR);
-		
+
 		}
 		else if(getState() == TREE) {
 			setFill(TREE_COLOR);
@@ -82,5 +82,5 @@ public class FireCell extends Cell {
 			setFill(FIRE_COLOR);
 		}
 	}
-	
+
 }

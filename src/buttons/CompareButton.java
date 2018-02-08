@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  * @author Ryan Fu
  */
 public class CompareButton extends ActionButton{
-				
+
 	private final String BUTTON_NAME = myResources.getString("Pause");
 
 	public CompareButton(Color buttonColor) {
@@ -24,18 +24,18 @@ public class CompareButton extends ActionButton{
 	 */
 	private void setCompareEvent() {
 		this.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override public void handle(ActionEvent e) {
-		        compare();// activate the play method
-		    }
+			@Override public void handle(ActionEvent e) {
+				compare();// activate the play method
+			}
 		});
 	}
-	
+
 	private void compare() {
 		MainView secondSimulation = new MainView();
-        Stage secondStage = new Stage();
-        secondStage.setScene(secondSimulation.initializeStartScene());
-        secondStage.show();
+		Stage secondStage = new Stage();
+		secondStage.setScene(secondSimulation.initializeStartScene());
+		secondStage.show();
 
-	
+
 	}
 }

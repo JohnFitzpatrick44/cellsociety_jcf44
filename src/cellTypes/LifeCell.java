@@ -7,17 +7,17 @@ import javafx.scene.paint.Color;
 
 
 public class LifeCell extends Cell {
-	
-	public static final Color DEAD_COLOR = DataHolder.getDeadColor();
-	public static final Color ALIVE_COLOR = DataHolder.getAliveColor();
 
-	public static final int MAX_STATE = 1;
-	
-	private static final int DEAD = 0;
-	private static final int ALIVE = 1;
-	private static final int MIN_ALIVE = 2;
-	private static final int MAX_ALIVE = 3;
-			
+	private final Color DEAD_COLOR = DataHolder.getDeadColor();
+	private final Color ALIVE_COLOR = DataHolder.getAliveColor();
+
+	private final int MAX_STATE = 1;
+
+	private final int DEAD = 0;
+	private final int ALIVE = 1;
+	private final int MIN_ALIVE = 2;
+	private final int MAX_ALIVE = 3;
+
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		setState(state);
@@ -29,13 +29,13 @@ public class LifeCell extends Cell {
 		}
 		updateFill();
 	}
-	
+
 	public LifeCell(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		setState(DEAD);
 		updateFill();
 	}
-	
+
 	public LifeCell() {
 		this(0, 0, 0, 0);
 	}
@@ -65,7 +65,7 @@ public class LifeCell extends Cell {
 	public int getMaxState() {
 		return MAX_STATE;
 	}
-	
+
 	public void updateFill() {
 		if(getState() == DEAD) {
 			setFill(DEAD_COLOR);
@@ -74,5 +74,5 @@ public class LifeCell extends Cell {
 			setFill(ALIVE_COLOR);
 		}
 	}
-	
+
 }
