@@ -35,36 +35,40 @@ public class XMLReader {
 					DataHolder.setDimensions(Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent()));
 					
 					if (DataHolder.getType().equals("Game Of Life")) {
-						DataHolder.setAliveColor(hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent()));
-						DataHolder.setDeadColor(hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent()));
-						DataHolder.setPercentDead(Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent()));
-						DataHolder.setLifeGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						Color aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
+						Color deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
+						Double percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
+						String lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						DataHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
 					}
 					
 					if (DataHolder.getType().equals("Spreading Fire")) {
-						DataHolder.setBurntColor(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
-						DataHolder.setBurningColor(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
-						DataHolder.setTreeColor(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
-						DataHolder.setProbCatch(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
-						DataHolder.setFireGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						Color burntColor=(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
+						Color burningColor=(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
+						Color treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
+						Double probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
+						String fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						DataHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
 					}
 					
 					if(DataHolder.getType().equals("Segregation")) {
-						DataHolder.setAColor(hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent()));
-						DataHolder.setBColor(hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent()));
-						DataHolder.setNeutralColor(hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent()));
-						DataHolder.setSegGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						Color aColor=(hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent()));
+						Color bColor=(hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent()));
+						Color neutralColor=(hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent()));
+						String segGrid = (eElement.getElementsByTagName("grid").item(0).getTextContent());
+						DataHolder.setSegregation(aColor, bColor, neutralColor, segGrid);
 					}
 					
 					if(DataHolder.getType().equals("Predator")) {
-						DataHolder.setPredColor(hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent()));
-						DataHolder.setPreyColor(hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent()));
-						DataHolder.setWaterColor(hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent()));
-						DataHolder.setPreyProduction(Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent()));
-						DataHolder.setPredEnergy(Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent()));
-						DataHolder.setEnergyGain(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));
-						DataHolder.setPredReproduction(Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent()));
-						DataHolder.setPredGrid(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						Color predColor=(hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent()));
+						Color preyColor=(hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent()));
+						Color waterColor=(hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent()));
+						int preyProduction=(Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent()));
+						int predEnergy = (Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent()));
+						int energyGain=(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));
+						int predReproduction=(Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent()));
+						String predGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						DataHolder.setPredPrey(predColor, preyColor, waterColor, preyProduction, predEnergy, energyGain, predReproduction, predGrid);
 					}
 				}
 			}

@@ -35,6 +35,10 @@ import javafx.util.Duration;
 
 public class MainView {
 
+	public MainView() {
+		
+	}
+	
 	private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
@@ -72,7 +76,7 @@ public class MainView {
 	private SpeedButton speedBtn;
 	private SlowButton slowBtn;
 	private FileUploadButton fileBtn;
-	private CompareButton compareBtn;
+	//private CompareButton compareBtn;
 	public static ComboBox<File> fileSelector;
 	public static TextField jumpField;
 	private Text title;
@@ -206,7 +210,7 @@ public class MainView {
 		speedBtn = new SpeedButton(BUTTON_COLOR);
 		slowBtn = new SlowButton(BUTTON_COLOR);
 		fileBtn = new FileUploadButton(BUTTON_COLOR);
-		compareBtn = new CompareButton(BUTTON_COLOR);
+		CompareButton compareBtn = new CompareButton(BUTTON_COLOR);
 		jumpField = new TextField();
 		title = new Text();
 		setTitleAuthor();
