@@ -45,10 +45,13 @@ public class PredPreyHolder extends DataHolder {
 		return PRED_GRID;
 	}
 	
-	public static void setPredPrey(Color predColor, Color preyColor, Color waterColor, int preyProduction, int predEnergy, int energyGain, int predReproduction, String predGrid) {
+	public static void setPredPreyColor(Color predColor, Color preyColor, Color waterColor) {
 		PRED_COLOR = predColor;
 		PREY_COLOR = preyColor;
 		WATER_COLOR = waterColor;
+	}
+	
+	public static void setPredPreyParams( int preyProduction, int predEnergy, int energyGain, int predReproduction, String predGrid) {
 		PREY_REPRODUCTION=preyProduction;
 		PRED_ENERGY=predEnergy;
 		ENERGY_GAIN = energyGain;
