@@ -4,15 +4,6 @@ import java.io.File;
 
 import XML.DataHolder;
 import XML.XMLReader;
-import buttons.CompareButton;
-import buttons.FileUploadButton;
-import buttons.JumpButton;
-import buttons.PauseButton;
-import buttons.PlayButton;
-import buttons.ResetButton;
-import buttons.SlowButton;
-import buttons.SpeedButton;
-import buttons.StepButton;
 import cellTypes.Cell;
 import gridTypes.FireGrid;
 import gridTypes.Grid;
@@ -27,10 +18,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.util.Duration;
 
 public class MainView {
@@ -48,7 +37,6 @@ public class MainView {
 	private static final int ANIMATION_SPEED = 100000;
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
-	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static int GRID_SIZE = DataHolder.getDimensions();
 	private static final int INTERFACE_BUTTON_HEIGHT = 100;
 	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
@@ -66,42 +54,18 @@ public class MainView {
 	private static Timeline animation;
 
 	//list of files
-	File GameOfLifeFile = new File("data/GameOfLife.xml");
-	File FireFile = new File("data/SpreadingFire.xml");
-	File SegregationFile = new File("data/Segregation.xml");
-	File PredPreyFile = new File("data/PredPrey.xml");
+	public static final File GameOfLifeFile = new File("data/GameOfLife.xml");
+	public static final File FireFile = new File("data/SpreadingFire.xml");
+	public static final File SegregationFile = new File("data/Segregation.xml");
+	public static final File PredPreyFile = new File("data/PredPrey.xml");
 
-	//creating instance variables of the buttons
-	private PlayButton playBtn;
-	private ResetButton resetBtn;
-	private JumpButton jumpBtn;
-	private PauseButton pauseBtn;
-	private StepButton stepBtn;
-	private SpeedButton speedBtn;
-	private SlowButton slowBtn;
-	private FileUploadButton fileBtn;
-	//private CompareButton compareBtn;
-	public static ComboBox<File> fileSelector;
-	public static TextField jumpField;
-	private Text title;
+	
+	
+	
 
 	//attributes of the buttons
-	public static Boolean playBoolean = false;
-	private static final int BUTTON_Y_POSITION = 440;
-	private static final int BUTTONROW2_Y_POSITION = 480;
-	private static final int PLAYBTN_X_POSITION = 20;
-	private static final int PAUSEBTN_X_POSITION = 80;
-	private static final int STEPBTN_X_POSITION = 150;
-	private static final int RESETBTN_X_POSITION = 210;
-	private static final int JUMPBTN_X_POSITION = 280;
-	private static final int JUMPTXTFIELD_X_POSITION = 340;
-	private static final int JUMPTXT_DIMENSIONS = 70;
-	private static final int TITLE_X_POSITION = 140;
-	private static final int TITLE_Y_POSITION = 430;
-	private static final int SPEEDBTN_X_POSITION = 380;
-	private static final int SLOWBTN_X_POSITION = 340;
-	private static final int FILE_X_POSITION = 290;
-
+	private static Boolean playBoolean = false;
+	
 
 	private static void setupCellGrid(int gridSize) {
 		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
@@ -130,8 +94,8 @@ public class MainView {
 	public Scene initializeStartScene() {
 		group = new Group();
 		setupGrid(SIMULATION);
-		createButtons();
-		arrangeButtons();
+		ButtonView.createButtons();
+		ButtonView.arrangeButtons();
 		myScene = setupScene(myCellGrid);
 		beginAnimationLoop();  //start the animation process
 		myScene.addEventFilter(MouseEvent.DRAG_DETECTED , new EventHandler<MouseEvent>() {
@@ -181,64 +145,27 @@ public class MainView {
 	}
 
 	//create the file selector drop down menu
-	private void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile, PredPreyFile);
-		fileSelector = new ComboBox<>(fileList);
-		fileSelector.setOnAction(e->{
-			DataHolder.INPUTFILE = (File) fileSelector.getValue(); //change new file
-			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
+	
+
+	//update the title with the name of the simulation and the author
+	
+	public static void createDropDownMenu() {
+		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile);
+		ButtonView.setFileSelector(new ComboBox<>(fileList));
+		ButtonView.getFileSelector().setOnAction(e->{
+			DataHolder.setInputFile((File) ButtonView.getFileSelector().getValue()); //change new file
+			DataHolder.setFileInput(new XMLReader(DataHolder.getInputFile()));
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.getDimensions();
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
-			setTitleAuthor();
+			ButtonView.setTitleAuthor();
 			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
 			addCells(myCellGrid);
 		});
 	}
-
-	//update the title with the name of the simulation and the author
-	private void setTitleAuthor() {
-		title.setText(DataHolder.getType()+" by "+DataHolder.getAuthor());
-	}
-
-	//create all the buttons
-	private void createButtons() {
-		playBtn = new PlayButton(BUTTON_COLOR);
-		resetBtn = new ResetButton(BUTTON_COLOR);
-		pauseBtn = new PauseButton(BUTTON_COLOR);
-		jumpBtn = new JumpButton(BUTTON_COLOR);
-		stepBtn = new StepButton(BUTTON_COLOR);
-		speedBtn = new SpeedButton(BUTTON_COLOR);
-		slowBtn = new SlowButton(BUTTON_COLOR);
-		fileBtn = new FileUploadButton(BUTTON_COLOR);
-		CompareButton compareBtn = new CompareButton(BUTTON_COLOR);
-		jumpField = new TextField();
-		title = new Text();
-		setTitleAuthor();
-		createDropDownMenu();
-		group.getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn);
-	}
-
-	//arrange all the buttons on the screen
-	private void arrangeButtons() {
-		playBtn.setPosition(PLAYBTN_X_POSITION, BUTTON_Y_POSITION);
-		pauseBtn.setPosition(PAUSEBTN_X_POSITION,  BUTTON_Y_POSITION);
-		stepBtn.setPosition(STEPBTN_X_POSITION, BUTTON_Y_POSITION);
-		resetBtn.setPosition(RESETBTN_X_POSITION, BUTTON_Y_POSITION);
-		jumpBtn.setPosition(JUMPBTN_X_POSITION, BUTTON_Y_POSITION);
-		speedBtn.setPosition(SPEEDBTN_X_POSITION, BUTTONROW2_Y_POSITION);
-		slowBtn.setPosition(SLOWBTN_X_POSITION, BUTTONROW2_Y_POSITION);
-		fileSelector.setLayoutY(BUTTONROW2_Y_POSITION);
-		fileSelector.setLayoutX(PLAYBTN_X_POSITION);
-		jumpField.setLayoutX(JUMPTXTFIELD_X_POSITION);
-		jumpField.setLayoutY(BUTTON_Y_POSITION);
-		jumpField.setMaxWidth(JUMPTXT_DIMENSIONS);
-		title.setLayoutX(TITLE_X_POSITION);
-		title.setLayoutY(TITLE_Y_POSITION);
-		fileBtn.setPosition(FILE_X_POSITION, BUTTONROW2_Y_POSITION);
-	}
+	
 	
 	public static void multiplyAnimationRate(double rate) {
 		animation.setRate(rate*animation.getRate());
@@ -251,4 +178,23 @@ public class MainView {
 	public static String getSimulation() {
 		return SIMULATION;
 	}
+	
+
+	
+	public static boolean isPlaying() {
+		return playBoolean;
+	}
+	
+	public static void setPlaying(boolean b) {
+		playBoolean = b;
+	}
+	
+	public static Group getGroup() {
+		return group;
+	}
+	
+	public static void setSimulation(String s) {
+		SIMULATION = s;
+	}
+	
 }

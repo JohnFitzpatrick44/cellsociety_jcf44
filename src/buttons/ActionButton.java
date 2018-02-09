@@ -12,10 +12,10 @@ import javafx.scene.paint.Color;
  *
  */
 public abstract class ActionButton extends Button{
-	public static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
+	private static final String DEFAULT_RESOURCE_PACKAGE = "resources/";
 	private static final String RESOURCE_FILE = "OriginalGUI";
 	private String buttonName;
-	public static ResourceBundle myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+RESOURCE_FILE);
+	public static final ResourceBundle myResources = ResourceBundle.getBundle(DEFAULT_RESOURCE_PACKAGE+RESOURCE_FILE);
 	/*
 	 * Constructor for the ActionButton
 	 * @parameters buttonName takes in a string for the name of the button
@@ -60,12 +60,13 @@ public abstract class ActionButton extends Button{
 	}
 	//return the state of the playBoolean
 	public Boolean getPlayBoolean () {
-		return MainView.playBoolean;
+		return MainView.isPlaying();
 	}
 	
 	//setter for boolean 
 	public static Boolean setPlayBoolean(Boolean state) {
-	        return MainView.playBoolean = state;
+	        MainView.setPlaying(state);
+	        return state;
 	}
 
 }

@@ -2,8 +2,7 @@ package buttons;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
-
-
+import View.ButtonView;
 import View.MainView;
 import gridTypes.Grid;
 /*
@@ -26,8 +25,8 @@ public class JumpButton extends ActionButton{
 	private void setJumpEvent() {
 		this.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
-		    	if (isNumeric(MainView.jumpField.getText())) {
-		        for (int i = 0; i<Integer.parseInt(MainView.jumpField.getText()); i++) {
+		    	if (isNumeric(ButtonView.getJumpField().getText())) {
+		        for (int i = 0; i<Integer.parseInt(ButtonView.getJumpField().getText()); i++) {
 		        		Grid.updateStates(MainView.getMyCellGrid());
 		        }
 		    	}

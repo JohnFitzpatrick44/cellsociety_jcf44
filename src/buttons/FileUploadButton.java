@@ -1,9 +1,8 @@
 package buttons;
 import java.io.File;
 
-
+import View.ButtonView;
 import View.Main;
-import View.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
@@ -42,8 +41,8 @@ public class FileUploadButton extends ActionButton{
 		fileChooser.setTitle("Open Resource File");
 		File file = fileChooser.showOpenDialog(Main.getMainStage());
         if (file != null) {
-        		MainView.fileSelector.getItems().add(file);
-        		MainView.fileSelector.setMaxWidth(MAX_WIDTH);
+        		ButtonView.getFileSelector().getItems().add(file);
+        		ButtonView.getFileSelector().setMaxWidth(MAX_WIDTH);
         }
 	}
 

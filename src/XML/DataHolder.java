@@ -11,12 +11,20 @@ public abstract class DataHolder {
 	
 	
 
-	public static File INPUTFILE = new File("data/GameOfLife.xml");
+	private static File INPUTFILE = new File("data/GameOfLife.xml");
 
 	/*
 	 * creating instance of the XMLreader which calls the parse method to parse through inputfile.
 	 */
-	public static XMLReader fileInput = new XMLReader(INPUTFILE); 
+	private static XMLReader fileInput = new XMLReader(INPUTFILE); 
+	public static XMLReader getFileInput() {
+		return fileInput;
+	}
+
+	public static void setFileInput(XMLReader fileInput) {
+		DataHolder.fileInput = fileInput;
+	}
+
 	//getter methods
 	public static String getType() {
 		return TYPE;
@@ -43,6 +51,14 @@ public abstract class DataHolder {
 	}
 	public static void setDimensions(int dimensions) {
 		DIMENSIONS = dimensions;
+	}
+	
+	public static void setInputFile(File in) {
+		INPUTFILE = in;
+	}
+	
+	public static File getInputFile() {
+		return INPUTFILE;
 	}
 	
 	
