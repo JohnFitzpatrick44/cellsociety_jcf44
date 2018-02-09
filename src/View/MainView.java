@@ -38,7 +38,7 @@ public class MainView {
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static int GRID_SIZE = DataHolder.getDimensions();
-	private static final int INTERFACE_BUTTON_HEIGHT = 100;
+	private static final int INTERFACE_BUTTON_HEIGHT = 110;
 	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
@@ -53,7 +53,7 @@ public class MainView {
 	private static Cell[][] myCellGrid;
 	private static Timeline animation;
 
-	//list of files
+	//list of initial files
 	public static final File GameOfLifeFile = new File("data/GameOfLife.xml");
 	public static final File FireFile = new File("data/SpreadingFire.xml");
 	public static final File SegregationFile = new File("data/Segregation.xml");
@@ -167,8 +167,10 @@ public class MainView {
 	}
 	
 	
-	public static void multiplyAnimationRate(double rate) {
-		animation.setRate(rate*animation.getRate());
+	public static void setAnimationRate(double rate) {
+		System.out.println(animation.getRate());
+		animation.setRate(rate);
+	
 	}
 	
 	public static Cell[][] getMyCellGrid() {
