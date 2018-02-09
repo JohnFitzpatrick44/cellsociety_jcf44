@@ -1,13 +1,16 @@
 package XML;
 import java.io.File;
+import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javafx.scene.paint.Color;
 
@@ -21,11 +24,25 @@ public class XMLReader {
 
 	
 	public XMLReader(File inputFile) {
-		parse(inputFile);
+		try {
+			parse(inputFile);
+		} catch (XMLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	private void parse(File xmlFile) throws XMLException {
-		try {
+	private void parse(File xmlFile) throws XMLException, ParserConfigurationException, SAXException, IOException {
+		//try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(xmlFile);
@@ -80,10 +97,10 @@ public class XMLReader {
 					}
 				}
 			}
-		} catch (Exception e) {
+		//} catch (Exception e) {
 			//e.printStackTrace();
-			System.out.println("variable can not be read");
-		}
+		//	System.out.println("variable can not be read");
+		//}
 	}
 
 	public static Color hex2Rgb(String colorStr) {
