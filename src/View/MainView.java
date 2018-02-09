@@ -25,7 +25,6 @@ import javafx.util.Duration;
 public class MainView {
 
 	public MainView() {
-		
 	}
 	
 	private static final double CUTOFF = 0.5;
