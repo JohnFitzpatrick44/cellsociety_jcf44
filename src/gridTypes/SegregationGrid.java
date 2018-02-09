@@ -1,13 +1,13 @@
 package gridTypes;
 
-import XML.DataHolder;
+import XML.SegregationHolder;
 import cellTypes.Cell;
 import cellTypes.SegregationCell;
 
 public class SegregationGrid extends Grid {
 	
 
-	private String configString = DataHolder.getSegGrid();
+	private String configString = SegregationHolder.getSegGrid();
 	private static final int DEFAULT = 0;
 	
 	@Override

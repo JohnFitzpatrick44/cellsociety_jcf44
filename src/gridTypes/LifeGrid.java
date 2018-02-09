@@ -1,6 +1,6 @@
 package gridTypes;
 
-import XML.DataHolder;
+import XML.LifeHolder;
 import cellTypes.Cell;
 import cellTypes.LifeCell;
 
@@ -8,7 +8,7 @@ public class LifeGrid extends Grid {
 
 	private static final int DEAD = 0;
 
-	private String configString = DataHolder.getLifeGrid();
+	private String configString = LifeHolder.getLifeGrid();
 
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);

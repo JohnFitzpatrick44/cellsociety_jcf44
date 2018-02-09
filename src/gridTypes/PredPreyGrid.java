@@ -1,13 +1,13 @@
 package gridTypes;
 
-import XML.DataHolder;
+import XML.PredPreyHolder;
 import cellTypes.Cell;
 
 import cellTypes.PredPreyCell;
 
 public class PredPreyGrid extends Grid {
 		
-	private String configString = DataHolder.getPredGrid();
+	private String configString = PredPreyHolder.getPredGrid();
 
 	private static final int WATER = 0;
 	

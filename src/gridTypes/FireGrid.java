@@ -1,6 +1,6 @@
 package gridTypes;
 
-import XML.DataHolder;
+import XML.FireHolder;
 import cellTypes.Cell;
 import cellTypes.FireCell;
 
@@ -8,7 +8,7 @@ public class FireGrid extends Grid {
 	
 
 	private static final int DEFAULT = 1;
-	private String configString = DataHolder.getFireGrid();
+	private String configString = FireHolder.getFireGrid();
 	
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {

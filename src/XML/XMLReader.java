@@ -46,7 +46,7 @@ public class XMLReader {
 						Color deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
 						Double percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
 						String lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						DataHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
+						LifeHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
 					}
 					
 					if (DataHolder.getType().equals("Spreading Fire")) {
@@ -55,7 +55,7 @@ public class XMLReader {
 						Color treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
 						Double probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
 						String fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						DataHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
+						FireHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
 					}
 					
 					if(DataHolder.getType().equals("Segregation")) {
@@ -63,7 +63,7 @@ public class XMLReader {
 						Color bColor=(hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent()));
 						Color neutralColor=(hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent()));
 						String segGrid = (eElement.getElementsByTagName("grid").item(0).getTextContent());
-						DataHolder.setSegregation(aColor, bColor, neutralColor, segGrid);
+						SegregationHolder.setSegregation(aColor, bColor, neutralColor, segGrid);
 					}
 					
 					if(DataHolder.getType().equals("Predator")) {
@@ -75,7 +75,7 @@ public class XMLReader {
 						int energyGain=(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));
 						int predReproduction=(Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent()));
 						String predGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						DataHolder.setPredPrey(predColor, preyColor, waterColor, preyProduction, predEnergy, energyGain, predReproduction, predGrid);
+						PredPreyHolder.setPredPrey(predColor, preyColor, waterColor, preyProduction, predEnergy, energyGain, predReproduction, predGrid);
 					}
 				}
 			}

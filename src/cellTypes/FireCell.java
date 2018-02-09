@@ -2,8 +2,7 @@ package cellTypes;
 
 import java.util.Random;
 
-import XML.DataHolder;
-
+import XML.FireHolder;
 import javafx.scene.paint.Color;
 
 /**
@@ -12,16 +11,16 @@ import javafx.scene.paint.Color;
  */
 public class FireCell extends Cell {
 
-	private static final Color GROUND_COLOR = DataHolder.getBurntColor();
-	private static final Color TREE_COLOR = DataHolder.getTreeColor();
-	private static final Color FIRE_COLOR = DataHolder.getBurningColor();
+	private static final Color GROUND_COLOR = FireHolder.getBurntColor();
+	private static final Color TREE_COLOR = FireHolder.getTreeColor();
+	private static final Color FIRE_COLOR = FireHolder.getBurningColor();
 	private static final int MAX_STATE = 2;
 
 	private static final int EMPTY = 0;
 	private static final int TREE = 1;
 	private static final int BURNING = 2;
 
-	private static final double PROB_CATCH = DataHolder.getProbCatch();
+	private static final double PROB_CATCH = FireHolder.getProbCatch();
 
 	/**
 	 * Constructor for a fire cell

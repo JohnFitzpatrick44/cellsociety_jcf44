@@ -2,14 +2,14 @@ package cellTypes;
 
 import java.util.List;
 
-import XML.DataHolder;
+import XML.LifeHolder;
 import javafx.scene.paint.Color;
 
 
 public class LifeCell extends Cell {
 
-	private static final Color DEAD_COLOR = DataHolder.getDeadColor();
-	private static final Color ALIVE_COLOR = DataHolder.getAliveColor();
+	private static final Color DEAD_COLOR = LifeHolder.getDeadColor();
+	private static final Color ALIVE_COLOR = LifeHolder.getAliveColor();
 
 	private static final int MAX_STATE = 1;
 

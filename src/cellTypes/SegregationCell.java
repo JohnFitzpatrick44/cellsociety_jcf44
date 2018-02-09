@@ -1,13 +1,13 @@
 package cellTypes;
 
-import XML.DataHolder;
+import XML.SegregationHolder;
 import javafx.scene.paint.Color;
 
 public class SegregationCell extends Cell {
 
-	private static final Color A_COLOR = DataHolder.getAColor();
-	private static final Color B_COLOR = DataHolder.getBColor();
-	private static final Color NEUTRAL_COLOR = DataHolder.getNeutralColor();
+	private static final Color A_COLOR = SegregationHolder.getAColor();
+	private static final Color B_COLOR = SegregationHolder.getBColor();
+	private static final Color NEUTRAL_COLOR = SegregationHolder.getNeutralColor();
 	private static final int MAX_STATE = 2;
 
 	private static final int EMPTY = 0;
