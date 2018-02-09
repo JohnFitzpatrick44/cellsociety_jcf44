@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  */
 public class CompareButton extends ActionButton{
 
-	private final String BUTTON_NAME = myResources.getString("Pause");
+	private final String BUTTON_NAME = myResources.getString("Compare");
 
 	public CompareButton(Color buttonColor) {
 		super(buttonColor);
