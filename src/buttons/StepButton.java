@@ -30,7 +30,7 @@ public class StepButton extends ActionButton{
 		});
 	}
 	private void step() {
-		Grid.updateStates(MainView.myCellGrid);
+		Grid.updateStates(MainView.getMyCellGrid());
 	}
 }
 

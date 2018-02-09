@@ -28,7 +28,7 @@ public class JumpButton extends ActionButton{
 		    @Override public void handle(ActionEvent e) {
 		    	if (isNumeric(MainView.jumpField.getText())) {
 		        for (int i = 0; i<Integer.parseInt(MainView.jumpField.getText()); i++) {
-		        		Grid.updateStates(MainView.myCellGrid);
+		        		Grid.updateStates(MainView.getMyCellGrid());
 		        }
 		    	}
 		    }

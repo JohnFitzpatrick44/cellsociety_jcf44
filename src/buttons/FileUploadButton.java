@@ -1,16 +1,12 @@
 package buttons;
-import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 import View.Main;
 import View.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 /*
  * FileUploadButton class that inherits the ActionButton
@@ -20,7 +16,7 @@ import javafx.stage.FileChooser;
 public class FileUploadButton extends ActionButton{
 
 	private final String BUTTON_NAME = myResources.getString("File");
-	private Desktop desktop = Desktop.getDesktop();
+	//private Desktop desktop = Desktop.getDesktop();
 	public FileUploadButton(Color buttonColor) {
 		super(buttonColor);
 		this.setButtonText(BUTTON_NAME);

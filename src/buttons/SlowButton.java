@@ -31,6 +31,6 @@ public class SlowButton extends ActionButton{
 		});
 	}
 	private void slow() {
-		MainView.animation.setRate(0.5*MainView.animation.getRate());
+		MainView.multiplyAnimationRate(0.5);
 	}
 }
