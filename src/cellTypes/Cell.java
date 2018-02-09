@@ -15,7 +15,7 @@ import javafx.scene.shape.Rectangle;
  */
 public abstract class Cell extends Rectangle implements IGrid {
 
-	public final Color BORDER_COLOR = Color.BLACK;
+	public static final Color BORDER_COLOR = Color.BLACK;
 
 	/**
 	 * Array of neighboring cells, as determined by grid

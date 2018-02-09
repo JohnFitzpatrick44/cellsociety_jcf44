@@ -6,7 +6,7 @@ import cellTypes.LifeCell;
 
 public class LifeGrid extends Grid {
 
-	private final int DEAD = 0;
+	private static final int DEAD = 0;
 
 	private String configString = DataHolder.getLifeGrid();
 

@@ -12,6 +12,8 @@ public class SpeedButton extends ActionButton{
 	
 	private final String BUTTON_NAME = myResources.getString("Speed");
 
+	private static final double SPEED_AMOUNT = 2;
+	
 	public SpeedButton(Color buttonColor) {
 		super(buttonColor);
 		this.setButtonText(BUTTON_NAME);
@@ -31,6 +33,6 @@ public class SpeedButton extends ActionButton{
 		});
 	}
 	private void speed() {
-		MainView.multiplyAnimationRate(2);
+		MainView.multiplyAnimationRate(SPEED_AMOUNT);
 	}
 }

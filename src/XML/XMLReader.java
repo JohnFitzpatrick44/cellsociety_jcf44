@@ -13,6 +13,13 @@ import javafx.scene.paint.Color;
 
 public class XMLReader {
 
+	private static final int COLOR_INDEX_1 = 1;
+	private static final int COLOR_INDEX_2 = 3;
+	private static final int COLOR_INDEX_3 = 5;
+	private static final int COLOR_INDEX_4 = 7;
+	private static final int COLOR_INDEX_END = 16;
+
+	
 	public XMLReader(File inputFile) {
 		parse(inputFile);
 	}
@@ -73,16 +80,16 @@ public class XMLReader {
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.out.println("variable can not be read");
 		}
 	}
 
 	public static Color hex2Rgb(String colorStr) {
 	    return Color.rgb(
-	            Integer.valueOf( colorStr.substring( 1, 3 ), 16 ),
-	            Integer.valueOf( colorStr.substring( 3, 5 ), 16 ),
-	            Integer.valueOf( colorStr.substring( 5, 7 ), 16 ) );
+	            Integer.valueOf( colorStr.substring( COLOR_INDEX_1, COLOR_INDEX_2), COLOR_INDEX_END ),
+	            Integer.valueOf( colorStr.substring( COLOR_INDEX_2, COLOR_INDEX_3 ), COLOR_INDEX_END ),
+	            Integer.valueOf( colorStr.substring( COLOR_INDEX_3, COLOR_INDEX_4 ), COLOR_INDEX_END ) );
 	}
 	
 } 

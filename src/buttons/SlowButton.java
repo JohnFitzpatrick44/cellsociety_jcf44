@@ -11,7 +11,8 @@ import javafx.scene.paint.Color;
 public class SlowButton extends ActionButton{
 	
 	private final String BUTTON_NAME = myResources.getString("Slow");
-
+	private static final double SLOW_AMOUNT = 0.5;
+	
 	public SlowButton(Color buttonColor) {
 		super(buttonColor);
 		this.setButtonText(BUTTON_NAME);
@@ -31,6 +32,6 @@ public class SlowButton extends ActionButton{
 		});
 	}
 	private void slow() {
-		MainView.multiplyAnimationRate(0.5);
+		MainView.multiplyAnimationRate(SLOW_AMOUNT);
 	}
 }

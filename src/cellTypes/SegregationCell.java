@@ -47,8 +47,8 @@ public class SegregationCell extends Cell {
 	}
 
 	private double getPercentAlike() {
-		double like = 0;
-		double unlike = 0;
+		int like = 0;
+		int unlike = 0;
 		for(int state : getNeighborStates()) {
 			if(state == getState()) {
 				like++;
@@ -60,7 +60,7 @@ public class SegregationCell extends Cell {
 		if(unlike == 0) {
 			return 1;
 		}
-		return like/(like+unlike);
+		return (double)like/ (double)(like+unlike);
 	}
 
 	private void swapState(Cell swapping) {

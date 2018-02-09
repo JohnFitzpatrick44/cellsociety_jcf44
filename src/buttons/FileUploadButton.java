@@ -15,6 +15,8 @@ import javafx.stage.FileChooser;
  */
 public class FileUploadButton extends ActionButton{
 
+	private static final int MAX_WIDTH = 250;
+	
 	private final String BUTTON_NAME = myResources.getString("File");
 	//private Desktop desktop = Desktop.getDesktop();
 	public FileUploadButton(Color buttonColor) {
@@ -41,7 +43,7 @@ public class FileUploadButton extends ActionButton{
 		File file = fileChooser.showOpenDialog(Main.getMainStage());
         if (file != null) {
         		MainView.fileSelector.getItems().add(file);
-        		MainView.fileSelector.setMaxWidth(250);
+        		MainView.fileSelector.setMaxWidth(MAX_WIDTH);
         }
 	}
 

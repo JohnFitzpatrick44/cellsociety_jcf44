@@ -39,6 +39,8 @@ public class MainView {
 		
 	}
 	
+	private static final double CUTOFF = 0.5;
+	
 	private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
@@ -48,10 +50,12 @@ public class MainView {
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static final Color BUTTON_COLOR = Color.BLACK;	
 	private static int GRID_SIZE = DataHolder.getDimensions();
-	private static int CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-	private static final int interfaceButtonHeight = 100;
-	private static int CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-interfaceButtonHeight)/GRID_SIZE;
-	private static final int totalOffset = GRID_OFFSET*2;
+	private static final int INTERFACE_BUTTON_HEIGHT = 100;
+	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
+	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
+	private static int CELL_WIDTH = INIT_CELL_WIDTH;
+	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
+	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 
 	private static String SIMULATION = DataHolder.getType();
 
@@ -100,7 +104,7 @@ public class MainView {
 
 
 	private static void setupCellGrid(int gridSize) {
-		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,0.5);
+		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
 	}
 
 	public static void setupGrid(String name) {
@@ -151,8 +155,7 @@ public class MainView {
 	//removed Scene stage from parameters
 	public static Scene setupScene(Cell[][] cellGrid) {
 		addCells(cellGrid);
-		Scene startScene = new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
-		return startScene;
+		return new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 	}
 
 	public static void removeCells(Cell[][] cellGrid) {
@@ -186,8 +189,8 @@ public class MainView {
 			DataHolder.fileInput = new XMLReader(DataHolder.INPUTFILE);
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.getDimensions();
-			CELL_WIDTH = (WIDTH_SIZE-totalOffset)/GRID_SIZE;
-			CELL_HEIGHT = (HEIGHT_SIZE-totalOffset-interfaceButtonHeight)/GRID_SIZE;
+			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
+			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			setTitleAuthor();
 			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	

@@ -7,7 +7,7 @@ import cellTypes.FireCell;
 public class FireGrid extends Grid {
 	
 
-	private final int DEFAULT = 1;
+	private static final int DEFAULT = 1;
 	private String configString = DataHolder.getFireGrid();
 	
 	@Override

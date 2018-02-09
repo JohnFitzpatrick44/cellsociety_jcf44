@@ -37,14 +37,12 @@ public class JumpButton extends ActionButton{
 	
 	//checks if the word written is a numerical value
 	private Boolean isNumeric(String value) {
-		Boolean isTrue = false;
 		try {
 			Integer.parseInt(value);
-			isTrue = true;
 		}catch (NumberFormatException e) {
-	
+			return false;
 		}
-		return isTrue;
+		return true;
 		
 	}
 }

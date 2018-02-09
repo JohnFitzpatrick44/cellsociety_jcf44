@@ -46,7 +46,7 @@ public class LifeCell extends Cell {
 			if(numAlive < MIN_ALIVE || numAlive > MAX_ALIVE) {
 				this.setState(DEAD);
 			}
-		} else if(this.getState() == DEAD) {
+		} else {
 			if(numAlive == MAX_ALIVE) {
 				this.setState(ALIVE);
 			}
