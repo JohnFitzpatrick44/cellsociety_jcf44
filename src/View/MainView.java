@@ -5,11 +5,14 @@ import java.io.File;
 import XML.DataHolder;
 import XML.XMLReader;
 import cellTypes.Cell;
+import cellTypes.TriangleCell;
 import gridTypes.FireGrid;
 import gridTypes.Grid;
 import gridTypes.LifeGrid;
+import gridTypes.LifeTriangleGrid;
 import gridTypes.PredPreyGrid;
 import gridTypes.SegregationGrid;
+import gridTypes.TriangleGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -43,6 +46,7 @@ public class MainView {
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
 	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
+	private static final double TRIANGLE_HEIGHT = 50.0;
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 
 	private static String SIMULATION = DataHolder.getType();
@@ -50,7 +54,9 @@ public class MainView {
 	private static Group group;
 	private static Scene myScene;
 	private static Grid grid;
+	private static TriangleGrid triangleGrid;
 	private static Cell[][] myCellGrid;
+	private static TriangleCell[][] myTriangleCellGrid;
 	private static Timeline animation;
 
 	//list of files
@@ -59,23 +65,21 @@ public class MainView {
 	public static final File SegregationFile = new File("data/Segregation.xml");
 	public static final File PredPreyFile = new File("data/PredPrey.xml");
 
-	
-	
-	
-
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
 	
 
 	private static void setupCellGrid(int gridSize) {
-		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
+//		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
+		myTriangleCellGrid = triangleGrid.createGrid(GRID_OFFSET, GRID_SIZE, TRIANGLE_HEIGHT, CUTOFF);
 	}
 
 	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
-			grid = new LifeGrid();
+//			grid = new LifeGrid();
+			triangleGrid = new LifeTriangleGrid();
 			setupCellGrid(GRID_SIZE);
-			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
+//			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
 			setupCellGrid(GRID_SIZE);
@@ -96,7 +100,7 @@ public class MainView {
 		setupGrid(SIMULATION);
 		ButtonView.createButtons();
 		ButtonView.arrangeButtons();
-		myScene = setupScene(myCellGrid);
+		myScene = setupScene(myTriangleCellGrid);
 		beginAnimationLoop();  //start the animation process
 		myScene.addEventFilter(MouseEvent.DRAG_DETECTED , new EventHandler<MouseEvent>() {
 			@Override
@@ -117,12 +121,12 @@ public class MainView {
 	}
 
 	//removed Scene stage from parameters
-	public static Scene setupScene(Cell[][] cellGrid) {
+	public static Scene setupScene(TriangleCell[][] cellGrid) {
 		addCells(cellGrid);
 		return new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 	}
 
-	public static void removeCells(Cell[][] cellGrid) {
+	public static void removeCells(TriangleCell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().remove(cellGrid[i][j]);
@@ -130,9 +134,10 @@ public class MainView {
 		}	
 	}
 
-	public static void addCells(Cell[][] cellGrid) {
+	public static void addCells(TriangleCell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
+				System.out.println(cellGrid[i][j].getState());
 				group.getChildren().add(cellGrid[i][j]);
 			}
 		}	
@@ -160,9 +165,9 @@ public class MainView {
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
-			removeCells(myCellGrid);
+			removeCells(myTriangleCellGrid);
 			setupGrid(SIMULATION);	
-			addCells(myCellGrid);
+			addCells(myTriangleCellGrid);
 		});
 	}
 	

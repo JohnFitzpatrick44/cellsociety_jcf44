@@ -5,35 +5,46 @@ import java.util.List;
 import XML.LifeHolder;
 import javafx.scene.paint.Color;
 
-
-public class LifeCell extends Cell {
-
+public class LifeTriangleCell extends TriangleCell{
+	
 	private static final Color DEAD_COLOR = LifeHolder.getDeadColor();
 	private static final Color ALIVE_COLOR = LifeHolder.getAliveColor();
-
+	
 	private static final int MAX_STATE = 1;
-
+	
 	private static final int DEAD = 0;
 	private static final int ALIVE = 1;
-	private static final int MIN_ALIVE = 3;
-	private static final int MAX_ALIVE = 4;
+	private static final int MIN_ALIVE = 2;
+	private static final int MAX_ALIVE = 3;
 
-	public LifeCell(int x, int y, int width, int height, int state) {
-		this(x, y, width, height);
-		setState(state);
-		updateFill();
-	}
-
-	public LifeCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public LifeTriangleCell(double x, double y, double side) {
+		super(x, y, side);
 		setState(DEAD);
 		updateFill();
 	}
-
-	public LifeCell() {
-		this(0, 0, 0, 0);
+	
+	public LifeTriangleCell(double x, double y, double side, int state) {
+		this(x,y,side);
+		setState(state);
+		updateFill();
 	}
+	
+	public LifeTriangleCell(double x, double y, double side, int state, boolean isInverted) {
+		this(x,y,side);
+		if(isInverted) {
+			this.makeInvertedTriangle(side);
+		} else {
+			this.makeTriangle(side);
+		}
+		setState(state);
+		updateFill();
 
+	}
+	
+	public LifeTriangleCell() {
+		this(0.0,0.0,0.0);
+	}
+	
 	public void updateState() {
 		int numAlive = sumArray(this.getNeighborStates());
 		if(this.getState() == ALIVE) {
@@ -47,7 +58,7 @@ public class LifeCell extends Cell {
 		}
 		updateFill();
 	}
-
+	
 	private int sumArray(List<Integer> arr) {
 		int sum = 0;
 		for(int x : arr) {
@@ -56,17 +67,19 @@ public class LifeCell extends Cell {
 		return sum;
 	}
 
-	public int getMaxState() {
-		return MAX_STATE;
-	}
-
+	@Override
 	public void updateFill() {
 		if(getState() == DEAD) {
 			setFill(DEAD_COLOR);
 		}
 		else {
 			setFill(ALIVE_COLOR);
-		}
+		}		
+	}
+
+	@Override
+	public int getMaxState() {
+		return MAX_STATE;
 	}
 
 }
