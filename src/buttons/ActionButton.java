@@ -1,6 +1,7 @@
 package buttons;
 import java.util.ResourceBundle;
 
+import View.MainTriangleView;
 import View.MainView;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
@@ -60,12 +61,12 @@ public abstract class ActionButton extends Button{
 	}
 	//return the state of the playBoolean
 	public Boolean getPlayBoolean () {
-		return MainView.isPlaying();
+		return MainTriangleView.isPlaying();
 	}
 	
 	//setter for boolean 
 	public static Boolean setPlayBoolean(Boolean state) {
-	        MainView.setPlaying(state);
+	        MainTriangleView.setPlaying(state);
 	        return state;
 	}
 
