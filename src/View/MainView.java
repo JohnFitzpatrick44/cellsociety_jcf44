@@ -1,4 +1,5 @@
 package View;
+import View.ChartView;
 
 import java.io.File;
 
@@ -26,7 +27,6 @@ import rectGrids.SegregationGrid;
 public class MainView {
 
 	public MainView() {
-		
 	}
 	
 	private static final double CUTOFF = 0.5;
@@ -53,7 +53,7 @@ public class MainView {
 	private static Cell[][] myCellGrid;
 	private static Timeline animation;
 
-	//list of files
+	//list of initial files
 	public static final File GameOfLifeFile = new File("data/GameOfLife.xml");
 	public static final File FireFile = new File("data/SpreadingFire.xml");
 	public static final File SegregationFile = new File("data/Segregation.xml");
@@ -180,8 +180,11 @@ public class MainView {
 	}
 	
 	
-	public static void multiplyAnimationRate(double rate) {
-		animation.setRate(rate*animation.getRate());
+	public static void setAnimationRate(double rate) {
+		System.out.println(animation.getRate());
+		animation.setRate(rate);
+		ChartView.updateChartAnimationRate(rate);
+	
 	}
 	
 	public static Cell[][] getMyCellGrid() {

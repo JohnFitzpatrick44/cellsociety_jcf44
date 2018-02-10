@@ -33,6 +33,6 @@ public class SpeedButton extends ActionButton{
 		});
 	}
 	private void speed() {
-		MainView.multiplyAnimationRate(SPEED_AMOUNT);
+		MainView.setAnimationRate(SPEED_AMOUNT);
 	}
 }
