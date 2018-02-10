@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <simulation>
 	 <type name="Game Of Life" author="team03">
-			<dimensions>10</dimensions>
+			<dimensions>20</dimensions>
 			<alive>#000000</alive>
 			<dead>#ffffff</dead>
 			<percentDead>20</percentDead>

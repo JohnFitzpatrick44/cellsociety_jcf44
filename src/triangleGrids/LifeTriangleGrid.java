@@ -15,14 +15,14 @@ public class LifeTriangleGrid extends TriangleGrid{
 				if(j%2!=0 || j==1) {
 					grid[i][j] = new LifeTriangleCell(offset+blockSpacing,offset+heightSpacing,side,0,true);
 					blockSpacing+=side;
-					System.out.println("White!");
+//					System.out.println("White!");
 				} else {
 					grid[i][j] = new LifeTriangleCell(offset+blockSpacing,offset+heightSpacing,side,1,false);
-					System.out.println("Black!");
+//					System.out.println("Black!");
 				}
 			}
 			heightSpacing += side;
-		}		
+		}
 		return grid;
 	}
 	

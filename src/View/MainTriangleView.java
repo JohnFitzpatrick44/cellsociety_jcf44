@@ -38,10 +38,8 @@ public class MainTriangleView {
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static int GRID_SIZE = DataHolder.getDimensions();
 	private static final int INTERFACE_BUTTON_HEIGHT = 100;
-	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
-	private static final double TRIANGLE_HEIGHT = 40.0;
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
+	private static int TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 
 	private static String SIMULATION = DataHolder.getType();
 
@@ -160,6 +158,7 @@ public class MainTriangleView {
 			DataHolder.setFileInput(new XMLReader(DataHolder.getInputFile()));
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.getDimensions();
+			TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
 			removeCells(myTriangleCellGrid);
 			setupGrid(SIMULATION);	
