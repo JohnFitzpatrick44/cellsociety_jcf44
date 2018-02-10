@@ -15,8 +15,8 @@ public class LifeCell extends Cell {
 
 	private static final int DEAD = 0;
 	private static final int ALIVE = 1;
-	private static final int MIN_ALIVE = 3;
-	private static final int MAX_ALIVE = 4;
+	private static final int MIN_ALIVE = 2;
+	private static final int MAX_ALIVE = 3;
 
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);

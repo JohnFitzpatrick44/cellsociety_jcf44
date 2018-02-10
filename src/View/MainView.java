@@ -185,13 +185,13 @@ public class MainView {
 		if (playBoolean) {
 //			TriangleGrid.updateStates(myTriangleCellGrid);
 			Grid.updateStates(myTriangleCellGrid);
-			for(int i=0;i<myTriangleCellGrid.length;i++) {
-				for(int j=0;j<myTriangleCellGrid[i].length;j++) {
-					System.out.println(i);
-					System.out.println(j);
-					System.out.println(myTriangleCellGrid[i][j].getNeighborStates());
-				}
-			}	
+//			for(int i=0;i<myTriangleCellGrid.length;i++) {
+//				for(int j=0;j<myTriangleCellGrid[i].length;j++) {
+//					System.out.println(i);
+//					System.out.println(j);
+//					System.out.println(myTriangleCellGrid[i][j].getNeighborStates());
+//				}
+//			}	
 		}
 		
 	}
