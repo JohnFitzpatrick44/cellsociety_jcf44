@@ -13,7 +13,7 @@ public class CellMover {
 	/**
 	 * List of all Cells in a simulation
 	 */
-	private ArrayList<Cell> cellList;
+	private static ArrayList<Cell> cellList;
 
 	/**
 	 * Constructor, no arguments needed
@@ -56,7 +56,7 @@ public class CellMover {
 		destination.updateFill();
 	}
 
-	public double getPercentAlike(int state) {
+	public static double getPercentAlike(int state) {
 		double count = 0;
 		for(Cell c : cellList) {
 			if(c.getState() == state) {

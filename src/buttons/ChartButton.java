@@ -1,4 +1,5 @@
 package buttons;
+import View.ChartView;
 import View.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,7 +13,7 @@ import javafx.stage.Stage;
  */
 public class ChartButton extends ActionButton{
 				
-	private final String BUTTON_NAME = myResources.getString("Pause");
+	private final String BUTTON_NAME = myResources.getString("Chart");
 
 	public ChartButton(Color buttonColor) {
 		super(buttonColor);

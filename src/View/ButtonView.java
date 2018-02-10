@@ -3,6 +3,7 @@ package View;
 import java.io.File;
 
 import XML.DataHolder;
+import buttons.ChartButton;
 import buttons.CompareButton;
 import buttons.FileUploadButton;
 import buttons.JumpButton;
@@ -52,6 +53,7 @@ public class ButtonView {
 	private static SlowButton slowBtn;
 	private static FileUploadButton fileBtn;
 	private static SpeedSlider speedSlider;
+	private static ChartButton chartBtn;
 	//private CompareButton compareBtn;
 	
 	private static ComboBox<File> fileSelector;
@@ -90,12 +92,13 @@ public class ButtonView {
 		slowBtn = new SlowButton(BUTTON_COLOR);
 		fileBtn = new FileUploadButton(BUTTON_COLOR);
 		speedSlider = new SpeedSlider(MINSLIDERSPEED, MAXSLIDERSPEED, DEFAULTSLIDERSPEED);
-		CompareButton compareBtn = new CompareButton(BUTTON_COLOR);
+//		CompareButton compareBtn = new CompareButton(BUTTON_COLOR);
+		chartBtn = new ChartButton(BUTTON_COLOR);
 		jumpField = new TextField();
 		title = new Text();
 		setTitleAuthor();
 		MainView.createDropDownMenu();
-		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn, speedSlider);
+		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, speedSlider, chartBtn);
 	}
 
 	//arrange all the buttons on the screen
@@ -116,6 +119,7 @@ public class ButtonView {
 		title.setLayoutY(TITLE_Y_POSITION);
 		fileBtn.setPosition(FILE_X_POSITION, BUTTONROW2_Y_POSITION);
 		speedSlider.setPosition(SLIDER_X_POSITION, BUTTONROW3_Y_POSITION);
+		chartBtn.setPosition(RESETBTN_X_POSITION, BUTTONROW3_Y_POSITION);
 	}
 
 	
