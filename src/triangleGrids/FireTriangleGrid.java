@@ -10,7 +10,7 @@ public class FireTriangleGrid extends TriangleGrid{
 		TriangleCell[][] grid = new TriangleCell[gridSize][gridSize*2];
 		double heightSpacing = 0.0;
 		for(int i =0;i<grid.length;i++) {
-			int blockSpacing = 0;
+			double blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
 				if(j==0) {
 					grid[i][j] = new FireTriangleCell(offset+blockSpacing,offset+heightSpacing,side,2,false);
