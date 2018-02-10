@@ -1,8 +1,8 @@
-package gridTypes;
+package rectGrids;
 
 import XML.SegregationHolder;
-import cellTypes.Cell;
-import cellTypes.SegregationCell;
+import rectCells.Cell;
+import rectCells.SegregationCell;
 
 public class SegregationGrid extends RectangleGrid {
 	

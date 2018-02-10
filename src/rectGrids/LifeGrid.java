@@ -1,8 +1,8 @@
-package gridTypes;
+package rectGrids;
 
 import XML.LifeHolder;
-import cellTypes.Cell;
-import cellTypes.LifeCell;
+import rectCells.Cell;
+import rectCells.LifeCell;
 
 public class LifeGrid extends RectangleGrid {
 

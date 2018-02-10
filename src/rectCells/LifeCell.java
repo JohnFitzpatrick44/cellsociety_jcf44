@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import java.util.List;
 

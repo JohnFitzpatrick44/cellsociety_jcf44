@@ -1,7 +1,7 @@
-package gridTypes;
+package rectGrids;
 
-import cellTypes.Cell;
-import cellTypes.CellMover;
+import rectCells.Cell;
+import rectCells.CellMover;
 
 public abstract class RectangleGrid extends Grid{
 	

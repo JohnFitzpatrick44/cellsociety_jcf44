@@ -4,13 +4,6 @@ import java.io.File;
 
 import XML.DataHolder;
 import XML.XMLReader;
-import cellTypes.Cell;
-import gridTypes.FireGrid;
-import gridTypes.Grid;
-import gridTypes.LifeGrid;
-import gridTypes.PredPreyGrid;
-import gridTypes.RectangleGrid;
-import gridTypes.SegregationGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -22,6 +15,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import rectCells.Cell;
+import rectGrids.FireGrid;
+import rectGrids.Grid;
+import rectGrids.LifeGrid;
+import rectGrids.PredPreyGrid;
+import rectGrids.RectangleGrid;
+import rectGrids.SegregationGrid;
 
 public class MainView {
 

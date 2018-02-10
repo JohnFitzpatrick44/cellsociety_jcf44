@@ -1,9 +1,8 @@
-package gridTypes;
+package rectGrids;
 
 import XML.PredPreyHolder;
-import cellTypes.Cell;
-
-import cellTypes.PredPreyCell;
+import rectCells.Cell;
+import rectCells.PredPreyCell;
 
 public class PredPreyGrid extends RectangleGrid {
 		

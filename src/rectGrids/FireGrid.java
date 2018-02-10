@@ -1,8 +1,8 @@
-package gridTypes;
+package rectGrids;
 
 import XML.FireHolder;
-import cellTypes.Cell;
-import cellTypes.FireCell;
+import rectCells.Cell;
+import rectCells.FireCell;
 
 public class FireGrid extends RectangleGrid {
 	

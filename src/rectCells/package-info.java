@@ -5,4 +5,4 @@
  * @author Jack Fitzpatrick
  */
 
-package cellTypes;
+package rectCells;
