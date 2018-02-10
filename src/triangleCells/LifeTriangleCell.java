@@ -38,7 +38,6 @@ public class LifeTriangleCell extends TriangleCell{
 		}
 		setState(state);
 		updateFill();
-
 	}
 	
 	public LifeTriangleCell() {

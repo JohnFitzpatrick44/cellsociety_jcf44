@@ -6,7 +6,6 @@ import cellTypes.SegregationCell;
 
 public class SegregationGrid extends RectangleGrid {
 	
-
 	private String configString = SegregationHolder.getSegGrid();
 	private static final int DEFAULT = 0;
 	

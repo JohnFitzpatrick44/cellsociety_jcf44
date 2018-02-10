@@ -1,9 +1,9 @@
 package triangleGrids;
 
-import triangleCells.LifeTriangleCell;
+import triangleCells.FireTriangleCell;
 import triangleCells.TriangleCell;
 
-public class LifeTriangleGrid extends TriangleGrid{
+public class FireTriangleGrid extends TriangleGrid{
 
 	@Override
 	public TriangleCell[][] createGrid(double offset, int gridSize, double side, double cutOff) {
@@ -12,18 +12,20 @@ public class LifeTriangleGrid extends TriangleGrid{
 		for(int i =0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				if(j%2!=0 || j==1) {
-					grid[i][j] = new LifeTriangleCell(offset+blockSpacing,offset+heightSpacing,side,0,true);
+				if(j==0) {
+					grid[i][j] = new FireTriangleCell(offset+blockSpacing,offset+heightSpacing,side,2,false);
+				}
+				if(j%2!=0) {
+					grid[i][j] = new FireTriangleCell(offset+blockSpacing,offset+heightSpacing,side,1,true);
 					blockSpacing+=side;
-					System.out.println("White!");
-				} else {
-					grid[i][j] = new LifeTriangleCell(offset+blockSpacing,offset+heightSpacing,side,1,false);
-					System.out.println("Black!");
+				} else if(j!=0){
+					grid[i][j] = new FireTriangleCell(offset+blockSpacing,offset+heightSpacing,side,1,false);
 				}
 			}
 			heightSpacing += side;
 		}		
 		return grid;
 	}
-	
+		
+
 }

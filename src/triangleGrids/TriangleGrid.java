@@ -1,5 +1,6 @@
 package triangleGrids;
 
+import cellTypes.Cell;
 import gridTypes.Grid;
 import triangleCells.TriangleCell;
 
@@ -69,6 +70,19 @@ public abstract class TriangleGrid extends Grid{
 				
 			}
 		}	
+	}
+	
+	public static void updateStates(TriangleCell[][] grid) {
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].updateNeighborStates();
+			}
+		}
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].updateState();
+			}
+		}
 	}
 	
 }
