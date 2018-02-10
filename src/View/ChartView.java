@@ -38,12 +38,7 @@ public class ChartView {
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static int GRID_SIZE = DataHolder.getDimensions();
-	private static final int INTERFACE_BUTTON_HEIGHT = 110;
-	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-2*GRID_OFFSET)/GRID_SIZE;
-	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
-	private static int CELL_WIDTH = INIT_CELL_WIDTH;
-	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
-	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
+
 
 	private static String SIMULATION = DataHolder.getType();
 
@@ -52,16 +47,14 @@ public class ChartView {
 	private static Grid grid;
 	private static Cell[][] myCellGrid;
 	private static Timeline animation;
-
-	//list of initial files
-	public static final File GameOfLifeFile = new File("data/GameOfLife.xml");
-	public static final File FireFile = new File("data/SpreadingFire.xml");
-	public static final File SegregationFile = new File("data/Segregation.xml");
-	public static final File PredPreyFile = new File("data/PredPrey.xml");
+	private int count=0;
 
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
     private static XYChart.Series<Number, Number> series = new XYChart.Series<Number,Number>();
+    private static final int MAX_DATA_POINTS = 50;
+    private NumberAxis xAxis;
+    private NumberAxis yAxis;
     
 	public Scene initializeStartScene() {
 		chartGroup = new Group();
@@ -72,24 +65,18 @@ public class ChartView {
 	}
 	
 	private void setupChart() {
-			final NumberAxis xAxis = new NumberAxis();
-	        final NumberAxis yAxis = new NumberAxis();
-	        xAxis.setLabel("Number of Month");
+			xAxis = new NumberAxis(0,MAX_DATA_POINTS,MAX_DATA_POINTS/10);
+	        yAxis = new NumberAxis();
+	        xAxis.setLabel("Steps");
 	        //creating the chart
 	        final LineChart<Number,Number> lineChart = 
 	                new LineChart<Number,Number>(xAxis,yAxis);
-	                
-	        lineChart.setTitle("Stock Monitoring, 2010");
+	      //  lineChart.setTitle("Stock Monitoring, 2010");
 	        //defining a series
-
-	        series.setName("My portfolio");
-	        //populating the series with data
-//	        series.getData().add(new XYChart.Data<Number,Number>(1, 23));
-//	        series.getData().add(new XYChart.Data<Number,Number>(2, 14));
-//	        series.getData().add(new XYChart.Data<Number,Number>(3, 15));
-//	        series.getData().add(new XYChart.Data<Number,Number>(4, 24));
-//	        series.getData().add(new XYChart.Data<Number,Number>(5, 34));
-//	        series.getData().add(new XYChart.Data<Number,Number>(6, 36));
+	        xAxis.setMinorTickVisible(false);
+	       // xAxis.setTickLabelsVisible(false);
+	        lineChart.setCreateSymbols(false);
+	        series.setName("Game Of Life");
 	        lineChart.getData().add(series);
 	        chartGroup.getChildren().add(lineChart);
 	}
@@ -103,14 +90,26 @@ public class ChartView {
 		animation.play();  
 	}
 	
-	int count=1;
+	
 	public void step(double elapsedTime, Cell[][] cellGrid) {
+			if (MainView.isPlaying()) {
 			System.out.println("blah");
-		
-			series.getData().add(new XYChart.Data<Number,Number>(count, count));
-			count++;
-//			CellMover.getPercentAlike(1)
-
+			updateCellCount();
+			}
+	}
+	
+	public void updateCellCount() {
+		double cellCount= GRID_SIZE*GRID_SIZE*CellMover.getPercentAlike(1);
+		series.getData().add(new XYChart.Data<Number,Number>(count, cellCount));
+		count++;
+		if (count>=MAX_DATA_POINTS) {
+			 series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);
+		       xAxis.setLowerBound(xAxis.getLowerBound()+1);
+		       xAxis.setUpperBound(xAxis.getUpperBound()+1);
+		}	
+	}
+	public static void updateChartAnimationRate(double rate) {
+		animation.setRate(rate);
 	}
 
 	
