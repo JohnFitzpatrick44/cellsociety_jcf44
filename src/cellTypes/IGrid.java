@@ -6,6 +6,4 @@ public interface IGrid {
 
 	public void updateState();
 
-	public void setNeighbor(Cell c);
-
 }

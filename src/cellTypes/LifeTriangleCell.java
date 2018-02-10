@@ -82,10 +82,4 @@ public class LifeTriangleCell extends TriangleCell{
 		return MAX_STATE;
 	}
 
-	@Override
-	public void setNeighbor(Cell c) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

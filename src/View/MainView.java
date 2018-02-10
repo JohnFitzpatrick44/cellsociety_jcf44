@@ -78,7 +78,8 @@ public class MainView {
 //			grid = new LifeGrid();
 			triangleGrid = new LifeTriangleGrid();
 			setupCellGrid(GRID_SIZE);
-			triangleGrid.setAllNeighbors(myTriangleCellGrid, GRID_SIZE);
+			triangleGrid.setAllEvenNeighbors(myTriangleCellGrid, GRID_SIZE);
+			triangleGrid.setAllOddNeighbors(myTriangleCellGrid, GRID_SIZE);
 //			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
