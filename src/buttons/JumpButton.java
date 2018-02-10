@@ -2,9 +2,9 @@ package buttons;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
+import rectGrids.Grid;
 import View.ButtonView;
 import View.MainView;
-import gridTypes.Grid;
 /*
  * PlayButton class that inherits the ActionButton
  * Creates a PlayButton action that jumps to a future frame

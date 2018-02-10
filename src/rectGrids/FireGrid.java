@@ -1,14 +1,14 @@
-package gridTypes;
+package rectGrids;
 
-import XML.SegregationHolder;
-import cellTypes.Cell;
-import cellTypes.SegregationCell;
+import XML.FireHolder;
+import rectCells.Cell;
+import rectCells.FireCell;
 
-public class SegregationGrid extends Grid {
+public class FireGrid extends RectangleGrid {
 	
 
-	private String configString = SegregationHolder.getSegGrid();
-	private static final int DEFAULT = 0;
+	private static final int DEFAULT = 1;
+	private String configString = FireHolder.getFireGrid();
 	
 	@Override
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff) {
@@ -20,9 +20,9 @@ public class SegregationGrid extends Grid {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
 				if(index < gridConfig.length) {
-					grid[i][j] = new SegregationCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,cutOff, gridConfig[index]);
+					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,gridConfig[index]);
 				} else {
-					grid[i][j] = new SegregationCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,cutOff, DEFAULT);
+					grid[i][j] = new FireCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,DEFAULT);
 				}
 				blockSpacing += cellWidth;
 				index++;
@@ -31,4 +31,5 @@ public class SegregationGrid extends Grid {
 		}
 		return grid;
 	}
+
 }

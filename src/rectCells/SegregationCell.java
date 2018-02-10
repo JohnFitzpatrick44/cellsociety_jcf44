@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import XML.SegregationHolder;
 import javafx.scene.paint.Color;

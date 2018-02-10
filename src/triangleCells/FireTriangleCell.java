@@ -1,16 +1,12 @@
-package cellTypes;
+package triangleCells;
 
 import java.util.Random;
 
 import XML.FireHolder;
 import javafx.scene.paint.Color;
 
-/**
- * @author Jack Fitzpatrick
- * Cell specific to the Spreading Fire simulation
- */
-public class FireCell extends Cell {
-
+public class FireTriangleCell extends TriangleCell{
+	
 	private static final Color GROUND_COLOR = FireHolder.getBurntColor();
 	private static final Color TREE_COLOR = FireHolder.getTreeColor();
 	private static final Color FIRE_COLOR = FireHolder.getBurningColor();
@@ -22,25 +18,33 @@ public class FireCell extends Cell {
 
 	private static final double PROB_CATCH = FireHolder.getProbCatch();
 
-	/**
-	 * Constructor for a fire cell
-	 * @param x X position
-	 * @param y Y position
-	 * @param width Width of Cell
-	 * @param height Height of Cell
-	 * @param state Initial state of Cell
-	 */
-	public FireCell(int x, int y, int width, int height, int state) {
-		this(x, y, width, height);
+	public FireTriangleCell(double x, double y, double side) {
+		super(x, y, side);
+		updateFill();
+	}
+	
+	public FireTriangleCell(double x, double y, double side, int state) {
+		this(x, y, side);
 		this.setState(state);
 		updateFill();
 	}
-
-	public FireCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	
+	public FireTriangleCell(double x, double y, double side, int state, boolean isInverted) {
+		this(x, y, side);
+		if(isInverted) {
+			this.makeInvertedTriangle(side);
+		} else {
+			this.makeTriangle(side);
+		}
+		this.setState(state);
 		updateFill();
 	}
+	
+	public FireTriangleCell() {
+		this(0.0,0.0,0.0);
+	}
 
+	@Override
 	public void updateState() {
 		if(getState() == EMPTY) {
 			return;
@@ -52,10 +56,9 @@ public class FireCell extends Cell {
 				this.setState(BURNING);
 			}
 		}
-		updateFill();
-
+		updateFill();		
 	}
-
+	
 	private boolean catchesFire() {
 		for(int state : getNeighborStates()) {
 			Random rand = new Random();
@@ -66,10 +69,12 @@ public class FireCell extends Cell {
 		return false;
 	}
 
+	@Override
 	public int getMaxState() {
 		return MAX_STATE;
 	}
-
+	
+	@Override
 	public void updateFill() {
 		if(getState() == EMPTY) {
 			setFill(GROUND_COLOR);

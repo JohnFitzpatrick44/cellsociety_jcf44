@@ -1,12 +1,12 @@
-package cellTypes;
+package triangleCells;
 
 import java.util.Collections;
 
 import XML.PredPreyHolder;
 import javafx.scene.paint.Color;
 
-public class PredPreyCell extends Cell {
-
+public class PredPreyTriangleCell extends TriangleCell{
+	
 	private static final Color PRED_COLOR = PredPreyHolder.getPredColor();
 	private static final Color PREY_COLOR = PredPreyHolder.getPreyColor();
 	private static final Color WATER_COLOR = PredPreyHolder.getWaterColor();
@@ -23,18 +23,23 @@ public class PredPreyCell extends Cell {
 	private int reproduce;
 	private int energy;
 
-	public PredPreyCell(int x, int y, int width, int height, int state) {
-		this(x, y, width, height);
+	public PredPreyTriangleCell(double x, double y, double side) {
+		super(x, y, side);
+		reproduce = 0;
+		updateFill();
+	}
+	
+	public PredPreyTriangleCell(double x, double y, double side, int state, boolean isInverted) {
+		this(x, y, side);
+		if(isInverted) {
+			this.makeInvertedTriangle(side);
+		} else {
+			this.makeTriangle(side);
+		}
 		setState(state);
 		if(state == PRED) {
 			energy = PRED_ENERGY_VALUE;
 		}
-		updateFill();
-	}
-
-	public PredPreyCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
-		reproduce = 0;
 		updateFill();
 	}
 
@@ -83,7 +88,7 @@ public class PredPreyCell extends Cell {
 	}
 
 	private void moveToState(int state) {
-		for(Cell c : getNeighbors()) {
+		for(TriangleCell c : getNeighbors()) {
 			if(c.getState() == state) {
 				swapState(c);
 				reproducing(c);
@@ -92,25 +97,24 @@ public class PredPreyCell extends Cell {
 		}
 	}
 	
-	private void swapState(Cell swapping) {
+	private void swapState(TriangleCell swapping) {
 
-		((PredPreyCell) swapping).setReproduce(reproduce);
+		((PredPreyTriangleCell) swapping).setReproduce(reproduce);
 		if(getState() == PRED) {
 			if(swapping.getState() == PREY) {
-				((PredPreyCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
+				((PredPreyTriangleCell) swapping).setEnergy(energy + ENERGY_GAIN_VALUE);
 			}
 			else {
-				((PredPreyCell) swapping).setEnergy(energy);
+				((PredPreyTriangleCell) swapping).setEnergy(energy);
 			}
 		}
-		//getCellMover().copyState(this, swapping);
 		swapping.setState(getState());
 		swapping.setSwapped(true);
 		setSwapped(true);
 		swapping.updateFill();
 	}
 
-	private void reproducing(Cell swapped) {
+	private void reproducing(TriangleCell swapped) {
 		int val;
 		if(getState() == PREY) {
 			val = PREY_REPRODUCTION_VALUE;
@@ -120,7 +124,7 @@ public class PredPreyCell extends Cell {
 			energy = PRED_ENERGY_VALUE;
 		}
 		if(reproduce > val) {
-			((PredPreyCell) swapped).setReproduce(0);
+			((PredPreyTriangleCell) swapped).setReproduce(0);
 		} else {
 			setState(WATER);
 			energy = 0;

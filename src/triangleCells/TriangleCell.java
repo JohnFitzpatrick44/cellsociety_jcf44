@@ -1,26 +1,20 @@
-package cellTypes;
+package triangleCells;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import rectCells.CellMover;
+import rectCells.IGrid;
 
-/**
- * @author Jack Fitzpatrick
- * Abstract class Cell to work with Grid
- * Each specific simulation cell should extend this class, implement interface with Grid
- */
-public abstract class Cell extends Rectangle implements IGrid {
-
+public abstract class TriangleCell extends Triangle implements IGrid{
+	
 	public static final Color BORDER_COLOR = Color.BLACK;
 
 	/**
 	 * Array of neighboring cells, as determined by grid
 	 */
-	private List<Cell> neighbors;
+	private List<TriangleCell> neighbors;
 
 	/**
 	 * Array to store neighboring cell states, so that storing neighbor states and updating state are separate steps
@@ -42,35 +36,30 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 */
 	private boolean swapped;
 
-	/**
-	 * Constructor for cell
-	 * @param x X position of Cell
-	 * @param y Y position of Cell
-	 * @param width Width of Cell
-	 * @param height Height of Cell
-	 */
-	public Cell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public TriangleCell(double x, double y, double side) {
+		super(x, y, side);
 		this.setStroke(BORDER_COLOR);
 		this.neighbors = new ArrayList<>();
 		this.neighborStates = new ArrayList<>();
 		this.state = 0;
-		EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() { // Allows user to change cell states by right or left clicking
-			@Override
-			public void handle(MouseEvent me) {
-				if(state < getMaxState()) {
-					state++;
-				}
-				else {
-					state = 0;
-				}
-				updateFill();
-			}
-		};
-		this.setOnMouseClicked(eh);
-		this.setOnMouseDragEntered(eh);
 	}
-
+	
+	public void makeInvertedTriangle(double side) {
+		this.getPoints().addAll(
+				0.0,0.0,
+				side,0.0,
+				side,side
+				);
+	}
+	
+	public void makeTriangle(double side) {
+		this.getPoints().addAll(
+				0.0,0.0,
+				0.0,side,
+				side,side
+				);
+	}
+	
 	/**
 	 * Abstract class to change Cell color based on state
 	 */
@@ -81,7 +70,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 */
 	public void updateNeighborStates() {
 		neighborStates.clear();
-		for(Cell c: neighbors) {
+		for(TriangleCell c: neighbors) {
 			neighborStates.add(c.getState());
 		}
 		swapped = false;
@@ -113,7 +102,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * Adds a new Cell to neighbor list
 	 * @param New neighboring Cell
 	 */
-	public void setNeighbor(Cell c) {
+	public void setNeighbor(TriangleCell c) {
 		this.neighbors.add(c);
 	}
 
@@ -121,8 +110,8 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * Adds multiple Cells to neighbor list
 	 * @param neighborCells Cells to be added to neighbors
 	 */
-	public void setNeighbors(Cell...neighborCells) {
-		for(Cell neighbor:neighborCells) {
+	public void setNeighbors(TriangleCell...neighborCells) {
+		for(TriangleCell neighbor:neighborCells) {
 			this.neighbors.add(neighbor);
 		}
 	}
@@ -139,7 +128,7 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * Gets array of neighbors
 	 * @return Neighbors array
 	 */
-	public List<Cell> getNeighbors() {
+	public List<TriangleCell> getNeighbors() {
 		return neighbors;
 	}
 
@@ -174,5 +163,5 @@ public abstract class Cell extends Rectangle implements IGrid {
 	public boolean getSwapped() {
 		return swapped;
 	}
-
+	
 }

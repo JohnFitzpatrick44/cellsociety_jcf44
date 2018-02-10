@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import java.util.List;
 
@@ -21,12 +21,6 @@ public class LifeCell extends Cell {
 	public LifeCell(int x, int y, int width, int height, int state) {
 		this(x, y, width, height);
 		setState(state);
-		if(state == 0) {
-			this.setFill(DEAD_COLOR);
-		}
-		else {
-			this.setFill(ALIVE_COLOR);
-		}
 		updateFill();
 	}
 

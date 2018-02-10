@@ -1,11 +1,10 @@
-package gridTypes;
+package rectGrids;
 
 import XML.PredPreyHolder;
-import cellTypes.Cell;
+import rectCells.Cell;
+import rectCells.PredPreyCell;
 
-import cellTypes.PredPreyCell;
-
-public class PredPreyGrid extends Grid {
+public class PredPreyGrid extends RectangleGrid {
 		
 	private String configString = PredPreyHolder.getPredGrid();
 
