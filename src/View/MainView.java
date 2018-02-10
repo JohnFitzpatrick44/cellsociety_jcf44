@@ -5,15 +5,12 @@ import java.io.File;
 import XML.DataHolder;
 import XML.XMLReader;
 import cellTypes.Cell;
-import cellTypes.TriangleCell;
 import gridTypes.FireGrid;
 import gridTypes.Grid;
 import gridTypes.LifeGrid;
-import gridTypes.LifeTriangleGrid;
 import gridTypes.PredPreyGrid;
 import gridTypes.RectangleGrid;
 import gridTypes.SegregationGrid;
-import gridTypes.TriangleGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -25,6 +22,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+import triangleCells.TriangleCell;
+import triangleGrids.LifeTriangleGrid;
+import triangleGrids.TriangleGrid;
 
 public class MainView {
 

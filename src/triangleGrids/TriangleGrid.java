@@ -1,6 +1,7 @@
-package gridTypes;
+package triangleGrids;
 
-import cellTypes.TriangleCell;
+import gridTypes.Grid;
+import triangleCells.TriangleCell;
 
 public abstract class TriangleGrid extends Grid{
 

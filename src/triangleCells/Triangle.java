@@ -1,4 +1,4 @@
-package cellTypes;
+package triangleCells;
 
 import javafx.scene.shape.Polygon;
 

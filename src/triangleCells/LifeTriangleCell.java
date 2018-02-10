@@ -1,4 +1,4 @@
-package cellTypes;
+package triangleCells;
 
 import java.util.List;
 

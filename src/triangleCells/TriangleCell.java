@@ -1,8 +1,10 @@
-package cellTypes;
+package triangleCells;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cellTypes.CellMover;
+import cellTypes.IGrid;
 import javafx.scene.paint.Color;
 
 public abstract class TriangleCell extends Triangle implements IGrid{

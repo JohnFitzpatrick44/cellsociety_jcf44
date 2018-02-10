@@ -1,7 +1,7 @@
-package gridTypes;
+package triangleGrids;
 
-import cellTypes.LifeTriangleCell;
-import cellTypes.TriangleCell;
+import triangleCells.LifeTriangleCell;
+import triangleCells.TriangleCell;
 
 public class LifeTriangleGrid extends TriangleGrid{
 
