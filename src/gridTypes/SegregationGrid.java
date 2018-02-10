@@ -4,7 +4,7 @@ import XML.SegregationHolder;
 import cellTypes.Cell;
 import cellTypes.SegregationCell;
 
-public class SegregationGrid extends Grid {
+public class SegregationGrid extends RectangleGrid {
 	
 
 	private String configString = SegregationHolder.getSegGrid();

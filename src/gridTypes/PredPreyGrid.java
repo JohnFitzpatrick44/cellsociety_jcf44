@@ -5,7 +5,7 @@ import cellTypes.Cell;
 
 import cellTypes.PredPreyCell;
 
-public class PredPreyGrid extends Grid {
+public class PredPreyGrid extends RectangleGrid {
 		
 	private String configString = PredPreyHolder.getPredGrid();
 

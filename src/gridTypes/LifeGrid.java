@@ -4,7 +4,7 @@ import XML.LifeHolder;
 import cellTypes.Cell;
 import cellTypes.LifeCell;
 
-public class LifeGrid extends Grid {
+public class LifeGrid extends RectangleGrid {
 
 	private static final int DEAD = 0;
 

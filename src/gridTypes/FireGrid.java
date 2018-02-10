@@ -4,7 +4,7 @@ import XML.FireHolder;
 import cellTypes.Cell;
 import cellTypes.FireCell;
 
-public class FireGrid extends Grid {
+public class FireGrid extends RectangleGrid {
 	
 
 	private static final int DEFAULT = 1;
