@@ -12,7 +12,7 @@ public abstract class TriangleCell extends Triangle implements IGrid{
 	/**
 	 * Array of neighboring cells, as determined by grid
 	 */
-	private List<Cell> neighbors;
+	private List<TriangleCell> neighbors;
 
 	/**
 	 * Array to store neighboring cell states, so that storing neighbor states and updating state are separate steps
@@ -68,7 +68,7 @@ public abstract class TriangleCell extends Triangle implements IGrid{
 	 */
 	public void updateNeighborStates() {
 		neighborStates.clear();
-		for(Cell c: neighbors) {
+		for(TriangleCell c: neighbors) {
 			neighborStates.add(c.getState());
 		}
 		swapped = false;
@@ -100,7 +100,7 @@ public abstract class TriangleCell extends Triangle implements IGrid{
 	 * Adds a new Cell to neighbor list
 	 * @param New neighboring Cell
 	 */
-	public void setNeighbor(Cell c) {
+	public void setNeighbor(TriangleCell c) {
 		this.neighbors.add(c);
 	}
 
@@ -108,8 +108,8 @@ public abstract class TriangleCell extends Triangle implements IGrid{
 	 * Adds multiple Cells to neighbor list
 	 * @param neighborCells Cells to be added to neighbors
 	 */
-	public void setNeighbors(Cell...neighborCells) {
-		for(Cell neighbor:neighborCells) {
+	public void setNeighbors(TriangleCell...neighborCells) {
+		for(TriangleCell neighbor:neighborCells) {
 			this.neighbors.add(neighbor);
 		}
 	}
@@ -126,7 +126,7 @@ public abstract class TriangleCell extends Triangle implements IGrid{
 	 * Gets array of neighbors
 	 * @return Neighbors array
 	 */
-	public List<Cell> getNeighbors() {
+	public List<TriangleCell> getNeighbors() {
 		return neighbors;
 	}
 
@@ -161,36 +161,5 @@ public abstract class TriangleCell extends Triangle implements IGrid{
 	public boolean getSwapped() {
 		return swapped;
 	}
-
-	@Override
-	public void updateState() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setX(double x) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setY(double y) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setWidth(double w) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setHeight(double h) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	
 }

@@ -32,7 +32,6 @@ public class MainView {
 	}
 	
 	private static final double CUTOFF = 0.5;
-	
 	private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 420;
 	private static final int HEIGHT_SIZE = 520;
@@ -46,7 +45,7 @@ public class MainView {
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-2*GRID_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
 	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
-	private static final double TRIANGLE_HEIGHT = 50.0;
+	private static final double TRIANGLE_HEIGHT = 40.0;
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 
 	private static String SIMULATION = DataHolder.getType();
@@ -79,6 +78,7 @@ public class MainView {
 //			grid = new LifeGrid();
 			triangleGrid = new LifeTriangleGrid();
 			setupCellGrid(GRID_SIZE);
+			triangleGrid.setAllNeighbors(myTriangleCellGrid, GRID_SIZE);
 //			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
@@ -100,6 +100,7 @@ public class MainView {
 		setupGrid(SIMULATION);
 		ButtonView.createButtons();
 		ButtonView.arrangeButtons();
+//		myScene = setupScene(myCellGrid);
 		myScene = setupScene(myTriangleCellGrid);
 		beginAnimationLoop();  //start the animation process
 		myScene.addEventFilter(MouseEvent.DRAG_DETECTED , new EventHandler<MouseEvent>() {
@@ -113,7 +114,7 @@ public class MainView {
 
 	public static void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
-				e -> step(SECOND_DELAY,myCellGrid));
+				e -> step(SECOND_DELAY,myTriangleCellGrid));
 		animation = new Timeline();
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.getKeyFrames().add(frame);
@@ -121,12 +122,13 @@ public class MainView {
 	}
 
 	//removed Scene stage from parameters
-	public static Scene setupScene(TriangleCell[][] cellGrid) {
-		addCells(cellGrid);
+	public static Scene setupScene(TriangleCell[][] myTriangleCellGrid) {
+		addCells(myTriangleCellGrid);
+//		addCells(myCellGrid);
 		return new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 	}
 
-	public static void removeCells(TriangleCell[][] cellGrid) {
+	public static void removeCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().remove(cellGrid[i][j]);
@@ -134,19 +136,41 @@ public class MainView {
 		}	
 	}
 
-	public static void addCells(TriangleCell[][] cellGrid) {
-		for(int i=0;i<cellGrid.length;i++) {
-			for(int j=0;j<cellGrid[i].length;j++) {
-				System.out.println(cellGrid[i][j].getState());
-				group.getChildren().add(cellGrid[i][j]);
+	public static void addCells(TriangleCell[][] myTriangleCellGrid) {
+		for(int i=0;i<myTriangleCellGrid.length;i++) {
+			for(int j=0;j<myTriangleCellGrid[i].length;j++) {
+//				System.out.println(myCellGrid2[i][j].getNeighborStates());
+				group.getChildren().add(myTriangleCellGrid[i][j]);
 			}
-		}	
+		}
 	}
 
-	public static void step(double elapsedTime, Cell[][] cellGrid) {
+//	public static void step(double elapsedTime, Cell[][] cellGrid) {
+//		if (playBoolean) {
+//			Grid.updateStates(cellGrid);
+//			for(int i=0;i<cellGrid.length;i++) {
+//				for(int j=0;j<cellGrid[i].length;j++) {
+//					System.out.println(i);
+//					System.out.println(j);
+//					System.out.println(cellGrid[i][j].getNeighborStates());
+//				}
+//			}	
+//		}
+//		
+//	}
+	
+	public static void step(double elapsedTime, TriangleCell[][] myTriangleCellGrid) {
 		if (playBoolean) {
-			Grid.updateStates(cellGrid);
+			TriangleGrid.updateStates(myTriangleCellGrid);
+			for(int i=0;i<myTriangleCellGrid.length;i++) {
+				for(int j=0;j<myTriangleCellGrid[i].length;j++) {
+					System.out.println(i);
+					System.out.println(j);
+					System.out.println(myTriangleCellGrid[i][j].getNeighborStates());
+				}
+			}	
 		}
+		
 	}
 
 	//create the file selector drop down menu
@@ -165,8 +189,9 @@ public class MainView {
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
-			removeCells(myTriangleCellGrid);
+			removeCells(myCellGrid);
 			setupGrid(SIMULATION);	
+//			addCells(myCellGrid);
 			addCells(myTriangleCellGrid);
 		});
 	}

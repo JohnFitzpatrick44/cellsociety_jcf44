@@ -14,8 +14,8 @@ public class LifeTriangleCell extends TriangleCell{
 	
 	private static final int DEAD = 0;
 	private static final int ALIVE = 1;
-	private static final int MIN_ALIVE = 2;
-	private static final int MAX_ALIVE = 3;
+	private static final int MIN_ALIVE = 1;
+	private static final int MAX_ALIVE = 2;
 
 	public LifeTriangleCell(double x, double y, double side) {
 		super(x, y, side);
@@ -80,6 +80,12 @@ public class LifeTriangleCell extends TriangleCell{
 	@Override
 	public int getMaxState() {
 		return MAX_STATE;
+	}
+
+	@Override
+	public void setNeighbor(Cell c) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

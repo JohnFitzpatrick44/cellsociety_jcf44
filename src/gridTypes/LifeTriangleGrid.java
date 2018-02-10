@@ -7,7 +7,7 @@ public class LifeTriangleGrid extends TriangleGrid{
 
 	@Override
 	public TriangleCell[][] createGrid(double offset, int gridSize, double side, double cutOff) {
-		TriangleCell[][] grid = new TriangleCell[gridSize*2][gridSize*2];
+		TriangleCell[][] grid = new TriangleCell[gridSize][gridSize*2];
 		double heightSpacing = 0.0;
 		for(int i =0;i<grid.length;i++) {
 			int blockSpacing = 0;
