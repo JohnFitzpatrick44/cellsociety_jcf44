@@ -2,7 +2,7 @@ package gridTypes;
 
 import cellTypes.TriangleCell;
 
-public abstract class TriangleGrid {
+public abstract class TriangleGrid extends Grid{
 
 	public abstract TriangleCell[][] createGrid(double offset, int gridSize, double side, double cutOff);
 
@@ -68,19 +68,6 @@ public abstract class TriangleGrid {
 				
 			}
 		}	
-	}
-	
-	public static void updateStates(TriangleCell[][] grid) {
-		for(int i=0;i<grid.length;i++) {
-			for(int j=0;j<grid[i].length;j++) {
-				grid[i][j].updateNeighborStates();
-			}
-		}
-		for(int i=0;i<grid.length;i++) {
-			for(int j=0;j<grid[i].length;j++) {
-				grid[i][j].updateState();
-			}
-		}
 	}
 	
 }

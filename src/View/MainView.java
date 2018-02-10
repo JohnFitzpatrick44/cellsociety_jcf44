@@ -7,6 +7,7 @@ import XML.XMLReader;
 import cellTypes.Cell;
 import cellTypes.TriangleCell;
 import gridTypes.FireGrid;
+import gridTypes.Grid;
 import gridTypes.LifeGrid;
 import gridTypes.LifeTriangleGrid;
 import gridTypes.PredPreyGrid;
@@ -75,6 +76,18 @@ public class MainView {
 	private static void setupTriangleCellGrid(int gridSize) {
 		myTriangleCellGrid = triangleGrid.createGrid(GRID_OFFSET, GRID_SIZE, TRIANGLE_HEIGHT, CUTOFF);
 	}
+	
+	private static void setupAllNeighbors() {
+		grid.setAllCornerNeighbors(myCellGrid,GRID_SIZE);
+		grid.setAllSideNeighbors(myCellGrid,GRID_SIZE);
+		grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+	}
+	
+	private static void setupCardinalNeighbors() {
+		grid.setCardinalCornerNeighbors(myCellGrid,GRID_SIZE);
+		grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
+		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
+	}
 
 	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
@@ -84,19 +97,23 @@ public class MainView {
 //			setupTriangleCellGrid(GRID_SIZE);
 //			triangleGrid.setAllEvenNeighbors(myTriangleCellGrid, GRID_SIZE);
 //			triangleGrid.setAllOddNeighbors(myTriangleCellGrid, GRID_SIZE);
-			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
+//			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
+			setupAllNeighbors();
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
 			setupCellGrid(GRID_SIZE);
-			grid.setImmediateNeighbors(myCellGrid,GRID_SIZE);
+//			grid.setImmediateNeighbors(myCellGrid,GRID_SIZE);
+			setupCardinalNeighbors();
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
 			setupCellGrid(GRID_SIZE);
-			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
+//			grid.setAllNeighbors(myCellGrid,GRID_SIZE);
+			setupAllNeighbors();
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
 			setupCellGrid(GRID_SIZE);
-			grid.setImmediateNeighbors(myCellGrid,GRID_SIZE);
+//			grid.setImmediateNeighbors(myCellGrid,GRID_SIZE);
+			setupCardinalNeighbors();
 		}
 	}
 
@@ -119,7 +136,7 @@ public class MainView {
 
 	public static void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
-				e -> step(SECOND_DELAY,myTriangleCellGrid));
+				e -> step(SECOND_DELAY,myCellGrid));
 		animation = new Timeline();
 		animation.setCycleCount(Timeline.INDEFINITE);
 		animation.getKeyFrames().add(frame);
@@ -164,9 +181,10 @@ public class MainView {
 //		
 //	}
 	
-	public static void step(double elapsedTime, TriangleCell[][] myTriangleCellGrid) {
+	public static void step(double elapsedTime, Cell[][] myTriangleCellGrid) {
 		if (playBoolean) {
-			TriangleGrid.updateStates(myTriangleCellGrid);
+//			TriangleGrid.updateStates(myTriangleCellGrid);
+			Grid.updateStates(myTriangleCellGrid);
 			for(int i=0;i<myTriangleCellGrid.length;i++) {
 				for(int j=0;j<myTriangleCellGrid[i].length;j++) {
 					System.out.println(i);

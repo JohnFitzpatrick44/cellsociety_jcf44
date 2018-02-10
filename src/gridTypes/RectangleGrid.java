@@ -17,7 +17,7 @@ public abstract class RectangleGrid extends Grid{
 	 */
 	public abstract Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff);
 
-	public void setAllNeighbors(Cell[][] grid, int gridSize) {
+	public void setAllCornerNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				grid[i][j].setCellMover(cm);
@@ -32,11 +32,6 @@ public abstract class RectangleGrid extends Grid{
 					grid[i][j].setNeighbor(grid[i+1][j-1]); //left bottom cell
 				}
 				
-				if(i==0 && j!=0 && j!=gridSize-1) { //top side
-					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i][j-1]); //adjacent cells
-					grid[i][j].setNeighbors(grid[i+1][j+1],grid[i+1][j-1]); //diagonal cells
-				}
-				
 				if(i==gridSize-1 && j==0) { //bottom left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbor(grid[i-1][j+1]); //right top cell
@@ -45,6 +40,19 @@ public abstract class RectangleGrid extends Grid{
 				if(i==gridSize-1 && j==gridSize-1) { //bottom right corner
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbor(grid[i-1][j-1]); //left top cell
+				}
+			}
+		}	
+	}
+	
+	public void setAllSideNeighbors(Cell[][] grid, int gridSize) {
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
+				if(i==0 && j!=0 && j!=gridSize-1) { //top side
+					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i][j-1]); //adjacent cells
+					grid[i][j].setNeighbors(grid[i+1][j+1],grid[i+1][j-1]); //diagonal cells
 				}
 				
 				if(i==gridSize-1 && j!=0 && j!=gridSize-1) { //bottom side
@@ -61,8 +69,16 @@ public abstract class RectangleGrid extends Grid{
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i+1][j],grid[i-1][j]); //adjacent cells
 					grid[i][j].setNeighbors(grid[i-1][j-1],grid[i+1][j-1]); //diagonal cells
 				}
-				
-				if(i!=0 && i!=gridSize-1 && j!=0 && j!=gridSize-1) { //all other cells
+			}
+		}	
+	}
+	
+	public void setAllMiddleNeighbors(Cell[][] grid, int gridSize) {
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
+				if(i!=0 && i!=gridSize-1 && j!=0 && j!=gridSize-1) { //middle cells
 					grid[i][j].setNeighbors(grid[i+1][j],grid[i-1][j],grid[i][j+1],grid[i][j-1]); //adjacent cells
 					grid[i][j].setNeighbors(grid[i+1][j+1],grid[i+1][j-1],grid[i-1][j+1],grid[i-1][j-1]); //diagonal cells
 				}
@@ -70,9 +86,11 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
-	public void setImmediateNeighbors(Cell[][] grid, int gridSize) {
+	public void setCardinalCornerNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
 				if(i==0 && j==0) { //top left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j]); //adjacent cells
 				}
@@ -80,17 +98,25 @@ public abstract class RectangleGrid extends Grid{
 				if(i==0 && j==gridSize-1) { //top right corner
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i+1][j]); //adjacent cells
 				}
-				
-				if(i==0 && j!=0 && j!=gridSize-1) { //top side
-					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i][j-1]); //adjacent cells
-				}
-				
+
 				if(i==gridSize-1 && j==0) { //bottom left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i-1][j]); //adjacent cells
 				}
 				
 				if(i==gridSize-1 && j==gridSize-1) { //bottom right corner
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i-1][j]); //adjacent cells
+				}
+			}
+		}	
+	}
+	
+	public void setCardinalSideNeighbors(Cell[][] grid, int gridSize) {
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
+				if(i==0 && j!=0 && j!=gridSize-1) { //top side
+					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j],grid[i][j-1]); //adjacent cells
 				}
 				
 				if(i==gridSize-1 && j!=0 && j!=gridSize-1) { //bottom side
@@ -104,8 +130,16 @@ public abstract class RectangleGrid extends Grid{
 				if(i!=0 && i!=gridSize-1 && j==gridSize-1) { //right side
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i+1][j],grid[i-1][j]); //adjacent cells
 				}
-				
-				if(i!=0 && i!=gridSize-1 && j!=0 && j!=gridSize-1) { //all other cells
+			}
+		}	
+	}
+	
+	public void setCardinalMiddleNeighbors(Cell[][] grid, int gridSize) {
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
+				if(i!=0 && i!=gridSize-1 && j!=0 && j!=gridSize-1) { //middle cells
 					grid[i][j].setNeighbors(grid[i+1][j],grid[i-1][j],grid[i][j+1],grid[i][j-1]); //adjacent cells
 				}
 			}
