@@ -23,6 +23,11 @@ import rectGrids.LifeGrid;
 import rectGrids.PredPreyGrid;
 import rectGrids.RectangleGrid;
 import rectGrids.SegregationGrid;
+import triangleGrids.FireTriangleGrid;
+import triangleGrids.LifeTriangleGrid;
+import triangleGrids.PredPreyTriangleGrid;
+import triangleGrids.SegregationTriangleGrid;
+import triangleGrids.TriangleGrid;
 
 public class MainView {
 
@@ -42,14 +47,17 @@ public class MainView {
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
+	private static int TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
 	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
+	private static boolean isTriangle = false;
 
 	private static String SIMULATION = DataHolder.getType();
 
 	private static Group group;
 	private static Scene myScene;
 	private static RectangleGrid grid;
+	private static TriangleGrid triangleGrid;
 	private static Cell[][] myCellGrid;
 	private static Timeline animation;
 
@@ -78,6 +86,16 @@ public class MainView {
 		grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
 		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
 	}
+	
+	private static void setupTriangleCellGrid(int gridSize) {
+		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, GRID_SIZE, TRIANGLE_HEIGHT, CUTOFF);
+	}
+	
+	private static void setupTriangleNeighbors() {
+		triangleGrid.setAllEvenNeighbors(myCellGrid, GRID_SIZE);
+		triangleGrid.setAllOddNeighbors(myCellGrid, GRID_SIZE);
+	}
+
 
 	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
@@ -98,10 +116,34 @@ public class MainView {
 			setupCardinalNeighbors();
 		}
 	}
-
+	
+	public static void setupTriangleGrid(String name) {
+		if(name.equals("Game Of Life")) {
+			triangleGrid = new LifeTriangleGrid();
+			setupTriangleCellGrid(GRID_SIZE);
+			setupTriangleNeighbors();
+		} else if(name.equals("Spreading Fire")) {
+			triangleGrid = new FireTriangleGrid();
+			setupTriangleCellGrid(GRID_SIZE);
+			setupTriangleNeighbors();
+		} else if(name.equals("Segregation")) {
+			triangleGrid = new SegregationTriangleGrid();
+			setupTriangleCellGrid(GRID_SIZE);
+			setupTriangleNeighbors();
+		} else if(name.equals("Predator")) {
+			triangleGrid = new PredPreyTriangleGrid();
+			setupTriangleCellGrid(GRID_SIZE);
+			setupTriangleNeighbors();
+		}
+	}
+	
 	public Scene initializeStartScene() {
 		group = new Group();
-		setupGrid(SIMULATION);
+		if(isTriangle) {
+			setupTriangleGrid(SIMULATION);
+		} else {
+			setupGrid(SIMULATION);
+		}
 		ButtonView.createButtons();
 		ButtonView.arrangeButtons();
 		myScene = setupScene();
@@ -159,6 +201,22 @@ public class MainView {
 		}
 		
 	}
+	
+	public static void switchSimulationShape() {
+		if(isTriangle) {
+			removeCells();
+			setupTriangleGrid(SIMULATION);	
+			addCells();
+		} else {
+			removeCells();
+			setupGrid(SIMULATION);	
+			addCells();
+		}
+	}
+	
+	public static void switchShape() {
+		isTriangle = !isTriangle;
+	}
 
 	//create the file selector drop down menu
 	
@@ -173,9 +231,7 @@ public class MainView {
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
-			removeCells();
-			setupGrid(SIMULATION);	
-			addCells();
+			switchSimulationShape();
 		});
 	}
 	
