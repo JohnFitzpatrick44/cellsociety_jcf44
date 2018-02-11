@@ -39,6 +39,9 @@ public class FileUploadButton extends ActionButton{
 	private void fileUpload() {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Open Resource File");
+		fileChooser.getExtensionFilters().add(
+				new FileChooser.ExtensionFilter("XML", "*.xml"));
+		
 		File file = fileChooser.showOpenDialog(Main.getMainStage());
         if (file != null) {
         		ButtonView.getFileSelector().getItems().add(file);
