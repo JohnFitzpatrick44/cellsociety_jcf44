@@ -61,14 +61,14 @@ public abstract class ActionButton extends Button{
 	}
 	//return the state of the playBoolean
 	public Boolean getPlayBoolean () {
-		return MainTriangleView.isPlaying();
-//		return MainView.isPlaying();
+//		return MainTriangleView.isPlaying();
+		return MainView.isPlaying();
 	}
 	
 	//setter for boolean 
 	public static Boolean setPlayBoolean(Boolean state) {
-	        MainTriangleView.setPlaying(state);
-//	        MainView.setPlaying(state);
+//	        MainTriangleView.setPlaying(state);
+	        MainView.setPlaying(state);
 	        return state;
 	}
 
