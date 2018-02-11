@@ -49,8 +49,6 @@ public class ChartView {
 	private static Timeline animation;
 	private int count=0;
 
-	//attributes of the buttons
-	private static Boolean playBoolean = false;
     private static XYChart.Series<Number, Number> series = new XYChart.Series<Number,Number>();
     private static final int MAX_DATA_POINTS = 50;
     private NumberAxis xAxis;
@@ -68,14 +66,16 @@ public class ChartView {
 			xAxis = new NumberAxis(0,MAX_DATA_POINTS,MAX_DATA_POINTS/10);
 	        yAxis = new NumberAxis();
 	        xAxis.setLabel("Steps");
+	        yAxis.setLabel("Number of Cells");
 	        //creating the chart
 	        final LineChart<Number,Number> lineChart = 
 	                new LineChart<Number,Number>(xAxis,yAxis);
-	      //  lineChart.setTitle("Stock Monitoring, 2010");
+	      lineChart.setTitle("Game of Life");
 	        //defining a series
 	        xAxis.setMinorTickVisible(false);
 	       // xAxis.setTickLabelsVisible(false);
 	        lineChart.setCreateSymbols(false);
+	    
 	        series.setName("Game Of Life");
 	        lineChart.getData().add(series);
 	        chartGroup.getChildren().add(lineChart);

@@ -24,8 +24,6 @@ public abstract class ActionButton extends Button{
 	 * 
 	 */
 	public ActionButton(Color buttonColor) {
-//		this.buttonName = buttonName;
-//		setButtonText(this.buttonName);
 		setButtonFill(buttonColor);
 	}
 	/*

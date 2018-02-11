@@ -14,7 +14,7 @@ import buttons.SlowButton;
 import buttons.SpeedButton;
 import buttons.SpeedSlider;
 import buttons.StepButton;
-
+import buttons.SwitchButton;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -54,6 +54,7 @@ public class ButtonView {
 	private static FileUploadButton fileBtn;
 	private static SpeedSlider speedSlider;
 	private static ChartButton chartBtn;
+	private static SwitchButton switchBtn;
 	//private CompareButton compareBtn;
 	
 	private static ComboBox<File> fileSelector;
@@ -92,17 +93,16 @@ public class ButtonView {
 		slowBtn = new SlowButton(BUTTON_COLOR);
 		fileBtn = new FileUploadButton(BUTTON_COLOR);
 		speedSlider = new SpeedSlider(MINSLIDERSPEED, MAXSLIDERSPEED, DEFAULTSLIDERSPEED);
+		switchBtn = new SwitchButton();
 		CompareButton compareBtn = new CompareButton(BUTTON_COLOR);
 		chartBtn = new ChartButton(BUTTON_COLOR);
 		jumpField = new TextField();
+		
 		title = new Text();
 		setTitleAuthor();
-//		MainTriangleView.createDropDownMenu();
-//		MainTriangleView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn, chartBtn);
 		MainView.createDropDownMenu();
-		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn);
+		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn, chartBtn, switchBtn);
 	}
-
 	//arrange all the buttons on the screen
 	public static void arrangeButtons() {
 		playBtn.setPosition(PLAYBTN_X_POSITION, BUTTON_Y_POSITION);
@@ -120,6 +120,7 @@ public class ButtonView {
 		title.setLayoutX(TITLE_X_POSITION);
 		title.setLayoutY(TITLE_Y_POSITION);
 		fileBtn.setPosition(FILE_X_POSITION, BUTTONROW2_Y_POSITION);
+		switchBtn.setPosition(FILE_X_POSITION, BUTTONROW3_Y_POSITION);
 		speedSlider.setPosition(SLIDER_X_POSITION, BUTTONROW3_Y_POSITION);
 		chartBtn.setPosition(RESETBTN_X_POSITION, BUTTONROW3_Y_POSITION);
 	}
