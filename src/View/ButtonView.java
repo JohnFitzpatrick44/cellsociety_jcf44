@@ -99,8 +99,6 @@ public class ButtonView {
 		
 		title = new Text();
 		setTitleAuthor();
-//		MainTriangleView.createDropDownMenu();
-//		MainTriangleView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn,switchBtn);
 		MainView.createDropDownMenu();
 		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, speedSlider, fileBtn, chartBtn, switchBtn);
 	}
