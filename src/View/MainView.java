@@ -200,7 +200,9 @@ public class MainView {
 		}
 	}
 	
-	public static void switchSimulationShape() {
+	
+	
+	public static void switchSimulation() {
 		if(isTriangle) {
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
@@ -231,7 +233,7 @@ public class MainView {
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
-			switchSimulationShape();
+			switchSimulation();
 		});
 	}
 	

@@ -23,7 +23,7 @@ public class SwitchButton extends Label
 			public void handle(ActionEvent t)
 			{
 				MainView.switchShape();
-				MainView.switchSimulationShape();
+				MainView.switchSimulation();
 				switchedOn.set(!switchedOn.get());
 			}
 		});
