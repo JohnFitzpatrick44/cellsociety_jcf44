@@ -1,11 +1,10 @@
 package rectGrids;
 
 import rectCells.Cell;
-import rectCells.CellMover;
 
 /**
  * @author Hemanth Yakkali
- * Abstract Grid class, to be used in tandem with Cells and CellMover
+ * Abstract Grid class
  * Creates a grid, gets a grid configuration, and updates cell states
  */
 

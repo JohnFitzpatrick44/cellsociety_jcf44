@@ -1,27 +1,15 @@
 package View;
 
-import java.io.File;
-import rectCells.CellMover;
 import XML.DataHolder;
-import XML.XMLReader;
 import rectCells.Cell;
-import rectGrids.FireGrid;
 import rectGrids.Grid;
-import rectGrids.LifeGrid;
-import rectGrids.PredPreyGrid;
-import rectGrids.SegregationGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ComboBox;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
