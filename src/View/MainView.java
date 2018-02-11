@@ -81,9 +81,21 @@ public class MainView {
 		grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
 	}
 	
+	private static void setupAllToroidalNeighbors() {
+		grid.setAllCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
+		grid.setAllSideToroidalNeighbors(myCellGrid,GRID_SIZE);
+		grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+	}
+	
 	private static void setupCardinalNeighbors() {
 		grid.setCardinalCornerNeighbors(myCellGrid,GRID_SIZE);
 		grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
+		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
+	}
+	
+	private static void setupCardinalToroidalNeighbors() {
+		grid.setCardinalCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
+		grid.setCardinalSideToroidalNeighbors(myCellGrid,GRID_SIZE);
 		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
 	}
 	
@@ -95,7 +107,6 @@ public class MainView {
 		triangleGrid.setAllEvenNeighbors(myCellGrid, GRID_SIZE);
 		triangleGrid.setAllOddNeighbors(myCellGrid, GRID_SIZE);
 	}
-
 
 	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
