@@ -204,6 +204,7 @@ public class MainView {
 	
 	public static void switchSimulationShape() {
 		if(isTriangle) {
+			TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			removeCells();
 			setupTriangleGrid(SIMULATION);	
 			addCells();
