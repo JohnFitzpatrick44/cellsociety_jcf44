@@ -43,7 +43,7 @@ public class MainView {
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static int GRID_SIZE = DataHolder.getDimensions();
-	private static final int INTERFACE_BUTTON_HEIGHT = 100;
+	private static final int INTERFACE_BUTTON_HEIGHT = 140;
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
