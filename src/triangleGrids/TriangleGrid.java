@@ -6,7 +6,7 @@ import rectGrids.Grid;
 
 public abstract class TriangleGrid extends Grid{
 
-	public abstract Cell[][] createGrid(double offset, int gridSize, double side, double cutOff);
+	public abstract Cell[][] createGrid(double offset, int gridSize, double height, double width, double cutOff);
 
 	private CellMover cm = new CellMover();
 	
@@ -71,18 +71,5 @@ public abstract class TriangleGrid extends Grid{
 			}
 		}	
 	}
-//	
-//	public static void updateStates(Cell[][] grid) {
-//		for(int i=0;i<grid.length;i++) {
-//			for(int j=0;j<grid[i].length;j++) {
-//				grid[i][j].updateNeighborStates();
-//			}
-//		}
-//		for(int i=0;i<grid.length;i++) {
-//			for(int j=0;j<grid[i].length;j++) {
-//				grid[i][j].updateState();
-//			}
-//		}
-//	}
 	
 }

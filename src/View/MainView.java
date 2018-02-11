@@ -1,5 +1,4 @@
 package View;
-import View.ChartView;
 
 import java.io.File;
 
@@ -47,7 +46,7 @@ public class MainView {
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
-	private static int TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
+//	private static int TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
 	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
 	private static boolean isTriangle = false;
@@ -89,7 +88,7 @@ public class MainView {
 	}
 	
 	private static void setupTriangleCellGrid(int gridSize) {
-		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, GRID_SIZE, TRIANGLE_HEIGHT, CUTOFF);
+		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, gridSize, CELL_HEIGHT,CELL_WIDTH,CUTOFF);
 	}
 	
 	private static void setupTriangleNeighbors() {
@@ -192,20 +191,20 @@ public class MainView {
 	public static void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
 			Grid.updateStates(cellGrid);
-			for(int i=0;i<cellGrid.length;i++) {
-				for(int j=0;j<cellGrid[i].length;j++) {
-					System.out.println(i);
-					System.out.println(j);
-					System.out.println(cellGrid[i][j].getNeighborStates());
-				}
-			}	
+//			for(int i=0;i<cellGrid.length;i++) {
+//				for(int j=0;j<cellGrid[i].length;j++) {
+//					System.out.println(i);
+//					System.out.println(j);
+//					System.out.println(cellGrid[i][j].getNeighborStates());
+//				}
+//			}
 		}
-		
 	}
 	
 	public static void switchSimulationShape() {
 		if(isTriangle) {
-			TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
+			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
+			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			removeCells();
 			setupTriangleGrid(SIMULATION);	
 			addCells();
@@ -244,7 +243,6 @@ public class MainView {
 		if (isChart) {
 			ChartView.updateChartAnimationRate(rate);
 		}
-	
 	}
 	
 	public static Cell[][] getMyCellGrid() {
