@@ -227,7 +227,9 @@ public class MainView {
 		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
+			DataHolder.clearXMLReader();
 			DataHolder.setInputFile((File) ButtonView.getFileSelector().getValue()); //change new file
+			//System.out.println(DataHolder.getInputFile());
 			DataHolder.setFileInput(new XMLReader(DataHolder.getInputFile()));
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.getDimensions();

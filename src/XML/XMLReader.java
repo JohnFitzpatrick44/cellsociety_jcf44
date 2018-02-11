@@ -49,7 +49,6 @@ public class XMLReader {
 	
 	public XMLReader(File inputFile) {
 		try {
-			createDefaultValues();
 			parse(inputFile);
 		} catch (Exception e) {
 			System.out.println("Trouble parsing XML file, " + e.toString());
@@ -136,14 +135,16 @@ public class XMLReader {
 						energyGain=(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));
 						predReproduction=(Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent()));
 						predGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
-//						PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
-//						PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
-						}
-						catch(Exception e){
-							System.out.print("error");
-						}
 						PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
 						PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
+						}
+						catch(Exception e){
+							createDefaultValues();
+							PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
+							PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
+							System.out.print("error");
+						}
+						
 						
 					}
 					else {
