@@ -31,8 +31,6 @@ public class ResetButton extends ActionButton{
 
 	public static void reset() {
 		setPlayBoolean(false);
-		MainView.removeCells();
-		MainView.setupGrid(MainView.getSimulation());
-		MainView.addCells();
+		MainView.switchSimulationShape();
 	}
 }
