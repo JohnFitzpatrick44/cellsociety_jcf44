@@ -21,8 +21,8 @@ public abstract class DataHolder {
 		return fileInput;
 	}
 
-	public static void setFileInput(XMLReader fileInput) {
-		DataHolder.fileInput = fileInput;
+	public static void setFileInput(XMLReader file) {
+		fileInput = file;
 	}
 
 	//getter methods
