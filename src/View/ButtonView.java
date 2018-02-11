@@ -97,10 +97,10 @@ public class ButtonView {
 		jumpField = new TextField();
 		title = new Text();
 		setTitleAuthor();
-		MainTriangleView.createDropDownMenu();
-		MainTriangleView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn);
-//		MainView.createDropDownMenu();
-//		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn);
+//		MainTriangleView.createDropDownMenu();
+//		MainTriangleView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn, chartBtn);
+		MainView.createDropDownMenu();
+		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn);
 	}
 
 	//arrange all the buttons on the screen
