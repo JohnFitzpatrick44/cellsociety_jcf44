@@ -12,14 +12,16 @@ public class SegregationCell extends Cell {
 
 	private static final int EMPTY = 0;
 	private static final int A_STATE = 1;
+	
+	private static final double INIT_CO = 0.5;
 
 	private double cutoff;
 
-	public SegregationCell(double co, int state, double...points) {
+	public SegregationCell(int state, double...points) {
 		this(points);
 		setState(state);
 		updateFill();
-		this.cutoff = co;
+		this.cutoff = INIT_CO;
 	}
 
 	public SegregationCell(double...points) {
