@@ -67,41 +67,41 @@ public class MainView {
 		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
 	}
 	
-	private static void setupAllNeighbors() {
+	private static void setupAllNeighbors(Cell[][] myCellGrid) {
 		grid.setAllCornerNeighbors(myCellGrid,GRID_SIZE);
 		grid.setAllSideNeighbors(myCellGrid,GRID_SIZE);
 		grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
 	}
 	
-	private static void setupCardinalNeighbors() {
+	private static void setupCardinalNeighbors(Cell[][] myCellGrid) {
 		grid.setCardinalCornerNeighbors(myCellGrid,GRID_SIZE);
 		grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
 		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
 	}
 
-	public static void setupGrid(String name) {
+	public static void setupGrid(String name, Cell[][] myCellGrid) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
 			setupCellGrid(GRID_SIZE);
-			setupAllNeighbors();
+			setupAllNeighbors(myCellGrid);
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
 			setupCellGrid(GRID_SIZE);
-			setupCardinalNeighbors();
+			setupCardinalNeighbors(myCellGrid);
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
 			setupCellGrid(GRID_SIZE);
-			setupAllNeighbors();
+			setupAllNeighbors(myCellGrid);
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
 			setupCellGrid(GRID_SIZE);
-			setupCardinalNeighbors();
+			setupCardinalNeighbors(myCellGrid);
 		}
 	}
 
 	public Scene initializeStartScene() {
 		group = new Group();
-		setupGrid(SIMULATION);
+		setupGrid(SIMULATION, myCellGrid);
 		ButtonView.createButtons();
 		ButtonView.arrangeButtons();
 		myScene = setupScene(myCellGrid);
@@ -174,7 +174,7 @@ public class MainView {
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
 			removeCells(myCellGrid);
-			setupGrid(SIMULATION);	
+			setupGrid(SIMULATION, myCellGrid);	
 			addCells(myCellGrid);
 		});
 	}
