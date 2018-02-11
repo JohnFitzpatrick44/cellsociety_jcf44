@@ -46,7 +46,6 @@ public class MainView {
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
-//	private static int TRIANGLE_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
 	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
 	private static boolean isTriangle = false;
@@ -104,8 +103,8 @@ public class MainView {
 	}
 	
 	private static void setupTriangleNeighbors() {
-		triangleGrid.setAllEvenNeighbors(myCellGrid, GRID_SIZE);
-		triangleGrid.setAllOddNeighbors(myCellGrid, GRID_SIZE);
+		triangleGrid.setAllEvenToroidalNeighbors(myCellGrid, GRID_SIZE);
+		triangleGrid.setAllOddToroidalNeighbors(myCellGrid, GRID_SIZE);
 	}
 
 	public static void setupGrid(String name) {
