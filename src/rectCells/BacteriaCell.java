@@ -11,7 +11,7 @@ public class BacteriaCell extends Cell {
 	
 	private static final int MAX_STATE = 3;
 	
-	private static final Color DEFAULT_COLOR = Color.WHITE;
+	private static final Color DEFAULT_COLOR = Color.BLACK;
 	private static final Color A_COLOR = Color.RED;
 	private static final Color B_COLOR = Color.BLUE;
 	private static final Color C_COLOR = Color.YELLOW;
@@ -56,16 +56,24 @@ public class BacteriaCell extends Cell {
 				level = 0;
 			}
 		} else {
-			if(eaten(getNeighborStates().get(k))) {
-				setState(getNeighborStates().get(k));
-				level = Math.min(10, ((BacteriaCell) getNeighbors().get(k)).getLevel() + 2);
+			if(eaten(getNeighborStates().get(k), getState())) {
+				level -= ((BacteriaCell) getNeighbors().get(k)).getLevel()/2;
+				if(level<= 0) {
+					level = 0;
+					setState(0);
+				}
+			} else if(eaten(getState(), getNeighborStates().get(k))) {
+				level += ((BacteriaCell) getNeighbors().get(k)).getLevel()/2;
+				if(level > 10) {
+					level = 10;
+				}
 			}
 		}
 		updateFill();
 	}
 
-	private boolean eaten(int state) {
-		return (state == 1 && getState() == 2) || (state == 2 && getState() == 3) || (state == 3 && getState() == 1);
+	private boolean eaten(int state1, int state2) {
+		return (state1 == 1 && state2 == 2) || (state1 == 2 && state2 == 3) || (state1 == 3 && state2 == 1);
 	}
 	
 	public void updateFill() {
@@ -84,8 +92,8 @@ public class BacteriaCell extends Cell {
 			toFill = C_COLOR;
 			break;
 		}
-		for(int k = 10; k > level; k--) {
-			toFill = toFill.desaturate();
+		for(int k = 5; k > level; k--) {
+			toFill = toFill.darker();
 		}
 		setFill(toFill);
 	}
