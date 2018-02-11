@@ -239,7 +239,7 @@ public class MainView {
 	public static void setAnimationRate(double rate) {
 		System.out.println(animation.getRate());
 		animation.setRate(rate);
-		ChartView.updateChartAnimationRate(rate);
+		//ChartView.updateChartAnimationRate(rate);
 	
 	}
 	
