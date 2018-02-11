@@ -1,4 +1,5 @@
 package buttons;
+import View.ChartView;
 import View.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -31,6 +32,9 @@ public class StepButton extends ActionButton{
 	}
 	private void step() {
 		Grid.updateStates(MainView.getMyCellGrid());
+		if (MainView.isCharting()) {
+			ChartView.updateCellCount();
+		}
 	}
 }
 

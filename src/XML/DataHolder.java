@@ -33,6 +33,9 @@ public abstract class DataHolder {
 	public static String getAuthor() {
 		return AUTHOR;
 	}
+	public static void clearXMLReader() {
+		fileInput= null;
+	}
 	
 	
 	

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /*
  * PlayButton class that inherits the ActionButton
@@ -36,6 +37,12 @@ public class ChartButton extends ActionButton{
 		ChartView graphSimulation = new ChartView();
 		Stage secondStage = new Stage();
 		secondStage.setScene(graphSimulation.initializeStartScene());
+		//change boolean if stage is closed
+	    secondStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+	           public void handle(WindowEvent we) {
+	        	   	MainView.setChartBoolean(false);
+	           }
+	    });   
 		secondStage.show();
 	}
 }

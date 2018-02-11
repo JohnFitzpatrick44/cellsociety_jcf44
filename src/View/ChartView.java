@@ -35,11 +35,13 @@ public class ChartView {
 	private static Grid grid;
 	private static Cell[][] myCellGrid;
 	private static Timeline chartAnimation;
-	private int count=0;
+	private static int count=0;
 
     private static XYChart.Series<Number, Number> series = new XYChart.Series<Number,Number>();
+    private static XYChart.Series<Number, Number> series2 = new XYChart.Series<Number,Number>();
+    private static XYChart.Series<Number, Number> series3 = new XYChart.Series<Number,Number>();
     private static final int MAX_DATA_POINTS = 50;
-    private NumberAxis xAxis;
+    private static NumberAxis xAxis;
     private NumberAxis yAxis;
     
 	public Scene initializeStartScene() {
@@ -62,12 +64,14 @@ public class ChartView {
 	        //defining a series
 	        xAxis.setMinorTickVisible(false);
 	       // xAxis.setTickLabelsVisible(false);
-	        lineChart.setCreateSymbols(false);
-	    
+	        lineChart.setCreateSymbols(false);    
 	        series.setName("Game Of Life");
 	        lineChart.getData().add(series);
+	        lineChart.getData().add(series2);
+	        lineChart.getData().add(series3);
 	        chartGroup.getChildren().add(lineChart);
 	}
+
 
 	public void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
@@ -86,10 +90,14 @@ public class ChartView {
 			}
 	}
 	
-	public void updateCellCount() {
+	public static void updateCellCount() {
 		Cell[][] mainCellGrid = MainView.getMyCellGrid();
-		double cellCount= GRID_SIZE*GRID_SIZE*mainCellGrid[1][1].getCellMover().getPercentAlike(1);
+		double cellCount= GRID_SIZE*GRID_SIZE*mainCellGrid[1][1].getCellMover().getPercentAlike(0);
 		series.getData().add(new XYChart.Data<Number,Number>(count, cellCount));
+		double cellCount2= GRID_SIZE*GRID_SIZE*mainCellGrid[1][1].getCellMover().getPercentAlike(1);
+		series2.getData().add(new XYChart.Data<Number,Number>(count, cellCount2));
+		double cellCount3= GRID_SIZE*GRID_SIZE*mainCellGrid[1][1].getCellMover().getPercentAlike(2);
+		series3.getData().add(new XYChart.Data<Number,Number>(count, cellCount3));
 		count++;
 		if (count>=MAX_DATA_POINTS) {
 			 series.getData().remove(0, series.getData().size() - MAX_DATA_POINTS);
@@ -100,7 +108,6 @@ public class ChartView {
 	public static void updateChartAnimationRate(double rate) {
 		chartAnimation.setRate(rate);
 	}
-	
 
 	
 }

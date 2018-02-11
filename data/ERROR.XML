@@ -3,6 +3,12 @@
 	<type name="Predator" author="team03">
 		<predReproduction>10</predReproduction>
 		<dimensions>20</dimensions>
+		<predColor>#ff0000</predColor>
+		<preyColor>#ff0000	</preyColor>
+		<waterColor>#ff0000</waterColor>
+		<preyReproduction>5</preyReproduction>
+		<predEnergy>5</predEnergy>
+		<energyGain>2</energyGain>
 		<grid>0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 1 1 1 1 1 1 1 1 1 0 1 2 1 2 2 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1</grid>
 	</type>
 </simulation>
