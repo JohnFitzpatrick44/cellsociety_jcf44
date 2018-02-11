@@ -99,7 +99,7 @@ public class ChartView {
 	}
 	
 	public void updateCellCount() {
-		double cellCount= GRID_SIZE*GRID_SIZE*CellMover.getPercentAlike(1);
+		double cellCount= GRID_SIZE*GRID_SIZE*myCellGrid[0][0].getCellMover().getPercentAlike(1);
 		series.getData().add(new XYChart.Data<Number,Number>(count, cellCount));
 		count++;
 		if (count>=MAX_DATA_POINTS) {
