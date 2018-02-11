@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<simulation>
+	<type name="Predator" author="team03">
+		<predReproduction>10</predReproduction>
+		<dimensions>20</dimensions>
+		<grid>0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 1 1 1 1 1 1 1 1 1 0 1 2 1 2 2 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1</grid>
+	</type>
+</simulation>
