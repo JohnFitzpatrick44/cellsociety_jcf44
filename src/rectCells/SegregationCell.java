@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import XML.SegregationHolder;
 import javafx.scene.paint.Color;
@@ -12,18 +12,20 @@ public class SegregationCell extends Cell {
 
 	private static final int EMPTY = 0;
 	private static final int A_STATE = 1;
+	
+	private static final double INIT_CO = 0.5;
 
 	private double cutoff;
 
-	public SegregationCell(int x, int y, int width, int height, double co, int state) {
-		this(x, y, width, height);
+	public SegregationCell(int state, double...points) {
+		this(points);
 		setState(state);
 		updateFill();
-		this.cutoff = co;
+		this.cutoff = INIT_CO;
 	}
 
-	public SegregationCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public SegregationCell(double...points) {
+		super(points);
 		updateFill();
 	}
 

@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import java.util.Random;
 
@@ -30,14 +30,14 @@ public class FireCell extends Cell {
 	 * @param height Height of Cell
 	 * @param state Initial state of Cell
 	 */
-	public FireCell(int x, int y, int width, int height, int state) {
-		this(x, y, width, height);
+	public FireCell(int state, double...points) {
+		this(points);
 		this.setState(state);
 		updateFill();
 	}
 
-	public FireCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public FireCell(double...points) {
+		super(points);
 		updateFill();
 	}
 

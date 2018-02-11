@@ -92,13 +92,15 @@ public class ButtonView {
 		slowBtn = new SlowButton(BUTTON_COLOR);
 		fileBtn = new FileUploadButton(BUTTON_COLOR);
 		speedSlider = new SpeedSlider(MINSLIDERSPEED, MAXSLIDERSPEED, DEFAULTSLIDERSPEED);
-//		CompareButton compareBtn = new CompareButton(BUTTON_COLOR);
+		CompareButton compareBtn = new CompareButton(BUTTON_COLOR);
 		chartBtn = new ChartButton(BUTTON_COLOR);
 		jumpField = new TextField();
 		title = new Text();
 		setTitleAuthor();
+//		MainTriangleView.createDropDownMenu();
+//		MainTriangleView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn);
 		MainView.createDropDownMenu();
-		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, speedSlider, chartBtn);
+		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, fileBtn, compareBtn);
 	}
 
 	//arrange all the buttons on the screen

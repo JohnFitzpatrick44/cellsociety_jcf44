@@ -14,6 +14,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		MainView simulation = new MainView();
+//		MainTriangleView simulation = new MainTriangleView();
+
 		mainStage = primaryStage;
 		primaryStage.setTitle(TITLE);
 		primaryStage.setScene(simulation.initializeStartScene());

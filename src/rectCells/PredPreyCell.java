@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import java.util.Collections;
 
@@ -23,8 +23,8 @@ public class PredPreyCell extends Cell {
 	private int reproduce;
 	private int energy;
 
-	public PredPreyCell(int x, int y, int width, int height, int state) {
-		this(x, y, width, height);
+	public PredPreyCell(int state, double...points) {
+		this(points);
 		setState(state);
 		if(state == PRED) {
 			energy = PRED_ENERGY_VALUE;
@@ -32,8 +32,8 @@ public class PredPreyCell extends Cell {
 		updateFill();
 	}
 
-	public PredPreyCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public PredPreyCell(double...points) {
+		super(points);
 		reproduce = 0;
 		updateFill();
 	}

@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,7 +56,7 @@ public class CellMover {
 		destination.updateFill();
 	}
 
-	public static double getPercentAlike(int state) {
+	public double getPercentAlike(int state) {
 		double count = 0;
 		for(Cell c : cellList) {
 			if(c.getState() == state) {

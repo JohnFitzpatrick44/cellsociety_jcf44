@@ -1,15 +1,15 @@
 package View;
 
 import java.io.File;
-import cellTypes.CellMover;
+import rectCells.CellMover;
 import XML.DataHolder;
 import XML.XMLReader;
-import cellTypes.Cell;
-import gridTypes.FireGrid;
-import gridTypes.Grid;
-import gridTypes.LifeGrid;
-import gridTypes.PredPreyGrid;
-import gridTypes.SegregationGrid;
+import rectCells.Cell;
+import rectGrids.FireGrid;
+import rectGrids.Grid;
+import rectGrids.LifeGrid;
+import rectGrids.PredPreyGrid;
+import rectGrids.SegregationGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -99,7 +99,7 @@ public class ChartView {
 	}
 	
 	public void updateCellCount() {
-		double cellCount= GRID_SIZE*GRID_SIZE*CellMover.getPercentAlike(1);
+		double cellCount= GRID_SIZE*GRID_SIZE*myCellGrid[0][0].getCellMover().getPercentAlike(1);
 		series.getData().add(new XYChart.Data<Number,Number>(count, cellCount));
 		count++;
 		if (count>=MAX_DATA_POINTS) {

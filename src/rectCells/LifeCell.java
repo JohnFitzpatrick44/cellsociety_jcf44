@@ -1,4 +1,4 @@
-package cellTypes;
+package rectCells;
 
 import java.util.List;
 
@@ -18,20 +18,14 @@ public class LifeCell extends Cell {
 	private static final int MIN_ALIVE = 2;
 	private static final int MAX_ALIVE = 3;
 
-	public LifeCell(int x, int y, int width, int height, int state) {
-		this(x, y, width, height);
+	public LifeCell(int state, double...points) {
+		this(points);
 		setState(state);
-		if(state == 0) {
-			this.setFill(DEAD_COLOR);
-		}
-		else {
-			this.setFill(ALIVE_COLOR);
-		}
 		updateFill();
 	}
 
-	public LifeCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public LifeCell(double...points) {
+		super(points);
 		setState(DEAD);
 		updateFill();
 	}
