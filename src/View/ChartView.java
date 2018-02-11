@@ -46,7 +46,7 @@ public class ChartView {
 	private static Scene chartScene;
 	private static Grid grid;
 	private static Cell[][] myCellGrid;
-	private static Timeline animation;
+	private static Timeline chartAnimation;
 	private int count=0;
 
     private static XYChart.Series<Number, Number> series = new XYChart.Series<Number,Number>();
@@ -70,7 +70,7 @@ public class ChartView {
 	        //creating the chart
 	        final LineChart<Number,Number> lineChart = 
 	                new LineChart<Number,Number>(xAxis,yAxis);
-	      lineChart.setTitle("Game of Life");
+	        lineChart.setTitle("Game of Life");
 	        //defining a series
 	        xAxis.setMinorTickVisible(false);
 	       // xAxis.setTickLabelsVisible(false);
@@ -84,10 +84,10 @@ public class ChartView {
 	public void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
 				e -> step(SECOND_DELAY,myCellGrid));
-		animation = new Timeline();
-		animation.setCycleCount(Timeline.INDEFINITE);
-		animation.getKeyFrames().add(frame);
-		animation.play();  
+		chartAnimation = new Timeline();
+		chartAnimation.setCycleCount(Timeline.INDEFINITE);
+		chartAnimation.getKeyFrames().add(frame);
+		chartAnimation.play();  
 	}
 	
 	
@@ -99,7 +99,8 @@ public class ChartView {
 	}
 	
 	public void updateCellCount() {
-		double cellCount= GRID_SIZE*GRID_SIZE*myCellGrid[0][0].getCellMover().getPercentAlike(1);
+		Cell[][] mainCellGrid = MainView.getMyCellGrid();
+		double cellCount= GRID_SIZE*GRID_SIZE*mainCellGrid[1][1].getCellMover().getPercentAlike(1);
 		series.getData().add(new XYChart.Data<Number,Number>(count, cellCount));
 		count++;
 		if (count>=MAX_DATA_POINTS) {
@@ -109,8 +110,9 @@ public class ChartView {
 		}	
 	}
 	public static void updateChartAnimationRate(double rate) {
-		animation.setRate(rate);
+		chartAnimation.setRate(rate);
 	}
+	
 
 	
 }

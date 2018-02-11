@@ -27,6 +27,7 @@ public class ChartButton extends ActionButton{
 		this.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
 		        buildChart();// activate the play method
+		        MainView.setChartBoolean(true);
 		    }
 		});
 	}
