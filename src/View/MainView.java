@@ -67,44 +67,44 @@ public class MainView {
 		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
 	}
 	
-	private static void setupAllNeighbors(Cell[][] myCellGrid) {
+	private static void setupAllNeighbors() {
 		grid.setAllCornerNeighbors(myCellGrid,GRID_SIZE);
 		grid.setAllSideNeighbors(myCellGrid,GRID_SIZE);
 		grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
 	}
 	
-	private static void setupCardinalNeighbors(Cell[][] myCellGrid) {
+	private static void setupCardinalNeighbors() {
 		grid.setCardinalCornerNeighbors(myCellGrid,GRID_SIZE);
 		grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
 		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
 	}
 
-	public static void setupGrid(String name, Cell[][] myCellGrid) {
+	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
 			setupCellGrid(GRID_SIZE);
-			setupAllNeighbors(myCellGrid);
+			setupAllNeighbors();
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
 			setupCellGrid(GRID_SIZE);
-			setupCardinalNeighbors(myCellGrid);
+			setupCardinalNeighbors();
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
 			setupCellGrid(GRID_SIZE);
-			setupAllNeighbors(myCellGrid);
+			setupAllNeighbors();
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
 			setupCellGrid(GRID_SIZE);
-			setupCardinalNeighbors(myCellGrid);
+			setupCardinalNeighbors();
 		}
 	}
 
 	public Scene initializeStartScene() {
 		group = new Group();
-		setupGrid(SIMULATION, myCellGrid);
+		setupGrid(SIMULATION);
 		ButtonView.createButtons();
 		ButtonView.arrangeButtons();
-		myScene = setupScene(myCellGrid);
+		myScene = setupScene();
 		beginAnimationLoop();  //start the animation process
 		myScene.addEventFilter(MouseEvent.DRAG_DETECTED , new EventHandler<MouseEvent>() {
 			@Override
@@ -125,12 +125,12 @@ public class MainView {
 	}
 
 	//removed Scene stage from parameters
-	public static Scene setupScene(Cell[][] myCellGrid) {
-		addCells(myCellGrid);
+	public static Scene setupScene() {
+		addCells();
 		return new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 	}
 
-	public static void removeCells(Cell[][] myCellGrid) {
+	public static void removeCells() {
 		for(int i=0;i<myCellGrid.length;i++) {
 			for(int j=0;j<myCellGrid[i].length;j++) {
 				group.getChildren().remove(myCellGrid[i][j]);
@@ -138,7 +138,7 @@ public class MainView {
 		}	
 	}
 
-	public static void addCells(Cell[][] myCellGrid) {
+	public static void addCells() {
 		for(int i=0;i<myCellGrid.length;i++) {
 			for(int j=0;j<myCellGrid[i].length;j++) {
 				group.getChildren().add(myCellGrid[i][j]);
@@ -173,9 +173,9 @@ public class MainView {
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
-			removeCells(myCellGrid);
-			setupGrid(SIMULATION, myCellGrid);	
-			addCells(myCellGrid);
+			removeCells();
+			setupGrid(SIMULATION);	
+			addCells();
 		});
 	}
 	
