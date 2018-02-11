@@ -1,20 +1,21 @@
 package triangleGrids;
 
 import rectCells.Cell;
+import rectCells.CellMover;
 import rectGrids.Grid;
 
 public abstract class TriangleGrid extends Grid{
 
 	public abstract Cell[][] createGrid(double offset, int gridSize, double side, double cutOff);
 
-//	private CellMover cm = new CellMover();
+	private CellMover cm = new CellMover();
 	
 	public void setAllEvenNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20
-//				grid[i][j].setCellMover(cm);
-//				cm.addCell(grid[i][j]);
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
 				
 				if(i==0 && j==0) { //left side even triangle and top left corner
 					grid[i][j].setNeighbors(grid[i][j+1],grid[i+1][j+1]);
@@ -44,8 +45,8 @@ public abstract class TriangleGrid extends Grid{
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20
-//				grid[i][j].setCellMover(cm);
-//				cm.addCell(grid[i][j]);
+				grid[i][j].setCellMover(cm);
+				cm.addCell(grid[i][j]);
 				
 				if(i==0 && j==columns-1) { //top right corner
 					grid[i][j].setNeighbor(grid[i][j-1]);
@@ -70,18 +71,18 @@ public abstract class TriangleGrid extends Grid{
 			}
 		}	
 	}
-	
-	public static void updateStates(Cell[][] grid) {
-		for(int i=0;i<grid.length;i++) {
-			for(int j=0;j<grid[i].length;j++) {
-				grid[i][j].updateNeighborStates();
-			}
-		}
-		for(int i=0;i<grid.length;i++) {
-			for(int j=0;j<grid[i].length;j++) {
-				grid[i][j].updateState();
-			}
-		}
-	}
+//	
+//	public static void updateStates(Cell[][] grid) {
+//		for(int i=0;i<grid.length;i++) {
+//			for(int j=0;j<grid[i].length;j++) {
+//				grid[i][j].updateNeighborStates();
+//			}
+//		}
+//		for(int i=0;i<grid.length;i++) {
+//			for(int j=0;j<grid[i].length;j++) {
+//				grid[i][j].updateState();
+//			}
+//		}
+//	}
 	
 }

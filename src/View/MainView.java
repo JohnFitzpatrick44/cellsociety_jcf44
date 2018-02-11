@@ -104,7 +104,7 @@ public class MainView {
 		setupGrid(SIMULATION);
 		ButtonView.createButtons();
 		ButtonView.arrangeButtons();
-		myScene = setupScene(myCellGrid);
+		myScene = setupScene();
 		beginAnimationLoop();  //start the animation process
 		myScene.addEventFilter(MouseEvent.DRAG_DETECTED , new EventHandler<MouseEvent>() {
 			@Override
@@ -125,12 +125,12 @@ public class MainView {
 	}
 
 	//removed Scene stage from parameters
-	public static Scene setupScene(Cell[][] myCellGrid) {
-		addCells(myCellGrid);
+	public static Scene setupScene() {
+		addCells();
 		return new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 	}
 
-	public static void removeCells(Cell[][] myCellGrid) {
+	public static void removeCells() {
 		for(int i=0;i<myCellGrid.length;i++) {
 			for(int j=0;j<myCellGrid[i].length;j++) {
 				group.getChildren().remove(myCellGrid[i][j]);
@@ -138,7 +138,7 @@ public class MainView {
 		}	
 	}
 
-	public static void addCells(Cell[][] myCellGrid) {
+	public static void addCells() {
 		for(int i=0;i<myCellGrid.length;i++) {
 			for(int j=0;j<myCellGrid[i].length;j++) {
 				group.getChildren().add(myCellGrid[i][j]);
@@ -173,9 +173,9 @@ public class MainView {
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
-			removeCells(myCellGrid);
+			removeCells();
 			setupGrid(SIMULATION);	
-			addCells(myCellGrid);
+			addCells();
 		});
 	}
 	
