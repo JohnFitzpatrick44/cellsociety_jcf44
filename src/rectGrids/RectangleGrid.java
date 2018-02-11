@@ -3,6 +3,13 @@ package rectGrids;
 import rectCells.Cell;
 import rectCells.CellMover;
 
+/**
+ * 
+ * @author hyakkali
+ * Abstract class to be used in tandem with Rectangle-shaped cells
+ * Creates a grid, methods for setting cardinal and all neighbors
+ */
+
 public abstract class RectangleGrid extends Grid{
 	
 	private CellMover cm = new CellMover();

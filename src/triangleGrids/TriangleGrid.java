@@ -1,15 +1,39 @@
 package triangleGrids;
 
 import rectCells.Cell;
+
 import rectCells.CellMover;
 import rectGrids.Grid;
 
+/**
+ * 
+ * @author hyakkali
+ * Abstract TriangleGrid class, to be used in tandem with other triangle grids
+ * Creates a triangle grid, sets neighbors
+ */
+
 public abstract class TriangleGrid extends Grid{
 
+	/**
+	 * 
+	 * @param offset Amount of offset from edge of user interface
+	 * @param gridSize Number of rows and columns of cells
+	 * @param height Height of each triangle cell
+	 * @param width Width of each triangle cell
+	 * @param cutOff 
+	 * @return 2D array of triangle-shaped cells
+	 * Creates a 2D array of triangle-shaped cells
+	 */
 	public abstract Cell[][] createGrid(double offset, int gridSize, double height, double width, double cutOff);
 
 	private CellMover cm = new CellMover();
 	
+	/**
+	 * 
+	 * @param grid 2D array of triangle-shaped cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets neighbors for all "normal" oriented triangle cells
+	 */
 	public void setAllEvenNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
@@ -41,6 +65,12 @@ public abstract class TriangleGrid extends Grid{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets neighbors for all inverted triangle cells
+	 */
 	public void setAllOddNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
@@ -72,6 +102,12 @@ public abstract class TriangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets toroidal neighbors for all inverted triangle cells
+	 */
 	public void setAllOddToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
@@ -103,6 +139,12 @@ public abstract class TriangleGrid extends Grid{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets neighbors for all normal-oriented triangle cells
+	 */
 	public void setAllEvenToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
