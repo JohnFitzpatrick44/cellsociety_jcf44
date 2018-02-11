@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -13,7 +14,7 @@ import javafx.scene.shape.Rectangle;
  * Abstract class Cell to work with Grid
  * Each specific simulation cell should extend this class, implement interface with Grid
  */
-public abstract class Cell extends Rectangle implements IGrid {
+public abstract class Cell extends Polygon implements IGrid {
 
 	public static final Color BORDER_COLOR = Color.BLACK;
 
@@ -49,8 +50,8 @@ public abstract class Cell extends Rectangle implements IGrid {
 	 * @param width Width of Cell
 	 * @param height Height of Cell
 	 */
-	public Cell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public Cell(double...points) {
+		super(points);
 		this.setStroke(BORDER_COLOR);
 		this.neighbors = new ArrayList<>();
 		this.neighborStates = new ArrayList<>();

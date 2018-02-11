@@ -20,9 +20,17 @@ public class PredPreyGrid extends RectangleGrid {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {		
 				if(index < gridConfig.length) {
-					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,gridConfig[index]);
+					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,
+							  offset+blockSpacing+cellWidth,offset+heightSpacing,
+							  offset+blockSpacing+cellWidth, offset+heightSpacing+cellHeight,
+							  offset+blockSpacing,offset+heightSpacing+cellHeight,
+							  gridConfig[index]);
 				} else {
-					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,cellWidth,cellHeight,WATER);
+					grid[i][j] = new PredPreyCell(offset+blockSpacing,offset+heightSpacing,
+							  offset+blockSpacing+cellWidth,offset+heightSpacing,
+							  offset+blockSpacing+cellWidth, offset+heightSpacing+cellHeight,
+							  offset+blockSpacing,offset+heightSpacing+cellHeight,
+							  WATER);
 				}
 				blockSpacing += cellWidth;
 				index++;

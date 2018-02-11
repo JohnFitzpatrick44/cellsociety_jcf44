@@ -2,15 +2,14 @@ package triangleGrids;
 
 import rectCells.Cell;
 import rectGrids.Grid;
-import triangleCells.TriangleCell;
 
 public abstract class TriangleGrid extends Grid{
 
-	public abstract TriangleCell[][] createGrid(double offset, int gridSize, double side, double cutOff);
+	public abstract Cell[][] createGrid(double offset, int gridSize, double side, double cutOff);
 
 //	private CellMover cm = new CellMover();
 	
-	public void setAllEvenNeighbors(TriangleCell[][] grid, int gridSize) {
+	public void setAllEvenNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20
@@ -41,7 +40,7 @@ public abstract class TriangleGrid extends Grid{
 		}
 	}
 	
-	public void setAllOddNeighbors(TriangleCell[][] grid, int gridSize) {
+	public void setAllOddNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20
@@ -72,7 +71,7 @@ public abstract class TriangleGrid extends Grid{
 		}	
 	}
 	
-	public static void updateStates(TriangleCell[][] grid) {
+	public static void updateStates(Cell[][] grid) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				grid[i][j].updateNeighborStates();

@@ -18,14 +18,14 @@ public class LifeCell extends Cell {
 	private static final int MIN_ALIVE = 2;
 	private static final int MAX_ALIVE = 3;
 
-	public LifeCell(int x, int y, int width, int height, int state) {
-		this(x, y, width, height);
+	public LifeCell(int state, double...points) {
+		this(points);
 		setState(state);
 		updateFill();
 	}
 
-	public LifeCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public LifeCell(double...points) {
+		super(points);
 		setState(DEAD);
 		updateFill();
 	}

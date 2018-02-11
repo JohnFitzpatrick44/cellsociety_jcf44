@@ -15,7 +15,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
-import triangleCells.TriangleCell;
+import rectCells.Cell;
 import triangleGrids.FireTriangleGrid;
 import triangleGrids.LifeTriangleGrid;
 import triangleGrids.PredPreyTriangleGrid;
@@ -46,7 +46,7 @@ public class MainTriangleView {
 	private static Group group;
 	private static Scene myScene;
 	private static TriangleGrid triangleGrid;
-	private static TriangleCell[][] myTriangleCellGrid;
+	private static Cell[][] myTriangleCellGrid;
 	private static Timeline animation;
 
 	//list of files
@@ -113,12 +113,12 @@ public class MainTriangleView {
 	}
 
 	//removed Scene stage from parameters
-	public static Scene setupScene(TriangleCell[][] myTriangleCellGrid) {
+	public static Scene setupScene(Cell[][] myTriangleCellGrid) {
 		addCells(myTriangleCellGrid);
 		return new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 	}
 
-	public static void removeCells(TriangleCell[][] cellGrid) {
+	public static void removeCells(Cell[][] cellGrid) {
 		for(int i=0;i<cellGrid.length;i++) {
 			for(int j=0;j<cellGrid[i].length;j++) {
 				group.getChildren().remove(cellGrid[i][j]);
@@ -126,7 +126,7 @@ public class MainTriangleView {
 		}	
 	}
 
-	public static void addCells(TriangleCell[][] myTriangleCellGrid) {
+	public static void addCells(Cell[][] myTriangleCellGrid) {
 		for(int i=0;i<myTriangleCellGrid.length;i++) {
 			for(int j=0;j<myTriangleCellGrid[i].length;j++) {
 				group.getChildren().add(myTriangleCellGrid[i][j]);
@@ -134,7 +134,7 @@ public class MainTriangleView {
 		}
 	}
 	
-	public static void step(double elapsedTime, TriangleCell[][] myTriangleCellGrid) {
+	public static void step(double elapsedTime, Cell[][] myTriangleCellGrid) {
 		if (playBoolean) {
 			TriangleGrid.updateStates(myTriangleCellGrid);
 //			Grid.updateStates(myTriangleCellGrid);
@@ -171,7 +171,7 @@ public class MainTriangleView {
 		animation.setRate(rate*animation.getRate());
 	}
 	
-	public static TriangleCell[][] getMyTriangleCellGrid() {
+	public static Cell[][] getMyTriangleCellGrid() {
 		return myTriangleCellGrid;
 	}
 	

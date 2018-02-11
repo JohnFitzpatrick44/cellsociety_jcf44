@@ -15,15 +15,15 @@ public class SegregationCell extends Cell {
 
 	private double cutoff;
 
-	public SegregationCell(int x, int y, int width, int height, double co, int state) {
-		this(x, y, width, height);
+	public SegregationCell(double co, int state, double...points) {
+		this(points);
 		setState(state);
 		updateFill();
 		this.cutoff = co;
 	}
 
-	public SegregationCell(int x, int y, int width, int height) {
-		super(x, y, width, height);
+	public SegregationCell(double...points) {
+		super(points);
 		updateFill();
 	}
 
