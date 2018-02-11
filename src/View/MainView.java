@@ -50,6 +50,7 @@ public class MainView {
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
 	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
 	private static boolean isTriangle = false;
+	private static boolean isChart = false;
 
 	private static String SIMULATION = DataHolder.getType();
 
@@ -241,7 +242,9 @@ public class MainView {
 	public static void setAnimationRate(double rate) {
 		System.out.println(animation.getRate());
 		animation.setRate(rate);
-		//ChartView.updateChartAnimationRate(rate);
+		if (isChart) {
+			ChartView.updateChartAnimationRate(rate);
+		}
 	}
 	
 	public static Cell[][] getMyCellGrid() {
@@ -254,6 +257,12 @@ public class MainView {
 	
 	public static boolean isPlaying() {
 		return playBoolean;
+	}
+	public static boolean isCharting() {
+		return isChart;
+	}
+	public static void setChartBoolean(boolean b) {
+		isChart = b;
 	}
 	
 	public static void setPlaying(boolean b) {
