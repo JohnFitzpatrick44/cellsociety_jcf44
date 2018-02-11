@@ -4,6 +4,11 @@ import XML.FireHolder;
 import rectCells.Cell;
 import rectCells.FireCell;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Class that creates Rectangular grid for Spreading Fire simulation
+ */
 public class FireGrid extends RectangleGrid {
 	
 

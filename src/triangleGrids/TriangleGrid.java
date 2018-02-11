@@ -7,7 +7,7 @@ import rectGrids.Grid;
 
 /**
  * 
- * @author hyakkali
+ * @author Hemanth Yakkali
  * Abstract TriangleGrid class, to be used in tandem with other triangle grids
  * Creates a triangle grid, sets neighbors
  */

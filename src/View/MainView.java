@@ -28,6 +28,12 @@ import triangleGrids.PredPreyTriangleGrid;
 import triangleGrids.SegregationTriangleGrid;
 import triangleGrids.TriangleGrid;
 
+/**
+ * 
+ * @author Hemanth Yakkali, Ryan Fu
+ * Class that holds methods to start a simulation and sets layout for user interface
+ */
+
 public class MainView {
 
 	public MainView() {
@@ -42,13 +48,14 @@ public class MainView {
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
 	private static final double SECOND_DELAY = 1.0 / FRAMES_PER_SECOND;
 	private static int GRID_SIZE = DataHolder.getDimensions();
-	private static final int INTERFACE_BUTTON_HEIGHT = 140;
+	private static final int INTERFACE_BUTTON_HEIGHT = 140; //height of button layout
 	private static final int TOTAL_OFFSET = GRID_OFFSET*2;
 	private static final int INIT_CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
 	private static final int INIT_CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 	private static int CELL_WIDTH = INIT_CELL_WIDTH;
 	private static int CELL_HEIGHT = INIT_CELL_HEIGHT;
 	private static boolean isTriangle = false;
+	private static boolean isToroidal = false;
 	private static boolean isChart = false;
 
 	private static String SIMULATION = DataHolder.getType();
@@ -69,81 +76,88 @@ public class MainView {
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
 	
-
 	private static void setupCellGrid(int gridSize) {
 		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
 	}
 	
-	private static void setupAllNeighbors() {
-		grid.setAllCornerNeighbors(myCellGrid,GRID_SIZE);
-		grid.setAllSideNeighbors(myCellGrid,GRID_SIZE);
-		grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+	private static void setupRectangleCardinalNeighbors() {
+		if(isToroidal) {
+			grid.setCardinalCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
+			grid.setCardinalSideToroidalNeighbors(myCellGrid,GRID_SIZE);
+			grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
+		} else {
+			grid.setCardinalCornerNeighbors(myCellGrid,GRID_SIZE);
+			grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
+			grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
+		}
 	}
 	
-	private static void setupAllToroidalNeighbors() {
-		grid.setAllCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
-		grid.setAllSideToroidalNeighbors(myCellGrid,GRID_SIZE);
-		grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+	private static void setupRectangleAllNeighbors() {
+		if(isToroidal) {
+			grid.setAllCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
+			grid.setAllSideToroidalNeighbors(myCellGrid,GRID_SIZE);
+			grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+		} else {
+			grid.setAllCornerNeighbors(myCellGrid,GRID_SIZE);
+			grid.setAllSideNeighbors(myCellGrid,GRID_SIZE);
+			grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+		}
 	}
 	
-	private static void setupCardinalNeighbors() {
-		grid.setCardinalCornerNeighbors(myCellGrid,GRID_SIZE);
-		grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
-		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
-	}
-	
-	private static void setupCardinalToroidalNeighbors() {
-		grid.setCardinalCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
-		grid.setCardinalSideToroidalNeighbors(myCellGrid,GRID_SIZE);
-		grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
-	}
-	
-	private static void setupTriangleCellGrid(int gridSize) {
+	private static void setupTriangleGridAndNeighbors(int gridSize) {
 		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, gridSize, CELL_HEIGHT,CELL_WIDTH,CUTOFF);
-	}
-	
-	private static void setupTriangleNeighbors() {
-		triangleGrid.setAllEvenToroidalNeighbors(myCellGrid, GRID_SIZE);
-		triangleGrid.setAllOddToroidalNeighbors(myCellGrid, GRID_SIZE);
+		if(isToroidal) {
+			triangleGrid.setAllEvenToroidalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setAllOddToroidalNeighbors(myCellGrid, GRID_SIZE);
+		} else {
+			triangleGrid.setAllEvenNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setAllOddNeighbors(myCellGrid, GRID_SIZE);
+		}
 	}
 
+	/**
+	 * 
+	 * @param name String containing name of the simulation
+	 * Sets up a rectangle grid for a specific simulation
+	 */
 	public static void setupGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			grid = new LifeGrid();
 			setupCellGrid(GRID_SIZE);
-			setupAllNeighbors();
+			setupRectangleAllNeighbors();
 		} else if(name.equals("Spreading Fire")) {
 			grid = new FireGrid();
 			setupCellGrid(GRID_SIZE);
-			setupCardinalNeighbors();
+			setupRectangleCardinalNeighbors();
 		} else if(name.equals("Segregation")) {
 			grid = new SegregationGrid();
 			setupCellGrid(GRID_SIZE);
-			setupAllNeighbors();
+			setupRectangleAllNeighbors();
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
 			setupCellGrid(GRID_SIZE);
-			setupCardinalNeighbors();
+			setupRectangleCardinalNeighbors();
 		}
 	}
 	
+	/**
+	 * 
+	 * @param name String containing name of the simulation
+	 * Sets up a triangle grid for a specific simulation
+	 */
 	public static void setupTriangleGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			triangleGrid = new LifeTriangleGrid();
-			setupTriangleCellGrid(GRID_SIZE);
-			setupTriangleNeighbors();
+			setupTriangleGridAndNeighbors(GRID_SIZE);
 		} else if(name.equals("Spreading Fire")) {
 			triangleGrid = new FireTriangleGrid();
-			setupTriangleCellGrid(GRID_SIZE);
-			setupTriangleNeighbors();
+			setupTriangleGridAndNeighbors(GRID_SIZE);
 		} else if(name.equals("Segregation")) {
 			triangleGrid = new SegregationTriangleGrid();
-			setupTriangleCellGrid(GRID_SIZE);
-			setupTriangleNeighbors();
+			setupTriangleGridAndNeighbors(GRID_SIZE);
 		} else if(name.equals("Predator")) {
 			triangleGrid = new PredPreyTriangleGrid();
-			setupTriangleCellGrid(GRID_SIZE);
-			setupTriangleNeighbors();
+			setupTriangleGridAndNeighbors(GRID_SIZE);
 		}
 	}
 	
@@ -176,12 +190,18 @@ public class MainView {
 		animation.play();  
 	}
 
-	//removed Scene stage from parameters
+	/**
+	 * 
+	 * @return New scene with the grid, buttons, and a background color
+	 */
 	public static Scene setupScene() {
 		addCells();
 		return new Scene(group,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
 	}
 
+	/**
+	 * Removes cells from the scene
+	 */
 	public static void removeCells() {
 		for(int i=0;i<myCellGrid.length;i++) {
 			for(int j=0;j<myCellGrid[i].length;j++) {
@@ -190,6 +210,9 @@ public class MainView {
 		}	
 	}
 
+	/**
+	 * Adds cells to the scene
+	 */
 	public static void addCells() {
 		for(int i=0;i<myCellGrid.length;i++) {
 			for(int j=0;j<myCellGrid[i].length;j++) {
@@ -201,18 +224,12 @@ public class MainView {
 	public static void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
 			Grid.updateStates(cellGrid);
-//			for(int i=0;i<cellGrid.length;i++) {
-//				for(int j=0;j<cellGrid[i].length;j++) {
-//					System.out.println(i);
-//					System.out.println(j);
-//					System.out.println(cellGrid[i][j].getNeighborStates());
-//				}
-//			}
 		}
 	}
 	
-	
-	
+	/**
+	 * Switches simulation, recreates the grid
+	 */
 	public static void switchSimulation() {
 		if(isTriangle) {
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
@@ -227,12 +244,23 @@ public class MainView {
 		}
 	}
 	
+	/**
+	 * Switch shape from rectangle to triangle and vice versa
+	 */
 	public static void switchShape() {
 		isTriangle = !isTriangle;
 	}
-
-	//create the file selector drop down menu
 	
+	/**
+	 * Switch neighbor configuration from toroidal to finite and vice versa
+	 */
+	public static void switchNeighborConfig() {
+		isToroidal = !isToroidal;
+	}
+
+	/**
+	 * Create the file selector drop down menu
+	 */
 	public static void createDropDownMenu() {
 		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
@@ -247,7 +275,6 @@ public class MainView {
 			switchSimulation();
 		});
 	}
-	
 	
 	public static void setAnimationRate(double rate) {
 		System.out.println(animation.getRate());
@@ -268,9 +295,11 @@ public class MainView {
 	public static boolean isPlaying() {
 		return playBoolean;
 	}
+	
 	public static boolean isCharting() {
 		return isChart;
 	}
+	
 	public static void setChartBoolean(boolean b) {
 		isChart = b;
 	}

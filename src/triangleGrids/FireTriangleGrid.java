@@ -3,6 +3,11 @@ package triangleGrids;
 import rectCells.FireCell;
 import rectCells.Cell;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Class that creates Triangle grid for Spreading Fire simulation
+ */
 public class FireTriangleGrid extends TriangleGrid{
 
 	@Override

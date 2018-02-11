@@ -5,7 +5,7 @@ import rectCells.CellMover;
 
 /**
  * 
- * @author hyakkali
+ * @author Hemanth Yakkali
  * Abstract class to be used in tandem with Rectangle-shaped cells
  * Creates a grid, methods for setting cardinal and all neighbors
  */
@@ -24,6 +24,12 @@ public abstract class RectangleGrid extends Grid{
 	 */
 	public abstract Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff);
 
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets surrounding neighbors for corner cells
+	 */
 	public void setAllCornerNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -52,6 +58,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets surrounding neighbors for cells on the side
+	 */
 	public void setAllSideNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -80,6 +92,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets surrounding neighbors for all middle cells
+	 */
 	public void setAllMiddleNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -93,6 +111,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets cardinal neighbors for corner cells
+	 */
 	public void setCardinalCornerNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -117,6 +141,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets cardinal neighbors for cells on the side
+	 */
 	public void setCardinalSideNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -141,6 +171,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets cardinal neighbors for middle cells
+	 */
 	public void setCardinalMiddleNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -153,6 +189,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets toroidal cardinal neighbors for cells on the side
+	 */
 	public void setCardinalSideToroidalNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -177,6 +219,12 @@ public abstract class RectangleGrid extends Grid{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets toroidal cardinal neighbors for corner cells
+	 */
 	public void setCardinalCornerToroidalNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -201,6 +249,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets toroidal surrounding neighbors for corner cells
+	 */
 	public void setAllCornerToroidalNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -229,6 +283,12 @@ public abstract class RectangleGrid extends Grid{
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D array of cells
+	 * @param gridSize Number of rows and columns of cells
+	 * Sets toroidal surrounding neighbors for cells on the side
+	 */
 	public void setAllSideToroidalNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {

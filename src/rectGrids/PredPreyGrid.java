@@ -4,6 +4,11 @@ import XML.PredPreyHolder;
 import rectCells.Cell;
 import rectCells.PredPreyCell;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Class that creates Rectangle grid for Predator Prey simulation
+ */
 public class PredPreyGrid extends RectangleGrid {
 		
 	private String configString = PredPreyHolder.getPredGrid();
