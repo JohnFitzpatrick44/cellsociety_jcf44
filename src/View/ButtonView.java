@@ -4,7 +4,6 @@ import java.io.File;
 
 import XML.DataHolder;
 import buttons.ChartButton;
-import buttons.CompareButton;
 import buttons.FileUploadButton;
 import buttons.JumpButton;
 import buttons.PauseButton;
