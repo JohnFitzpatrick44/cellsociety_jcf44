@@ -1,14 +1,15 @@
 CompSci 308 Cell Society Project
 
 Authors: Jack Fitzpatrick, Hemanth Yakkali, Ryan Fu
-Date: 2/5/18
+Start Date: 1/26/18
+End Date: 2/12/18
 
 ## Roles
 ### Jack Fitzpatrick
 General back-end classes. Mainly worked on the cellTypes package, with the various Cell, CellMover, and Cell simulation classes and related interfaces. Worked to implement them with Grid. 
 
 ### Hemanth Yakkali
-Worked on the gridTypes package, set up framework for project in Main and MainView classes. Worked with Jack on the cellTypes package. Coordinated with Ryan to ensure backend and frontend work together. 
+Worked on creating grids, set up framework for project in Main and MainView classes. Worked with Jack on cells and their simulations. Coordinated with Ryan to ensure backend and frontend work together.
 
 ### Ryan Fu
 General front-end design. Worked on creating an XML reader that takes in a file and handles exceptions. In addition, created multiple button classes with different functionalities that extended an abstract ActionButton class. All of these buttons were used to develop the user interface including features such as file upload, animation speed, pause, play, reset, and overall aesthetics of the program.
@@ -29,15 +30,15 @@ The reading on inheritance (Mercer's Object-Oriented Software Development: Chapt
  * The user is able to start, stop, step through, and jump a certain number of frames in a given simulation. 
  * The user can reset the current simulation, or change to a different one with a drop down menu.
  * The user can change the state of specific cells by left or right clicking on them, to increase or decrease their states, respectively.
-  * The user can click the FILE button to upload an XML file to create a personalized simulation.
- 
+ * The user can click the FILE button to upload an XML file to create a personalized simulation.
+ * The user can switch shapes between triangle and rectangle
+ * The user can switch between finite and toroidal neighbors
 
 ## Assumptions
  * It is assumed that input XML files will be formatted correctly, and contain a valid simulation.
  * It is assumed that a moving cell (such as in segregation or predator) may occupy an empty space left by another moving cell, that left that spot in the same step.
 
 ## Possible Improvements
- * Adding initial state configurations in XML
- * Refactoring Cell simulation code to take advantage of CellMover more
- * Passing in constants to Cell classes from XML variables
  * Handling different window sizes dynamically
+ * Improve design of grids so that adding a new simulation does not require the creation of two new classes
+ * Charting could be more reliable, accurate, and more clear as to what information is being presented

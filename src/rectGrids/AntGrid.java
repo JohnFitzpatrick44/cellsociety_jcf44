@@ -13,9 +13,7 @@ public class AntGrid extends RectangleGrid {
 	private String configString = AntHolder.getSugarGrid();
 	
 	private static final int NUM_AGENTS = 40;
-	
-	//private SugarAgentMover sam;
-	
+		
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);
 		Cell[][] grid = new Cell[gridSize][gridSize];
@@ -62,8 +60,6 @@ public class AntGrid extends RectangleGrid {
 				grid[i][j].updateNeighborStates();
 			}
 		}
-		
-		
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				grid[i][j].updateState();
