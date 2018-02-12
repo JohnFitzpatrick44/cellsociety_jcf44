@@ -9,6 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 
+/*
+ * switch button that changes a boolean found in the Main Class (using a public static method)
+ * The boolean controls whether the simulation runs a triangle or square simulation
+ * @author Ryan Fu
+ */
 public class SwitchButton extends Label
 {
 	private SimpleBooleanProperty switchedOn = new SimpleBooleanProperty(true);

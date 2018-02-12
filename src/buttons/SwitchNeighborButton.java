@@ -8,7 +8,11 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
-
+/*
+ * switchNeighborButton functions as a switch that controls a boolean to determine if
+ * a simulation runs with finite or toroidal neighbors
+ * @author Ryan Fu
+ */
 public class SwitchNeighborButton extends Label
 {
 	private SimpleBooleanProperty switchedOn = new SimpleBooleanProperty(true);

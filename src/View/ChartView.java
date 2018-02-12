@@ -11,6 +11,11 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
+	/*
+	 * Chartview creates a separate scene that depicts a chart that counts the number of cells types
+	 * and animates the growth of those types of cells
+	 * @author Ryan Fu
+	 */
 
 public class ChartView {
 
@@ -19,7 +24,7 @@ public class ChartView {
 	
 	//private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 500;
-	private static final int HEIGHT_SIZE = 430;
+	private static final int HEIGHT_SIZE = 410;
 	private static final int FRAMES_PER_SECOND = 60;
 	private static final int ANIMATION_SPEED = 100000;
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
@@ -61,6 +66,8 @@ public class ChartView {
 	        //defining a series
 	        xAxis.setMinorTickVisible(false);
 	        xAxis.setTickMarkVisible(false);
+	        xAxis.setTickLabelsVisible(false);
+	        
 	       // xAxis.setTickLabelsVisible(false);
 	        lineChart.setLegendVisible(false);
 	        lineChart.setCreateSymbols(false);    
@@ -74,12 +81,6 @@ public class ChartView {
 		lineChart.setTitle(DataHolder.getType());
 	}
 
-	public static void clearChart() {
-		series.getData().clear();
-		series2.getData().clear();
-		series3.getData().clear();
-		count=0;
-	}
 
 	public void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
@@ -90,7 +91,7 @@ public class ChartView {
 		chartAnimation.play();  
 	}
 	
-	
+	//update cell count and add values to the chart
 	public void step(double elapsedTime, Cell[][] cellGrid) {
 			if (MainView.isPlaying()) {
 			System.out.println("blah");
@@ -98,6 +99,7 @@ public class ChartView {
 			}
 	}
 	
+	//update cell count and reposition graph if the count is outside of the max x-axis range
 	public static void updateCellCount() {
 		Cell[][] mainCellGrid = MainView.getMyCellGrid();
 		double cellCount= GRID_SIZE*GRID_SIZE*mainCellGrid[1][1].getCellMover().getPercentAlike(0);
@@ -113,6 +115,7 @@ public class ChartView {
 		       xAxis.setUpperBound(xAxis.getUpperBound()+1);
 		}	
 	}
+	//increase or decrease animation rate
 	public static void updateChartAnimationRate(double rate) {
 		chartAnimation.setRate(rate);
 	}
