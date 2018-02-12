@@ -34,8 +34,5 @@ public class ResetButton extends ActionButton{
 	public static void reset() {
 		setPlayBoolean(false);
 		MainView.switchSimulation();
-		if (MainView.isCharting()) {
-			ChartView.clearChart();
-		}
 	}
 }

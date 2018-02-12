@@ -280,7 +280,7 @@ public class MainView {
 	 */
 	public static void createDropDownMenu() {
 		ObservableList<File> fileList = FXCollections.observableArrayList(LIFE_FILE, FIRE_FILE, SEGREGATION_FILE, PRED_PREY_FILE,
-				SUGAR_SCAPE_FILE);
+				SUGAR_SCAPE_FILE, BACTERIA_FILE);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
 			DataHolder.clearXMLReader();

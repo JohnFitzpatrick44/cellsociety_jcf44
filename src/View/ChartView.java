@@ -19,7 +19,7 @@ public class ChartView {
 	
 	//private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 500;
-	private static final int HEIGHT_SIZE = 430;
+	private static final int HEIGHT_SIZE = 410;
 	private static final int FRAMES_PER_SECOND = 60;
 	private static final int ANIMATION_SPEED = 100000;
 	private static final int MILLISECOND_DELAY = ANIMATION_SPEED / FRAMES_PER_SECOND;
@@ -61,6 +61,8 @@ public class ChartView {
 	        //defining a series
 	        xAxis.setMinorTickVisible(false);
 	        xAxis.setTickMarkVisible(false);
+	        xAxis.setTickLabelsVisible(false);
+	        
 	       // xAxis.setTickLabelsVisible(false);
 	        lineChart.setLegendVisible(false);
 	        lineChart.setCreateSymbols(false);    
@@ -74,12 +76,6 @@ public class ChartView {
 		lineChart.setTitle(DataHolder.getType());
 	}
 
-	public static void clearChart() {
-		series.getData().clear();
-		series2.getData().clear();
-		series3.getData().clear();
-		count=0;
-	}
 
 	public void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),
