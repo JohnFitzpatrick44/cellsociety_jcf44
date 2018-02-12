@@ -1,4 +1,4 @@
-package rectCells;
+package agents;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import rectCells.Cell;
+import rectCells.SugarCell;
 
-public class SugarAgent extends Circle {
+public class SugarAgent extends Agent {
 	
 	private int vision;
 	private int metabolism;
@@ -37,7 +38,7 @@ public class SugarAgent extends Circle {
 		this.sugar = initSugar;
 		this.initialSugar = initSugar;
 		this.place = c;
-		updatePos();
+		updatePos(place);
 		this.toFront();
 		reproduced = false;
 		gender = ThreadLocalRandom.current().nextBoolean();
@@ -67,21 +68,11 @@ public class SugarAgent extends Circle {
 			place.setAgent(null);
 			sam.removeAgent(this);
 		} else {
-			updatePos();
+			updatePos(place);
 		}
 		if(age > FERTILITY_MAX) {
 			setFill(OLD_COLOR);
 		}
-	}
-	
-	public void updatePos() {
-		setCenterX(place.getPoints().get(0) + cellWidth(place)/2);
-		setCenterY(place.getPoints().get(1) + cellWidth(place)/2);
-		this.toFront();
-	}
-	
-	private static double cellWidth(Cell c) {
-		return c.getPoints().get(2)-c.getPoints().get(0);
 	}
 	
 	private void lookAndMove() {

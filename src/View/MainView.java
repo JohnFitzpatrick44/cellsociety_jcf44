@@ -114,18 +114,28 @@ public class MainView {
 		}
 	}
 	
-	/**
-	 * Sets up proper neighbor configuration for triangle cells, either toroidal or finite based on a boolean
-	 */
-	private static void setupTriangleGridAndNeighbors(int gridSize) {
-		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, gridSize, CELL_HEIGHT,CELL_WIDTH,CUTOFF);
+	private static void setupTriangleAllNeighbors() {
 		if(isToroidal) {
-			triangleGrid.setCardinalNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setCardinalInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
-		} else {
+			triangleGrid.setAllNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setAllInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
+		}else {
 			triangleGrid.setAllNormalNeighbors(myCellGrid, GRID_SIZE);
 			triangleGrid.setAllInvertedNeighbors(myCellGrid, GRID_SIZE);
 		}
+	}
+	
+	private static void setupTriangleCardinalNeighbors() {
+		if(isToroidal) {
+			triangleGrid.setCardinalNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setCardinalInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
+		}else {
+			triangleGrid.setCardinalNormalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setCardinalInvertedNeighbors(myCellGrid, GRID_SIZE);
+		}
+	}
+	
+	private static void setupTriangleGrid(int gridSize) {
+		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, gridSize, CELL_HEIGHT,CELL_WIDTH,CUTOFF);
 	}
 
 	/**
@@ -169,16 +179,20 @@ public class MainView {
 	public static void setupTriangleGrid(String name) {
 		if(name.equals("Game Of Life")) {
 			triangleGrid = new LifeTriangleGrid();
-			setupTriangleGridAndNeighbors(GRID_SIZE);
+			setupTriangleGrid(GRID_SIZE);
+			setupTriangleAllNeighbors();
 		} else if(name.equals("Spreading Fire")) {
 			triangleGrid = new FireTriangleGrid();
-			setupTriangleGridAndNeighbors(GRID_SIZE);
+			setupTriangleGrid(GRID_SIZE);
+			setupTriangleCardinalNeighbors();
 		} else if(name.equals("Segregation")) {
 			triangleGrid = new SegregationTriangleGrid();
-			setupTriangleGridAndNeighbors(GRID_SIZE);
+			setupTriangleGrid(GRID_SIZE);
+			setupTriangleAllNeighbors();
 		} else if(name.equals("Predator")) {
 			triangleGrid = new PredPreyTriangleGrid();
-			setupTriangleGridAndNeighbors(GRID_SIZE);
+			setupTriangleGrid(GRID_SIZE);
+			setupTriangleCardinalNeighbors();
 		}
 	}
 	
