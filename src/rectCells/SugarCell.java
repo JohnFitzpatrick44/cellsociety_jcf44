@@ -1,5 +1,6 @@
 package rectCells;
 
+import agents.SugarAgent;
 import XML.SugarHolder;
 import javafx.scene.paint.Color;
 

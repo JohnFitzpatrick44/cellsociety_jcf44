@@ -1,8 +1,9 @@
-package rectCells;
+package agents;
 
 import java.util.ArrayList;
 
 import View.MainView;
+import rectCells.SugarCell;
 
 public class SugarAgentMover {
 

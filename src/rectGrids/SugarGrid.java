@@ -3,9 +3,9 @@ package rectGrids;
 import java.util.concurrent.ThreadLocalRandom;
 
 import XML.SugarHolder;
+import agents.SugarAgent;
+import agents.SugarAgentMover;
 import rectCells.Cell;
-import rectCells.SugarAgent;
-import rectCells.SugarAgentMover;
 import rectCells.SugarCell;
 
 public class SugarGrid extends RectangleGrid {

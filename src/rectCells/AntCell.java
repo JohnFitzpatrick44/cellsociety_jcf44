@@ -2,6 +2,7 @@ package rectCells;
 
 import java.util.ArrayList;
 
+import agents.AntAgent;
 import javafx.scene.paint.Color;
 
 public class AntCell extends Cell {
@@ -9,6 +10,8 @@ public class AntCell extends Cell {
 	private static final Color EMPTY_COLOR = Color.BLACK;
 	private static final Color FOOD_COLOR = Color.BLUE;
 	private static final Color NEST_COLOR = Color.GREEN;
+	
+	private static final int MAX_ANTS = 1;
 	
 	private static final int MAX_STATE = 2; //Empty, Food, Nest
 
@@ -51,6 +54,36 @@ public class AntCell extends Cell {
 
 	public int getMaxState() {
 		return MAX_STATE;
+	}
+	
+	public void addAnt(AntAgent a) {
+		ants.add(a);
+	}
+	
+	public void removeAnt(AntAgent a) {
+		if(ants.contains(a)) {
+			ants.remove(a);
+		}
+	}
+	
+	public boolean roomForAnts() {
+		return !(ants.size() >= MAX_ANTS);
+	}
+	
+	public double getNestPheromones() {
+		return nestPheromones;
+	}
+	
+	public double getFoodPheromones() {
+		return foodPheromones;
+	}
+	
+	public void setNestPheromones(double np) {
+		nestPheromones = np;
+	}
+	
+	public void setFoodPheromones(double fp) {
+		foodPheromones = fp;
 	}
 
 }
