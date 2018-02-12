@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <simulation>
-	<type name="Predator" author="team03">
+	<type name="Segregation" author="team03">
 		<predReproduction>10</predReproduction>
 		<dimensions>20</dimensions>
 		<predColor>#ff0000</predColor>

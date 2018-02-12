@@ -34,7 +34,6 @@ public class PredPreyHolder extends DataHolder {
 	}
 	
 	public static int getPredEnergy() {
-		System.out.println("data"+PRED_ENERGY);
 		return PRED_ENERGY;
 	}
 	
