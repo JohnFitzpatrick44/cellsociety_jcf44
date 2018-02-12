@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;
 
-import View.MainView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 

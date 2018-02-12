@@ -75,6 +75,7 @@ public class MainView {
 	public static final File SegregationFile = new File("data/Segregation.xml");
 	public static final File PredPreyFile = new File("data/PredPrey.xml");
 	public static final File SUGAR_SCAPE_FILE = new File("data/SugarScape.xml");
+	public static final File BACTERIA_FILE = new File("data/Bacteria.xml");
 
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
@@ -151,6 +152,10 @@ public class MainView {
 			setupRectangleCardinalNeighbors();
 		} else if(name.equals("SugarScape")) {
 			grid = new SugarGrid();
+			setupCellGrid(GRID_SIZE);
+			setupRectangleCardinalNeighbors();
+		} else if(name.equals("Bacteria")) {
+			grid = new BacteriaGrid();
 			setupCellGrid(GRID_SIZE);
 			setupRectangleCardinalNeighbors();
 		}
@@ -274,8 +279,8 @@ public class MainView {
 	 * Create the file selector drop down menu
 	 */
 	public static void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile,
-				SUGAR_SCAPE_FILE);
+		ObservableList<File> fileList = FXCollections.observableArrayList(GameOfLifeFile, FireFile, SegregationFile, PredPreyFile,
+				SUGAR_SCAPE_FILE, BACTERIA_FILE);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
 			DataHolder.clearXMLReader();

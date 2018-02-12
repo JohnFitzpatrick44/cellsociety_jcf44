@@ -157,6 +157,14 @@ public class XMLReader {
 						SugarHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
 					}
 					
+					else if (DataHolder.getType().equals("Bacteria")) {
+						aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
+						deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
+						percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
+						lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						BacteriaHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
+					}
+					
 					else {
 						System.out.println("WRONG SIMULATION NAME"); //ERROR CHECKING IF WRONG SIMULATION IS TYPED
 					}
