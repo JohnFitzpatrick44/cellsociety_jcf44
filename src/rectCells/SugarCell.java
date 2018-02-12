@@ -9,9 +9,9 @@ public class SugarCell extends Cell {
 	private static final int SUGAR_COLOR_BLUE = 255;
 	
 	private static final int GROW_RATE = 5;
-	private static final int GROW_INTERVAL = 3;
+	private static final int GROW_INTERVAL = 1;
 	
-	private static final int MAX_CAPACITY = 10;
+	private static final int MAX_CAPACITY = 50;
 	
 	private int maxCapacity;
 	private int interval;

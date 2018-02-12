@@ -3,7 +3,9 @@ package rectGrids;
 import java.util.concurrent.ThreadLocalRandom;
 
 import View.MainView;
+import XML.FireHolder;
 import XML.LifeHolder;
+import XML.SugarHolder;
 import rectCells.BacteriaCell;
 import rectCells.Cell;
 import rectCells.SugarAgent;
@@ -11,9 +13,9 @@ import rectCells.SugarAgentMover;
 import rectCells.SugarCell;
 
 public class SugarGrid extends RectangleGrid {
-	private String configString = LifeHolder.getLifeGrid();
+	private String configString = SugarHolder.getFireGrid();
 	
-	private static final int NUM_AGENTS = 10;
+	private static final int NUM_AGENTS = 5;
 	
 	private SugarAgentMover sam;
 	
@@ -25,19 +27,20 @@ public class SugarGrid extends RectangleGrid {
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
-				//if(index < gridConfig.length) {
-				//	grid[i][j] = new BacteriaCell(gridConfig[index], offset+blockSpacing,offset+heightSpacing,
-				//			  offset+blockSpacing+cellWidth,offset+heightSpacing,
-				//			  offset+blockSpacing+cellWidth, offset+heightSpacing+cellHeight,
-				//			  offset+blockSpacing,offset+heightSpacing+cellHeight);
-				//} else {
-					grid[i][j] = new SugarCell(10, offset+blockSpacing,offset+heightSpacing,
+				if(index < gridConfig.length) {
+					grid[i][j] = new SugarCell(gridConfig[index], offset+blockSpacing,offset+heightSpacing,
 							  offset+blockSpacing+cellWidth,offset+heightSpacing,
 							  offset+blockSpacing+cellWidth, offset+heightSpacing+cellHeight,
 							  offset+blockSpacing,offset+heightSpacing+cellHeight);
-				//}
+				} else {
+					grid[i][j] = new SugarCell(5, offset+blockSpacing,offset+heightSpacing,
+							  offset+blockSpacing+cellWidth,offset+heightSpacing,
+							  offset+blockSpacing+cellWidth, offset+heightSpacing+cellHeight,
+							  offset+blockSpacing,offset+heightSpacing+cellHeight);
+				}
 				blockSpacing += cellWidth;
 				index++;
+				
 			}
 			heightSpacing += cellHeight;
 		}
@@ -48,8 +51,8 @@ public class SugarGrid extends RectangleGrid {
 			
 			if(((SugarCell) grid[i][j]).getAgent() == null) {
 				int init_vision = 1;
-				int init_metabolism = ThreadLocalRandom.current().nextInt(1, 5);
-				int init_sugar = ThreadLocalRandom.current().nextInt(5, 11);
+				int init_metabolism = ThreadLocalRandom.current().nextInt(5, 21);
+				int init_sugar = ThreadLocalRandom.current().nextInt(15, 31);
 				SugarAgent sa = new SugarAgent((SugarCell) grid[i][j], init_vision, init_metabolism, init_sugar);
 				((SugarCell) grid[i][j]).setAgent(sa);
 				sam.addAgent(sa);
