@@ -1,7 +1,6 @@
 package XML;
 
-
-public class SugarHolder extends DataHolder {
+public class AntHolder  extends DataHolder {
 	private static int COLOR_ONE;
 	private static int COLOR_TWO;
 	private static int COLOR_THREE;
