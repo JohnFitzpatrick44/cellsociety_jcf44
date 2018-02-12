@@ -36,7 +36,7 @@ public class XMLReader {
 	private Color aColor;
 	private Color bColor;
 	private Color neutralColor;
-	private String segGrid;
+	//private String segGrid;
 
 	private Color predColor;
 	private Color preyColor;
@@ -71,7 +71,7 @@ public class XMLReader {
 		aColor=Color.BLUE;
 		bColor=Color.RED;
 		neutralColor=Color.WHITE;
-		segGrid = "0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
+		//segGrid = "0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
 
 		predColor=Color.GREEN;
 		preyColor=Color.PURPLE;
