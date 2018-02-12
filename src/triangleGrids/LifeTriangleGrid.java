@@ -4,6 +4,11 @@ import XML.LifeHolder;
 import rectCells.Cell;
 import rectCells.LifeCell;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Class that creates Triangle grid for the Game of Life Simulation
+ */
 public class LifeTriangleGrid extends TriangleGrid{
 	
 	private static final int DEAD = 0;

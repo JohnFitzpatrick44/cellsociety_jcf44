@@ -1,16 +1,21 @@
 package rectGrids;
 
 import rectCells.Cell;
-import rectCells.CellMover;
 
 /**
  * @author Hemanth Yakkali
- * Abstract Grid class, to be used in tandem with Cells and CellMover
- * Creates a grid, gets a grid configuration, sets neighbors for each cell, and updates cell states
+ * Abstract Grid class
+ * Creates a grid, gets a grid configuration, and updates cell states
  */
 
 public abstract class Grid {
 	
+	/**
+	 * 
+	 * @param config String of integers with a space in between each
+	 * @return Integer array 
+	 * Takes string and converts it into an integer array
+	 */
 	public int[] getGridConfig(String config) {
 		String [] origGridConfig = config.split(" ");
 		int[] gridConfig = new int[origGridConfig.length];
@@ -20,6 +25,11 @@ public abstract class Grid {
 		return gridConfig;
 	}
 	
+	/**
+	 * 
+	 * @param grid 2D Array of Cells
+	 * Updates each cell
+	 */
 	public void updateStates(Cell[][] grid) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {

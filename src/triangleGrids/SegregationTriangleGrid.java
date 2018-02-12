@@ -4,6 +4,11 @@ import XML.SegregationHolder;
 import rectCells.Cell;
 import rectCells.SegregationCell;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Class that creates a triangle grid for the Segregation simulation
+ */
 
 public class SegregationTriangleGrid extends TriangleGrid{
 	
