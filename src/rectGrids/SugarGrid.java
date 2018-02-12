@@ -9,7 +9,7 @@ import rectCells.SugarAgentMover;
 import rectCells.SugarCell;
 
 public class SugarGrid extends RectangleGrid {
-	private String configString = SugarHolder.getFireGrid();
+	private String configString = SugarHolder.getSugarGrid();
 	
 	private static final int NUM_AGENTS = 40;
 	
@@ -45,19 +45,17 @@ public class SugarGrid extends RectangleGrid {
 			int i = ThreadLocalRandom.current().nextInt(0, gridSize);
 			int j = ThreadLocalRandom.current().nextInt(0, gridSize);
 			
-			if(((SugarCell) grid[i][j]).getAgent() == null) {
-				int init_vision = 1;
-				int init_metabolism = ThreadLocalRandom.current().nextInt(7, 21);
-				int init_sugar = ThreadLocalRandom.current().nextInt(20, 36);
-				SugarAgent sa = new SugarAgent((SugarCell) grid[i][j], init_vision, init_metabolism, init_sugar);
-				((SugarCell) grid[i][j]).setAgent(sa);
-				sam.addAgent(sa);
-				sa.addSAM(sam);
-			} else {
-				k--;
-				continue;
+			while(((SugarCell) grid[i][j]).getAgent() != null) {
+				i = ThreadLocalRandom.current().nextInt(0, gridSize);
+				j = ThreadLocalRandom.current().nextInt(0, gridSize);
 			}
-			
+			int init_vision = 1;
+			int init_metabolism = ThreadLocalRandom.current().nextInt(7, 21);
+			int init_sugar = ThreadLocalRandom.current().nextInt(20, 36);
+			SugarAgent sa = new SugarAgent((SugarCell) grid[i][j], init_vision, init_metabolism, init_sugar);
+			((SugarCell) grid[i][j]).setAgent(sa);
+			sam.addAgent(sa);
+			sa.addSAM(sam);
 		}
 		return grid;
 	}

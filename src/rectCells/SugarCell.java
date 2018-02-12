@@ -1,15 +1,16 @@
 package rectCells;
 
+import XML.SugarHolder;
 import javafx.scene.paint.Color;
 
 public class SugarCell extends Cell {
 
-	private static final int SUGAR_COLOR_RED = 255;
-	private static final int SUGAR_COLOR_GREEN = 255;
-	private static final int SUGAR_COLOR_BLUE = 255;
+	private static int SUGAR_COLOR_RED = SugarHolder.getColorOne();
+	private static int SUGAR_COLOR_GREEN = SugarHolder.getColorTwo();
+	private static int SUGAR_COLOR_BLUE = SugarHolder.getColorThree();
 	
-	private static final int GROW_RATE = 5;
-	private static final int GROW_INTERVAL = 1;
+	private static int GROW_RATE = SugarHolder.getGrowthRate();
+	private static int GROW_INTERVAL = SugarHolder.getGrowthInterval();
 	
 	private static final int MAX_CAPACITY = 100;
 	
@@ -18,8 +19,18 @@ public class SugarCell extends Cell {
 	private SugarAgent agent;
 	
 	
+	private static void refreshValues() {
+		SUGAR_COLOR_RED = SugarHolder.getColorOne();
+		SUGAR_COLOR_GREEN = SugarHolder.getColorTwo();
+		SUGAR_COLOR_BLUE = SugarHolder.getColorThree();
+		GROW_RATE = SugarHolder.getGrowthRate();
+		GROW_INTERVAL = SugarHolder.getGrowthInterval();
+	}
+	
+	
 	public SugarCell(int state, double...points) {
 		this(points);
+		refreshValues();
 		this.setState(state);
 		maxCapacity = state;
 		interval = 0;
