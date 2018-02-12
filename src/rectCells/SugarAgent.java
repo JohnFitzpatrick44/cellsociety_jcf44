@@ -3,6 +3,7 @@ package rectCells;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.scene.paint.Color;
@@ -87,16 +88,7 @@ public class SugarAgent extends Circle {
 		ArrayList<Cell> options = new ArrayList<>();
 		options.addAll(place.getNeighbors());
 		for(int k = 1; k < vision; k++) {
-			int numOptions = options.size();
-			for(int j = 0; j < numOptions; j++) {
-				ArrayList<Cell> toAdd = new ArrayList<>();
-				toAdd.addAll(options.get(j).getNeighbors());
-				for(Cell c : toAdd) {
-					if(!options.contains(c)) {
-						options.add(c);
-					}
-				}
-			}
+			addNeighborCells(options);
 		}
 		Collections.shuffle(options);
 		Collections.sort(options, new Comparator<Cell>() {
@@ -119,6 +111,19 @@ public class SugarAgent extends Circle {
 		
 		sugar += place.getState();
 		place.setState(0);
+	}
+	
+	private void addNeighborCells(List<Cell> options) {
+		int numOptions = options.size();
+		for(int j = 0; j < numOptions; j++) {
+			ArrayList<Cell> toAdd = new ArrayList<>();
+			toAdd.addAll(options.get(j).getNeighbors());
+			for(Cell c : toAdd) {
+				if(!options.contains(c)) {
+					options.add(c);
+				}
+			}
+		}
 	}
 	
 	public void addSAM(SugarAgentMover samAdd) {

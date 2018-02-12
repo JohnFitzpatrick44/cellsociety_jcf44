@@ -32,14 +32,18 @@ public class SugarAgentMover {
 		
 		for(int k = 0; k < agents.size(); k++) {
 			for(int j = 0; j < agents.size(); j++) {
-				if(areNeighbors(agents.get(k), agents.get(j))) {
-					if(agents.get(k).isFertile() && agents.get(j).isFertile() && (agents.get(k).isFemale() ^ agents.get(j).isFemale())) {
-						findFreeSpot(agents.get(k), agents.get(j));
-					}
-				}
+				checkFertility(agents.get(k), agents.get(j));
 			}
 		}
 		
+	}
+	
+	private void checkFertility(SugarAgent a, SugarAgent b) {
+		if(areNeighbors(a, b)) {
+			if(a.isFertile() && b.isFertile() && (a.isFemale() ^ b.isFemale())) {
+				findFreeSpot(a, b);
+			}
+		}
 	}
 	
 	private void findFreeSpot(SugarAgent a, SugarAgent b) {

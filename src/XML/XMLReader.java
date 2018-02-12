@@ -100,74 +100,7 @@ public class XMLReader {
 					DataHolder.setAuthor(eElement.getAttribute("author"));
 					DataHolder.setDimensions(Integer.parseInt(eElement.getElementsByTagName("dimensions").item(0).getTextContent()));
 					
-					if (DataHolder.getType().equals("Game Of Life")) {
-						aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
-						deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
-						percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
-						lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						LifeHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
-					}
-					
-					else if (DataHolder.getType().equals("Spreading Fire")) {
-						burntColor=(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
-						burningColor=(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
-						treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
-						probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
-						fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						FireHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
-					}
-					
-					else if(DataHolder.getType().equals("Segregation")) {
-						aColor=(hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent()));
-						bColor=(hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent()));
-						neutralColor=(hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent()));
-						String segGrid = (eElement.getElementsByTagName("grid").item(0).getTextContent());
-						SegregationHolder.setSegregation(aColor, bColor, neutralColor, segGrid);
-					}
-					
-					else if(DataHolder.getType().equals("Predator")) {
-						try {
-						predColor=(hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent()));
-						preyColor=(hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent()));
-						waterColor=(hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent()));
-						preyProduction=(Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent()));
-						predEnergy = (Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent()));
-						energyGain=(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));
-						predReproduction=(Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent()));
-						predGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
-						PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
-						}
-						catch(Exception e){
-							createDefaultValues();
-							PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
-							PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
-							System.out.print("error");
-						}
-						
-						
-					}
-					
-					else if (DataHolder.getType().equals("SugarScape")) {
-						burntColor=(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
-						burningColor=(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
-						treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
-						probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
-						fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						SugarHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
-					}
-					
-					else if (DataHolder.getType().equals("Bacteria")) {
-						aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
-						deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
-						percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
-						lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
-						BacteriaHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
-					}
-					
-					else {
-						System.out.println("WRONG SIMULATION NAME"); //ERROR CHECKING IF WRONG SIMULATION IS TYPED
-					}
+					assignElements(eElement);
 				}
 			}
 		//} catch (Exception e) {
@@ -181,6 +114,78 @@ public class XMLReader {
 	            Integer.valueOf( colorStr.substring( COLOR_INDEX_1, COLOR_INDEX_2), COLOR_INDEX_END ),
 	            Integer.valueOf( colorStr.substring( COLOR_INDEX_2, COLOR_INDEX_3 ), COLOR_INDEX_END ),
 	            Integer.valueOf( colorStr.substring( COLOR_INDEX_3, COLOR_INDEX_4 ), COLOR_INDEX_END ) );
+	}
+	
+	
+	private void assignElements(Element eElement) {
+		if (DataHolder.getType().equals("Game Of Life")) {
+			aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
+			deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
+			percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
+			lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+			LifeHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
+		}
+		
+		else if (DataHolder.getType().equals("Spreading Fire")) {
+			burntColor=(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
+			burningColor=(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
+			treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
+			probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
+			fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+			FireHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
+		}
+		
+		else if(DataHolder.getType().equals("Segregation")) {
+			aColor=(hex2Rgb(eElement.getElementsByTagName("acolor").item(0).getTextContent()));
+			bColor=(hex2Rgb(eElement.getElementsByTagName("bcolor").item(0).getTextContent()));
+			neutralColor=(hex2Rgb(eElement.getElementsByTagName("neutral").item(0).getTextContent()));
+			String segGrid = (eElement.getElementsByTagName("grid").item(0).getTextContent());
+			SegregationHolder.setSegregation(aColor, bColor, neutralColor, segGrid);
+		}
+		
+		else if(DataHolder.getType().equals("Predator")) {
+			try {
+			predColor=(hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent()));
+			preyColor=(hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent()));
+			waterColor=(hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent()));
+			preyProduction=(Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent()));
+			predEnergy = (Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent()));
+			energyGain=(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));
+			predReproduction=(Integer.parseInt(eElement.getElementsByTagName("predReproduction").item(0).getTextContent()));
+			predGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
+			PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
+			PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
+			}
+			catch(Exception e){
+				createDefaultValues();
+				PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
+				PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
+				System.out.print("error");
+			}
+			
+			
+		}
+		
+		else if (DataHolder.getType().equals("SugarScape")) {
+			burntColor=(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
+			burningColor=(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
+			treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
+			probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
+			fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+			SugarHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
+		}
+		
+		else if (DataHolder.getType().equals("Bacteria")) {
+			aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
+			deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
+			percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
+			lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+			BacteriaHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
+		}
+		
+		else {
+			System.out.println("WRONG SIMULATION NAME"); //ERROR CHECKING IF WRONG SIMULATION IS TYPED
+		}
 	}
 	
 } 
