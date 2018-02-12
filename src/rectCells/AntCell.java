@@ -35,9 +35,7 @@ public class AntCell extends Cell {
 	}
 	
 	public void updateState() {
-		for(AntAgent a : ants) {
-			a.updateState();
-		}
+		
 	}
 
 	public void updateFill() {

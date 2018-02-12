@@ -245,6 +245,20 @@ public class XMLReader {
 					}
 					BacteriaHolder.setBacteria(colorA, colorB, colorC, defaultColor, bacteriaGrid);
 					}
+				else if (DataHolder.getType().equals("Ants")) {
+					try {
+					colorOne=(Integer.parseInt(eElement.getElementsByTagName("colorOne").item(0).getTextContent()));
+					colorTwo=(Integer.parseInt(eElement.getElementsByTagName("colorTwo").item(0).getTextContent()));
+					colorThree=(Integer.parseInt(eElement.getElementsByTagName("colorThree").item(0).getTextContent()));
+					growthRate=(Integer.parseInt(eElement.getElementsByTagName("growthRate").item(0).getTextContent()));
+					growthInterval=(Integer.parseInt(eElement.getElementsByTagName("growthInterval").item(0).getTextContent()));
+					sugarGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
+					}
+					catch (Exception e) {
+						createDefaultValues();
+					}
+					AntHolder.setSugarScape(colorOne, colorTwo, colorThree, growthRate, growthInterval, sugarGrid);
+				}
 				else {
 					System.out.println("WRONG SIMULATION NAME"); //ERROR CHECKING IF WRONG SIMULATION IS TYPED
 				}

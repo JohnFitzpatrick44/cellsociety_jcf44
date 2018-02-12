@@ -16,6 +16,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import rectCells.Cell;
+import rectGrids.AntGrid;
 import rectGrids.BacteriaGrid;
 import rectGrids.FireGrid;
 import rectGrids.Grid;
@@ -76,6 +77,7 @@ public class MainView {
 	public static final File PRED_PREY_FILE = new File("data/PredPrey.xml");
 	public static final File SUGAR_SCAPE_FILE = new File("data/SugarScape.xml");
 	public static final File BACTERIA_FILE = new File("data/Bacteria.xml");
+	public static final File ANT_FILE = new File("data/Ants.xml");
 
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
@@ -171,6 +173,10 @@ public class MainView {
 			setupRectangleCardinalNeighbors();
 		} else if(name.equals("Bacteria")) {
 			grid = new BacteriaGrid();
+			setupCellGrid(GRID_SIZE);
+			setupRectangleCardinalNeighbors();
+		} else if(name.equals("Ants")) {
+			grid = new AntGrid();
 			setupCellGrid(GRID_SIZE);
 			setupRectangleCardinalNeighbors();
 		}
@@ -299,7 +305,7 @@ public class MainView {
 	 */
 	public static void createDropDownMenu() {
 		ObservableList<File> fileList = FXCollections.observableArrayList(LIFE_FILE, FIRE_FILE, SEGREGATION_FILE, PRED_PREY_FILE,
-				SUGAR_SCAPE_FILE, BACTERIA_FILE);
+				SUGAR_SCAPE_FILE, BACTERIA_FILE, ANT_FILE);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
 			DataHolder.clearXMLReader();

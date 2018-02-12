@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import XML.AntHolder;
 import agents.AntAgent;
+import agents.AntAgentMover;
 import rectCells.AntCell;
 import rectCells.Cell;
 
@@ -14,14 +15,15 @@ public class AntGrid extends RectangleGrid {
 	
 	private static final int NUM_AGENTS = 40;
 	
-	//private SugarAgentMover sam;
+	private AntAgentMover aam;
 	
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);
 		Cell[][] grid = new Cell[gridSize][gridSize];
 		int heightSpacing = 0;
 		int index = 0;
-		ArrayList<double[]> nestCells = new ArrayList<>();
+		aam = new AntAgentMover();
+		ArrayList<int[]> nestCells = new ArrayList<>();
 		for(int i=0;i<grid.length;i++) {
 			int blockSpacing = 0;
 			for(int j=0;j<grid[i].length;j++) {
@@ -47,10 +49,22 @@ public class AntGrid extends RectangleGrid {
 		}
 		for(int k = 0; k < NUM_AGENTS; k++) {
 			Collections.shuffle(nestCells);
-			while(!((AntCell) grid[nestCells.get(0)[0]][nestCells.get(0)[1]]).roomForAnts())
+			int i = nestCells.get(0)[0];
+			int j = nestCells.get(0)[1];
+			int counter = 0;
+			while(!((AntCell) grid[i][j]).roomForAnts()) {
+				Collections.shuffle(nestCells);
+				i = nestCells.get(0)[0];
+				j = nestCells.get(0)[1];
+				counter++;
+				if(counter == 5000) {
+					break;
+				}
+			}
 			
 			AntAgent sa = new AntAgent((AntCell) grid[i][j]);
 			((AntCell) grid[i][j]).addAnt(sa);
+			aam.addAnt(sa);
 		}
 		return grid;
 	}
@@ -63,6 +77,7 @@ public class AntGrid extends RectangleGrid {
 			}
 		}
 		
+		aam.updateAnts();
 		
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import View.MainView;
+import javafx.scene.paint.Color;
 import rectCells.AntCell;
 import rectCells.Cell;
 
@@ -12,12 +12,13 @@ public class AntAgent extends Agent {
 
 	private AntCell location;
 	private boolean hasFood;
+	private static final Color ANT_COLOR = Color.RED;
 	
 	public AntAgent(Cell location) {
 		super(cellWidth(location)/8);
 		this.location = (AntCell) location;
 		hasFood = false;
-		MainView.getGroup().getChildren().add(this);
+		setFill(ANT_COLOR);
 	}
 	
 	public void updateState() {
