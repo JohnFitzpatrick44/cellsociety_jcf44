@@ -143,6 +143,7 @@ public class XMLReader {
 							PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
 							PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
 							System.out.print("error");
+							e.printStackTrace();
 						}
 						
 						

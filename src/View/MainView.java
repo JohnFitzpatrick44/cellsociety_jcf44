@@ -70,10 +70,10 @@ public class MainView {
 	private static Timeline animation;
 
 	//list of initial files
-	public static final File GameOfLifeFile = new File("data/GameOfLife.xml");
-	public static final File FireFile = new File("data/SpreadingFire.xml");
-	public static final File SegregationFile = new File("data/Segregation.xml");
-	public static final File PredPreyFile = new File("data/PredPrey.xml");
+	public static final File LIFE_FILE = new File("data/GameOfLife.xml");
+	public static final File FIRE_FILE = new File("data/SpreadingFire.xml");
+	public static final File SEGREGATION_FILE = new File("data/Segregation.xml");
+	public static final File PRED_PREY_FILE = new File("data/PredPrey.xml");
 	public static final File SUGAR_SCAPE_FILE = new File("data/SugarScape.xml");
 
 	//attributes of the buttons
@@ -119,8 +119,8 @@ public class MainView {
 	private static void setupTriangleGridAndNeighbors(int gridSize) {
 		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, gridSize, CELL_HEIGHT,CELL_WIDTH,CUTOFF);
 		if(isToroidal) {
-			triangleGrid.setAllNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setAllInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setCardinalNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setCardinalInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
 		} else {
 			triangleGrid.setAllNormalNeighbors(myCellGrid, GRID_SIZE);
 			triangleGrid.setAllInvertedNeighbors(myCellGrid, GRID_SIZE);
@@ -274,7 +274,7 @@ public class MainView {
 	 * Create the file selector drop down menu
 	 */
 	public static void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile,
+		ObservableList<File> fileList = FXCollections.observableArrayList(LIFE_FILE, FIRE_FILE, SEGREGATION_FILE, PRED_PREY_FILE,
 				SUGAR_SCAPE_FILE);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
