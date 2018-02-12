@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<simulation>
+	<type name="SugarScape" author="team03">
+		<dimensions>30</dimensions>
+		<colorOne>255</colorOne>
+		<colorTwo>255</colorTwo>
+		<colorThree>255</colorThree>
+		<growthRate>5</growthRate>
+		<growthInterval>1</growthInterval>
+		<grid>0 0 1 0 0 0 0 0 0 0 0 0 0 2</grid>
+	</type>
+</simulation>
