@@ -61,7 +61,6 @@ public abstract class TriangleGrid extends Grid{
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i][j+1],grid[i+1][j+1]);
 				}
 			}
-			
 		}
 	}
 	
@@ -172,7 +171,6 @@ public abstract class TriangleGrid extends Grid{
 					grid[i][j].setNeighbors(grid[i][j-1],grid[i][j+1],grid[i+1][j+1]);
 				}
 			}
-			
 		}
 	}
 	
