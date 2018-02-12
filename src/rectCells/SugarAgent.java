@@ -26,6 +26,7 @@ public class SugarAgent extends Circle {
 	private static final int MAX_AGE = 80;
 	private static final int FERTILITY_MIN = 20;
 	private static final int FERTILITY_MAX = 55;
+	private boolean reproduced;
 	
 	public SugarAgent(SugarCell c, int vision, int metabolism, int initSugar) {
 		super(cellWidth(c)/4);
@@ -37,6 +38,7 @@ public class SugarAgent extends Circle {
 		this.place = c;
 		updatePos();
 		this.toFront();
+		reproduced = false;
 		gender = ThreadLocalRandom.current().nextBoolean();
 		if(gender) {
 			setFill(FEMALE_COLOR); 
@@ -56,7 +58,7 @@ public class SugarAgent extends Circle {
 	
 	public void updateState() {
 		age++;
-		
+		reproduced = false;
 		lookAndMove();
 		
 		sugar -= metabolism;
@@ -110,7 +112,7 @@ public class SugarAgent extends Circle {
 	}
 	
 	public boolean isFertile() {
-		return age > FERTILITY_MIN && age < FERTILITY_MAX && sugar >= initialSugar;
+		return age > FERTILITY_MIN && age < FERTILITY_MAX && sugar >= initialSugar && !reproduced;
 	}
 
 	public boolean isFemale() {
@@ -123,6 +125,32 @@ public class SugarAgent extends Circle {
 	
 	public int getSugar() {
 		return sugar;
+	}
+	
+	public void reproduce() {
+		sugar = sugar - initialSugar/2;
+		reproduced = true;
+	}
+
+	public int getVision() {
+		return vision;
+	}
+
+	public int getMetabolism() {
+		return metabolism;
+	}
+
+	public int getInitialSugar() {
+		return initialSugar;
+	}
+
+	public SugarCell findSpot() {
+		for(Cell c : place.getNeighbors()) {
+			if(((SugarCell) c).getAgent() == null) {
+				return (SugarCell) c;
+			}
+		}
+		return null;
 	}
 	
 }

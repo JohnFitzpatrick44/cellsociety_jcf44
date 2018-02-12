@@ -25,6 +25,9 @@ public class SugarAgentMover {
 	}
 	
 	public void updateAgents() {
+		
+		System.out.println(agents.size());
+		
 		for(int k = agents.size()-1; k >= 0; k--) {
 			agents.get(k).updateState();
 		}
@@ -33,6 +36,7 @@ public class SugarAgentMover {
 			for(int j = 0; j < agents.size(); j++) {
 				if(areNeighbors(agents.get(k), agents.get(j))) {
 					if(agents.get(k).isFertile() && agents.get(j).isFertile() && (agents.get(k).isFemale() ^ agents.get(j).isFemale())) {
+						findFreeSpot(agents.get(k), agents.get(j));
 					}
 				}
 			}
@@ -40,13 +44,25 @@ public class SugarAgentMover {
 		
 	}
 	
+	private void findFreeSpot(SugarAgent a, SugarAgent b) {
+		SugarCell freeSpot = a.findSpot();
+		if(freeSpot == null) {
+			freeSpot = b.findSpot();
+		}
+		if(freeSpot != null) {
+			a.reproduce();
+			b.reproduce();
+			SugarAgent baby = new SugarAgent(freeSpot, a.getVision(), b.getMetabolism(), a.getInitialSugar());
+			addAgent(baby);
+			baby.addSAM(this);
+		}
+	}
+	
 	private boolean areNeighbors(SugarAgent a, SugarAgent b) {
 		double xDist = Math.abs(a.getCenterX() - b.getCenterX());
 		double yDist = Math.abs(a.getCenterY() - b.getCenterY());
 		double cellWidth = Math.abs(a.getCell().getPoints().get(0) - a.getCell().getPoints().get(2));
-		double cellHeight = Math.abs(a.getCell().getPoints().get(1) - a.getCell().getPoints().get(3));
-		System.out.println("Sexy xDist: " + xDist + ", cellWidth: " + cellWidth + " yDist: " + yDist + ", cellHeight: " + cellHeight);
-		return (xDist <= cellWidth * 1.1 || yDist <= cellHeight * 1.1);
+		return (xDist <= cellWidth * 1.1 && yDist == 0) || (xDist == 0 && yDist <= cellWidth * 1.1);
 	}
 	
 }

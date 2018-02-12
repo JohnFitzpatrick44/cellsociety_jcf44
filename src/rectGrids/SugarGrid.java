@@ -15,7 +15,7 @@ import rectCells.SugarCell;
 public class SugarGrid extends RectangleGrid {
 	private String configString = SugarHolder.getFireGrid();
 	
-	private static final int NUM_AGENTS = 5;
+	private static final int NUM_AGENTS = 20;
 	
 	private SugarAgentMover sam;
 	
