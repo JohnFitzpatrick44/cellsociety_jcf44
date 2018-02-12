@@ -12,6 +12,7 @@ public class AntCell extends Cell {
 	private static final Color NEST_COLOR = Color.GREEN;
 	
 	private static final int INIT_DURABILITY = 50;
+	private static final double DECAY_RATE = 0.05;
 	
 	private static final int MAX_ANTS = 3;
 	
@@ -45,12 +46,12 @@ public class AntCell extends Cell {
 	}
 	
 	public void updateState() {
-		foodPheromones -= 0.02*foodPheromones;
-		if(foodPheromones < 0.02) {
+		foodPheromones -= DECAY_RATE*foodPheromones;
+		if(foodPheromones < DECAY_RATE) {
 			foodPheromones = 0;
 		}
-		nestPheromones -= 0.02*nestPheromones;
-		if(nestPheromones < 0.02) {
+		nestPheromones -= DECAY_RATE*nestPheromones;
+		if(nestPheromones < DECAY_RATE) {
 			nestPheromones = 0;
 		}
 		updateFill();

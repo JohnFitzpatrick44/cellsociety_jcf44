@@ -27,16 +27,23 @@ public class AntAgent extends Agent {
 		} else {
 			findFood();
 		}
-	}
-	
-	private void returnToNest() {
 		
-		if(location.getState() == 2) { 		// AT NEST
+		if(location.getState() == 1) {		// FOOOOD
+			hasFood = true;
+			location.reduceDurability();
+			location.setFoodPheromones(1);
+		} else if(location.getState() == 2) { 		// AT NEST
 			hasFood = false;
 			location.setNestPheromones(1);
 		} else {
+			location.setNestPheromones(Math.max(location.getNestPheromones(), getMaxNestPheromones() * 0.95));
 			location.setFoodPheromones(Math.max(location.getFoodPheromones(), getMaxFoodPheromones() * 0.95));
 		}
+		
+		
+	}
+	
+	private void returnToNest() {
 		
 		Collections.shuffle(location.getNeighbors());
 		Collections.sort(location.getNeighbors(), new Comparator<Cell>() {
@@ -59,13 +66,7 @@ public class AntAgent extends Agent {
 	
 	private void findFood() {
 		
-		if(location.getState() == 1) {		// FOOOOD
-			hasFood = true;
-			location.reduceDurability();
-			location.setFoodPheromones(1);
-		} else {
-			location.setNestPheromones(Math.max(location.getNestPheromones(), getMaxNestPheromones() * 0.95));
-		}
+		
 		
 		Collections.shuffle(location.getNeighbors());
 		Collections.sort(location.getNeighbors(), new Comparator<Cell>() {
