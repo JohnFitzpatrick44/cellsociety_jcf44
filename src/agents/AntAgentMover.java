@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import View.MainView;
 
+/**
+ * Class to update ants in simulation
+ * @author team_03
+ */
 public class AntAgentMover {
 	
 	private ArrayList<AntAgent> ants;

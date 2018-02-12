@@ -6,10 +6,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
+import XML.SugarHolder;
 import javafx.scene.paint.Color;
 import rectCells.Cell;
 import rectCells.SugarCell;
 
+/**
+ * Class to assist SugarCells, tracks organisms eating sugar and reproducing
+ * @author team_03
+ */
 public class SugarAgent extends Agent {
 	
 	private int vision;
@@ -25,13 +30,14 @@ public class SugarAgent extends Agent {
 	
 	private boolean gender;		// Female is true, male is false
 	private int age;
-	private static final int MAX_AGE = 100;
-	private static final int FERTILITY_MIN = 20;
-	private static final int FERTILITY_MAX = 70;
+	private static final int MAX_AGE = SugarHolder.getMaxAge();
+	private static final int FERTILITY_MIN = SugarHolder.getMinFertility();
+	private static final int FERTILITY_MAX = SugarHolder.getMaxFertility();
+	private static final int SIZE_RATIO = SugarHolder.getSizeRatio();
 	private boolean reproduced;
 	
 	public SugarAgent(SugarCell c, int vision, int metabolism, int initSugar) {
-		super(cellWidth(c)/4);
+		super(cellWidth(c)/SIZE_RATIO);
 		this.vision = vision;
 		age = 0;
 		this.metabolism = metabolism;

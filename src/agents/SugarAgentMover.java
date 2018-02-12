@@ -65,7 +65,7 @@ public class SugarAgentMover {
 		double xDist = Math.abs(a.getCenterX() - b.getCenterX());
 		double yDist = Math.abs(a.getCenterY() - b.getCenterY());
 		double cellWidth = Math.abs(a.getCell().getPoints().get(0) - a.getCell().getPoints().get(2));
-		return (xDist <= cellWidth * 1.1 && yDist == 0) || (xDist == 0 && yDist <= cellWidth * 1.1);
+		return (xDist <= cellWidth && yDist == 0) || (xDist == 0 && yDist <= cellWidth);
 	}
 	
 }

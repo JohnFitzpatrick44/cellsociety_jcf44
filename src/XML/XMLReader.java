@@ -57,6 +57,10 @@ public class XMLReader {
 	private int growthRate;
 	private int growthInterval;
 	private String sugarGrid;
+	private int mAge;
+	private int minF;
+	private int maxF;
+	private int ratio;
 	
 	private Color colorA;
 	private Color colorB;
@@ -225,11 +229,16 @@ public class XMLReader {
 					growthRate=(Integer.parseInt(eElement.getElementsByTagName("growthRate").item(0).getTextContent()));
 					growthInterval=(Integer.parseInt(eElement.getElementsByTagName("growthInterval").item(0).getTextContent()));
 					sugarGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
+					mAge = (Integer.parseInt(eElement.getElementsByTagName("maxAge").item(0).getTextContent()));
+					minF = (Integer.parseInt(eElement.getElementsByTagName("minFertility").item(0).getTextContent()));
+					maxF = (Integer.parseInt(eElement.getElementsByTagName("maxFertility").item(0).getTextContent()));
+					ratio = (Integer.parseInt(eElement.getElementsByTagName("sizeRatio").item(0).getTextContent()));
 					}
 					catch (Exception e) {
 						createDefaultValues();
 					}
 					SugarHolder.setSugarScape(colorOne, colorTwo, colorThree, growthRate, growthInterval, sugarGrid);
+					SugarHolder.setSugarAgents(mAge, minF, maxF, ratio);
 				}
 				//bacteria parser
 				else if (DataHolder.getType().equals("Bacteria")) {
@@ -257,7 +266,7 @@ public class XMLReader {
 					catch (Exception e) {
 						createDefaultValues();
 					}
-					AntHolder.setSugarScape(colorOne, colorTwo, colorThree, growthRate, growthInterval, sugarGrid);
+					AntHolder.setSugarScape(8, 0.95, Color.RED, sugarGrid);
 				}
 				else {
 					System.out.println("WRONG SIMULATION NAME"); //ERROR CHECKING IF WRONG SIMULATION IS TYPED

@@ -7,6 +7,10 @@
 		<colorThree>255</colorThree>
 		<growthRate>5</growthRate>
 		<growthInterval>1</growthInterval>
+		<maxAge>100</maxAge>
+		<minFertility>20</minFertility>
+		<maxFertility>70</maxFertility>
+		<sizeRatio>4</sizeRatio>
 		<grid>5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5
 			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 10 10 10 10 10 10 10 5  5
 			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 20 20 20 20 20 20 20 20 10 5
