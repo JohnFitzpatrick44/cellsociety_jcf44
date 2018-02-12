@@ -1,9 +1,14 @@
 package rectGrids;
 
+import java.util.concurrent.ThreadLocalRandom;
+
+import XML.AntHolder;
+import agents.AntAgent;
+import rectCells.AntCell;
 import rectCells.Cell;
 
 public class AntGrid extends RectangleGrid {
-	//private String configString = SugarHolder.getSugarGrid();
+	private String configString = AntHolder.getSugarGrid();
 	
 	private static final int NUM_AGENTS = 40;
 	
@@ -34,22 +39,17 @@ public class AntGrid extends RectangleGrid {
 			}
 			heightSpacing += cellHeight;
 		}
-		sam = new SugarAgentMover();
 		for(int k = 0; k < NUM_AGENTS; k++) {
 			int i = ThreadLocalRandom.current().nextInt(0, gridSize);
 			int j = ThreadLocalRandom.current().nextInt(0, gridSize);
 			
-			while(((SugarCell) grid[i][j]).getAgent() != null) {
+			while(!((AntCell) grid[i][j]).roomForAnts()) {
 				i = ThreadLocalRandom.current().nextInt(0, gridSize);
 				j = ThreadLocalRandom.current().nextInt(0, gridSize);
 			}
-			int init_vision = 1;
-			int init_metabolism = ThreadLocalRandom.current().nextInt(7, 21);
-			int init_sugar = ThreadLocalRandom.current().nextInt(20, 36);
-			SugarAgent sa = new SugarAgent((SugarCell) grid[i][j], init_vision, init_metabolism, init_sugar);
-			((SugarCell) grid[i][j]).setAgent(sa);
-			sam.addAgent(sa);
-			sa.addSAM(sam);
+			
+			AntAgent sa = new AntAgent((AntCell) grid[i][j]);
+			((AntCell) grid[i][j]).addAnt(sa);
 		}
 		return grid;
 	}
@@ -62,7 +62,6 @@ public class AntGrid extends RectangleGrid {
 			}
 		}
 		
-		sam.updateAgents();
 		
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
