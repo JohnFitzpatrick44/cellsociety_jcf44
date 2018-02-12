@@ -3,10 +3,21 @@ package neighbors;
 import rectCells.Cell;
 import rectCells.CellMover;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Sets finite neighbors for rectangle cells
+ */
 public class RectFiniteNeighbors {
 	
 	private CellMover cm = new CellMover();
 
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets all neighbors for corner rectangle cells
+	 */
 	public void setAllCornerNeighbors(Cell[][] grid, int gridSize) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {

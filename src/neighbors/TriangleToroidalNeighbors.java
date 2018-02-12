@@ -3,6 +3,11 @@ package neighbors;
 import rectCells.Cell;
 import rectCells.CellMover;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Sets toroidal neighbors for triangle cells
+ */
 public class TriangleToroidalNeighbors {
 	
 	private CellMover cm = new CellMover();
@@ -11,7 +16,7 @@ public class TriangleToroidalNeighbors {
 	 * 
 	 * @param grid
 	 * @param gridSize
-	 * Sets toroidal neighbors for all inverted triangle cells
+	 * Sets cardinal toroidal neighbors for all inverted triangle cells
 	 */
 	public void setCardinalInvertedToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
@@ -48,7 +53,7 @@ public class TriangleToroidalNeighbors {
 	 * 
 	 * @param grid
 	 * @param gridSize
-	 * Sets neighbors for all normal-oriented triangle cells
+	 * Sets cardinal toroidal neighbors for all normal-oriented triangle cells
 	 */
 	public void setCardinalNormalToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
@@ -80,6 +85,12 @@ public class TriangleToroidalNeighbors {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets toroidal neighbors for all normal-oriented triangle cells
+	 */
 	public void setAllNormalToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
@@ -141,6 +152,12 @@ public class TriangleToroidalNeighbors {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets toroidal neighbors for all inverted triangle cells
+	 */
 	public void setAllInvertedToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10

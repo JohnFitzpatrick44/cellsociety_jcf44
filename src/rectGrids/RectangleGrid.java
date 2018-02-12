@@ -7,7 +7,7 @@ import rectCells.CellMover;
  * 
  * @author Hemanth Yakkali
  * Abstract class to be used in tandem with Rectangle-shaped cells
- * Creates a grid, methods for setting cardinal and all neighbors
+ * Creates a grid of rectangles
  */
 
 public abstract class RectangleGrid extends Grid{

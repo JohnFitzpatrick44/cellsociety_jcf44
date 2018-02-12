@@ -3,6 +3,11 @@ package neighbors;
 import rectCells.Cell;
 import rectCells.CellMover;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Sets toroidal neighbors for rectangle cells
+ */
 public class RectToroidalNeighbors {
 	
 	private CellMover cm = new CellMover();

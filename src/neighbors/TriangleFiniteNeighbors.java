@@ -3,10 +3,21 @@ package neighbors;
 import rectCells.Cell;
 import rectCells.CellMover;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Sets finite neighbors for triangle cells
+ */
 public class TriangleFiniteNeighbors {
 	
 	private CellMover cm = new CellMover();
 
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets cardinal neighbors for all normal-oriented triangle cells
+	 */
 	public void setCardinalNormalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
@@ -41,7 +52,7 @@ public class TriangleFiniteNeighbors {
 	 * 
 	 * @param grid
 	 * @param gridSize
-	 * Sets neighbors for all inverted triangle cells
+	 * Sets cardinal neighbors for all inverted triangle cells
 	 */
 	public void setCardinalInvertedNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
@@ -74,6 +85,12 @@ public class TriangleFiniteNeighbors {
 		}	
 	}
 	
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets all neighbors for all normal-oriented triangle cells
+	 */
 	public void setAllNormalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
@@ -123,6 +140,12 @@ public class TriangleFiniteNeighbors {
 		}
 	}
 	
+	/**
+	 * 
+	 * @param grid
+	 * @param gridSize
+	 * Sets all neighbors for all inverted triangle cells
+	 */
 	public void setAllInvertedNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
