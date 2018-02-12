@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <simulation>
 	<type name="SugarScape" author="team03">
-		<dimensions>10</dimensions>
+		<dimensions>30</dimensions>
 		<burning>#ff0000</burning>
 		<tree>#00ff00</tree>
 		<empty>#ffff00</empty>
 		<percentBurning>2</percentBurning>
 		<probCatch>.5</probCatch>
-		<grid>10 10 10 20 30 30 40 40 50 50 5 5 5 5 5 5 10 20 30 40 5 5 5 5 5 5 5 20 30 40 5 5 5 5 5 5 5 10 10 20 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 30 20 20 10 5 5 5 5 5 5 40 30 20 20 10 5 5 5 5 5 50 50 40 30 20 20 10 5 5 5</grid>
+		<grid> 5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5</grid>
 	</type>
 </simulation>

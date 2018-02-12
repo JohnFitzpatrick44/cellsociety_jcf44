@@ -23,9 +23,9 @@ public class SugarAgent extends Circle {
 	
 	private boolean gender;		// Female is true, male is false
 	private int age;
-	private static final int MAX_AGE = 80;
+	private static final int MAX_AGE = 100;
 	private static final int FERTILITY_MIN = 20;
-	private static final int FERTILITY_MAX = 55;
+	private static final int FERTILITY_MAX = 70;
 	private boolean reproduced;
 	
 	public SugarAgent(SugarCell c, int vision, int metabolism, int initSugar) {

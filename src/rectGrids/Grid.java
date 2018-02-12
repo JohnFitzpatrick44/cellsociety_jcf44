@@ -17,7 +17,7 @@ public abstract class Grid {
 	 * Takes string and converts it into an integer array
 	 */
 	public int[] getGridConfig(String config) {
-		String [] origGridConfig = config.split(" ");
+		String [] origGridConfig = config.split("\\s+");
 		int[] gridConfig = new int[origGridConfig.length];
 		for(int i=0;i<origGridConfig.length;i++) {
 			gridConfig[i] = Integer.parseInt(origGridConfig[i]);
