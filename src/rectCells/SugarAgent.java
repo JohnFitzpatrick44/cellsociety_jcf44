@@ -2,6 +2,7 @@ package rectCells;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.concurrent.ThreadLocalRandom;
 
 import View.MainView;
 import javafx.scene.paint.Color;
@@ -12,17 +13,36 @@ public class SugarAgent extends Circle {
 	private int vision;
 	private int metabolism;
 	private int sugar;
+	private int initialSugar;
 	private SugarCell place;
 	private SugarAgentMover sam;
 	
+	private static final Color MALE_COLOR = Color.BLUE;
+	private static final Color FEMALE_COLOR = Color.RED;
+	private static final Color OLD_COLOR = Color.GRAY;
+	
+	private boolean gender;		// Female is true, male is false
+	private int age;
+	private static final int MAX_AGE = 80;
+	private static final int FERTILITY_MIN = 20;
+	private static final int FERTILITY_MAX = 55;
+	
 	public SugarAgent(SugarCell c, int vision, int metabolism, int initSugar) {
-		super(cellWidth(c)/4, Color.RED);
+		super(cellWidth(c)/4);
 		this.vision = vision;
+		age = 0;
 		this.metabolism = metabolism;
 		this.sugar = initSugar;
+		this.initialSugar = initSugar;
 		this.place = c;
 		updatePos();
 		this.toFront();
+		gender = ThreadLocalRandom.current().nextBoolean();
+		if(gender) {
+			setFill(FEMALE_COLOR); 
+		} else {
+			setFill(MALE_COLOR);
+		}
 	}
 	
 	public SugarCell getCell() {
@@ -35,15 +55,19 @@ public class SugarAgent extends Circle {
 	}
 	
 	public void updateState() {
+		age++;
 		
 		lookAndMove();
 		
 		sugar -= metabolism;
-		if(sugar <= 0) {
+		if(sugar <= 0 || age > MAX_AGE) {
 			place.setAgent(null);
 			sam.removeAgent(this);
 		} else {
 			updatePos();
+		}
+		if(age > FERTILITY_MAX) {
+			setFill(OLD_COLOR);
 		}
 	}
 	
@@ -85,6 +109,20 @@ public class SugarAgent extends Circle {
 		sam = samAdd;
 	}
 	
+	public boolean isFertile() {
+		return age > FERTILITY_MIN && age < FERTILITY_MAX && sugar >= initialSugar;
+	}
 
+	public boolean isFemale() {
+		return gender;
+	}
+	
+	public void setSugar(int s) {
+		sugar = s;
+	}
+	
+	public int getSugar() {
+		return sugar;
+	}
 	
 }
