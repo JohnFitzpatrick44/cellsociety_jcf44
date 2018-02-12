@@ -17,7 +17,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-
+/*
+ * Button Layout Class that controls all the positioning and arrangement of Buttons on the UI.
+ * @author Ryan Fu
+ */
 public class ButtonView {
 
 	private static final Color BUTTON_COLOR = Color.BLACK;	
