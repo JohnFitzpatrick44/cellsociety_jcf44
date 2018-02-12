@@ -22,10 +22,21 @@ public class PredPreyCell extends Cell {
 
 	private int reproduce;
 	private int energy;
+	
+	private void refreshValues() {
+		PRED_ENERGY_VALUE = PredPreyHolder.getPredEnergy();
+		PREY_REPRODUCTION_VALUE = PredPreyHolder.getPreyReproduction();
+		ENERGY_GAIN_VALUE = PredPreyHolder.getEnergyGain();
+		PRED_REPRODUCTION_VALUE = PredPreyHolder.getPredReproduction();
+		PRED_COLOR = PredPreyHolder.getPredColor();
+		PREY_COLOR = PredPreyHolder.getPreyColor();
+		WATER_COLOR = PredPreyHolder.getWaterColor();
+	}
 
 	public PredPreyCell(int state, double...points) {
 		this(points);
 		setState(state);
+		refreshValues();
 		if(state == PRED) {
 			energy = PRED_ENERGY_VALUE;
 		}

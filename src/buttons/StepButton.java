@@ -4,7 +4,6 @@ import View.MainView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
-import rectGrids.Grid;
 
 /*
  * PlayButton class that inherits the ActionButton

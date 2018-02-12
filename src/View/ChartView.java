@@ -2,7 +2,6 @@ package View;
 
 import XML.DataHolder;
 import rectCells.Cell;
-import rectGrids.Grid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
@@ -18,7 +17,7 @@ public class ChartView {
 	public ChartView() {
 	}
 	
-	private static final int GRID_OFFSET = 10;
+	//private static final int GRID_OFFSET = 10;
 	private static final int WIDTH_SIZE = 500;
 	private static final int HEIGHT_SIZE = 430;
 	private static final int FRAMES_PER_SECOND = 60;
@@ -28,11 +27,11 @@ public class ChartView {
 	private static int GRID_SIZE = DataHolder.getDimensions();
 
 
-	private static String SIMULATION = DataHolder.getType();
+	//private static String SIMULATION = DataHolder.getType();
 
 	private static Group chartGroup;
 	private static Scene chartScene;
-	private static Grid grid;
+	//private static Grid grid;
 	private static Cell[][] myCellGrid;
 	private static Timeline chartAnimation;
 	private static int count=0;

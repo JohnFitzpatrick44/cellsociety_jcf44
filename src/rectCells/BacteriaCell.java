@@ -1,6 +1,5 @@
 package rectCells;
 
-import java.util.Collections;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javafx.event.EventHandler;

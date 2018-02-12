@@ -36,7 +36,7 @@ public class XMLReader {
 	private Color aColor;
 	private Color bColor;
 	private Color neutralColor;
-	private String segGrid;
+	//private String segGrid;
 
 	private Color predColor;
 	private Color preyColor;
@@ -71,13 +71,13 @@ public class XMLReader {
 		aColor=Color.BLUE;
 		bColor=Color.RED;
 		neutralColor=Color.WHITE;
-		segGrid = "0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
+		//segGrid = "0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
 
 		predColor=Color.GREEN;
 		preyColor=Color.PURPLE;
 		waterColor=Color.RED;
 		preyProduction=5;
-		predEnergy = 5;
+		predEnergy = 2;
 		energyGain=2;
 		predReproduction=2;
 		predGrid="0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 1 1 1 1 1 1 1 1 1 0 1 2 1 2 2 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
@@ -141,12 +141,16 @@ public class XMLReader {
 						predGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
 						PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
 						PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
+						System.out.println("went through");
+						System.out.println(predEnergy);
 						}
 						catch(Exception e){
 							createDefaultValues();
 							PredPreyHolder.setPredPreyColor(predColor, preyColor, waterColor);
 							PredPreyHolder.setPredPreyParams(preyProduction, predEnergy, energyGain, predReproduction, predGrid);
 							System.out.print("error");
+							System.out.println(predEnergy);
+							e.printStackTrace();
 						}
 						
 						
@@ -161,17 +165,26 @@ public class XMLReader {
 						SugarHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
 					}
 					
+					else if (DataHolder.getType().equals("Bacteria")) {
+						aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
+						deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
+						percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
+						lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						BacteriaHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
+					}
+					
 					else {
 						System.out.println("WRONG SIMULATION NAME"); //ERROR CHECKING IF WRONG SIMULATION IS TYPED
 					}
 				}
+//				System.out.println(predEnergy);
 			}
 		//} catch (Exception e) {
 			//e.printStackTrace();
 		//	System.out.println("variable can not be read");
 		//}
 	}
-
+	
 	public static Color hex2Rgb(String colorStr) {
 	    return Color.rgb(
 	            Integer.valueOf( colorStr.substring( COLOR_INDEX_1, COLOR_INDEX_2), COLOR_INDEX_END ),
