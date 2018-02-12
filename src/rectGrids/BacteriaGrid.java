@@ -6,7 +6,7 @@ import rectCells.Cell;
 
 public class BacteriaGrid extends RectangleGrid {
 	
-	private String configString = BacteriaHolder.getLifeGrid();
+	private String configString = BacteriaHolder.getBacteriaGrid();
 	
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);
