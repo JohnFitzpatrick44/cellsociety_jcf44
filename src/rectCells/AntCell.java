@@ -11,18 +11,28 @@ public class AntCell extends Cell {
 	private static final Color FOOD_COLOR = Color.BLUE;
 	private static final Color NEST_COLOR = Color.GREEN;
 	
-	private static final int MAX_ANTS = 1;
+	private static final int INIT_DURABILITY = 50;
+	
+	private static final int MAX_ANTS = 3;
 	
 	private static final int MAX_STATE = 2; //Empty, Food, Nest
 
 	private double foodPheromones;
 	private double nestPheromones;
 	
+	private int foodDurability;
+	
 	private ArrayList<AntAgent> ants;
 	
 	public AntCell(int state, double...points) {
 		this(points);
 		this.setState(state);
+		if(state == 1) {
+			foodPheromones = 1;
+			foodDurability = INIT_DURABILITY;
+		} else if(state == 2) {
+			nestPheromones = 1;
+		}
 		updateFill();
 	}
 
@@ -35,13 +45,21 @@ public class AntCell extends Cell {
 	}
 	
 	public void updateState() {
-		
+		foodPheromones -= 0.02*foodPheromones;
+		if(foodPheromones < 0.02) {
+			foodPheromones = 0;
+		}
+		nestPheromones -= 0.02*nestPheromones;
+		if(nestPheromones < 0.02) {
+			nestPheromones = 0;
+		}
+		updateFill();
 	}
 
 	public void updateFill() {
 		switch(getState()) {
 		case 0:
-			setFill(EMPTY_COLOR);
+			setFill(Color.rgb(0, (int)(128*nestPheromones), (int)(128*foodPheromones)));
 			break;
 		case 1:
 			setFill(FOOD_COLOR);
@@ -49,6 +67,15 @@ public class AntCell extends Cell {
 		case 2:
 			setFill(NEST_COLOR);
 			break;
+
+		}
+		
+	}
+	
+	public void reduceDurability() {
+		foodDurability--;
+		if(foodDurability <= 0) {
+			setState(0);
 		}
 	}
 

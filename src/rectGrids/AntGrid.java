@@ -13,7 +13,7 @@ import rectCells.Cell;
 public class AntGrid extends RectangleGrid {
 	private String configString = AntHolder.getSugarGrid();
 	
-	private static final int NUM_AGENTS = 40;
+	private static final int NUM_AGENTS = 50;
 	
 	private AntAgentMover aam;
 
