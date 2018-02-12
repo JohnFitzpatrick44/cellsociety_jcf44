@@ -1,12 +1,8 @@
 package buttons;
 
 import View.MainView;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+
 import javafx.scene.control.Slider;
-import javafx.scene.paint.Color;
 
 /*
  * Slider that controls the speed of the animation based on the slider position

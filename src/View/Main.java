@@ -3,6 +3,12 @@ package View;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Ryan Fu
+ * Class that launches Cell Society
+ */
+
 public class Main extends Application {
 	
 	private static final String TITLE = "Cell Society";

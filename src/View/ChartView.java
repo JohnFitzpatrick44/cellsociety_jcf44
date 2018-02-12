@@ -1,27 +1,15 @@
 package View;
 
-import java.io.File;
-import rectCells.CellMover;
 import XML.DataHolder;
-import XML.XMLReader;
 import rectCells.Cell;
-import rectGrids.FireGrid;
 import rectGrids.Grid;
-import rectGrids.LifeGrid;
-import rectGrids.PredPreyGrid;
-import rectGrids.SegregationGrid;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ComboBox;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -54,8 +42,8 @@ public class ChartView {
     private static XYChart.Series<Number, Number> series3 = new XYChart.Series<Number,Number>();
     private static final int MAX_DATA_POINTS = 50;
     private static NumberAxis xAxis;
-    private NumberAxis yAxis;
-    
+    private static NumberAxis yAxis;
+    private static LineChart<Number,Number> lineChart;
 	public Scene initializeStartScene() {
 		chartGroup = new Group();
 		chartScene = new Scene(chartGroup,WIDTH_SIZE,HEIGHT_SIZE,Color.WHEAT);
@@ -64,18 +52,17 @@ public class ChartView {
 		return chartScene;
 	}
 	
-	private void setupChart() {
+	private static void setupChart() {
 			xAxis = new NumberAxis(0,MAX_DATA_POINTS,MAX_DATA_POINTS/10);
 	        yAxis = new NumberAxis();
 	        xAxis.setLabel("Steps");
 	        yAxis.setLabel("Number of Cells");
 	        //creating the chart
-	        final LineChart<Number,Number> lineChart = 
-	                new LineChart<Number,Number>(xAxis,yAxis);
-	        lineChart.setTitle("Game of Life");
+	        lineChart = new LineChart<Number,Number>(xAxis,yAxis);
 	        //defining a series
 	        xAxis.setMinorTickVisible(false);
 	       // xAxis.setTickLabelsVisible(false);
+	        lineChart.setLegendVisible(false);
 	        lineChart.setCreateSymbols(false);    
 	        series.setName("Game Of Life");
 	        lineChart.getData().add(series);
@@ -83,7 +70,13 @@ public class ChartView {
 	        lineChart.getData().add(series3);
 	        chartGroup.getChildren().add(lineChart);
 	}
+	public static void updateChartAttributes() {
+		lineChart.setTitle(DataHolder.getType());
+	}
 
+	public static void clearChart() {
+		lineChart.getData().clear();
+	}
 
 	public void beginAnimationLoop() {
 		KeyFrame frame = new KeyFrame(Duration.millis(MILLISECOND_DELAY),

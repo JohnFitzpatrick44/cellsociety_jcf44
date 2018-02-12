@@ -4,6 +4,11 @@ import XML.SegregationHolder;
 import rectCells.Cell;
 import rectCells.SegregationCell;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Class that creates Rectangular grid for Segregation simulation
+ */
 public class SegregationGrid extends RectangleGrid {
 	
 	private String configString = SegregationHolder.getSegGrid();

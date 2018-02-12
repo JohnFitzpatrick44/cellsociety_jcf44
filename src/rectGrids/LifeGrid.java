@@ -4,6 +4,11 @@ import XML.LifeHolder;
 import rectCells.Cell;
 import rectCells.LifeCell;
 
+/**
+ * 
+ * @author Hemanth Yakkali
+ * Class that creates Rectangular grid for Game of Life simulation
+ */
 public class LifeGrid extends RectangleGrid {
 
 	private static final int DEAD = 0;
