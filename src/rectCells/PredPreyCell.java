@@ -7,14 +7,14 @@ import javafx.scene.paint.Color;
 
 public class PredPreyCell extends Cell {
 
-	private static final Color PRED_COLOR = PredPreyHolder.getPredColor();
-	private static final Color PREY_COLOR = PredPreyHolder.getPreyColor();
-	private static final Color WATER_COLOR = PredPreyHolder.getWaterColor();
-	private static final int PREY_REPRODUCTION_VALUE = PredPreyHolder.getPreyReproduction();
-	private static final int PRED_ENERGY_VALUE = PredPreyHolder.getPredEnergy();
-	private static final int ENERGY_GAIN_VALUE = PredPreyHolder.getEnergyGain();
-	private static final int PRED_REPRODUCTION_VALUE = PredPreyHolder.getPredReproduction();
-	private static final int MAX_STATE = 2;
+	private static Color PRED_COLOR = PredPreyHolder.getPredColor();
+	private static Color PREY_COLOR = PredPreyHolder.getPreyColor();
+	private static Color WATER_COLOR = PredPreyHolder.getWaterColor();
+	private static int PREY_REPRODUCTION_VALUE = PredPreyHolder.getPreyReproduction();
+	private static int PRED_ENERGY_VALUE = PredPreyHolder.getPredEnergy();
+	private static int ENERGY_GAIN_VALUE = PredPreyHolder.getEnergyGain();
+	private static int PRED_REPRODUCTION_VALUE = PredPreyHolder.getPredReproduction();
+	private static int MAX_STATE = 2;
 
 	private static final int WATER = 0;
 	private static final int PREY = 1;

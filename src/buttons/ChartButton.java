@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /*
@@ -38,6 +39,7 @@ public class ChartButton extends ActionButton{
 		Stage secondStage = new Stage();
 		secondStage.setScene(graphSimulation.initializeStartScene());
 		//change boolean if stage is closed
+		secondStage.initStyle(StageStyle.UTILITY);
 	    secondStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
 	           public void handle(WindowEvent we) {
 	        	   	MainView.setChartBoolean(false);

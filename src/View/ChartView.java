@@ -61,6 +61,7 @@ public class ChartView {
 	        lineChart = new LineChart<Number,Number>(xAxis,yAxis);
 	        //defining a series
 	        xAxis.setMinorTickVisible(false);
+	        xAxis.setTickMarkVisible(false);
 	       // xAxis.setTickLabelsVisible(false);
 	        lineChart.setLegendVisible(false);
 	        lineChart.setCreateSymbols(false);    
@@ -75,7 +76,10 @@ public class ChartView {
 	}
 
 	public static void clearChart() {
-		lineChart.getData().clear();
+		series.getData().clear();
+		series2.getData().clear();
+		series3.getData().clear();
+		count=0;
 	}
 
 	public void beginAnimationLoop() {

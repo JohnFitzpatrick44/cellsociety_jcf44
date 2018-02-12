@@ -85,11 +85,13 @@ public class XMLReader {
 	
 	private void parse(File xmlFile) throws XMLException, ParserConfigurationException, SAXException, IOException {
 		//try {
+		
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(xmlFile);
 			doc.getDocumentElement().normalize();
 			NodeList nList = doc.getElementsByTagName("type");
+			System.out.print(nList.item(0));
 			for (int temp = 0; temp < nList.getLength(); temp++) {
 				
 				Node nNode = nList.item(temp);
@@ -127,9 +129,11 @@ public class XMLReader {
 					
 					else if(DataHolder.getType().equals("Predator")) {
 						try {
+						System.out.println("alsdkfjls");
 						predColor=(hex2Rgb(eElement.getElementsByTagName("predColor").item(0).getTextContent()));
 						preyColor=(hex2Rgb(eElement.getElementsByTagName("preyColor").item(0).getTextContent()));
 						waterColor=(hex2Rgb(eElement.getElementsByTagName("waterColor").item(0).getTextContent()));
+						System.out.println(waterColor);
 						preyProduction=(Integer.parseInt(eElement.getElementsByTagName("preyReproduction").item(0).getTextContent()));
 						predEnergy = (Integer.parseInt(eElement.getElementsByTagName("predEnergy").item(0).getTextContent()));
 						energyGain=(Integer.parseInt(eElement.getElementsByTagName("energyGain").item(0).getTextContent()));

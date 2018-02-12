@@ -279,8 +279,10 @@ public class MainView {
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
 			DataHolder.clearXMLReader();
+			//XMLReader newFile = new XMLReader(DataHolder.getInputFile());
 			DataHolder.setInputFile((File) ButtonView.getFileSelector().getValue()); //change new file
 			DataHolder.setFileInput(new XMLReader(DataHolder.getInputFile()));
+		//	DataHolder.setFileInput(newFile);
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.getDimensions();
 			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
