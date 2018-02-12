@@ -147,6 +147,16 @@ public class XMLReader {
 						
 						
 					}
+					
+					else if (DataHolder.getType().equals("SugarScape")) {
+						burntColor=(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
+						burningColor=(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
+						treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
+						probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
+						fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						SugarHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
+					}
+					
 					else {
 						System.out.println("WRONG SIMULATION NAME"); //ERROR CHECKING IF WRONG SIMULATION IS TYPED
 					}

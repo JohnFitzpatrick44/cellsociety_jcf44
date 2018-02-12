@@ -30,7 +30,7 @@ public abstract class Grid {
 	 * @param grid 2D Array of Cells
 	 * Updates each cell
 	 */
-	public static void updateStates(Cell[][] grid) {
+	public void updateStates(Cell[][] grid) {
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				grid[i][j].updateNeighborStates();

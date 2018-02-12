@@ -16,12 +16,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import rectCells.Cell;
+import rectGrids.BacteriaGrid;
 import rectGrids.FireGrid;
 import rectGrids.Grid;
 import rectGrids.LifeGrid;
 import rectGrids.PredPreyGrid;
 import rectGrids.RectangleGrid;
 import rectGrids.SegregationGrid;
+import rectGrids.SugarGrid;
 import triangleGrids.FireTriangleGrid;
 import triangleGrids.LifeTriangleGrid;
 import triangleGrids.PredPreyTriangleGrid;
@@ -72,6 +74,7 @@ public class MainView {
 	public static final File FireFile = new File("data/SpreadingFire.xml");
 	public static final File SegregationFile = new File("data/Segregation.xml");
 	public static final File PredPreyFile = new File("data/PredPrey.xml");
+	public static final File SUGAR_SCAPE_FILE = new File("data/SugarScape.xml");
 
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
@@ -144,6 +147,10 @@ public class MainView {
 			setupRectangleAllNeighbors();
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
+			setupCellGrid(GRID_SIZE);
+			setupRectangleCardinalNeighbors();
+		} else if(name.equals("SugarScape")) {
+			grid = new SugarGrid();
 			setupCellGrid(GRID_SIZE);
 			setupRectangleCardinalNeighbors();
 		}
@@ -232,7 +239,7 @@ public class MainView {
 
 	public static void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
-			Grid.updateStates(cellGrid);
+			grid.updateStates(cellGrid);
 		}
 	}
 	
@@ -267,7 +274,8 @@ public class MainView {
 	 * Create the file selector drop down menu
 	 */
 	public static void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile);
+		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile,
+				SUGAR_SCAPE_FILE);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
 			DataHolder.clearXMLReader();
@@ -279,6 +287,9 @@ public class MainView {
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
 			switchSimulation();
+			if(isCharting()) {
+				ChartView.updateChartAttributes();
+			}
 		});
 	}
 	
@@ -320,6 +331,10 @@ public class MainView {
 	
 	public static void setSimulation(String s) {
 		SIMULATION = s;
+	}
+	
+	public static Grid getGrid() {
+		return grid;
 	}
 	
 }
