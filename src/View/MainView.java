@@ -75,6 +75,7 @@ public class MainView {
 	public static final File SEGREGATION_FILE = new File("data/Segregation.xml");
 	public static final File PRED_PREY_FILE = new File("data/PredPrey.xml");
 	public static final File SUGAR_SCAPE_FILE = new File("data/SugarScape.xml");
+	public static final File BACTERIA_FILE = new File("data/Bacteria.xml");
 
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
@@ -151,6 +152,10 @@ public class MainView {
 			setupRectangleCardinalNeighbors();
 		} else if(name.equals("SugarScape")) {
 			grid = new SugarGrid();
+			setupCellGrid(GRID_SIZE);
+			setupRectangleCardinalNeighbors();
+		} else if(name.equals("Bacteria")) {
+			grid = new BacteriaGrid();
 			setupCellGrid(GRID_SIZE);
 			setupRectangleCardinalNeighbors();
 		}

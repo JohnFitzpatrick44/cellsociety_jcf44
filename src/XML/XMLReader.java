@@ -36,7 +36,7 @@ public class XMLReader {
 	private Color aColor;
 	private Color bColor;
 	private Color neutralColor;
-	private String segGrid;
+	//private String segGrid;
 
 	private Color predColor;
 	private Color preyColor;
@@ -71,7 +71,7 @@ public class XMLReader {
 		aColor=Color.BLUE;
 		bColor=Color.RED;
 		neutralColor=Color.WHITE;
-		segGrid = "0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
+		//segGrid = "0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
 
 		predColor=Color.GREEN;
 		preyColor=Color.PURPLE;
@@ -159,6 +159,14 @@ public class XMLReader {
 						probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
 						fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
 						SugarHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
+					}
+					
+					else if (DataHolder.getType().equals("Bacteria")) {
+						aliveColor = hex2Rgb(eElement.getElementsByTagName("alive").item(0).getTextContent());
+						deadColor=hex2Rgb(eElement.getElementsByTagName("dead").item(0).getTextContent());		
+						percentDead = Double.parseDouble(eElement.getElementsByTagName("percentDead").item(0).getTextContent());
+						lifeGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
+						BacteriaHolder.setGameOfLife(aliveColor, deadColor, percentDead, lifeGrid);
 					}
 					
 					else {
