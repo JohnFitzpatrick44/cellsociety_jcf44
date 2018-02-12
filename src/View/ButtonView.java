@@ -14,6 +14,7 @@ import buttons.SpeedButton;
 import buttons.SpeedSlider;
 import buttons.StepButton;
 import buttons.SwitchButton;
+import buttons.SwitchNeighborButton;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -54,6 +55,7 @@ public class ButtonView {
 	private static SpeedSlider speedSlider;
 	private static ChartButton chartBtn;
 	private static SwitchButton switchBtn;
+	private static SwitchNeighborButton switchNeighborBtn;
 	//private CompareButton compareBtn;
 	
 	private static ComboBox<File> fileSelector;
@@ -93,13 +95,14 @@ public class ButtonView {
 		fileBtn = new FileUploadButton(BUTTON_COLOR);
 		speedSlider = new SpeedSlider(MINSLIDERSPEED, MAXSLIDERSPEED, DEFAULTSLIDERSPEED);
 		switchBtn = new SwitchButton();
+		switchNeighborBtn = new SwitchNeighborButton();
 		chartBtn = new ChartButton(BUTTON_COLOR);
 		jumpField = new TextField();
 		
 		title = new Text();
 		setTitleAuthor();
 		MainView.createDropDownMenu();
-		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, speedSlider, fileBtn, chartBtn, switchBtn);
+		MainView.getGroup().getChildren().addAll(playBtn, resetBtn, pauseBtn, jumpBtn, stepBtn, fileSelector, jumpField, title, slowBtn, speedBtn, speedSlider, fileBtn, switchNeighborBtn, chartBtn, switchBtn);
 	}
 	//arrange all the buttons on the screen
 	public static void arrangeButtons() {
@@ -121,6 +124,7 @@ public class ButtonView {
 		switchBtn.setPosition(FILE_X_POSITION, BUTTONROW3_Y_POSITION);
 		speedSlider.setPosition(SLIDER_X_POSITION, BUTTONROW3_Y_POSITION);
 		chartBtn.setPosition(RESETBTN_X_POSITION, BUTTONROW3_Y_POSITION);
+		switchNeighborBtn.setPosition(RESETBTN_X_POSITION, BUTTONROW2_Y_POSITION);
 	}
 
 	

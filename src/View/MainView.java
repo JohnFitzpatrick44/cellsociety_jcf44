@@ -237,6 +237,9 @@ public class MainView {
 			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
 			ButtonView.setTitleAuthor();
 			switchSimulation();
+			if(isCharting()) {
+				ChartView.updateChartAttributes();
+			}
 		});
 	}
 	
