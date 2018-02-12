@@ -50,7 +50,7 @@ public class SugarGrid extends RectangleGrid {
 			int j = ThreadLocalRandom.current().nextInt(0, gridSize);
 			
 			if(((SugarCell) grid[i][j]).getAgent() == null) {
-				int init_vision = 1;
+				int init_vision = 2;
 				int init_metabolism = ThreadLocalRandom.current().nextInt(7, 21);
 				int init_sugar = ThreadLocalRandom.current().nextInt(20, 36);
 				SugarAgent sa = new SugarAgent((SugarCell) grid[i][j], init_vision, init_metabolism, init_sugar);

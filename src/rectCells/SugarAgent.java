@@ -1,5 +1,6 @@
 package rectCells;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.concurrent.ThreadLocalRandom;
@@ -84,8 +85,22 @@ public class SugarAgent extends Circle {
 	}
 	
 	private void lookAndMove() {
-		Collections.shuffle(place.getNeighbors());
-		Collections.sort(place.getNeighbors(), new Comparator<Cell>() {
+		ArrayList<Cell> options = new ArrayList<>();
+		options.addAll(place.getNeighbors());
+		for(int k = 1; k < vision; k++) {
+			int numOptions = options.size();
+			for(int j = 0; j < numOptions; j++) {
+				ArrayList<Cell> toAdd = new ArrayList<>();
+				toAdd.addAll(options.get(j).getNeighbors());
+				for(Cell c : toAdd) {
+					if(!options.contains(c)) {
+						options.add(c);
+					}
+				}
+			}
+		}
+		Collections.shuffle(options);
+		Collections.sort(options, new Comparator<Cell>() {
 
 			@Override
 			public int compare(Cell o1, Cell o2) {
@@ -94,10 +109,10 @@ public class SugarAgent extends Circle {
 			
 		});
 		
-		for(int k = 0; k < place.getNeighbors().size(); k++) {
-			if(((SugarCell) place.getNeighbors().get(k)).getAgent() == null) {
+		for(int k = 0; k < options.size(); k++) {
+			if(((SugarCell) options.get(k)).getAgent() == null) {
 				place.setAgent(null);
-				place = (SugarCell) place.getNeighbors().get(k);
+				place = (SugarCell) options.get(k);
 				place.setAgent(this);
 				break;
 			}
