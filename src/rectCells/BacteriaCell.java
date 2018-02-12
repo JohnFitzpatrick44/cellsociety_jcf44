@@ -2,6 +2,7 @@ package rectCells;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import XML.BacteriaHolder;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -10,16 +11,23 @@ public class BacteriaCell extends Cell {
 	
 	private static final int MAX_STATE = 3;
 	
-	private static final Color DEFAULT_COLOR = Color.BLACK;
-	private static final Color A_COLOR = Color.RED;
-	private static final Color B_COLOR = Color.BLUE;
-	private static final Color C_COLOR = Color.YELLOW;
+	private static Color DEFAULT_COLOR = BacteriaHolder.getDefaultColor();
+	private static Color A_COLOR = BacteriaHolder.getColorA();
+	private static Color B_COLOR = BacteriaHolder.getColorB();
+	private static Color C_COLOR = BacteriaHolder.getColorC();
 	
 	private int level;
 	
+	private void refreshValues() {
+		DEFAULT_COLOR = BacteriaHolder.getDefaultColor();
+		A_COLOR = BacteriaHolder.getColorA();
+		B_COLOR = BacteriaHolder.getColorB();
+		C_COLOR = BacteriaHolder.getColorC();
+	}
 
 	public BacteriaCell(int state, double...points) {
 		this(points);
+		refreshValues();
 		setState(state);
 		updateFill();
 	}
