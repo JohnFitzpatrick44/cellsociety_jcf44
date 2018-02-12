@@ -16,12 +16,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import rectCells.Cell;
+import rectGrids.BacteriaGrid;
 import rectGrids.FireGrid;
 import rectGrids.Grid;
 import rectGrids.LifeGrid;
 import rectGrids.PredPreyGrid;
 import rectGrids.RectangleGrid;
 import rectGrids.SegregationGrid;
+import rectGrids.SugarGrid;
 import triangleGrids.FireTriangleGrid;
 import triangleGrids.LifeTriangleGrid;
 import triangleGrids.PredPreyTriangleGrid;
@@ -103,7 +105,7 @@ public class MainView {
 			setupCellGrid(GRID_SIZE);
 			setupAllNeighbors();
 		} else if(name.equals("Spreading Fire")) {
-			grid = new FireGrid();
+			grid = new SugarGrid();
 			setupCellGrid(GRID_SIZE);
 			setupCardinalNeighbors();
 		} else if(name.equals("Segregation")) {
@@ -190,7 +192,7 @@ public class MainView {
 
 	public static void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
-			Grid.updateStates(cellGrid);
+			grid.updateStates(cellGrid);
 //			for(int i=0;i<cellGrid.length;i++) {
 //				for(int j=0;j<cellGrid[i].length;j++) {
 //					System.out.println(i);
@@ -277,6 +279,10 @@ public class MainView {
 	
 	public static void setSimulation(String s) {
 		SIMULATION = s;
+	}
+	
+	public static Grid getGrid() {
+		return grid;
 	}
 	
 }

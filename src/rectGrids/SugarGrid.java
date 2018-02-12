@@ -7,12 +7,15 @@ import XML.LifeHolder;
 import rectCells.BacteriaCell;
 import rectCells.Cell;
 import rectCells.SugarAgent;
+import rectCells.SugarAgentMover;
 import rectCells.SugarCell;
 
 public class SugarGrid extends RectangleGrid {
 	private String configString = LifeHolder.getLifeGrid();
 	
 	private static final int NUM_AGENTS = 10;
+	
+	private SugarAgentMover sam;
 	
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);
@@ -38,6 +41,7 @@ public class SugarGrid extends RectangleGrid {
 			}
 			heightSpacing += cellHeight;
 		}
+		sam = new SugarAgentMover();
 		for(int k = 0; k < NUM_AGENTS; k++) {
 			int i = ThreadLocalRandom.current().nextInt(0, gridSize);
 			int j = ThreadLocalRandom.current().nextInt(0, gridSize);
@@ -48,7 +52,8 @@ public class SugarGrid extends RectangleGrid {
 				int init_sugar = ThreadLocalRandom.current().nextInt(5, 11);
 				SugarAgent sa = new SugarAgent((SugarCell) grid[i][j], init_vision, init_metabolism, init_sugar);
 				((SugarCell) grid[i][j]).setAgent(sa);
-				MainView.getGroup().getChildren().add(sa);
+				sam.addAgent(sa);
+				sa.addSAM(sam);
 			} else {
 				k--;
 				continue;
@@ -57,4 +62,22 @@ public class SugarGrid extends RectangleGrid {
 		}
 		return grid;
 	}
+	
+	@Override
+	public void updateStates(Cell[][] grid) {
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].updateNeighborStates();
+			}
+		}
+		
+		sam.updateAgents();
+		
+		for(int i=0;i<grid.length;i++) {
+			for(int j=0;j<grid[i].length;j++) {
+				grid[i][j].updateState();
+			}
+		}
+	}
+	
 }

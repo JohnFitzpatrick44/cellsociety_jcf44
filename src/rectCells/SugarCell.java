@@ -35,11 +35,12 @@ public class SugarCell extends Cell {
 	
 	public void updateState() {
 		
-		if(agent != null) {
-			agent.updateState();
+		if(getState() == maxCapacity) {
+			interval = 0;
+		} else {
+			interval++;
 		}
 		
-		interval++;
 		if(interval == GROW_INTERVAL) {
 			interval = 0;
 			setState(getState() + GROW_RATE);

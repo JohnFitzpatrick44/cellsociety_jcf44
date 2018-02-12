@@ -13,6 +13,7 @@ public class SugarAgent extends Circle {
 	private int metabolism;
 	private int sugar;
 	private SugarCell place;
+	private SugarAgentMover sam;
 	
 	public SugarAgent(SugarCell c, int vision, int metabolism, int initSugar) {
 		super(cellWidth(c)/4, Color.RED);
@@ -34,12 +35,13 @@ public class SugarAgent extends Circle {
 	}
 	
 	public void updateState() {
+		
 		lookAndMove();
 		
 		sugar -= metabolism;
 		if(sugar <= 0) {
 			place.setAgent(null);
-			MainView.getGroup().getChildren().remove(this);
+			sam.removeAgent(this);
 		} else {
 			updatePos();
 		}
@@ -56,6 +58,7 @@ public class SugarAgent extends Circle {
 	}
 	
 	private void lookAndMove() {
+		Collections.shuffle(place.getNeighbors());
 		Collections.sort(place.getNeighbors(), new Comparator<Cell>() {
 
 			@Override
@@ -70,11 +73,18 @@ public class SugarAgent extends Circle {
 				place.setAgent(null);
 				place = (SugarCell) place.getNeighbors().get(k);
 				place.setAgent(this);
+				break;
 			}
 		}
 		
 		sugar += place.getState();
 		place.setState(0);
 	}
+	
+	public void addSAM(SugarAgentMover samAdd) {
+		sam = samAdd;
+	}
+	
+
 	
 }
