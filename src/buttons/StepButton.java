@@ -31,7 +31,7 @@ public class StepButton extends ActionButton{
 		});
 	}
 	private void step() {
-		Grid.updateStates(MainView.getMyCellGrid());
+		MainView.getGrid().updateStates(MainView.getMyCellGrid());
 		if (MainView.isCharting()) {
 			ChartView.updateCellCount();
 		}

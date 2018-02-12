@@ -16,12 +16,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 import rectCells.Cell;
+import rectGrids.BacteriaGrid;
 import rectGrids.FireGrid;
 import rectGrids.Grid;
 import rectGrids.LifeGrid;
 import rectGrids.PredPreyGrid;
 import rectGrids.RectangleGrid;
 import rectGrids.SegregationGrid;
+import rectGrids.SugarGrid;
 import triangleGrids.FireTriangleGrid;
 import triangleGrids.LifeTriangleGrid;
 import triangleGrids.PredPreyTriangleGrid;
@@ -66,6 +68,7 @@ public class MainView {
 	public static final File FireFile = new File("data/SpreadingFire.xml");
 	public static final File SegregationFile = new File("data/Segregation.xml");
 	public static final File PredPreyFile = new File("data/PredPrey.xml");
+	public static final File SUGAR_SCAPE_FILE = new File("data/SugarScape.xml");
 
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
@@ -112,6 +115,10 @@ public class MainView {
 			setupAllNeighbors();
 		} else if(name.equals("Predator")) {
 			grid = new PredPreyGrid();
+			setupCellGrid(GRID_SIZE);
+			setupCardinalNeighbors();
+		} else if(name.equals("SugarScape")) {
+			grid = new SugarGrid();
 			setupCellGrid(GRID_SIZE);
 			setupCardinalNeighbors();
 		}
@@ -190,7 +197,7 @@ public class MainView {
 
 	public static void step(double elapsedTime, Cell[][] cellGrid) {
 		if (playBoolean) {
-			Grid.updateStates(cellGrid);
+			grid.updateStates(cellGrid);
 //			for(int i=0;i<cellGrid.length;i++) {
 //				for(int j=0;j<cellGrid[i].length;j++) {
 //					System.out.println(i);
@@ -224,7 +231,8 @@ public class MainView {
 	//create the file selector drop down menu
 	
 	public static void createDropDownMenu() {
-		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile);
+		ObservableList<File> fileList = FXCollections.observableArrayList(MainView.GameOfLifeFile, MainView.FireFile, MainView.SegregationFile, MainView.PredPreyFile,
+				SUGAR_SCAPE_FILE);
 		ButtonView.setFileSelector(new ComboBox<>(fileList));
 		ButtonView.getFileSelector().setOnAction(e->{
 			DataHolder.clearXMLReader();
@@ -280,6 +288,10 @@ public class MainView {
 	
 	public static void setSimulation(String s) {
 		SIMULATION = s;
+	}
+	
+	public static Grid getGrid() {
+		return grid;
 	}
 	
 }

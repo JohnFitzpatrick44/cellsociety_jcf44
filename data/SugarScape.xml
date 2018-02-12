@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <simulation>
-	<type name="Spreading Fire" author="team03">
+	<type name="SugarScape" author="team03">
 		<dimensions>10</dimensions>
 		<burning>#ff0000</burning>
 		<tree>#00ff00</tree>
 		<empty>#ffff00</empty>
 		<percentBurning>2</percentBurning>
 		<probCatch>.5</probCatch>
-		<grid>2 2 2</grid>
+		<grid>10 10 10 20 30 30 40 40 50 50 5 5 5 5 5 5 10 20 30 40</grid>
 	</type>
 </simulation>
