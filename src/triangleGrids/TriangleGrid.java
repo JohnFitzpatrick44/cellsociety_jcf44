@@ -34,7 +34,7 @@ public abstract class TriangleGrid extends Grid{
 	 * @param gridSize Number of rows and columns of cells
 	 * Sets neighbors for all "normal" oriented triangle cells
 	 */
-	public void setAllEvenNeighbors(Cell[][] grid, int gridSize) {
+	public void setAllNormalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20
@@ -70,7 +70,7 @@ public abstract class TriangleGrid extends Grid{
 	 * @param gridSize
 	 * Sets neighbors for all inverted triangle cells
 	 */
-	public void setAllOddNeighbors(Cell[][] grid, int gridSize) {
+	public void setAllInvertedNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20
@@ -107,7 +107,7 @@ public abstract class TriangleGrid extends Grid{
 	 * @param gridSize
 	 * Sets toroidal neighbors for all inverted triangle cells
 	 */
-	public void setAllOddToroidalNeighbors(Cell[][] grid, int gridSize) {
+	public void setAllInvertedToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20
@@ -144,7 +144,7 @@ public abstract class TriangleGrid extends Grid{
 	 * @param gridSize
 	 * Sets neighbors for all normal-oriented triangle cells
 	 */
-	public void setAllEvenToroidalNeighbors(Cell[][] grid, int gridSize) {
+	public void setAllNormalToroidalNeighbors(Cell[][] grid, int gridSize) {
 		int columns = gridSize*2;
 		for(int i=0;i<grid.length;i++) { //i=10
 			for(int j=0;j<grid[i].length;j++) { //j=20

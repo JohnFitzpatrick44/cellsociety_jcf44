@@ -80,6 +80,9 @@ public class MainView {
 		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
 	}
 	
+	/**
+	 * Sets up proper cardinal neighbor configuration, either toroidal or finite based on a boolean
+	 */
 	private static void setupRectangleCardinalNeighbors() {
 		if(isToroidal) {
 			grid.setCardinalCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
@@ -92,6 +95,9 @@ public class MainView {
 		}
 	}
 	
+	/**
+	 * Sets up proper surrounding neighbor configuration, either toroidal or finite based on a boolean
+	 */
 	private static void setupRectangleAllNeighbors() {
 		if(isToroidal) {
 			grid.setAllCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
@@ -104,14 +110,17 @@ public class MainView {
 		}
 	}
 	
+	/**
+	 * Sets up proper neighbor configuration for triangle cells, either toroidal or finite based on a boolean
+	 */
 	private static void setupTriangleGridAndNeighbors(int gridSize) {
 		myCellGrid = triangleGrid.createGrid(GRID_OFFSET, gridSize, CELL_HEIGHT,CELL_WIDTH,CUTOFF);
 		if(isToroidal) {
-			triangleGrid.setAllEvenToroidalNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setAllOddToroidalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setAllNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setAllInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
 		} else {
-			triangleGrid.setAllEvenNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setAllOddNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setAllNormalNeighbors(myCellGrid, GRID_SIZE);
+			triangleGrid.setAllInvertedNeighbors(myCellGrid, GRID_SIZE);
 		}
 	}
 
@@ -231,17 +240,13 @@ public class MainView {
 	 * Switches simulation, recreates the grid
 	 */
 	public static void switchSimulation() {
+		removeCells();
 		if(isTriangle) {
-			CELL_HEIGHT = (HEIGHT_SIZE-TOTAL_OFFSET-INTERFACE_BUTTON_HEIGHT)/GRID_SIZE;
-			CELL_WIDTH = (WIDTH_SIZE-TOTAL_OFFSET)/GRID_SIZE;
-			removeCells();
 			setupTriangleGrid(SIMULATION);	
-			addCells();
 		} else {
-			removeCells();
 			setupGrid(SIMULATION);	
-			addCells();
 		}
+		addCells();
 	}
 	
 	/**
@@ -267,7 +272,6 @@ public class MainView {
 		ButtonView.getFileSelector().setOnAction(e->{
 			DataHolder.clearXMLReader();
 			DataHolder.setInputFile((File) ButtonView.getFileSelector().getValue()); //change new file
-			//System.out.println(DataHolder.getInputFile());
 			DataHolder.setFileInput(new XMLReader(DataHolder.getInputFile()));
 			SIMULATION = DataHolder.getType();
 			GRID_SIZE = DataHolder.getDimensions();
