@@ -12,7 +12,7 @@ General back-end classes. Mainly worked on the cellTypes package, with the vario
 Worked on creating grids, set up framework for project in Main and MainView classes. Worked with Jack on cells and their simulations. Coordinated with Ryan to ensure backend and frontend work together.
 
 ### Ryan Fu
-General front-end design. Worked on creating an XML reader that takes in a file and handles exceptions. In addition, created multiple button classes with different functionalities that extended an abstract ActionButton class. All of these buttons were used to develop the user interface including features such as file upload, animation speed, pause, play, reset, and overall aesthetics of the program.
+General front-end design. Worked on creating an XML reader that takes in a file and handles exceptions. In addition, created multiple button classes with different functionalities that extended an abstract ActionButton class. All of these buttons were used to develop the user interface including features such as file upload, animation speed, pause, play, reset, and overall aesthetics of the program. Also worked on error-checking for the XML Reader and the dynamic chart design.
 
 ## Resources Used During Development
 The reading on inheritance (Mercer's Object-Oriented Software Development: Chapter 16, Inheritance and Polymorphism) was very useful during the development of this code, and helped us to split the code into multiple subclasses to aid the development process, and increase readability.
@@ -33,9 +33,17 @@ The reading on inheritance (Mercer's Object-Oriented Software Development: Chapt
  * The user can click the FILE button to upload an XML file to create a personalized simulation.
  * The user can switch shapes between triangle and rectangle
  * The user can switch between finite and toroidal neighbors
+ * The user can click the CHART button to make a window appear depicting a dynamic line chart that shows the number of cells for each cell type.
+ * A slider can be used to increase the speed of the animation of both the simulation and the dynamic chart
+ 
+## Error Checking
+ * The file upload button ensures that only XML files can be uploaded directly to the program. Programs without the XML extension
+ 	will not be uploaded. 
+ * The XML Reader checks to make sure that every parameter for a simulation is labeled correctly with an appropriate value. If there is 
+ 	a mistake, missing value, or incorrect data type, the program will automatically upload a working DEFAULT simulation for the program 		to run.
+ * If an unknown simulation type is uploaded, the program will simply print out "Wrong Simulation" to inform the user that the simulation 		type is not available. 
 
 ## Assumptions
- * It is assumed that input XML files will be formatted correctly, and contain a valid simulation.
  * It is assumed that a moving cell (such as in segregation or predator) may occupy an empty space left by another moving cell, that left that spot in the same step.
 
 ## Possible Improvements
