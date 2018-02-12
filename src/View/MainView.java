@@ -80,6 +80,11 @@ public class MainView {
 	//attributes of the buttons
 	private static Boolean playBoolean = false;
 	
+	private static neighbors.TriangleFiniteNeighbors tfn = new neighbors.TriangleFiniteNeighbors();
+	private static neighbors.TriangleToroidalNeighbors ttn = new neighbors.TriangleToroidalNeighbors();
+	private static neighbors.RectFiniteNeighbors rfn = new neighbors.RectFiniteNeighbors();
+	private static neighbors.RectToroidalNeighbors rtn = new neighbors.RectToroidalNeighbors();
+
 	private static void setupCellGrid(int gridSize) {
 		myCellGrid = grid.createGrid(GRID_OFFSET,gridSize,CELL_WIDTH,CELL_HEIGHT,CUTOFF);
 	}
@@ -89,13 +94,13 @@ public class MainView {
 	 */
 	private static void setupRectangleCardinalNeighbors() {
 		if(isToroidal) {
-			grid.setCardinalCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
-			grid.setCardinalSideToroidalNeighbors(myCellGrid,GRID_SIZE);
-			grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
+			rtn.setCardinalCornerToroidalNeighbors(myCellGrid, GRID_SIZE);
+			rtn.setCardinalSideToroidalNeighbors(myCellGrid, GRID_SIZE);
+			rfn.setCardinalMiddleNeighbors(myCellGrid, GRID_SIZE);
 		} else {
-			grid.setCardinalCornerNeighbors(myCellGrid,GRID_SIZE);
-			grid.setCardinalSideNeighbors(myCellGrid,GRID_SIZE);
-			grid.setCardinalMiddleNeighbors(myCellGrid,GRID_SIZE);
+			rfn.setCardinalCornerNeighbors(myCellGrid, GRID_SIZE);
+			rfn.setCardinalSideNeighbors(myCellGrid, GRID_SIZE);
+			rfn.setCardinalMiddleNeighbors(myCellGrid, GRID_SIZE);
 		}
 	}
 	
@@ -104,33 +109,33 @@ public class MainView {
 	 */
 	private static void setupRectangleAllNeighbors() {
 		if(isToroidal) {
-			grid.setAllCornerToroidalNeighbors(myCellGrid,GRID_SIZE);
-			grid.setAllSideToroidalNeighbors(myCellGrid,GRID_SIZE);
-			grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+			rtn.setAllCornerToroidalNeighbors(myCellGrid, GRID_SIZE);
+			rtn.setAllSideToroidalNeighbors(myCellGrid, GRID_SIZE);
+			rfn.setAllMiddleNeighbors(myCellGrid, GRID_SIZE);
 		} else {
-			grid.setAllCornerNeighbors(myCellGrid,GRID_SIZE);
-			grid.setAllSideNeighbors(myCellGrid,GRID_SIZE);
-			grid.setAllMiddleNeighbors(myCellGrid,GRID_SIZE);
+			rfn.setAllCornerNeighbors(myCellGrid, GRID_SIZE);
+			rfn.setAllSideNeighbors(myCellGrid, GRID_SIZE);
+			rfn.setAllMiddleNeighbors(myCellGrid, GRID_SIZE);
 		}
 	}
 	
 	private static void setupTriangleAllNeighbors() {
 		if(isToroidal) {
-			triangleGrid.setAllNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setAllInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
+			ttn.setAllNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
+			ttn.setAllInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
 		}else {
-			triangleGrid.setAllNormalNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setAllInvertedNeighbors(myCellGrid, GRID_SIZE);
+			tfn.setAllNormalNeighbors(myCellGrid, GRID_SIZE);
+			tfn.setAllInvertedNeighbors(myCellGrid, GRID_SIZE);
 		}
 	}
 	
 	private static void setupTriangleCardinalNeighbors() {
 		if(isToroidal) {
-			triangleGrid.setCardinalNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setCardinalInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
+			ttn.setCardinalInvertedToroidalNeighbors(myCellGrid, GRID_SIZE);
+			ttn.setCardinalNormalToroidalNeighbors(myCellGrid, GRID_SIZE);
 		}else {
-			triangleGrid.setCardinalNormalNeighbors(myCellGrid, GRID_SIZE);
-			triangleGrid.setCardinalInvertedNeighbors(myCellGrid, GRID_SIZE);
+			tfn.setCardinalNormalNeighbors(myCellGrid, GRID_SIZE);
+			tfn.setCardinalInvertedNeighbors(myCellGrid, GRID_SIZE);
 		}
 	}
 	
