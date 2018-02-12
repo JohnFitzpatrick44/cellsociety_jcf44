@@ -16,7 +16,7 @@ public class AntGrid extends RectangleGrid {
 	private static final int NUM_AGENTS = 40;
 	
 	private AntAgentMover aam;
-	
+
 	public Cell[][] createGrid(int offset, int gridSize, int cellWidth, int cellHeight, double cutOff){
 		int[] gridConfig = getGridConfig(configString);
 		Cell[][] grid = new Cell[gridSize][gridSize];
@@ -76,9 +76,12 @@ public class AntGrid extends RectangleGrid {
 				grid[i][j].updateNeighborStates();
 			}
 		}
+<<<<<<< HEAD
 		
 		aam.updateAnts();
 		
+=======
+>>>>>>> 62c9ce04ea080b3ab2862356acf1a2f3475e1557
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				grid[i][j].updateState();
