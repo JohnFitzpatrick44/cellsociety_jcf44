@@ -16,6 +16,7 @@ public class BacteriaCell extends Cell {
 	private static final Color C_COLOR = Color.YELLOW;
 	
 	private int level;
+	
 
 	public BacteriaCell(int state, double...points) {
 		this(points);
