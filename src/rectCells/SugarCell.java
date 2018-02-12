@@ -11,7 +11,7 @@ public class SugarCell extends Cell {
 	private static final int GROW_RATE = 5;
 	private static final int GROW_INTERVAL = 1;
 	
-	private static final int MAX_CAPACITY = 50;
+	private static final int MAX_CAPACITY = 100;
 	
 	private int maxCapacity;
 	private int interval;

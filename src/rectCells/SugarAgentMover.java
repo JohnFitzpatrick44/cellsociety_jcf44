@@ -25,9 +25,7 @@ public class SugarAgentMover {
 	}
 	
 	public void updateAgents() {
-		
-		System.out.println(agents.size());
-		
+				
 		for(int k = agents.size()-1; k >= 0; k--) {
 			agents.get(k).updateState();
 		}
