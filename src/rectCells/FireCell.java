@@ -11,9 +11,9 @@ import javafx.scene.paint.Color;
  */
 public class FireCell extends Cell {
 
-	private static final Color GROUND_COLOR = FireHolder.getBurntColor();
-	private static final Color TREE_COLOR = FireHolder.getTreeColor();
-	private static final Color FIRE_COLOR = FireHolder.getBurningColor();
+	private static Color GROUND_COLOR = FireHolder.getBurntColor();
+	private static Color TREE_COLOR = FireHolder.getTreeColor();
+	private static Color FIRE_COLOR = FireHolder.getBurningColor();
 	private static final int MAX_STATE = 2;
 
 	private static final int EMPTY = 0;
@@ -32,6 +32,7 @@ public class FireCell extends Cell {
 	 */
 	public FireCell(int state, double...points) {
 		this(points);
+		refreshValues();
 		this.setState(state);
 		updateFill();
 	}
@@ -41,6 +42,11 @@ public class FireCell extends Cell {
 		updateFill();
 	}
 
+	private void refreshValues() {
+		GROUND_COLOR = FireHolder.getBurntColor();
+		TREE_COLOR = FireHolder.getTreeColor();
+		FIRE_COLOR = FireHolder.getBurningColor();
+	}
 	public void updateState() {
 		if(getState() == EMPTY) {
 			return;

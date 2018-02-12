@@ -38,13 +38,13 @@ public class SwitchNeighborButton extends Label
 			{
 				if (t1)
 				{
-					setText("FINITE");
+					setText("TOROIDAL");
 					setStyle("-fx-background-color: grey;-fx-text-fill:white;");
 					setContentDisplay(ContentDisplay.RIGHT);
 				}
 				else
 				{
-					setText("TOROIDAL");
+					setText("FINITE");
 					setStyle("-fx-background-color: grey;-fx-text-fill:black;");
 					setContentDisplay(ContentDisplay.LEFT);
 				}

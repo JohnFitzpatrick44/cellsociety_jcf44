@@ -5,9 +5,10 @@ import javafx.scene.paint.Color;
 
 public class SegregationCell extends Cell {
 
-	private static final Color A_COLOR = SegregationHolder.getAColor();
-	private static final Color B_COLOR = SegregationHolder.getBColor();
-	private static final Color NEUTRAL_COLOR = SegregationHolder.getNeutralColor();
+	private static Color A_COLOR = SegregationHolder.getAColor();
+	private static Color B_COLOR = SegregationHolder.getBColor();
+	private static Color NEUTRAL_COLOR = SegregationHolder.getNeutralColor();
+	
 	private static final int MAX_STATE = 2;
 
 	private static final int EMPTY = 0;
@@ -17,9 +18,16 @@ public class SegregationCell extends Cell {
 
 	private double cutoff;
 
+	private void refreshValues() {
+		A_COLOR = SegregationHolder.getAColor();
+		B_COLOR = SegregationHolder.getBColor();
+		NEUTRAL_COLOR = SegregationHolder.getNeutralColor();
+	}
+	
 	public SegregationCell(int state, double...points) {
 		this(points);
 		setState(state);
+		refreshValues();
 		updateFill();
 		this.cutoff = INIT_CO;
 	}
