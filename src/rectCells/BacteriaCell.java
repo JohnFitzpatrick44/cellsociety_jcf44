@@ -11,10 +11,16 @@ public class BacteriaCell extends Cell {
 	
 	private static final int MAX_STATE = 3;
 	
+	private static final int A = 1;
+	private static final int B = 2;
+	private static final int C = 3;	
+	
 	private static Color DEFAULT_COLOR = BacteriaHolder.getDefaultColor();
 	private static Color A_COLOR = BacteriaHolder.getColorA();
 	private static Color B_COLOR = BacteriaHolder.getColorB();
 	private static Color C_COLOR = BacteriaHolder.getColorC();
+	
+	private static final int MAX_LEVEL = 10;
 	
 	private int level;
 	
@@ -35,7 +41,7 @@ public class BacteriaCell extends Cell {
 	public BacteriaCell(double...points) {
 		super(points);
 		setState(0);
-		level = 10;
+		level = MAX_LEVEL;
 		EventHandler<MouseEvent> eh = new EventHandler<MouseEvent>() { // Allows user to change cell states by right or left clicking
 			@Override
 			public void handle(MouseEvent me) {
@@ -45,7 +51,7 @@ public class BacteriaCell extends Cell {
 				else {
 					setState(0);
 				}
-				level = 10;
+				level = MAX_LEVEL;
 				updateFill();
 			}
 		};
@@ -72,8 +78,8 @@ public class BacteriaCell extends Cell {
 				}
 			} else if(eaten(getState(), getNeighborStates().get(k))) {
 				level += ((BacteriaCell) getNeighbors().get(k)).getLevel()/2;
-				if(level > 10) {
-					level = 10;
+				if(level > MAX_LEVEL) {
+					level = MAX_LEVEL;
 				}
 			}
 		}
@@ -81,7 +87,11 @@ public class BacteriaCell extends Cell {
 	}
 
 	private boolean eaten(int state1, int state2) {
-		return (state1 == 1 && state2 == 2) || (state1 == 2 && state2 == 3) || (state1 == 3 && state2 == 1);
+		boolean ab = (state1 == A && state2 == B);
+		boolean bc = (state1 == B && state2 == C);
+		boolean ca = (state1 == C && state2 == A);
+		
+		return ab || bc || ca;
 	}
 	
 	public void updateFill() {
@@ -90,17 +100,17 @@ public class BacteriaCell extends Cell {
 		case 0:
 			setFill(toFill);
 			return;
-		case 1:
+		case A:
 			toFill = A_COLOR;
 			break;
-		case 2:
+		case B:
 			toFill = B_COLOR;
 			break;
-		case 3:
+		case C:
 			toFill = C_COLOR;
 			break;
 		}
-		for(int k = 5; k > level; k--) {
+		for(int k = MAX_LEVEL/2; k > level; k--) {
 			toFill = toFill.darker();
 		}
 		setFill(toFill);

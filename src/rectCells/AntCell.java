@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 
 public class AntCell extends Cell {
 	
-	private static final Color EMPTY_COLOR = Color.BLACK;
 	private static final Color FOOD_COLOR = Color.BLUE;
 	private static final Color NEST_COLOR = Color.GREEN;
 	
@@ -17,7 +16,12 @@ public class AntCell extends Cell {
 	private static final int MAX_ANTS = 3;
 	
 	private static final int MAX_STATE = 2; //Empty, Food, Nest
+	
+	private static final int FOOD = 1;
+	private static final int NEST = 2;
 
+	private static final int COLOR_RATIO = 128;
+	
 	private double foodPheromones;
 	private double nestPheromones;
 	
@@ -28,11 +32,11 @@ public class AntCell extends Cell {
 	public AntCell(int state, double...points) {
 		this(points);
 		this.setState(state);
-		if(state == 1) {
-			foodPheromones = 1;
+		if(state == FOOD) {
+			foodPheromones = FOOD;
 			foodDurability = INIT_DURABILITY;
-		} else if(state == 2) {
-			nestPheromones = 1;
+		} else if(state == NEST) {
+			nestPheromones = FOOD;
 		}
 		updateFill();
 	}
@@ -60,12 +64,12 @@ public class AntCell extends Cell {
 	public void updateFill() {
 		switch(getState()) {
 		case 0:
-			setFill(Color.rgb(0, (int)(128*nestPheromones), (int)(128*foodPheromones)));
+			setFill(Color.rgb(0, (int)(COLOR_RATIO*nestPheromones), (int)(COLOR_RATIO*foodPheromones)));
 			break;
-		case 1:
+		case FOOD:
 			setFill(FOOD_COLOR);
 			break;
-		case 2:
+		case NEST:
 			setFill(NEST_COLOR);
 			break;
 
