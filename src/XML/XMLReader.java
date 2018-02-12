@@ -46,6 +46,13 @@ public class XMLReader {
 	private int energyGain;
 	private 	int predReproduction;
 	private 	String predGrid;	
+	
+	private int colorOne;
+	private int colorTwo;
+	private int colorThree;
+	private int growthRate;
+	private int growthInterval;
+	private String sugarGrid;
 
 	public XMLReader(File inputFile) {
 		try {
@@ -81,6 +88,32 @@ public class XMLReader {
 		energyGain=2;
 		predReproduction=2;
 		predGrid="0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 1 1 1 1 1 1 1 1 1 0 1 2 1 2 2 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1 0 1 0 1 2 1 0 0 2 0 1 0 2 2 1 0 0 1 0 2 0 0 0 0 0 0 1";
+	
+		colorOne = 255;
+		colorTwo = 255;
+		colorThree = 255;
+		growthRate = 5;
+		growthInterval = 1;
+		sugarGrid = "5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 10 10 10 10 10 10 10 5  5\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 20 20 20 20 20 20 20 20 10 5\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 20 20 20 20 50 50 20 20 20 20 10\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 20 20 20 50 100 100 50 20 20 20 10\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 20 20 20 50 100 100 50 20 20 20 10\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 20 20 20 20 50 50 20 20 20 20 10\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 20 20 20 20 20 20 20 20 10 5\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  10 10 10 10 10 10 10 10 5  5\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  5  5  5  5  5  5  10 10 10 10 10 10 10 10 5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  5  5  10 10 10 20 20 20 20 20 20 20 20 10 10 10 5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  10 10 20 20 20 20 50 50 20 20 20 20 10 10 10 10 5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  10 20 20 20 50 50 50 100 100 50 50 20 20 20 10  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  10 20 20 20 50 100 100 100 100 50 20 20 20 10  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  10 20 20 20 20 50 100 100 50 20 20 20 20 10 5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  5  10 20 20 20 20 20 20 20 20 10 5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5  5\n" + 
+				"			  5  5  10 10 10 10 10 10 10 10 5  5";
 	}
 
 	private void parse(File xmlFile) throws XMLException, ParserConfigurationException, SAXException, IOException {
@@ -173,12 +206,13 @@ public class XMLReader {
 
 				}				
 				else if (DataHolder.getType().equals("SugarScape")) {
-					burntColor=(hex2Rgb(eElement.getElementsByTagName("empty").item(0).getTextContent()));
-					burningColor=(hex2Rgb(eElement.getElementsByTagName("burning").item(0).getTextContent()));
-					treeColor=(hex2Rgb(eElement.getElementsByTagName("tree").item(0).getTextContent()));
-					probCatch=(Double.parseDouble(eElement.getElementsByTagName("probCatch").item(0).getTextContent()));
-					fireGrid =(eElement.getElementsByTagName("grid").item(0).getTextContent());
-					SugarHolder.setSpreadingFire(burntColor, burningColor, treeColor, probCatch, fireGrid);
+					colorOne=(Integer.parseInt(eElement.getElementsByTagName("colorOne").item(0).getTextContent()));
+					colorTwo=(Integer.parseInt(eElement.getElementsByTagName("colorTwo").item(0).getTextContent()));
+					colorThree=(Integer.parseInt(eElement.getElementsByTagName("colorThree").item(0).getTextContent()));
+					growthRate=(Integer.parseInt(eElement.getElementsByTagName("growthRate").item(0).getTextContent()));
+					growthInterval=(Integer.parseInt(eElement.getElementsByTagName("growthInterval").item(0).getTextContent()));
+					sugarGrid=(eElement.getElementsByTagName("grid").item(0).getTextContent());
+					SugarHolder.setSugarScape(colorOne, colorTwo, colorThree, growthRate, growthInterval, sugarGrid);
 				}
 
 				else if (DataHolder.getType().equals("Bacteria")) {

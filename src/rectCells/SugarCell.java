@@ -4,12 +4,12 @@ import javafx.scene.paint.Color;
 
 public class SugarCell extends Cell {
 
-	private static final int SUGAR_COLOR_RED = 255;
-	private static final int SUGAR_COLOR_GREEN = 255;
-	private static final int SUGAR_COLOR_BLUE = 255;
+	private static int SUGAR_COLOR_RED = 255;
+	private static int SUGAR_COLOR_GREEN = 255;
+	private static int SUGAR_COLOR_BLUE = 255;
 	
-	private static final int GROW_RATE = 5;
-	private static final int GROW_INTERVAL = 1;
+	private static int GROW_RATE = 5;
+	private static int GROW_INTERVAL = 1;
 	
 	private static final int MAX_CAPACITY = 100;
 	

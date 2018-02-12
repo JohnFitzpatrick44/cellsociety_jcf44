@@ -9,7 +9,7 @@ import rectCells.SugarAgentMover;
 import rectCells.SugarCell;
 
 public class SugarGrid extends RectangleGrid {
-	private String configString = SugarHolder.getFireGrid();
+	private String configString = SugarHolder.getSugarGrid();
 	
 	private static final int NUM_AGENTS = 40;
 	

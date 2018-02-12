@@ -3,33 +3,42 @@ package XML;
 import javafx.scene.paint.Color;
 
 public class SugarHolder extends DataHolder {
-	private static Color BURNT_COLOR;
-	private static Color TREE_COLOR;
-	private static Color BURNING_COLOR;
-	private static double PROB_CATCH;
+	private static int COLOR_ONE;
+	private static int COLOR_TWO;
+	private static int COLOR_THREE;
+	private static int GROWTH_RATE;
+	private static int GROWTH_INTERVAL;
 	private static String SUGAR_GRID;
 	
-	public static String getFireGrid() {
+	public static String getSugarGrid() {
 		return SUGAR_GRID;
 	}
 	
-	public static Color getBurntColor() {
-		return BURNT_COLOR;
+	public static int getColorOne() {
+		return COLOR_ONE;
 	}
 	
-	public static Color getTreeColor() {
-		return TREE_COLOR;
+	public static int getColorTwo() {
+		return COLOR_TWO;
 	}
 	
-	public static Color getBurningColor() {
-		return BURNING_COLOR;
+	public static int getColorThree() {
+		return COLOR_THREE;
 	}
 	
-	public static double getProbCatch() {
-		return PROB_CATCH;
+	public static int getGrowthRate() {
+		return GROWTH_RATE;
+	}
+	public static int getGrowthInterval() {
+		return GROWTH_INTERVAL;
 	}
 	
-	public static void setSpreadingFire(Color burntColor, Color burningColor, Color treeColor, double percent, String fireGrid) {
-		SUGAR_GRID = fireGrid;
+	public static void setSugarScape(int colorOne, int colorTwo, int colorThree, int growthRate, int growthInterval, String sugarGrid) {
+		SUGAR_GRID = sugarGrid;
+		COLOR_ONE = colorOne;
+		COLOR_TWO = colorTwo;
+		COLOR_THREE = colorThree;
+		GROWTH_RATE = growthRate;
+		GROWTH_INTERVAL = growthInterval;
 	}
 }
